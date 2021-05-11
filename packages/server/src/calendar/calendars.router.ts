@@ -1,0 +1,43 @@
+/**
+ * Required External Modules and Interfaces
+ */
+
+import express, { Request, Response } from 'express';
+import { Calendar } from '@daiod/common';
+import { itemsRouter } from './items/items.router';
+import * as CalendarService from './calendar.service';
+
+/**
+ * Router Definition
+ */
+
+export const calendarRouter = express.Router();
+
+// Nest the items router within the calendar router
+calendarRouter.use('/calendar/items', itemsRouter);
+
+/**
+ * Controller Definitions
+ */
+
+// GET calendar
+calendarRouter.get('/', async (req: Request, res: Response) => {
+  try {
+    const calendar: Calendar = await CalendarService.get();
+
+    res.status(200).send(calendar);
+  } catch (e) {
+    res.status(500).send(e.message);
+  }
+});
+
+// POST calendar
+calendarRouter.post('/', async (req: Request, res: Response) => {
+  try {
+    const calendarUpdate: Calendar = req.body;
+    const updatedCalendar = await CalendarService.update(calendarUpdate);
+    return res.status(200).json(updatedCalendar);
+  } catch (e) {
+    res.status(500).send(e.message);
+  }
+});

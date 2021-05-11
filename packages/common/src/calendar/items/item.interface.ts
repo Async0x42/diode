@@ -10,5 +10,4 @@ export interface BaseItem {
 
 export interface Item extends BaseItem {
   id: string;
-  calendarId: string;
 }

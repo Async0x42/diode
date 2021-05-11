@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@daiod/common": "workspace:*",
-    "@vueuse/core": "^4.9.2",
+    "@vueuse/core": "^4.9.3",
     "@vueuse/head": "^0.5.1",
     "nprogress": "^0.2.0",
     "prism-theme-vars": "^0.2.2",

@@ -18,10 +18,8 @@ export const itemsRouter = express.Router({ mergeParams: true });
 
 // GET items
 itemsRouter.get('/', async (req: Request, res: Response) => {
-  const calendarId = req.params.calendarId;
-
   try {
-    const items: Item[] = await ItemService.findAll(calendarId);
+    const items: Item[] = await ItemService.findAll();
 
     res.status(200).send(items);
   } catch (e) {
@@ -31,7 +29,6 @@ itemsRouter.get('/', async (req: Request, res: Response) => {
 
 // GET items/:itemId
 itemsRouter.get('/:itemId', async (req: Request, res: Response) => {
-  const calendarId = req.params.calendarId;
   const itemId = req.params.itemId;
 
   try {
@@ -49,12 +46,9 @@ itemsRouter.get('/:itemId', async (req: Request, res: Response) => {
 
 // POST items
 itemsRouter.post('/', async (req: Request, res: Response) => {
-  const calendarId = req.params.calendarId;
-
   try {
     const item: BaseItem = req.body;
-
-    const newItem = await ItemService.create(item, calendarId);
+    const newItem = await ItemService.create(item);
 
     res.status(201).json(newItem);
   } catch (e) {
@@ -64,12 +58,10 @@ itemsRouter.post('/', async (req: Request, res: Response) => {
 
 // PUT items/:itemId
 itemsRouter.put('/:itemId', async (req: Request, res: Response) => {
-  const calendarId = req.params.calendarId;
   const itemId = req.params.itemId;
 
   try {
     const itemUpdate: Item = req.body;
-
     const existingItem: Item = await ItemService.find(itemId);
 
     if (existingItem) {
@@ -77,7 +69,7 @@ itemsRouter.put('/:itemId', async (req: Request, res: Response) => {
       return res.status(200).json(updatedItem);
     }
 
-    const newItem = await ItemService.create(itemUpdate, calendarId);
+    const newItem = await ItemService.create(itemUpdate);
 
     res.status(201).json(newItem);
   } catch (e) {
