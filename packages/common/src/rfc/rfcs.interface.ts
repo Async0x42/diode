@@ -1,5 +1,5 @@
-import { RFC } from './rfc.interface';
+import { Rfc } from './rfc.interface';
 
-export interface RFCs {
-  [key: string]: RFC;
+export interface Rfcs {
+  [key: string]: Rfc;
 }

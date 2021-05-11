@@ -13,7 +13,7 @@ import { BaseItem, Item, Items } from '@daiod/common';
 const items: Items = {
   '810f136b-f8b1-4967-a665-c7f914b60cc4': {
     id: '810f136b-f8b1-4967-a665-c7f914b60cc4',
-    name: 'Burger',
+    title: 'Burger',
     category: 'Food',
     description: 'Tasty',
     image: 'https://cdn.auth0.com/blog/whatabyte/burger-sm.png',
@@ -23,7 +23,7 @@ const items: Items = {
   },
   'eb8b63b7-7143-4a14-b24c-37fc9aa862c6': {
     id: 'eb8b63b7-7143-4a14-b24c-37fc9aa862c6',
-    name: 'Pizza',
+    title: 'Pizza',
     category: 'Food',
     description: 'Cheesy',
     image: 'https://cdn.auth0.com/blog/whatabyte/pizza-sm.png',
@@ -33,7 +33,7 @@ const items: Items = {
   },
   '0e17f378-0f90-4d8e-a147-ab0383077519': {
     id: '0e17f378-0f90-4d8e-a147-ab0383077519',
-    name: 'Tea',
+    title: 'Tea',
     category: 'Drink',
     description: 'Informative',
     image: 'https://cdn.auth0.com/blog/whatabyte/tea-sm.png',

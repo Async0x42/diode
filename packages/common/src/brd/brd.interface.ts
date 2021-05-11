@@ -1,7 +1,7 @@
-export interface BaseBRD {
-  name: string;
+export interface BaseBrd {
+  title: string;
 }
 
-export interface BRD extends BaseBRD {
+export interface Brd extends BaseBrd {
   id: string;
 }

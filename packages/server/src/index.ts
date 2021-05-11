@@ -7,6 +7,8 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import { calendarRouter } from './calendar/calendar.router';
+import { rfcRouter } from './rfc/rfc.router';
+import { brdRouter } from './brd/brd.router';
 import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/not-found.middleware';
 
@@ -32,6 +34,8 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use('/api/calendar', calendarRouter);
+app.use('/api/rfcs', rfcRouter);
+app.use('/api/brds', brdRouter);
 app.use(errorHandler);
 app.use(notFoundHandler);
 

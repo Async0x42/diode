@@ -1,5 +1,5 @@
-import { BRD } from './brd.interface';
+import { Brd } from './brd.interface';
 
-export interface BRDs {
-  [key: string]: BRD;
+export interface Brds {
+  [key: string]: Brd;
 }

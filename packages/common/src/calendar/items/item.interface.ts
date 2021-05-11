@@ -1,5 +1,5 @@
 export interface BaseItem {
-  name: string;
+  title: string;
   category: string;
   description: string;
   image: string;

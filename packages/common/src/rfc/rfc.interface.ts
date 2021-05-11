@@ -1,8 +1,10 @@
-export interface BaseRFC {
-  name: string;
-  class: string;
-  purpose: 'Sustain' | 'Evolve' | 'Transform';
+export type RfcPurpose = 'Sustain' | 'Evolve' | 'Transform';
+export type RfcClass = 'Class 1' | 'Class 2' | 'Class 3' | 'Draft';
+
+export interface BaseRfc {
   title: string;
+  class: RfcClass;
+  purpose: RfcPurpose;
   description: string;
   parentSystem?: string;
   businessCase: string;
@@ -16,6 +18,6 @@ export interface BaseRFC {
   impactAssessmentDueDate: Date;
 }
 
-export interface RFC extends BaseRFC {
+export interface Rfc extends BaseRfc {
   id: string;
 }
