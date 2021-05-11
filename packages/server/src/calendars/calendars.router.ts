@@ -3,7 +3,7 @@
  */
 
 import express, { Request, Response } from 'express';
-import { BaseCalendar, Calendar } from '@csc/common';
+import { BaseCalendar, Calendar } from '@daiod/common';
 import { itemsRouter } from './items/items.router';
 import * as CalendarService from './calendars.service';
 

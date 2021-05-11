@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
  * Data Model Interfaces
  */
 
-import { BaseCalendar, Calendar, Calendars } from '@csc/common';
+import { BaseCalendar, Calendar, Calendars } from '@daiod/common';
 
 /**
  * In-Memory Store

@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
  * Data Model Interfaces
  */
 
-import { BaseFilter, Filter, Filters } from '@csc/common';
+import { BaseFilter, Filter, Filters } from '@daiod/common';
 
 /**
  * In-Memory Store

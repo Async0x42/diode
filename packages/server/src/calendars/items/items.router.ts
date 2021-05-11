@@ -3,7 +3,7 @@
  */
 
 import express, { Request, Response } from 'express';
-import { BaseItem, Item } from '@csc/common';
+import { BaseItem, Item } from '@daiod/common';
 import * as ItemService from './items.service';
 
 /**

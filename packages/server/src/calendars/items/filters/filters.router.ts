@@ -3,7 +3,7 @@
  */
 
 import express, { Request, Response } from 'express';
-import { BaseFilter, Filter } from '@csc/common';
+import { BaseFilter, Filter } from '@daiod/common';
 import * as FilterService from './filters.service';
 
 /**

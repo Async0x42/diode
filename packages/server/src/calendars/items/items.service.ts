@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
  * Data Model Interfaces
  */
 
-import { BaseItem, Item, Items } from '@csc/common';
+import { BaseItem, Item, Items } from '@daiod/common';
 
 /**
  * In-Memory Store
