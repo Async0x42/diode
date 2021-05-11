@@ -10,6 +10,7 @@ importers:
       '@antfu/eslint-config': ^0.6.5
       '@daiod/common': workspace:*
       '@iconify/json': ^1.1.341
+      '@intlify/eslint-plugin-vue-i18n': ^0.11.1
       '@intlify/vite-plugin-vue-i18n': ^2.1.2
       '@types/nprogress': ^0.2.0
       '@typescript-eslint/eslint-plugin': ^4.23.0
@@ -56,6 +57,7 @@ importers:
     devDependencies:
       '@antfu/eslint-config': 0.6.5_eslint@7.26.0+typescript@4.2.4
       '@iconify/json': 1.1.341
+      '@intlify/eslint-plugin-vue-i18n': 0.11.1_eslint@7.26.0
       '@intlify/vite-plugin-vue-i18n': 2.1.2_vite@2.3.0+vue-i18n@9.1.6
       '@types/nprogress': 0.2.0
       '@typescript-eslint/eslint-plugin': 4.23.0_7cfaee78cda985ff9bc3d8b5cb92a136
@@ -1388,6 +1390,30 @@ packages:
     engines: {node: '>= 10'}
     dependencies:
       '@intlify/shared': 9.1.6
+
+  /@intlify/eslint-plugin-vue-i18n/0.11.1_eslint@7.26.0:
+    resolution: {integrity: sha512-zyEjqzoganIXDRYajeWatGD92emW+eRaX0pm+cPowP0WaZkKvMD27wkzfl/+VGu17Zezbfu02wcmU4j5uMXs4Q==}
+    engines: {node: '>=10.13.0 || >=12.0.0 || >= 14.0.0'}
+    peerDependencies:
+      eslint: ^5.0.0 || ^6.0.0 || ^7.0.0
+    dependencies:
+      '@intlify/message-compiler': 9.1.6
+      '@intlify/message-resolver': 9.1.6
+      debug: 4.3.1
+      eslint: 7.26.0
+      glob: 7.1.7
+      ignore: 5.1.8
+      js-yaml: 4.1.0
+      json5: 2.2.0
+      jsonc-eslint-parser: 1.0.1
+      lodash: 4.17.21
+      parse5: 6.0.1
+      semver: 7.3.5
+      vue-eslint-parser: 7.6.0_eslint@7.26.0
+      yaml-eslint-parser: 0.3.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
 
   /@intlify/message-compiler/9.1.6:
     resolution: {integrity: sha512-DR8645VOrVK6x/8tkaCpHnckMAIcoOgeNS5j0wB12RfZoXYQp7vAXMaOP511KMll2mXCREgIB0ojpajiof7yzQ==}
@@ -4608,6 +4634,13 @@ packages:
     dependencies:
       argparse: 1.0.10
       esprima: 4.0.1
+    dev: true
+
+  /js-yaml/4.1.0:
+    resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
+    hasBin: true
+    dependencies:
+      argparse: 2.0.1
     dev: true
 
   /jsbn/0.1.1:
