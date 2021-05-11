@@ -6,8 +6,7 @@ import * as dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import { calendarsRouter } from './calendars/calendars.router';
-import { itemsRouter } from './calendars/items/items.router';
+import { calendarRouter } from './calendar/calendar.router';
 import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/not-found.middleware';
 
@@ -32,7 +31,7 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
-app.use('/api/calendars', calendarsRouter);
+app.use('/api/calendar', calendarRouter);
 app.use(errorHandler);
 app.use(notFoundHandler);
 
