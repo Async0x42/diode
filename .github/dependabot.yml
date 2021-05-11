@@ -1,0 +1,51 @@
+version: 2
+updates:
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: '06:30'
+      timezone: America/Toronto
+    target-branch: develop
+    open-pull-requests-limit: 25
+
+  # Maintain dependencies for npm
+  # - package-ecosystem: "npm"
+  #   directory: "/"
+  #   schedule:
+  #     interval: "daily"
+  #     time: '06:30'
+  #     timezone: America/Toronto
+  #   target-branch: develop
+  #   open-pull-requests-limit: 25
+
+  # Maintain dependencies for npm
+  # - package-ecosystem: "npm"
+  #   directory: "/packages/client"
+  #   schedule:
+  #     interval: "daily"
+  #     time: '06:30'
+  #     timezone: America/Toronto
+  #   target-branch: develop
+  #   open-pull-requests-limit: 25
+
+  # Maintain dependencies for npm
+  # - package-ecosystem: "npm"
+  #   directory: "/packages/common"
+  #   schedule:
+  #     interval: "daily"
+  #     time: '06:30'
+  #     timezone: America/Toronto
+  #   target-branch: develop
+  #   open-pull-requests-limit: 25
+
+  # Maintain dependencies for npm
+  # - package-ecosystem: "npm"
+  #   directory: "/packages/server"
+  #   schedule:
+  #     interval: "daily"
+  #     time: '06:30'
+  #     timezone: America/Toronto
+  #   target-branch: develop
+  #   open-pull-requests-limit: 25
