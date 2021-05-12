@@ -14,7 +14,7 @@ jobs:
 
     steps:
       # Use this GitHub Actions at least once in this workflow as soon as possible.
-      - uses: technote-space/auto-cancel-redundant-workflow@v1
+      - uses: technote-space/auto-cancel-redundant-workflow@v1.7.4
 
       - name: 'Checkout source code'
         uses: 'actions/checkout@v2'
