@@ -9,6 +9,8 @@ importers:
     specifiers:
       '@antfu/eslint-config': ^0.6.5
       '@daiod/common': workspace:*
+      '@headlessui/vue': ^1.2.0
+      '@heroicons/vue': ^1.0.1
       '@iconify/json': ^1.1.341
       '@intlify/eslint-plugin-vue-i18n': ^0.11.1
       '@intlify/vite-plugin-vue-i18n': ^2.1.2
@@ -47,6 +49,8 @@ importers:
       vue-tsc: ^0.1.2
     dependencies:
       '@daiod/common': link:../common
+      '@headlessui/vue': 1.2.0_vue@3.0.11
+      '@heroicons/vue': 1.0.1_vue@3.0.11
       '@vueuse/core': 4.9.3_vue@3.0.11
       '@vueuse/head': 0.5.1_vue@3.0.11
       axios: 0.21.1
@@ -1338,6 +1342,23 @@ packages:
     dependencies:
       '@hapi/hoek': 8.5.1
     dev: true
+
+  /@headlessui/vue/1.2.0_vue@3.0.11:
+    resolution: {integrity: sha512-nATOiQyGik8qoGFnWdWDaMWlpBLBaybhsa4drUoz/vMggw2fmXqzilAfMXHDwvqzh35SkSb13BEWA8kUSUNgkg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      vue: 3.0.11
+    dev: false
+
+  /@heroicons/vue/1.0.1_vue@3.0.11:
+    resolution: {integrity: sha512-pClbScVNpkBCHdM86+EAjQ5iUAs1PVjRHDFRNImQQyot75KrAk4SDfeKGDkQqPaGdJ9ZHIK13cl2W0eYc29QWg==}
+    peerDependencies:
+      vue: '>= 3'
+    dependencies:
+      vue: 3.0.11
+    dev: false
 
   /@iconify/json-tools/1.0.10:
     resolution: {integrity: sha512-LFelJDOLZ6JHlmlAkgrvmcu4hpNPB91KYcr4f60D/exzU1eNOb4/KCVHIydGHIQFaOacIOD+Xy+B7P1z812cZg==}

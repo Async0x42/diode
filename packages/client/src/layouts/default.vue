@@ -1,7 +1,20 @@
+<script setup lang="ts">
+import SidebarMobile from '~/components/SidebarMobile.vue';
+import SidebarDesktop from '~/components/SidebarDesktop.vue';
+import Header from '~/components/Header.vue';
+</script>
+
 <template>
-  <main class="px-4 py-10 text-center text-gray-700 dark:text-gray-200">
-    <router-view />
-    <Footer />
-    <div class="mt-5 mx-auto text-center opacity-25 text-sm">[Default Layout]</div>
-  </main>
+  <div class="bg-white flex h-screen overflow-hidden">
+    <SidebarMobile />
+    <SidebarDesktop />
+
+    <div class="flex flex-col flex-1 w-0 overflow-hidden">
+      <Header />
+
+      <main class="flex-1 relative overflow-y-auto focus:outline-none">
+        <router-view />
+      </main>
+    </div>
+  </div>
 </template>
