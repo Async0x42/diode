@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { MenuAlt2Icon } from '@heroicons/vue/outline';
 import { SearchIcon } from '@heroicons/vue/solid';
+import { useRouter, useRoute } from 'vue-router';
 import { toggleSidebar } from '~/logic';
+
+const router = useRouter();
+const route = useRoute();
 </script>
 
 <template>
@@ -33,12 +37,20 @@ import { toggleSidebar } from '~/logic';
         </form>
       </div>
       <div class="flex ml-4 items-center lg:ml-6">
-        <button
-          type="button"
-          class="border border-transparent rounded-md font-medium bg-rose-600 shadow-sm text-sm text-white py-2 px-4 inline-flex items-center hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+        <router-link
+          v-if="route.name != null && ['calendar', 'brds', 'contacts', 'rfcs'].includes(route.name.toString())"
+          v-slot="{ navigate }"
+          :to="route.fullPath + '/create'"
+          custom
         >
-          Create
-        </button>
+          <button
+            type="button"
+            class="border border-transparent rounded-md font-medium bg-rose-600 shadow-sm text-sm text-white py-2 px-4 inline-flex items-center hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+            @click="navigate"
+          >
+            Create
+          </button>
+        </router-link>
       </div>
     </div>
   </div>
