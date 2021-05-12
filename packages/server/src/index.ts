@@ -12,6 +12,8 @@ import { brdRouter } from './brd/brd.router';
 import { contactRouter } from './contact/contact.router';
 import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/not-found.middleware';
+import { userRouter } from './auth/user.router';
+import { tokenGuard } from './middleware/token-guard';
 
 dotenv.config();
 
@@ -34,6 +36,12 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+app.use('/', userRouter);
+
+// Unprotected Get
+app.use(tokenGuard());
+
+// Protected Get
 app.use('/api/calendar', calendarRouter);
 app.use('/api/rfcs', rfcRouter);
 app.use('/api/brds', brdRouter);

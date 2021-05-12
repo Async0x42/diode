@@ -23,16 +23,22 @@
   "homepage": "https://github.com/Async0x42/daiod#readme",
   "dependencies": {
     "@daiod/common": "workspace:*",
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
+    "express-validator": "^6.11.1",
     "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "sequelize": "^6.6.2",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.6.5",
+    "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.10",
     "@types/express": "^4.17.11",
+    "@types/jsonwebtoken": "^8.5.1",
     "@types/node": "^15.0.2",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.23.0",

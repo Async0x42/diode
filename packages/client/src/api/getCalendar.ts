@@ -1,8 +1,10 @@
 import axios from 'axios';
+import authHeader from '~/services/auth-header';
 
-export const getCalendar = async (id: string) =>
+export const getCalendar = async () =>
   await axios({
+    headers: authHeader(),
     method: 'get',
-    url: `/api/calendars/${id}`,
+    url: `/api/calendar`,
     responseType: 'json',
   });
