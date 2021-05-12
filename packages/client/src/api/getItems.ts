@@ -1,10 +1,7 @@
-import axios from 'axios';
+import { useAxios } from '@vueuse/integrations';
 import authHeader from '~/services/auth-header';
 
-export const getItems = async () =>
-  await axios({
-    headers: authHeader(),
-    method: 'get',
-    url: `/api/calendars/items`,
-    responseType: 'json',
-  });
+export const getItems = async () => {
+  const { data, isFinished } = useAxios('/api/calendar/items', { headers: { authHeader } });
+  return { data, isFinished };
+};

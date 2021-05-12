@@ -19,6 +19,7 @@
     "@types/lodash-es": "^4.17.4",
     "@vueuse/core": "^4.9.3",
     "@vueuse/head": "^0.5.1",
+    "@vueuse/integrations": "^4.10.0",
     "axios": "^0.21.1",
     "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
