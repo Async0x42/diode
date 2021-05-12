@@ -14,23 +14,30 @@ import SidebarFooter from '~/components/SidebarFooter.vue';
         <div class="flex flex-col flex-1 overflow-y-auto">
           <nav class="bg-gray-800 flex-1 py-4 px-2">
             <div class="space-y-1">
-              <a
+              <router-link
                 v-for="item in navigation"
+                v-slot="{ href, navigate, isExactActive }"
                 :key="item.name"
-                :href="item.href"
-                :class="[
-                  item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
-                ]"
-                :aria-current="item.current ? 'page' : undefined"
+                :to="item.to ? item.to : undefined"
+                custom
               >
-                <component
-                  :is="item.icon"
-                  :class="[item.current ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300', 'mr-3 h-6 w-6']"
-                  aria-hidden="true"
-                />
-                {{ item.name }}
-              </a>
+                <a
+                  :href="href"
+                  :class="[
+                    isExactActive ? 'bg-gray-900 text-white cursor-default' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                    'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
+                  ]"
+                  :aria-current="isExactActive ? 'page' : undefined"
+                  @click="navigate"
+                >
+                  <component
+                    :is="item.icon"
+                    :class="[isExactActive ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300', 'mr-3 h-6 w-6']"
+                    aria-hidden="true"
+                  />
+                  {{ item.name }}
+                </a>
+              </router-link>
             </div>
             <div class="mt-10">
               <p class="font-semibold text-xs tracking-wider px-3 text-gray-400 uppercase">Projects</p>
@@ -50,7 +57,7 @@ import SidebarFooter from '~/components/SidebarFooter.vue';
           </nav>
         </div>
       </div>
+      <SidebarFooter />
     </div>
-    <SidebarFooter />
   </div>
 </template>

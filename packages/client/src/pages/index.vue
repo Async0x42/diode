@@ -8,7 +8,7 @@ const name = ref('');
 const router = useRouter();
 const go = () => {
   // if (name.value) router.push(`/hi/${encodeURIComponent(name.value)}`);
-  if (name.value) router.push(`/default`);
+  if (name.value) router.push(`/dashboard`);
 };
 
 const { t } = useI18n();
@@ -50,6 +50,8 @@ const { t } = useI18n();
 </template>
 
 <route lang="yaml">
+name: landing
+
 meta:
   layout: home
 </route>

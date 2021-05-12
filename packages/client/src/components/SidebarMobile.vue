@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Dialog, DialogOverlay, TransitionChild, TransitionRoot } from '@headlessui/vue';
+import { XIcon } from '@heroicons/vue/outline';
 import { navigation, projects, isSidebarOpen, toggleSidebar } from '~/logic';
 import SidebarFooter from '~/components/SidebarFooter.vue';
 </script>
@@ -54,23 +55,30 @@ import SidebarFooter from '~/components/SidebarFooter.vue';
           <div class="flex-1 h-0 mt-5 overflow-y-auto">
             <nav class="px-2">
               <div class="space-y-1">
-                <a
+                <router-link
                   v-for="item in navigation"
+                  v-slot="{ href, navigate, isExactActive }"
                   :key="item.name"
-                  :href="item.href"
-                  :class="[
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'group flex items-center px-2 py-2 text-base font-medium rounded-md',
-                  ]"
-                  :aria-current="item.current ? 'page' : undefined"
+                  :to="item.to ? item.to : undefined"
+                  custom
                 >
-                  <component
-                    :is="item.icon"
-                    :class="[item.current ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300', 'mr-4 h-6 w-6']"
-                    aria-hidden="true"
-                  />
-                  {{ item.name }}
-                </a>
+                  <a
+                    :href="href"
+                    :class="[
+                      isExactActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                      'group flex items-center px-2 py-2 text-base font-medium rounded-md',
+                    ]"
+                    :aria-current="isExactActive ? 'page' : undefined"
+                    @click="navigate"
+                  >
+                    <component
+                      :is="item.icon"
+                      :class="[isExactActive ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300', 'mr-4 h-6 w-6']"
+                      aria-hidden="true"
+                    />
+                    {{ item.name }}
+                  </a>
+                </router-link>
               </div>
               <div class="mt-10">
                 <p class="font-semibold text-xs tracking-wider px-2 text-gray-400 uppercase">Projects</p>
