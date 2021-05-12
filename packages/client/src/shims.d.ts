@@ -17,3 +17,6 @@ declare module '*.vue' {
   const component: ComponentOptions;
   export default component;
 }
+
+// fix for heroicons not supporting typescript
+declare module '@heroicons/*';

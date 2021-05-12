@@ -7,7 +7,8 @@ const name = ref('');
 
 const router = useRouter();
 const go = () => {
-  if (name.value) router.push(`/hi/${encodeURIComponent(name.value)}`);
+  // if (name.value) router.push(`/hi/${encodeURIComponent(name.value)}`);
+  if (name.value) router.push(`/default`);
 };
 
 const { t } = useI18n();
@@ -34,7 +35,7 @@ const { t } = useI18n();
       :aria-label="t('intro.whats-your-name')"
       type="text"
       autocomplete="false"
-      class="px-4 py-2 text-sm text-center bg-transparent border border-gray-200 rounded outline-none active:outline-none dark:border-gray-700"
+      class="bg-transparent border rounded outline-none border-gray-200 text-sm text-center py-2 px-4 dark:border-gray-700 active:outline-none"
       style="width: 250px"
       @keydown.enter="go"
     />
