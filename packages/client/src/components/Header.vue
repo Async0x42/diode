@@ -4,7 +4,6 @@ import { SearchIcon } from '@heroicons/vue/solid';
 import { useRouter, useRoute } from 'vue-router';
 import { toggleSidebar } from '~/logic';
 
-const router = useRouter();
 const route = useRoute();
 </script>
 
