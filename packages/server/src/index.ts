@@ -14,6 +14,7 @@ import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/not-found.middleware';
 import { userRouter } from './auth/user.router';
 import { tokenGuard } from './middleware/token-guard';
+import { initialize as initializeDatabase } from '~/instances';
 
 dotenv.config();
 
@@ -48,6 +49,9 @@ app.use('/api/brds', brdRouter);
 app.use('/api/contacts', contactRouter);
 app.use(errorHandler);
 app.use(notFoundHandler);
+
+// initialize and force the database sync if we aren't running in production
+initializeDatabase(process.env.NODE_ENV !== 'production');
 
 /**
  * Server Activation

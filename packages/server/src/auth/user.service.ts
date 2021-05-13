@@ -1,11 +1,11 @@
 import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
-import * as Bluebird from 'Bluebird';
+import { Promise } from 'bluebird';
 import { User, UserAddModel, UserViewModel } from './user.model';
 
 export class UserService {
   private readonly _saltRounds = 12;
-  private readonly _jwtSecret = '0.rfyj3n9nzh';
+  private readonly _jwtSecret = process.env.SECRET;
 
   static get userAttributes() {
     return ['id', 'email'];
@@ -37,15 +37,15 @@ export class UserService {
           return;
         }
 
-        UserService._user = User.findById(decoded.id);
+        UserService._user = User.findByPk(decoded.id);
         resolve(true);
       });
     }) as Promise<boolean>;
   }
 
   getUserById(id: number) {
-    return User.findById(id, {
+    return User.findByPk(id, {
       attributes: UserService.userAttributes,
-    }) as Bluebird<UserViewModel>;
+    }) as Promise<UserViewModel>;
   }
 }
