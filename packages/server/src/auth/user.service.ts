@@ -5,7 +5,7 @@ import { User, UserAddModel, UserViewModel } from './user.model';
 
 export class UserService {
   private readonly _saltRounds = 12;
-  private readonly _jwtSecret = process.env.SECRET as string;
+  private readonly _jwtSecret = process.env.SECRET || new RandomSource().getRandomValues(new Uint32Array(4)).join('');
 
   static get userAttributes() {
     return ['id', 'email'];
