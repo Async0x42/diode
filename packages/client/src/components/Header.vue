@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { MenuAlt2Icon } from '@heroicons/vue/outline';
-import { SearchIcon } from '@heroicons/vue/solid';
-import { useRouter, useRoute } from 'vue-router';
+import { useRoute } from 'vue-router';
 import { toggleSidebar } from '~/logic';
 
 const route = useRoute();
@@ -15,7 +13,7 @@ const route = useRoute();
       @click="toggleSidebar()"
     >
       <span class="sr-only">Open sidebar</span>
-      <MenuAlt2Icon class="h-6 w-6" aria-hidden="true" />
+      <heroicons-outline-menu-alt-2 class="h-6 w-6" aria-hidden="true" />
     </button>
     <div class="flex flex-1 px-4 justify-between">
       <div class="flex flex-1">
@@ -23,7 +21,7 @@ const route = useRoute();
           <label for="search_field" class="sr-only">Search</label>
           <div class="w-full text-gray-400 relative focus-within:text-gray-600">
             <div class="flex inset-y-0 left-0 absolute items-center pointer-events-none">
-              <SearchIcon class="h-5 w-5" aria-hidden="true" />
+              <heroicons-solid-search class="h-5 w-5" aria-hidden="true" />
             </div>
             <input
               id="search_field"

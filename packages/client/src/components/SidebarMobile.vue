@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Dialog, DialogOverlay, TransitionChild, TransitionRoot } from '@headlessui/vue';
-import { XIcon } from '@heroicons/vue/outline';
 import { navigation, projects, isSidebarOpen, toggleSidebar } from '~/logic';
 import SidebarFooter from '~/components/SidebarFooter.vue';
 </script>
@@ -45,7 +44,7 @@ import SidebarFooter from '~/components/SidebarFooter.vue';
                 @click="toggleSidebar()"
               >
                 <span class="sr-only">Close sidebar</span>
-                <XIcon class="h-6 text-white w-6" aria-hidden="true" />
+                <heroicons-outline-x class="h-6 text-white w-6" aria-hidden="true" />
               </button>
             </div>
           </TransitionChild>

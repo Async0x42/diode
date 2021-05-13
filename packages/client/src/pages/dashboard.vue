@@ -1,14 +1,4 @@
 <script setup lang="ts">
-import {
-  BellIcon,
-  CalendarIcon,
-  ChatAltIcon,
-  CheckCircleIcon,
-  LockOpenIcon,
-  PencilIcon,
-  TagIcon,
-  UserCircleIcon as UserCircleIconSolid,
-} from '@heroicons/vue/solid';
 import { activity } from '~/logic';
 </script>
 
@@ -34,48 +24,16 @@ import { activity } from '~/logic';
               <div class="flex space-x-3 mt-4 md:mt-0">
                 <button
                   type="button"
-                  class="
-                    bg-white
-                    border
-                    rounded-md
-                    font-medium
-                    border-gray-300
-                    shadow-sm
-                    text-sm
-                    py-2
-                    px-4
-                    text-gray-700
-                    inline-flex
-                    justify-center
-                    hover:bg-gray-50
-                    focus:outline-none
-                    focus:ring-2 focus:ring-offset-2 focus:ring-gray-900
-                  "
+                  class="bg-white border rounded-md font-medium border-gray-300 shadow-sm text-sm py-2 px-4 text-gray-700 inline-flex justify-center hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
                 >
-                  <PencilIcon class="h-5 mr-2 -ml-1 text-gray-400 w-5" aria-hidden="true" />
+                  <heroicons-solid-pencil class="h-5 mr-2 -ml-1 text-gray-400 w-5" aria-hidden="true" />
                   <span>Edit</span>
                 </button>
                 <button
                   type="button"
-                  class="
-                    bg-white
-                    border
-                    rounded-md
-                    font-medium
-                    border-gray-300
-                    shadow-sm
-                    text-sm
-                    py-2
-                    px-4
-                    text-gray-700
-                    inline-flex
-                    justify-center
-                    hover:bg-gray-50
-                    focus:outline-none
-                    focus:ring-2 focus:ring-offset-2 focus:ring-gray-900
-                  "
+                  class="bg-white border rounded-md font-medium border-gray-300 shadow-sm text-sm py-2 px-4 text-gray-700 inline-flex justify-center hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
                 >
-                  <BellIcon class="h-5 mr-2 -ml-1 text-gray-400 w-5" aria-hidden="true" />
+                  <heroicons-solid-bell class="h-5 mr-2 -ml-1 text-gray-400 w-5" aria-hidden="true" />
                   <span>Subscribe</span>
                 </button>
               </div>
@@ -84,15 +42,15 @@ import { activity } from '~/logic';
               <h2 class="sr-only">Details</h2>
               <div class="space-y-5">
                 <div class="flex space-x-2 items-center">
-                  <LockOpenIcon class="h-5 text-green-500 w-5" aria-hidden="true" />
+                  <heroicons-solid-lock-open class="h-5 text-green-500 w-5" aria-hidden="true" />
                   <span class="font-medium text-sm text-green-700">Open Issue</span>
                 </div>
                 <div class="flex space-x-2 items-center">
-                  <ChatAltIcon class="h-5 text-gray-400 w-5" aria-hidden="true" />
+                  <heroicons-solid-chat-alt class="h-5 text-gray-400 w-5" aria-hidden="true" />
                   <span class="font-medium text-sm text-gray-900">4 comments</span>
                 </div>
                 <div class="flex space-x-2 items-center">
-                  <CalendarIcon class="h-5 text-gray-400 w-5" aria-hidden="true" />
+                  <heroicons-solid-calendar class="h-5 text-gray-400 w-5" aria-hidden="true" />
                   <span class="font-medium text-sm text-gray-900">Created on <time datetime="2020-12-02">Dec 2, 2020</time></span>
                 </div>
               </div>
@@ -185,7 +143,7 @@ import { activity } from '~/logic';
                               />
 
                               <span class="bg-white rounded-tl py-px px-0.5 -right-1 -bottom-0.5 absolute">
-                                <ChatAltIcon class="h-5 text-gray-400 w-5" aria-hidden="true" />
+                                <heroicons-solid-chat-alt class="h-5 text-gray-400 w-5" aria-hidden="true" />
                               </span>
                             </div>
                             <div class="flex-1 min-w-0">
@@ -206,7 +164,7 @@ import { activity } from '~/logic';
                             <div>
                               <div class="px-1 relative">
                                 <div class="rounded-full flex bg-gray-100 h-8 ring-white ring-8 w-8 items-center justify-center">
-                                  <UserCircleIconSolid class="h-5 text-gray-500 w-5" aria-hidden="true" />
+                                  <heroicons-solid-user-circle class="h-5 text-gray-500 w-5" aria-hidden="true" />
                                 </div>
                               </div>
                             </div>
@@ -229,7 +187,7 @@ import { activity } from '~/logic';
                             <div>
                               <div class="px-1 relative">
                                 <div class="rounded-full flex bg-gray-100 h-8 ring-white ring-8 w-8 items-center justify-center">
-                                  <TagIcon class="h-5 text-gray-500 w-5" aria-hidden="true" />
+                                  <heroicons-solid-tag class="h-5 text-gray-500 w-5" aria-hidden="true" />
                                 </div>
                               </div>
                             </div>
@@ -275,7 +233,7 @@ import { activity } from '~/logic';
                         />
 
                         <span class="bg-white rounded-tl py-px px-0.5 -right-1 -bottom-0.5 absolute">
-                          <ChatAltIcon class="h-5 text-gray-400 w-5" aria-hidden="true" />
+                          <heroicons-solid-chat-alt class="h-5 text-gray-400 w-5" aria-hidden="true" />
                         </span>
                       </div>
                     </div>
@@ -294,45 +252,14 @@ import { activity } from '~/logic';
                         <div class="flex space-x-4 mt-6 items-center justify-end">
                           <button
                             type="button"
-                            class="
-                              bg-white
-                              border
-                              rounded-md
-                              font-medium
-                              border-gray-300
-                              shadow-sm
-                              text-sm
-                              py-2
-                              px-4
-                              text-gray-700
-                              inline-flex
-                              justify-center
-                              hover:bg-gray-50
-                              focus:outline-none
-                              focus:ring-2 focus:ring-offset-2 focus:ring-gray-900
-                            "
+                            class="bg-white border rounded-md font-medium border-gray-300 shadow-sm text-sm py-2 px-4 text-gray-700 inline-flex justify-center hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
                           >
-                            <CheckCircleIcon class="h-5 mr-2 -ml-1 text-green-500 w-5" aria-hidden="true" />
+                            <heroicons-solid-check-circle class="h-5 mr-2 -ml-1 text-green-500 w-5" aria-hidden="true" />
                             <span>Close issue</span>
                           </button>
                           <button
                             type="submit"
-                            class="
-                              border border-transparent
-                              rounded-md
-                              font-medium
-                              bg-gray-900
-                              shadow-sm
-                              text-sm text-white
-                              py-2
-                              px-4
-                              inline-flex
-                              items-center
-                              justify-center
-                              hover:bg-black
-                              focus:outline-none
-                              focus:ring-2 focus:ring-offset-2 focus:ring-gray-900
-                            "
+                            class="border border-transparent rounded-md font-medium bg-gray-900 shadow-sm text-sm text-white py-2 px-4 inline-flex items-center justify-center hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
                           >
                             Comment
                           </button>
@@ -350,15 +277,15 @@ import { activity } from '~/logic';
         <h2 class="sr-only">Details</h2>
         <div class="space-y-5">
           <div class="flex space-x-2 items-center">
-            <LockOpenIcon class="h-5 text-green-500 w-5" aria-hidden="true" />
+            <heroicons-solid-lock-open class="h-5 text-green-500 w-5" aria-hidden="true" />
             <span class="font-medium text-sm text-green-700">Open Issue</span>
           </div>
           <div class="flex space-x-2 items-center">
-            <ChatAltIcon class="h-5 text-gray-400 w-5" aria-hidden="true" />
+            <heroicons-solid-chat-alt class="h-5 text-gray-400 w-5" aria-hidden="true" />
             <span class="font-medium text-sm text-gray-900">4 comments</span>
           </div>
           <div class="flex space-x-2 items-center">
-            <CalendarIcon class="h-5 text-gray-400 w-5" aria-hidden="true" />
+            <heroicons-solid-calendar class="h-5 text-gray-400 w-5" aria-hidden="true" />
             <span class="font-medium text-sm text-gray-900">Created on <time datetime="2020-12-02">Dec 2, 2020</time></span>
           </div>
         </div>
