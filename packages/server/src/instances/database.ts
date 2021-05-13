@@ -39,6 +39,5 @@ const createRoles = () => {
 
 export const initialize = async (forceSync = false) => {
   await db.sequelize.sync({ force: forceSync });
-  forceSync && console.log('Drop and Resync Db');
   createRoles();
 };
