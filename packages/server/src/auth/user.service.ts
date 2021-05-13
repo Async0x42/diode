@@ -5,7 +5,7 @@ import { User, UserAddModel, UserViewModel } from './user.model';
 
 export class UserService {
   private readonly _saltRounds = 12;
-  private readonly _jwtSecret = process.env.SECRET;
+  private readonly _jwtSecret = process.env.SECRET as string;
 
   static get userAttributes() {
     return ['id', 'email'];
