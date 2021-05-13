@@ -1,3 +1,44 @@
+<script setup lang="ts">
+import { Form, Field, ErrorMessage } from 'vee-validate';
+import * as yup from 'yup';
+import { computed, ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { state as authState, login } from '~/logic';
+const router = useRouter();
+
+const schema = yup.object().shape({
+  email: yup.string().required('Email is required!'),
+  password: yup.string().required('Password is required!'),
+});
+
+const loading = ref(false);
+const message = ref('');
+const loggedIn = computed(() => authState.value.status.loggedIn);
+
+if (loggedIn.value) {
+  router.push({ name: 'dashboard' });
+}
+
+const handleLogin = (user) => {
+  loading.value = true;
+
+  login(user).then(
+    () => {
+      router.push({ name: 'dashboard' });
+    },
+    (error) => {
+      loading.value = false;
+      message.value = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+    }
+  );
+};
+
+const handleRegister = () => {
+  loading.value = true;
+  router.push({ name: 'register' });
+};
+</script>
+
 <template>
   <div class="flex flex-col min-h-screen bg-gray-50 py-12 justify-center sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:max-w-md sm:w-full">
@@ -91,62 +132,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import { Form, Field, ErrorMessage } from 'vee-validate';
-import * as yup from 'yup';
-import { state as authState, login } from '~/logic';
-
-export default {
-  name: 'Login',
-  components: {
-    Form,
-    Field,
-    ErrorMessage,
-  },
-  data() {
-    const schema = yup.object().shape({
-      email: yup.string().required('Email is required!'),
-      password: yup.string().required('Password is required!'),
-    });
-
-    return {
-      loading: false,
-      message: '',
-      schema,
-    };
-  },
-  computed: {
-    loggedIn() {
-      return authState.value.status.loggedIn;
-    },
-  },
-  created() {
-    if (this.loggedIn) {
-      this.$router.push({ name: 'dashboard' });
-    }
-  },
-  methods: {
-    handleLogin(user) {
-      this.loading = true;
-
-      login(user).then(
-        () => {
-          this.$router.push({ name: 'dashboard' });
-        },
-        (error) => {
-          this.loading = false;
-          this.message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-        }
-      );
-    },
-    handleRegister() {
-      this.loading = true;
-      this.$router.push({ name: 'register' });
-    },
-  },
-};
-</script>
 
 <route lang="yaml">
 name: login
