@@ -39,6 +39,7 @@
 <script>
 import { Form, Field, ErrorMessage } from 'vee-validate';
 import * as yup from 'yup';
+import { state as authState, register } from '~/logic';
 
 export default {
   name: 'Register',
@@ -63,7 +64,7 @@ export default {
   },
   computed: {
     loggedIn() {
-      return this.$store.state.auth.status.loggedIn;
+      return authState.value.status.loggedIn;
     },
   },
   mounted() {
@@ -77,7 +78,7 @@ export default {
       this.successful = false;
       this.loading = true;
 
-      this.$store.dispatch('auth/register', user).then(
+      register(user).then(
         (data) => {
           this.message = data.message;
           this.successful = true;
