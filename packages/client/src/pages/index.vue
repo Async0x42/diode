@@ -65,6 +65,29 @@
             </button>
           </div>
         </Form>
+        <div class="mt-6">
+          <div class="relative">
+            <div class="flex inset-0 absolute items-center">
+              <div class="border-t border-gray-300 w-full" />
+            </div>
+            <div class="flex text-sm relative justify-center">
+              <span class="bg-white px-2 text-gray-500"> Or </span>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <div>
+              <button
+                type="submit"
+                :disabled="loading"
+                class="bg-white border rounded-md font-medium border-gray-300 shadow-sm text-sm w-full py-2 px-4 text-gray-500 inline-flex justify-center hover:bg-gray-50"
+                @click="handleRegister"
+              >
+                Register
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -117,6 +140,10 @@ export default {
           this.message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
         }
       );
+    },
+    handleRegister() {
+      this.loading = true;
+      this.$router.push({ name: 'register' });
     },
   },
 };

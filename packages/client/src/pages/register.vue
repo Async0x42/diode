@@ -2,7 +2,7 @@
   <div class="flex flex-col min-h-screen bg-gray-50 py-12 justify-center sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:max-w-md sm:w-full">
       <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow" />
-      <h2 class="font-extrabold mt-6 text-center text-3xl text-gray-900">Sign in to your account</h2>
+      <h2 class="font-extrabold mt-6 text-center text-3xl text-gray-900">Register your account</h2>
     </div>
 
     <div class="mt-8 sm:mx-auto sm:max-w-md sm:w-full">
@@ -35,23 +35,6 @@
                 class="border rounded-md border-gray-300 shadow-sm w-full py-2 px-3 placeholder-gray-400 appearance-none block sm:text-sm focus:outline-none focus:border-indigo-500 focus:ring-indigo-500"
               />
               <ErrorMessage name="password" class="error-feedback" />
-              <input />
-            </div>
-          </div>
-
-          <div class="flex items-center justify-between">
-            <div class="flex items-center">
-              <input
-                id="remember_me"
-                name="remember_me"
-                type="checkbox"
-                class="rounded border-gray-300 h-4 text-indigo-600 w-4 focus:ring-indigo-500"
-              />
-              <label for="remember_me" class="text-sm ml-2 text-gray-900 block"> Remember me </label>
-            </div>
-
-            <div class="text-sm">
-              <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> Forgot your password? </a>
             </div>
           </div>
 
@@ -61,7 +44,7 @@
               :disabled="loading"
               class="border border-transparent rounded-md flex font-medium bg-indigo-600 shadow-sm text-sm text-white w-full py-2 px-4 justify-center hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Sign in
+              Register
             </button>
           </div>
         </Form>
