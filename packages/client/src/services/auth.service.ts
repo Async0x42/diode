@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { user as storageUser } from '~/logic';
 
-const API_URL = 'http://localhost:8080/api/auth/';
+const API_URL = 'http://localhost:7000/';
 
 class AuthService {
   login(user) {
     return axios
-      .post(`${API_URL}signin`, {
-        username: user.username,
+      .post(`${API_URL}login`, {
+        email: user.email,
         password: user.password,
       })
       .then((response) => {
@@ -24,8 +24,7 @@ class AuthService {
   }
 
   register(user) {
-    return axios.post(`${API_URL}signup`, {
-      username: user.username,
+    return axios.post(`${API_URL}register`, {
       email: user.email,
       password: user.password,
     });

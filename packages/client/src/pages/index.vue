@@ -35,7 +35,6 @@
                 class="border rounded-md border-gray-300 shadow-sm w-full py-2 px-3 placeholder-gray-400 appearance-none block sm:text-sm focus:outline-none focus:border-indigo-500 focus:ring-indigo-500"
               />
               <ErrorMessage name="password" class="error-feedback" />
-              <input />
             </div>
           </div>
 
@@ -107,7 +106,7 @@ export default {
   },
   data() {
     const schema = yup.object().shape({
-      username: yup.string().required('Username is required!'),
+      email: yup.string().required('Email is required!'),
       password: yup.string().required('Password is required!'),
     });
 
