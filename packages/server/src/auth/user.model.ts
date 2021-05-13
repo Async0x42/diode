@@ -1,5 +1,5 @@
 import * as Sequelize from 'sequelize';
-import { sequelize } from '~/instances/sequelize';
+import { sequelize } from '../instances/sequelize';
 
 export interface UserAddModel {
   email: string;

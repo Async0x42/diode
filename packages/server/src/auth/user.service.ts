@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
 import { Promise } from 'bluebird';
@@ -5,7 +6,7 @@ import { User, UserAddModel, UserViewModel } from './user.model';
 
 export class UserService {
   private readonly _saltRounds = 12;
-  private readonly _jwtSecret = process.env.SECRET || new RandomSource().getRandomValues(new Uint32Array(4)).join('');
+  private readonly _jwtSecret = process.env.SECRET || crypto.randomBytes(127, (err, buf) => err && console.log(err));
 
   static get userAttributes() {
     return ['id', 'email'];

@@ -1,6 +1,6 @@
 import { IncomingHttpHeaders } from 'http';
 import { RequestHandler } from 'express';
-import { UserService } from '~/auth/user.service';
+import { UserService } from '../auth/user.service';
 
 const userService = new UserService();
 

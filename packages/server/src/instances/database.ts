@@ -1,6 +1,6 @@
+import { Role } from '../auth/role.model';
+import { User } from '../auth/user.model';
 import { sequelize } from './sequelize';
-import { Role } from '~/auth/role.model';
-import { User } from '~/auth/user.model';
 
 Role.belongsToMany(User, {
   through: 'user_roles',

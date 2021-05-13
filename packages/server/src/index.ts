@@ -14,7 +14,7 @@ import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/not-found.middleware';
 import { userRouter } from './auth/user.router';
 import { tokenGuard } from './middleware/token-guard';
-import { initialize as initializeDatabase } from '~/instances/database';
+import { initialize as initializeDatabase } from './instances/database';
 
 dotenv.config();
 
