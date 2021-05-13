@@ -4,12 +4,14 @@ import { sequelize } from '../instances/sequelize';
 export interface UserAddModel {
   email: string;
   password: string;
+  confirmPassword: string;
 }
 
 export interface UserModel extends Sequelize.Model<UserModel, UserAddModel> {
   id: number;
   email: string;
   password: string;
+  confirmPassword: string;
   createdAt: string;
   updatedAt: string;
 }

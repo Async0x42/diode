@@ -31,10 +31,25 @@
                 name="password"
                 type="password"
                 required
-                autocomplete="current-password"
+                autocomplete="new-password"
                 class="border rounded-md border-gray-300 shadow-sm w-full py-2 px-3 placeholder-gray-400 appearance-none block sm:text-sm focus:outline-none focus:border-indigo-500 focus:ring-indigo-500"
               />
               <ErrorMessage name="password" class="error-feedback" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword" class="font-medium text-sm text-gray-700 block"> Confirm Password </label>
+            <div class="mt-1">
+              <Field
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                required
+                autocomplete="new-password"
+                class="border rounded-md border-gray-300 shadow-sm w-full py-2 px-3 placeholder-gray-400 appearance-none block sm:text-sm focus:outline-none focus:border-indigo-500 focus:ring-indigo-500"
+              />
+              <ErrorMessage name="confirmPassword" class="error-feedback" />
             </div>
           </div>
 
@@ -69,6 +84,10 @@ export default {
     const schema = yup.object().shape({
       email: yup.string().required('Email is required!').email('Email is invalid!').max(50, 'Must be maximum 50 characters!'),
       password: yup.string().required('Password is required!').min(6, 'Must be at least 6 characters!').max(40, 'Must be maximum 40 characters!'),
+      confirmPassword: yup
+        .string()
+        .oneOf([yup.ref('password'), null])
+        .required('Password confirm is required'),
     });
 
     return {
@@ -93,6 +112,7 @@ export default {
       this.message = '';
       this.successful = false;
       this.loading = true;
+      console.log(user);
 
       register(user).then(
         (data) => {

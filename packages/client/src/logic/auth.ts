@@ -30,6 +30,7 @@ export const logout = () => {
 };
 
 export const register = (user) => {
+  console.log(user);
   return AuthService.register(user).then(
     (response) => {
       state.value.status.loggedIn = false;
