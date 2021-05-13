@@ -7,14 +7,14 @@
     {
       "name": "Browser",
       "request": "launch",
-      "type": "pwa-chrome",
+      "type": "edge",
       "url": "http://localhost:3333",
       "webRoot": "${workspaceFolder}"
     },
     {
       "name": "Client",
       "request": "launch",
-      "cwd": "${workspaceFolder}\\packages\\client",
+      "cwd": "${workspaceFolder}/packages/client",
       "runtimeArgs": ["run-script", "dev"],
       "runtimeExecutable": "pnpm",
       "skipFiles": ["<node_internals>/**"],
@@ -23,7 +23,7 @@
     {
       "name": "Server",
       "request": "launch",
-      "cwd": "${workspaceFolder}\\packages\\server",
+      "cwd": "${workspaceFolder}/packages/server",
       "runtimeArgs": ["run-script", "dev"],
       "runtimeExecutable": "pnpm",
       "skipFiles": ["<node_internals>/**"],
