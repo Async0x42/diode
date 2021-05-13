@@ -94,3 +94,10 @@ export default {
   },
 };
 </script>
+
+<route lang="yaml">
+name: register
+
+meta:
+  layout: auth
+</route>
