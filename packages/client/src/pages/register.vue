@@ -18,7 +18,6 @@ const schema = yup.object().shape({
 const successful = ref(false);
 const loading = ref(false);
 const message = ref('');
-
 const loggedIn = computed(() => authState.value.status.loggedIn);
 
 onMounted(() => {
@@ -37,6 +36,7 @@ const handleRegister = (user) => {
       message.value = data.message;
       successful.value = true;
       loading.value = false;
+      router.push({ name: 'dashboard' });
     },
     (error) => {
       message.value = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
