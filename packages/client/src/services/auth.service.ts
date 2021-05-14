@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { user as storageUser } from '~/logic';
+import { user as storageUser, user } from '~/logic';
 
 const API_URL = 'http://localhost:7000/';
 
@@ -11,7 +11,7 @@ class AuthService {
         password: user.password,
       })
       .then((response) => {
-        if (response.data.accessToken) {
+        if (response.data.token) {
           storageUser.value = response.data;
         }
 
@@ -20,7 +20,7 @@ class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('user');
+    storageUser.value = null;
   }
 
   register(user) {

@@ -1,3 +1,4 @@
+import { user } from '~/logic';
 import { UserModule } from '~/types';
 
 export const install: UserModule = ({ isClient, router }) => {
@@ -5,7 +6,7 @@ export const install: UserModule = ({ isClient, router }) => {
     router.beforeEach((to, from, next) => {
       const publicPages = ['/', '/register'];
       const authRequired = !publicPages.includes(to.path);
-      const loggedIn = localStorage.getItem('user');
+      const loggedIn = user.value;
 
       // trying to access a restricted page + not logged in
       // redirect to login page
