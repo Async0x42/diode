@@ -1,12 +1,24 @@
 import { Router } from 'express';
-import { matchedData } from 'express-validator/filter';
-import { validationResult } from 'express-validator/check';
+import { matchedData, validationResult } from 'express-validator';
 import { userRules } from './user.rules';
 import { UserService } from './user.service';
 import { UserAddModel } from './user.model';
 
 export const userRouter = Router();
 const userService = new UserService();
+
+userRouter.post('/verifyToken', async (req, res) => {
+  const token = req.headers.authorization;
+  if (!token || !process.env.SECRET) return res.status(401).send();
+
+  const isValidToken = await userService.verifyToken(token);
+
+  if (!isValidToken) {
+    return res.status(401).send();
+  }
+
+  res.json(true);
+});
 
 userRouter.post('/register', userRules.forRegister, (req, res) => {
   const errors = validationResult(req);

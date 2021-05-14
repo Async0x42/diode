@@ -30,10 +30,22 @@ export const logout = () => {
 };
 
 export const register = (user) => {
-  console.log(user);
   return AuthService.register(user).then(
     (response) => {
       state.value.status.loggedIn = false;
+      return Promise.resolve(response.data);
+    },
+    (error) => {
+      state.value.status.loggedIn = false;
+      return Promise.reject(error);
+    }
+  );
+};
+
+export const verifyToken = () => {
+  return AuthService.verifyToken().then(
+    (response) => {
+      state.value.status.loggedIn = true;
       return Promise.resolve(response.data);
     },
     (error) => {

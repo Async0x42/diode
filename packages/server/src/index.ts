@@ -37,7 +37,7 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
-app.use('/', userRouter);
+app.use('/api/auth/', userRouter);
 
 // Unprotected Get
 app.use(tokenGuard());

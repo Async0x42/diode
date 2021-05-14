@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { user as storageUser, user } from '~/logic';
+import { user as storageUser } from '~/logic';
+import authHeader from '~/services/auth-header';
 
-const API_URL = 'http://localhost:7000/';
+const API_URL = '/api/auth/';
 
 class AuthService {
   login(user) {
@@ -28,6 +29,13 @@ class AuthService {
       email: user.email,
       password: user.password,
       confirmPassword: user.confirmPassword,
+    });
+  }
+
+  verifyToken() {
+    console.log('verifying token');
+    return axios.post(`${API_URL}verifyToken`, {
+      authHeader,
     });
   }
 }
