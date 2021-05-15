@@ -1,9 +1,5 @@
-/**
- * Required External Modules and Interfaces
- */
-
+import { CalendarItemAddModel, CalendarItemViewModel } from '@daiod/common';
 import express, { Request, Response } from 'express';
-import { BaseItem, Item } from '@daiod/common';
 import * as ItemService from './items.service';
 
 /**
@@ -19,7 +15,7 @@ export const itemsRouter = express.Router({ mergeParams: true });
 // GET items
 itemsRouter.get('/', async (req: Request, res: Response) => {
   try {
-    const items: Item[] = await ItemService.findAll();
+    const items: CalendarItemViewModel[] = await ItemService.findAll();
 
     res.status(200).send(items);
   } catch (e) {
@@ -32,7 +28,7 @@ itemsRouter.get('/:itemId', async (req: Request, res: Response) => {
   const itemId = req.params.itemId;
 
   try {
-    const item: Item = await ItemService.find(itemId);
+    const item = await ItemService.find(itemId);
 
     if (item) {
       return res.status(200).send(item);
@@ -47,7 +43,7 @@ itemsRouter.get('/:itemId', async (req: Request, res: Response) => {
 // POST items
 itemsRouter.post('/', async (req: Request, res: Response) => {
   try {
-    const item: BaseItem = req.body;
+    const item: CalendarItemAddModel = req.body;
     const newItem = await ItemService.create(item);
 
     res.status(201).json(newItem);
@@ -61,8 +57,8 @@ itemsRouter.put('/:itemId', async (req: Request, res: Response) => {
   const itemId = req.params.itemId;
 
   try {
-    const itemUpdate: Item = req.body;
-    const existingItem: Item = await ItemService.find(itemId);
+    const itemUpdate: CalendarItemAddModel = req.body;
+    const existingItem = await ItemService.find(itemId);
 
     if (existingItem) {
       const updatedItem = await ItemService.update(itemId, itemUpdate);

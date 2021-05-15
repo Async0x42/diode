@@ -1,9 +1,5 @@
-/**
- * Required External Modules and Interfaces
- */
-
+import { ContactAddModel, ContactViewModel } from '@daiod/common';
 import express, { Request, Response } from 'express';
-import { BaseContact, Contact } from '@daiod/common';
 import * as ContactService from './contact.service';
 
 /**
@@ -19,7 +15,7 @@ export const contactRouter = express.Router({ mergeParams: true });
 // GET contacts
 contactRouter.get('/', async (req: Request, res: Response) => {
   try {
-    const contacts: Contact[] = await ContactService.findAll();
+    const contacts: ContactViewModel[] = await ContactService.findAll();
 
     res.status(200).send(contacts);
   } catch (e) {
@@ -32,7 +28,7 @@ contactRouter.get('/:contactId', async (req: Request, res: Response) => {
   const contactId = req.params.contactId;
 
   try {
-    const contact: Contact = await ContactService.find(contactId);
+    const contact = await ContactService.find(contactId);
 
     if (contact) {
       return res.status(200).send(contact);
@@ -47,7 +43,7 @@ contactRouter.get('/:contactId', async (req: Request, res: Response) => {
 // POST contacts
 contactRouter.post('/', async (req: Request, res: Response) => {
   try {
-    const contact: BaseContact = req.body;
+    const contact: ContactAddModel = req.body;
     const newItem = await ContactService.create(contact);
 
     res.status(201).json(newItem);
@@ -61,8 +57,8 @@ contactRouter.put('/:contactId', async (req: Request, res: Response) => {
   const contactId = req.params.contactId;
 
   try {
-    const contactUpdate: Contact = req.body;
-    const existingItem: Contact = await ContactService.find(contactId);
+    const contactUpdate: ContactAddModel = req.body;
+    const existingItem = await ContactService.find(contactId);
 
     if (existingItem) {
       const updatedItem = await ContactService.update(contactId, contactUpdate);

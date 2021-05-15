@@ -1,24 +1,18 @@
-/**
- * Data Model Interfaces
- */
+import { CalendarAddModel, CalendarViewModel } from '@daiod/common';
+import { Calendar } from '~/database/models';
 
-import { Calendar } from '@daiod/common';
+export const get = async (): Promise<CalendarViewModel | null> => Calendar.findByPk(1);
 
-/**
- * In-Memory Store
- */
+export const update = async (id: number, calendarUpdate: CalendarAddModel): Promise<CalendarViewModel | null> => {
+  const foundCalendar = await Calendar.findByPk(id);
 
-let calendar: Calendar = {
-  name: 'Calendar',
-};
+  if (!foundCalendar) {
+    return null;
+  }
 
-/**
- * Service Methods
- */
+  const updatedCalendar = await foundCalendar.update({
+    ...calendarUpdate,
+  });
 
-export const get = async (): Promise<Calendar> => calendar;
-
-export const update = async (itemUpdate: Calendar): Promise<Calendar | null> => {
-  calendar = { ...itemUpdate };
-  return calendar;
+  return updatedCalendar;
 };

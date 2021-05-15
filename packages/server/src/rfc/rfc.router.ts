@@ -1,9 +1,5 @@
-/**
- * Required External Modules and Interfaces
- */
-
+import { RfcAddModel, RfcViewModel } from '@daiod/common';
 import express, { Request, Response } from 'express';
-import { BaseRfc, Rfc } from '@daiod/common';
 import * as RfcService from './rfc.service';
 
 /**
@@ -19,7 +15,7 @@ export const rfcRouter = express.Router({ mergeParams: true });
 // GET rfcs
 rfcRouter.get('/', async (req: Request, res: Response) => {
   try {
-    const rfcs: Rfc[] = await RfcService.findAll();
+    const rfcs: RfcViewModel[] = await RfcService.findAll();
 
     res.status(200).send(rfcs);
   } catch (e) {
@@ -32,7 +28,7 @@ rfcRouter.get('/:rfcId', async (req: Request, res: Response) => {
   const rfcId = req.params.rfcId;
 
   try {
-    const rfc: Rfc = await RfcService.find(rfcId);
+    const rfc = await RfcService.find(rfcId);
 
     if (rfc) {
       return res.status(200).send(rfc);
@@ -47,7 +43,7 @@ rfcRouter.get('/:rfcId', async (req: Request, res: Response) => {
 // POST rfcs
 rfcRouter.post('/', async (req: Request, res: Response) => {
   try {
-    const rfc: BaseRfc = req.body;
+    const rfc: RfcAddModel = req.body;
     const newItem = await RfcService.create(rfc);
 
     res.status(201).json(newItem);
@@ -61,8 +57,8 @@ rfcRouter.put('/:rfcId', async (req: Request, res: Response) => {
   const rfcId = req.params.rfcId;
 
   try {
-    const rfcUpdate: Rfc = req.body;
-    const existingItem: Rfc = await RfcService.find(rfcId);
+    const rfcUpdate: RfcAddModel = req.body;
+    const existingItem = await RfcService.find(rfcId);
 
     if (existingItem) {
       const updatedItem = await RfcService.update(rfcId, rfcUpdate);

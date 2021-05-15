@@ -1,9 +1,5 @@
-/**
- * Required External Modules and Interfaces
- */
-
+import { BrdAddModel, BrdViewModel } from '@daiod/common';
 import express, { Request, Response } from 'express';
-import { BaseBrd, Brd } from '@daiod/common';
 import * as BrdService from './brd.service';
 
 /**
@@ -19,7 +15,7 @@ export const brdRouter = express.Router({ mergeParams: true });
 // GET brds
 brdRouter.get('/', async (req: Request, res: Response) => {
   try {
-    const brds: Brd[] = await BrdService.findAll();
+    const brds: BrdViewModel[] = await BrdService.findAll();
 
     res.status(200).send(brds);
   } catch (e) {
@@ -32,7 +28,7 @@ brdRouter.get('/:brdId', async (req: Request, res: Response) => {
   const brdId = req.params.brdId;
 
   try {
-    const brd: Brd = await BrdService.find(brdId);
+    const brd = await BrdService.find(brdId);
 
     if (brd) {
       return res.status(200).send(brd);
@@ -47,7 +43,7 @@ brdRouter.get('/:brdId', async (req: Request, res: Response) => {
 // POST brds
 brdRouter.post('/', async (req: Request, res: Response) => {
   try {
-    const brd: BaseBrd = req.body;
+    const brd: BrdAddModel = req.body;
     const newItem = await BrdService.create(brd);
 
     res.status(201).json(newItem);
@@ -61,8 +57,8 @@ brdRouter.put('/:brdId', async (req: Request, res: Response) => {
   const brdId = req.params.brdId;
 
   try {
-    const brdUpdate: Brd = req.body;
-    const existingItem: Brd = await BrdService.find(brdId);
+    const brdUpdate: BrdAddModel = req.body;
+    const existingItem = await BrdService.find(brdId);
 
     if (existingItem) {
       const updatedItem = await BrdService.update(brdId, brdUpdate);
