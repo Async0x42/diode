@@ -1,11 +1,21 @@
-import { BrdAddModel, BrdModel } from '@daiod/common';
-import * as Sequelize from 'sequelize';
+import { Brd } from '@daiod/common';
+import { DataTypes } from 'sequelize';
 import { sequelize } from '~/database/sequelize';
 
-export const Brd = sequelize.define<BrdModel, BrdAddModel>('brd', {
-  id: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
+Brd.init(
+  {
+    id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    title: {
+      type: new DataTypes.STRING(128),
+      allowNull: false,
+    },
   },
-  title: Sequelize.STRING,
-});
+  {
+    tableName: 'brds',
+    sequelize, // passing the `sequelize` instance is required
+  }
+);

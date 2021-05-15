@@ -1,11 +1,10 @@
-import { CalendarItemAddModel, CalendarItemViewModel } from '@daiod/common';
-import { CalendarItem } from '~/database/models';
+import { CalendarItem } from '@daiod/common';
 
-export const findAll = async (): Promise<CalendarItemViewModel[]> => CalendarItem.findAll() || [];
+export const findAll = async (): Promise<CalendarItem[]> => CalendarItem.findAll() || [];
 
-export const find = async (id: number): Promise<CalendarItemViewModel | null> => CalendarItem.findByPk(id);
+export const find = async (id: number): Promise<CalendarItem | null> => CalendarItem.findByPk(id);
 
-export const create = async (newCalendarItem: CalendarItemAddModel): Promise<CalendarItemViewModel> => {
+export const create = async (newCalendarItem: CalendarItem): Promise<CalendarItem> => {
   const createdCalendarItem = CalendarItem.create({
     ...newCalendarItem,
   });
@@ -13,7 +12,7 @@ export const create = async (newCalendarItem: CalendarItemAddModel): Promise<Cal
   return createdCalendarItem;
 };
 
-export const update = async (id: number, calendarItemUpdate: CalendarItemAddModel): Promise<CalendarItemViewModel | null> => {
+export const update = async (id: number, calendarItemUpdate: CalendarItem): Promise<CalendarItem | null> => {
   const foundCalendarItem = await CalendarItem.findByPk(id);
 
   if (!foundCalendarItem) {

@@ -1,4 +1,4 @@
-import { ContactAddModel, ContactViewModel } from '@daiod/common';
+import { Contact } from '@daiod/common';
 import express, { Request, Response } from 'express';
 import * as ContactService from './contact.service';
 
@@ -15,7 +15,7 @@ export const contactRouter = express.Router({ mergeParams: true });
 // GET contacts
 contactRouter.get('/', async (req: Request, res: Response) => {
   try {
-    const contacts: ContactViewModel[] = await ContactService.findAll();
+    const contacts: Contact[] = await ContactService.findAll();
 
     res.status(200).send(contacts);
   } catch (e) {
@@ -25,9 +25,8 @@ contactRouter.get('/', async (req: Request, res: Response) => {
 
 // GET contacts/:contactId
 contactRouter.get('/:contactId', async (req: Request, res: Response) => {
-  const contactId = req.params.contactId;
-
   try {
+    const contactId = parseInt(req.params.contactId);
     const contact = await ContactService.find(contactId);
 
     if (contact) {
@@ -43,7 +42,7 @@ contactRouter.get('/:contactId', async (req: Request, res: Response) => {
 // POST contacts
 contactRouter.post('/', async (req: Request, res: Response) => {
   try {
-    const contact: ContactAddModel = req.body;
+    const contact: Contact = req.body;
     const newItem = await ContactService.create(contact);
 
     res.status(201).json(newItem);
@@ -54,10 +53,9 @@ contactRouter.post('/', async (req: Request, res: Response) => {
 
 // PUT contacts/:contactId
 contactRouter.put('/:contactId', async (req: Request, res: Response) => {
-  const contactId = req.params.contactId;
-
   try {
-    const contactUpdate: ContactAddModel = req.body;
+    const contactId = parseInt(req.params.contactId);
+    const contactUpdate: Contact = req.body;
     const existingItem = await ContactService.find(contactId);
 
     if (existingItem) {
@@ -76,7 +74,7 @@ contactRouter.put('/:contactId', async (req: Request, res: Response) => {
 // DELETE contacts/:contactId
 contactRouter.delete('/:contactId', async (req: Request, res: Response) => {
   try {
-    const contactId = req.params.contactId;
+    const contactId = parseInt(req.params.contactId);
     await ContactService.remove(contactId);
 
     res.sendStatus(204);

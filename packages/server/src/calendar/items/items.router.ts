@@ -1,4 +1,4 @@
-import { CalendarItemAddModel, CalendarItemViewModel } from '@daiod/common';
+import { CalendarItem } from '@daiod/common';
 import express, { Request, Response } from 'express';
 import * as ItemService from './items.service';
 
@@ -15,7 +15,7 @@ export const itemsRouter = express.Router({ mergeParams: true });
 // GET items
 itemsRouter.get('/', async (req: Request, res: Response) => {
   try {
-    const items: CalendarItemViewModel[] = await ItemService.findAll();
+    const items: CalendarItem[] = await ItemService.findAll();
 
     res.status(200).send(items);
   } catch (e) {
@@ -25,9 +25,8 @@ itemsRouter.get('/', async (req: Request, res: Response) => {
 
 // GET items/:itemId
 itemsRouter.get('/:itemId', async (req: Request, res: Response) => {
-  const itemId = req.params.itemId;
-
   try {
+    const itemId = parseInt(req.params.itemId);
     const item = await ItemService.find(itemId);
 
     if (item) {
@@ -43,7 +42,7 @@ itemsRouter.get('/:itemId', async (req: Request, res: Response) => {
 // POST items
 itemsRouter.post('/', async (req: Request, res: Response) => {
   try {
-    const item: CalendarItemAddModel = req.body;
+    const item: CalendarItem = req.body;
     const newItem = await ItemService.create(item);
 
     res.status(201).json(newItem);
@@ -54,10 +53,9 @@ itemsRouter.post('/', async (req: Request, res: Response) => {
 
 // PUT items/:itemId
 itemsRouter.put('/:itemId', async (req: Request, res: Response) => {
-  const itemId = req.params.itemId;
-
   try {
-    const itemUpdate: CalendarItemAddModel = req.body;
+    const itemId = parseInt(req.params.itemId);
+    const itemUpdate: CalendarItem = req.body;
     const existingItem = await ItemService.find(itemId);
 
     if (existingItem) {
@@ -76,7 +74,7 @@ itemsRouter.put('/:itemId', async (req: Request, res: Response) => {
 // DELETE items/:itemId
 itemsRouter.delete('/:itemId', async (req: Request, res: Response) => {
   try {
-    const itemId = req.params.itemId;
+    const itemId = parseInt(req.params.itemId);
     await ItemService.remove(itemId);
 
     res.sendStatus(204);

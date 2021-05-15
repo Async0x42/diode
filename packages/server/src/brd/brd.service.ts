@@ -1,11 +1,10 @@
-import { BrdAddModel, BrdViewModel } from '@daiod/common';
-import { Brd } from '~/database/models';
+import { Brd } from '@daiod/common';
 
-export const findAll = async (): Promise<BrdViewModel[]> => Brd.findAll() || [];
+export const findAll = async (): Promise<Brd[]> => Brd.findAll() || [];
 
-export const find = async (id: number): Promise<BrdViewModel | null> => Brd.findByPk(id);
+export const find = async (id: number): Promise<Brd | null> => Brd.findByPk(id);
 
-export const create = async (newBrd: BrdAddModel): Promise<BrdViewModel> => {
+export const create = async (newBrd: Brd): Promise<Brd> => {
   const createdBrd = Brd.create({
     ...newBrd,
   });
@@ -13,7 +12,7 @@ export const create = async (newBrd: BrdAddModel): Promise<BrdViewModel> => {
   return createdBrd;
 };
 
-export const update = async (id: number, brdUpdate: BrdAddModel): Promise<BrdViewModel | null> => {
+export const update = async (id: number, brdUpdate: Brd): Promise<Brd | null> => {
   const foundBrd = await Brd.findByPk(id);
 
   if (!foundBrd) {

@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { CalendarAddModel, CalendarViewModel } from '@daiod/common';
+import { Calendar } from '@daiod/common';
 import { itemsRouter } from './items/items.router';
 import * as CalendarService from './calendar.service';
 
@@ -30,7 +30,7 @@ calendarRouter.get('/', async (req: Request, res: Response) => {
 // POST calendar
 calendarRouter.post('/', async (req: Request, res: Response) => {
   try {
-    const calendarUpdate: CalendarAddModel = req.body;
+    const calendarUpdate: Calendar = req.body;
     const updatedCalendar = await CalendarService.update(1, calendarUpdate);
     return res.status(200).json(updatedCalendar);
   } catch (e) {

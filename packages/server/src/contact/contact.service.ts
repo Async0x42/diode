@@ -1,11 +1,10 @@
-import { ContactAddModel, ContactViewModel } from '@daiod/common';
-import { Contact } from '~/database/models';
+import { Contact } from '@daiod/common';
 
-export const findAll = async (): Promise<ContactViewModel[]> => Contact.findAll() || [];
+export const findAll = async (): Promise<Contact[]> => Contact.findAll() || [];
 
-export const find = async (id: number): Promise<ContactViewModel | null> => Contact.findByPk(id);
+export const find = async (id: number): Promise<Contact | null> => Contact.findByPk(id);
 
-export const create = async (newContact: ContactAddModel): Promise<ContactViewModel> => {
+export const create = async (newContact: Contact): Promise<Contact> => {
   const createdContact = Contact.create({
     ...newContact,
   });
@@ -13,7 +12,7 @@ export const create = async (newContact: ContactAddModel): Promise<ContactViewMo
   return createdContact;
 };
 
-export const update = async (id: number, contactUpdate: ContactAddModel): Promise<ContactViewModel | null> => {
+export const update = async (id: number, contactUpdate: Contact): Promise<Contact | null> => {
   const foundContact = await Contact.findByPk(id);
 
   if (!foundContact) {

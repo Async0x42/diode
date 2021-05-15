@@ -1,4 +1,4 @@
-import { RfcAddModel, RfcViewModel } from '@daiod/common';
+import { Rfc } from '@daiod/common';
 import express, { Request, Response } from 'express';
 import * as RfcService from './rfc.service';
 
@@ -15,7 +15,7 @@ export const rfcRouter = express.Router({ mergeParams: true });
 // GET rfcs
 rfcRouter.get('/', async (req: Request, res: Response) => {
   try {
-    const rfcs: RfcViewModel[] = await RfcService.findAll();
+    const rfcs: Rfc[] = await RfcService.findAll();
 
     res.status(200).send(rfcs);
   } catch (e) {
@@ -25,9 +25,8 @@ rfcRouter.get('/', async (req: Request, res: Response) => {
 
 // GET rfcs/:rfcId
 rfcRouter.get('/:rfcId', async (req: Request, res: Response) => {
-  const rfcId = req.params.rfcId;
-
   try {
+    const rfcId = parseInt(req.params.rfcId);
     const rfc = await RfcService.find(rfcId);
 
     if (rfc) {
@@ -43,7 +42,7 @@ rfcRouter.get('/:rfcId', async (req: Request, res: Response) => {
 // POST rfcs
 rfcRouter.post('/', async (req: Request, res: Response) => {
   try {
-    const rfc: RfcAddModel = req.body;
+    const rfc: Rfc = req.body;
     const newItem = await RfcService.create(rfc);
 
     res.status(201).json(newItem);
@@ -54,10 +53,9 @@ rfcRouter.post('/', async (req: Request, res: Response) => {
 
 // PUT rfcs/:rfcId
 rfcRouter.put('/:rfcId', async (req: Request, res: Response) => {
-  const rfcId = req.params.rfcId;
-
   try {
-    const rfcUpdate: RfcAddModel = req.body;
+    const rfcId = parseInt(req.params.rfcId);
+    const rfcUpdate: Rfc = req.body;
     const existingItem = await RfcService.find(rfcId);
 
     if (existingItem) {
@@ -76,7 +74,7 @@ rfcRouter.put('/:rfcId', async (req: Request, res: Response) => {
 // DELETE rfcs/:rfcId
 rfcRouter.delete('/:rfcId', async (req: Request, res: Response) => {
   try {
-    const rfcId = req.params.rfcId;
+    const rfcId = parseInt(req.params.rfcId);
     await RfcService.remove(rfcId);
 
     res.sendStatus(204);

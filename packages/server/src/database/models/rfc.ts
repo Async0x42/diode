@@ -1,24 +1,59 @@
-import { RfcAddModel, RfcModel } from '@daiod/common';
-import * as Sequelize from 'sequelize';
+import { Rfc } from '@daiod/common';
+import { DataTypes } from 'sequelize';
 import { sequelize } from '~/database/sequelize';
 
-export const Rfc = sequelize.define<RfcModel, RfcAddModel>('rfc', {
-  id: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
+Rfc.init(
+  {
+    id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    title: {
+      type: DataTypes.STRING,
+    },
+    class: {
+      type: DataTypes.STRING,
+    },
+    purpose: {
+      type: DataTypes.STRING,
+    },
+    description: {
+      type: DataTypes.STRING,
+    },
+    parentSystem: {
+      type: DataTypes.STRING,
+    },
+    businessCase: {
+      type: DataTypes.STRING,
+    },
+    securityImplications: {
+      type: DataTypes.STRING,
+    },
+    affectedInfrastructure: {
+      type: DataTypes.STRING,
+    },
+    affectedInformationSystem: {
+      type: DataTypes.STRING,
+    },
+    conceptOfOperation: {
+      type: DataTypes.STRING,
+    },
+    conceptOfTesting: {
+      type: DataTypes.STRING,
+    },
+    conceptofImplementation: {
+      type: DataTypes.STRING,
+    },
+    backoutPlan: {
+      type: DataTypes.STRING,
+    },
+    impactAssessmentDueDate: {
+      type: DataTypes.DATE,
+    },
   },
-  title: Sequelize.STRING,
-  class: Sequelize.STRING,
-  purpose: Sequelize.STRING,
-  description: Sequelize.STRING,
-  parentSystem: Sequelize.STRING,
-  businessCase: Sequelize.STRING,
-  securityImplications: Sequelize.STRING,
-  affectedInfrastructure: Sequelize.STRING,
-  affectedInformationSystem: Sequelize.STRING,
-  conceptOfOperation: Sequelize.STRING,
-  conceptOfTesting: Sequelize.STRING,
-  conceptofImplementation: Sequelize.STRING,
-  backoutPlan: Sequelize.STRING,
-  impactAssessmentDueDate: Sequelize.DATE,
-});
+  {
+    tableName: 'rfcs',
+    sequelize, // passing the `sequelize` instance is required
+  }
+);

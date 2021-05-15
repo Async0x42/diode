@@ -1,9 +1,9 @@
+import { Calendar } from '@daiod/common';
 import { sequelize } from './sequelize';
-import { Calendar } from './models';
 
+// TODO: ./models aren't imported... do we need them here?
 const createDefaultCalendar = () => {
   Calendar.create({
-    id: 1,
     name: 'default',
   });
 };

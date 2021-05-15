@@ -1,11 +1,10 @@
-import { RfcAddModel, RfcViewModel } from '@daiod/common';
-import { Rfc } from '~/database/models';
+import { Rfc } from '@daiod/common';
 
-export const findAll = async (): Promise<RfcViewModel[]> => Rfc.findAll() || [];
+export const findAll = async (): Promise<Rfc[]> => Rfc.findAll() || [];
 
-export const find = async (id: number): Promise<RfcViewModel | null> => Rfc.findByPk(id);
+export const find = async (id: number): Promise<Rfc | null> => Rfc.findByPk(id);
 
-export const create = async (newRfc: RfcAddModel): Promise<RfcViewModel> => {
+export const create = async (newRfc: Rfc): Promise<Rfc> => {
   const createdRfc = Rfc.create({
     ...newRfc,
   });
@@ -13,7 +12,7 @@ export const create = async (newRfc: RfcAddModel): Promise<RfcViewModel> => {
   return createdRfc;
 };
 
-export const update = async (id: number, rfcUpdate: RfcAddModel): Promise<RfcViewModel | null> => {
+export const update = async (id: number, rfcUpdate: Rfc): Promise<Rfc | null> => {
   const foundRfc = await Rfc.findByPk(id);
 
   if (!foundRfc) {

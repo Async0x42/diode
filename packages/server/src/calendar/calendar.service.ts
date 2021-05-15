@@ -1,9 +1,8 @@
-import { CalendarAddModel, CalendarViewModel } from '@daiod/common';
-import { Calendar } from '~/database/models';
+import { Calendar } from '@daiod/common';
 
-export const get = async (): Promise<CalendarViewModel | null> => Calendar.findByPk(1);
+export const get = async (): Promise<Calendar | null> => Calendar.findByPk(1);
 
-export const update = async (id: number, calendarUpdate: CalendarAddModel): Promise<CalendarViewModel | null> => {
+export const update = async (id: number, calendarUpdate: Calendar): Promise<Calendar | null> => {
   const foundCalendar = await Calendar.findByPk(id);
 
   if (!foundCalendar) {

@@ -1,18 +1,41 @@
-import { ContactAddModel, ContactModel } from '@daiod/common';
-import * as Sequelize from 'sequelize';
+import { Contact } from '@daiod/common';
+import { DataTypes } from 'sequelize';
 import { sequelize } from '~/database/sequelize';
 
-export const Contact = sequelize.define<ContactModel, ContactAddModel>('contact', {
-  id: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
+Contact.init(
+  {
+    id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    firstName: {
+      type: new DataTypes.STRING(128),
+    },
+    lastName: {
+      type: new DataTypes.STRING(128),
+    },
+    phoneNumber: {
+      type: new DataTypes.STRING(128),
+    },
+    emailAddress: {
+      type: new DataTypes.STRING(128),
+    },
+    position: {
+      type: new DataTypes.STRING(128),
+    },
+    organization: {
+      type: new DataTypes.STRING(128),
+    },
+    department: {
+      type: new DataTypes.STRING(128),
+    },
+    notes: {
+      type: DataTypes.STRING,
+    },
   },
-  firstName: Sequelize.STRING,
-  lastName: Sequelize.STRING,
-  phoneNumber: Sequelize.STRING,
-  emailAddress: Sequelize.STRING,
-  position: Sequelize.STRING,
-  organization: Sequelize.STRING,
-  department: Sequelize.STRING,
-  notes: Sequelize.STRING,
-});
+  {
+    tableName: 'contacts',
+    sequelize, // passing the `sequelize` instance is required
+  }
+);
