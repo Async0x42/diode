@@ -1,24 +1,17 @@
-/**
- * Data Model Interfaces
- */
-
 import { Calendar } from '@daiod/common';
 
-/**
- * In-Memory Store
- */
+export const get = async (): Promise<Calendar | null> => Calendar.findByPk(1);
 
-let calendar: Calendar = {
-  name: 'Calendar',
-};
+export const update = async (id: number, calendarUpdate: Calendar): Promise<Calendar | null> => {
+  const foundCalendar = await Calendar.findByPk(id);
 
-/**
- * Service Methods
- */
+  if (!foundCalendar) {
+    return null;
+  }
 
-export const get = async (): Promise<Calendar> => calendar;
+  const updatedCalendar = await foundCalendar.update({
+    ...calendarUpdate,
+  });
 
-export const update = async (itemUpdate: Calendar): Promise<Calendar | null> => {
-  calendar = { ...itemUpdate };
-  return calendar;
+  return updatedCalendar;
 };

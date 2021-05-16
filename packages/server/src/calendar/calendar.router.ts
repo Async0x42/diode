@@ -1,7 +1,3 @@
-/**
- * Required External Modules and Interfaces
- */
-
 import express, { Request, Response } from 'express';
 import { Calendar } from '@daiod/common';
 import { itemsRouter } from './items/items.router';
@@ -23,7 +19,7 @@ calendarRouter.use('/calendar/items', itemsRouter);
 // GET calendar
 calendarRouter.get('/', async (req: Request, res: Response) => {
   try {
-    const calendar: Calendar = await CalendarService.get();
+    const calendar = await CalendarService.get();
 
     res.status(200).send(calendar);
   } catch (e) {
@@ -35,7 +31,7 @@ calendarRouter.get('/', async (req: Request, res: Response) => {
 calendarRouter.post('/', async (req: Request, res: Response) => {
   try {
     const calendarUpdate: Calendar = req.body;
-    const updatedCalendar = await CalendarService.update(calendarUpdate);
+    const updatedCalendar = await CalendarService.update(1, calendarUpdate);
     return res.status(200).json(updatedCalendar);
   } catch (e) {
     res.status(500).send(e.message);

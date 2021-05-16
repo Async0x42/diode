@@ -1,67 +1,37 @@
-import { v4 as uuidv4 } from 'uuid';
+import { Brd } from '@daiod/common';
 
-/**
- * Data Model Interfaces
- */
+export const findAll = async (): Promise<Brd[]> => Brd.findAll() || [];
 
-import { BaseBrd, Brd, Brds } from '@daiod/common';
+export const find = async (id: number): Promise<Brd | null> => Brd.findByPk(id);
 
-/**
- * In-Memory Store
- */
-
-const brds: Brds = {
-  '810f136b-f8b1-4967-a665-c7f914b60cc4': {
-    id: '810f136b-f8b1-4967-a665-c7f914b60cc4',
-    title: 'Pizza Brd1',
-  },
-  'eb8b63b7-7143-4a14-b24c-37fc9aa862c6': {
-    id: 'eb8b63b7-7143-4a14-b24c-37fc9aa862c6',
-    title: 'Pizza Brd2',
-  },
-  '0e17f378-0f90-4d8e-a147-ab0383077519': {
-    id: '0e17f378-0f90-4d8e-a147-ab0383077519',
-    title: 'Pizza Brd3',
-  },
-};
-
-/**
- * Service Methods
- */
-
-export const findAll = async (): Promise<Brd[]> => Object.values(brds) || [];
-
-export const find = async (id: string): Promise<Brd> => brds[id];
-
-export const create = async (newBrd: BaseBrd): Promise<Brd> => {
-  const id = uuidv4();
-
-  brds[id] = {
-    id,
+export const create = async (newBrd: Brd): Promise<Brd> => {
+  const createdBrd = Brd.create({
     ...newBrd,
-  };
+  });
 
-  return brds[id];
+  return createdBrd;
 };
 
-export const update = async (id: string, brdUpdate: BaseBrd): Promise<Brd | null> => {
-  const brd = await find(id);
+export const update = async (id: number, brdUpdate: Brd): Promise<Brd | null> => {
+  const foundBrd = await Brd.findByPk(id);
 
-  if (!brd) {
+  if (!foundBrd) {
     return null;
   }
 
-  brds[id] = { id, ...brdUpdate };
+  const updatedBrd = await foundBrd.update({
+    ...brdUpdate,
+  });
 
-  return brds[id];
+  return updatedBrd;
 };
 
-export const remove = async (id: string): Promise<null | void> => {
-  const item = await find(id);
+export const remove = async (id: number): Promise<null | void> => {
+  const foundBrd = await Brd.findByPk(id);
 
-  if (!item) {
+  if (!foundBrd) {
     return null;
   }
 
-  delete brds[id];
+  foundBrd.destroy();
 };

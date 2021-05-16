@@ -1,9 +1,5 @@
-/**
- * Required External Modules and Interfaces
- */
-
+import { Brd } from '@daiod/common';
 import express, { Request, Response } from 'express';
-import { BaseBrd, Brd } from '@daiod/common';
 import * as BrdService from './brd.service';
 
 /**
@@ -29,10 +25,9 @@ brdRouter.get('/', async (req: Request, res: Response) => {
 
 // GET brds/:brdId
 brdRouter.get('/:brdId', async (req: Request, res: Response) => {
-  const brdId = req.params.brdId;
-
   try {
-    const brd: Brd = await BrdService.find(brdId);
+    const brdId = parseInt(req.params.brdId);
+    const brd = await BrdService.find(brdId);
 
     if (brd) {
       return res.status(200).send(brd);
@@ -47,7 +42,7 @@ brdRouter.get('/:brdId', async (req: Request, res: Response) => {
 // POST brds
 brdRouter.post('/', async (req: Request, res: Response) => {
   try {
-    const brd: BaseBrd = req.body;
+    const brd: Brd = req.body;
     const newItem = await BrdService.create(brd);
 
     res.status(201).json(newItem);
@@ -58,11 +53,10 @@ brdRouter.post('/', async (req: Request, res: Response) => {
 
 // PUT brds/:brdId
 brdRouter.put('/:brdId', async (req: Request, res: Response) => {
-  const brdId = req.params.brdId;
-
   try {
+    const brdId = parseInt(req.params.brdId);
     const brdUpdate: Brd = req.body;
-    const existingItem: Brd = await BrdService.find(brdId);
+    const existingItem = await BrdService.find(brdId);
 
     if (existingItem) {
       const updatedItem = await BrdService.update(brdId, brdUpdate);
@@ -80,7 +74,7 @@ brdRouter.put('/:brdId', async (req: Request, res: Response) => {
 // DELETE brds/:brdId
 brdRouter.delete('/:brdId', async (req: Request, res: Response) => {
   try {
-    const brdId = req.params.brdId;
+    const brdId = parseInt(req.params.brdId);
     await BrdService.remove(brdId);
 
     res.sendStatus(204);

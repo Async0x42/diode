@@ -1,9 +1,5 @@
-/**
- * Required External Modules and Interfaces
- */
-
+import { Contact } from '@daiod/common';
 import express, { Request, Response } from 'express';
-import { BaseContact, Contact } from '@daiod/common';
 import * as ContactService from './contact.service';
 
 /**
@@ -29,10 +25,9 @@ contactRouter.get('/', async (req: Request, res: Response) => {
 
 // GET contacts/:contactId
 contactRouter.get('/:contactId', async (req: Request, res: Response) => {
-  const contactId = req.params.contactId;
-
   try {
-    const contact: Contact = await ContactService.find(contactId);
+    const contactId = parseInt(req.params.contactId);
+    const contact = await ContactService.find(contactId);
 
     if (contact) {
       return res.status(200).send(contact);
@@ -47,7 +42,7 @@ contactRouter.get('/:contactId', async (req: Request, res: Response) => {
 // POST contacts
 contactRouter.post('/', async (req: Request, res: Response) => {
   try {
-    const contact: BaseContact = req.body;
+    const contact: Contact = req.body;
     const newItem = await ContactService.create(contact);
 
     res.status(201).json(newItem);
@@ -58,11 +53,10 @@ contactRouter.post('/', async (req: Request, res: Response) => {
 
 // PUT contacts/:contactId
 contactRouter.put('/:contactId', async (req: Request, res: Response) => {
-  const contactId = req.params.contactId;
-
   try {
+    const contactId = parseInt(req.params.contactId);
     const contactUpdate: Contact = req.body;
-    const existingItem: Contact = await ContactService.find(contactId);
+    const existingItem = await ContactService.find(contactId);
 
     if (existingItem) {
       const updatedItem = await ContactService.update(contactId, contactUpdate);
@@ -80,7 +74,7 @@ contactRouter.put('/:contactId', async (req: Request, res: Response) => {
 // DELETE contacts/:contactId
 contactRouter.delete('/:contactId', async (req: Request, res: Response) => {
   try {
-    const contactId = req.params.contactId;
+    const contactId = parseInt(req.params.contactId);
     await ContactService.remove(contactId);
 
     res.sendStatus(204);

@@ -5,16 +5,9 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Browser",
-      "request": "launch",
-      "type": "pwa-chrome",
-      "url": "http://localhost:3333",
-      "webRoot": "${workspaceFolder}"
-    },
-    {
       "name": "Client",
       "request": "launch",
-      "cwd": "${workspaceFolder}\\packages\\client",
+      "cwd": "${workspaceFolder}/packages/client",
       "runtimeArgs": ["run-script", "dev"],
       "runtimeExecutable": "pnpm",
       "skipFiles": ["<node_internals>/**"],
@@ -23,7 +16,7 @@
     {
       "name": "Server",
       "request": "launch",
-      "cwd": "${workspaceFolder}\\packages\\server",
+      "cwd": "${workspaceFolder}/packages/server",
       "runtimeArgs": ["run-script", "dev"],
       "runtimeExecutable": "pnpm",
       "skipFiles": ["<node_internals>/**"],
@@ -33,7 +26,7 @@
   "compounds": [
     {
       "name": "All",
-      "configurations": ["Server", "Client", "Browser"]
+      "configurations": ["Server", "Client"]
       // "preLaunchTask": "${defaultBuildTask}"
     }
   ]
