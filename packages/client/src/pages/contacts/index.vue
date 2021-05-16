@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { useAxios } from '@vueuse/integrations';
+import ContactList from '~/components/ContactList.vue';
+import LoadingList from '~/components/LoadingList.vue';
+import LoadingError from '~/components/LoadingError.vue';
 const { data, error, isFinished } = useAxios('/api/contacts');
 </script>
 
 <template>
-  <div>
-    <div v-if="isFinished">{{ data }}</div>
-    <div v-else-if="error">{{ error }}</div>
-    <div v-else>loading...</div>
-  </div>
+  <ContactList v-if="isFinished" :items="data" />
+  <LoadingError v-else-if="error" :error="error" />
+  <LoadingList v-else />
 </template>
 
 <route lang="yaml">
