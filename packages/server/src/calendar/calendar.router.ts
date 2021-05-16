@@ -4,9 +4,7 @@ import { itemsRouter } from './items/items.router';
 import * as CalendarService from './calendar.service';
 
 export const calendarRouter = express.Router();
-
-// Nest the items router within the calendar router
-calendarRouter.use('/calendar/items', itemsRouter);
+calendarRouter.use('/items', itemsRouter);
 
 // GET calendar
 calendarRouter.get('/', async (req: Request, res: Response) => {

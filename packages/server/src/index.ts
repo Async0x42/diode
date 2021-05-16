@@ -12,10 +12,6 @@ import { initialize } from './database';
 
 dotEnvExtended.load();
 
-/**
- * App Variables
- */
-
 if (!process.env.PORT) {
   process.exit(1);
 }
