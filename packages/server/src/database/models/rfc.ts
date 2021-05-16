@@ -1,11 +1,11 @@
 import { Rfc } from '@daiod/common';
 import { DataTypes } from 'sequelize';
-import { sequelize } from '~/database/sequelize';
+import { sequelize } from '../sequelize';
 
 Rfc.init(
   {
     id: {
-      type: DataTypes.INTEGER.UNSIGNED,
+      type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },

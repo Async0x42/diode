@@ -1,4 +1,7 @@
 import { Sequelize } from 'sequelize';
 
-export const sequelize = new Sequelize(process.env.DB_INIT_PATH as string);
+export const sequelize = new Sequelize('database', 'username', 'password', {
+  dialect: 'sqlite',
+  storage: ':memory:',
+});
 sequelize.authenticate();

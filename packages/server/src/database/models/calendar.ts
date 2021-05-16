@@ -1,11 +1,11 @@
 import { Calendar } from '@daiod/common';
 import { DataTypes } from 'sequelize';
-import { sequelize } from '~/database/sequelize';
+import { sequelize } from '../sequelize';
 
 Calendar.init(
   {
     id: {
-      type: DataTypes.INTEGER.UNSIGNED,
+      type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
