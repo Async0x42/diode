@@ -1,33 +1,15 @@
 <script setup lang="ts">
-import { defineProps, ref, watchEffect } from 'vue';
-import Fuse from 'fuse.js';
+import { defineProps } from 'vue';
 import ContactListItem from './ContactListItem.vue';
 import type { ContactAttributes } from '@daiod/common';
 import type { PropType } from 'vue';
-import { useRouteSearch } from '~/logic';
+import { useRouteSearchWithData } from '~/logic';
 
 const props = defineProps({
   contacts: { type: Array as PropType<ContactAttributes[]>, required: true },
 });
-const searchBar = useRouteSearch();
-const results = ref(props.contacts);
 
-const options = {
-  includeScore: true,
-  keys: ['name', 'email', 'phone'],
-};
-
-const fuse = new Fuse(results.value, options);
-
-watchEffect(() => {
-  if (searchBar.value.length == 0) {
-    results.value = props.contacts;
-  } else {
-    const searchResults = fuse.search(searchBar.value);
-    const searchIds = searchResults.map((r) => r.refIndex);
-    results.value = props.contacts.filter((contact, index) => searchIds.includes(index));
-  }
-});
+const { results } = useRouteSearchWithData(props.contacts, ['name', 'email', 'phone']);
 </script>
 
 <template>
