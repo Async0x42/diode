@@ -9,19 +9,16 @@ Contact.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    firstName: {
+    name: {
       type: new DataTypes.STRING(128),
     },
-    lastName: {
+    phone: {
       type: new DataTypes.STRING(128),
     },
-    phoneNumber: {
+    email: {
       type: new DataTypes.STRING(128),
     },
-    emailAddress: {
-      type: new DataTypes.STRING(128),
-    },
-    position: {
+    title: {
       type: new DataTypes.STRING(128),
     },
     organization: {

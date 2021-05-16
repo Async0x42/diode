@@ -7,7 +7,7 @@ const { data, error, isFinished } = useAxios('/api/contacts');
 </script>
 
 <template>
-  <ContactList v-if="isFinished" :items="data" />
+  <ContactList v-if="isFinished" :contacts="data" />
   <LoadingError v-else-if="error" :error="error" />
   <LoadingList v-else />
 </template>

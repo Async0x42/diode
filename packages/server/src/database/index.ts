@@ -23,8 +23,28 @@ const createTestEntries = () => {
   });
 
   Contact.create({
-    firstName: 'Jack',
-    lastName: 'John',
+    name: 'Jack John',
+    title: 'Director',
+    department: 'Org Department',
+    notes: 'This is a much longer note that might wrap around',
+    phone: '555-555-5555 x1234',
+    email: 'test@canadiantestorg.ca',
+  });
+  Contact.create({
+    name: 'John Wizer',
+    title: 'IM/IT Programmer Analyst',
+    department: 'Dep A',
+    notes: 'This is a longer note',
+    phone: 'CSN: 555-5555',
+    email: 'test@canadiantestorg.ca',
+  });
+  Contact.create({
+    name: 'Milly Mally',
+    title: 'IM/IT Deployment Specialist',
+    department: 'Deployment',
+    notes: 'Note A',
+    phone: '555-555-5555 2345',
+    email: 'test@canadiantestorg.ca',
   });
 
   Rfc.create({

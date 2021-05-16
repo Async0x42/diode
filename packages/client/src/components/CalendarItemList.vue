@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import { CalendarItem } from '@daiod/common';
+import type { CalendarItemAttributes } from '@daiod/common';
 import type { PropType } from 'vue';
 
 const props = defineProps({
-  items: { type: Array as PropType<CalendarItem[]>, required: true },
+  items: { type: Array as PropType<CalendarItemAttributes[]>, required: true },
 });
 </script>
 

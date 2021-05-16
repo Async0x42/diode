@@ -1,0 +1,42 @@
+<script setup lang="ts">
+import { defineProps } from 'vue';
+import type { ContactAttributes } from '@daiod/common';
+import type { PropType } from 'vue';
+
+const props = defineProps({
+  contact: { type: Object as PropType<ContactAttributes>, required: true },
+});
+</script>
+
+<template>
+  <tr>
+    <td class="py-4 px-6 whitespace-nowrap">
+      <div class="flex items-center">
+        <!-- <div class="flex-shrink-0 h-10 w-10">
+                      <img class="rounded-full h-10 w-10" :src="props.contact.image" alt="" />
+                    </div> -->
+        <div class="ml-4">
+          <div class="font-medium text-sm text-gray-900">
+            {{ props.contact.name }}
+          </div>
+          <div class="text-sm text-gray-500">
+            {{ props.contact.email }}
+          </div>
+        </div>
+      </div>
+    </td>
+    <td class="py-4 px-6 whitespace-nowrap">
+      <div class="text-sm text-gray-900">{{ props.contact.title }}</div>
+      <div class="text-sm text-gray-500">{{ props.contact.department }}</div>
+    </td>
+    <td class="text-sm py-4 px-6 text-gray-500 whitespace-nowrap">
+      {{ props.contact.phone }}
+    </td>
+    <td class="text-sm py-4 px-6 text-gray-500 whitespace-nowrap">
+      {{ props.contact.email }}
+    </td>
+    <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
+      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+    </td>
+  </tr>
+</template>
