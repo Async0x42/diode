@@ -1,11 +1,32 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, ref, watchEffect } from 'vue';
+import Fuse from 'fuse.js';
 import ContactListItem from './ContactListItem.vue';
 import type { ContactAttributes } from '@daiod/common';
 import type { PropType } from 'vue';
+import { useRouteSearch } from '~/logic';
 
 const props = defineProps({
   contacts: { type: Array as PropType<ContactAttributes[]>, required: true },
+});
+const searchBar = useRouteSearch();
+const results = ref(props.contacts);
+
+const options = {
+  includeScore: true,
+  keys: ['name', 'email', 'phone'],
+};
+
+const fuse = new Fuse(results.value, options);
+
+watchEffect(() => {
+  if (searchBar.value.length == 0) {
+    results.value = props.contacts;
+  } else {
+    const searchResults = fuse.search(searchBar.value);
+    const searchIds = searchResults.map((r) => r.refIndex);
+    results.value = props.contacts.filter((contact, index) => searchIds.includes(index));
+  }
 });
 </script>
 
@@ -27,7 +48,7 @@ const props = defineProps({
               </tr>
             </thead>
             <tbody class="divide-y bg-white divide-gray-200">
-              <ContactListItem v-for="contact in props.contacts" :key="contact.id" :contact="contact" />
+              <ContactListItem v-for="contact in results" :key="contact.id" :contact="contact" />
             </tbody>
           </table>
         </div>

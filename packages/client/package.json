@@ -20,6 +20,7 @@
     "@vueuse/head": "^0.5.1",
     "@vueuse/integrations": "^4.11.0",
     "axios": "^0.21.1",
+    "fuse.js": "^6.4.6",
     "nprogress": "^0.2.0",
     "prism-theme-vars": "^0.2.2",
     "vue": "^3.0.11",

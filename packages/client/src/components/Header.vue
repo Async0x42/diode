@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
+import HeaderSearch from './HeaderSearch.vue';
 import { toggleSidebar } from '~/logic';
 
 const route = useRoute();
@@ -16,23 +17,7 @@ const route = useRoute();
       <heroicons-outline-menu-alt-2 class="h-6 w-6" aria-hidden="true" />
     </button>
     <div class="flex flex-1 px-4 justify-between">
-      <div class="flex flex-1">
-        <form class="flex w-full lg:ml-0" action="#" method="GET">
-          <label for="search_field" class="sr-only">Search</label>
-          <div class="w-full text-gray-400 relative focus-within:text-gray-600">
-            <div class="flex inset-y-0 left-0 absolute items-center pointer-events-none">
-              <heroicons-solid-search class="h-5 w-5" aria-hidden="true" />
-            </div>
-            <input
-              id="search_field"
-              class="border-transparent h-full w-full py-2 pr-3 pl-8 placeholder-gray-500 text-gray-900 block sm:text-sm focus:border-transparent focus:outline-none focus:placeholder-gray-400 focus:ring-0"
-              placeholder="Search"
-              type="search"
-              name="search"
-            />
-          </div>
-        </form>
-      </div>
+      <HeaderSearch />
       <div class="flex ml-4 items-center lg:ml-6">
         <router-link
           v-if="route.name != null && ['calendar', 'brds', 'contacts', 'rfcs'].includes(route.name.toString())"
