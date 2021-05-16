@@ -22,7 +22,7 @@ if (!process.env.PORT) {
 const PORT: number = parseInt(process.env.PORT as string, 10);
 const app = express();
 
-initialize(true);
+initialize(true, true);
 
 app.use(helmet());
 app.use(cors());

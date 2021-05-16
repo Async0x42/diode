@@ -9,17 +9,17 @@ export interface RfcAttributes {
   title: string;
   class: RfcClass;
   purpose: RfcPurpose;
-  description: string;
+  description?: string;
   parentSystem?: string;
-  businessCase: string;
+  businessCase?: string;
   securityImplications?: string;
-  affectedInfrastructure: string;
-  affectedInformationSystem: string;
-  conceptOfOperation: string;
-  conceptOfTesting: string;
-  conceptofImplementation: string;
-  backoutPlan: string;
-  impactAssessmentDueDate: Date;
+  affectedInfrastructure?: string;
+  affectedInformationSystem?: string;
+  conceptOfOperation?: string;
+  conceptOfTesting?: string;
+  conceptofImplementation?: string;
+  backoutPlan?: string;
+  impactAssessmentDueDate?: Date;
 }
 
 // Some fields are optional when calling RfcModel.create() or RfcModel.build()
@@ -33,17 +33,17 @@ export class Rfc extends Model<RfcAttributes, RfcCreationAttributes> implements 
   public title!: string;
   public class!: RfcClass;
   public purpose!: RfcPurpose;
-  public description!: string;
+  public description?: string;
   public parentSystem?: string;
-  public businessCase!: string;
+  public businessCase?: string;
   public securityImplications?: string;
-  public affectedInfrastructure!: string;
-  public affectedInformationSystem!: string;
-  public conceptOfOperation!: string;
-  public conceptOfTesting!: string;
-  public conceptofImplementation!: string;
-  public backoutPlan!: string;
-  public impactAssessmentDueDate!: Date;
+  public affectedInfrastructure?: string;
+  public affectedInformationSystem?: string;
+  public conceptOfOperation?: string;
+  public conceptOfTesting?: string;
+  public conceptofImplementation?: string;
+  public backoutPlan?: string;
+  public impactAssessmentDueDate?: Date;
 
   // timestamps!
   public readonly createdAt!: Date;

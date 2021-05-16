@@ -2,15 +2,7 @@ import { Brd } from '@daiod/common';
 import express, { Request, Response } from 'express';
 import * as BrdService from './brd.service';
 
-/**
- * Router Definition
- */
-
 export const brdRouter = express.Router({ mergeParams: true });
-
-/**
- * Controller Definitions
- */
 
 // GET brds
 brdRouter.get('/', async (req: Request, res: Response) => {

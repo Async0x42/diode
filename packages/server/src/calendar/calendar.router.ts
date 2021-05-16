@@ -3,18 +3,10 @@ import { Calendar } from '@daiod/common';
 import { itemsRouter } from './items/items.router';
 import * as CalendarService from './calendar.service';
 
-/**
- * Router Definition
- */
-
 export const calendarRouter = express.Router();
 
 // Nest the items router within the calendar router
 calendarRouter.use('/calendar/items', itemsRouter);
-
-/**
- * Controller Definitions
- */
 
 // GET calendar
 calendarRouter.get('/', async (req: Request, res: Response) => {

@@ -2,15 +2,7 @@ import { CalendarItem } from '@daiod/common';
 import express, { Request, Response } from 'express';
 import * as ItemService from './items.service';
 
-/**
- * Router Definition
- */
-
 export const itemsRouter = express.Router({ mergeParams: true });
-
-/**
- * Controller Definitions
- */
 
 // GET items
 itemsRouter.get('/', async (req: Request, res: Response) => {

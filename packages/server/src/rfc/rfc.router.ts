@@ -2,15 +2,7 @@ import { Rfc } from '@daiod/common';
 import express, { Request, Response } from 'express';
 import * as RfcService from './rfc.service';
 
-/**
- * Router Definition
- */
-
 export const rfcRouter = express.Router({ mergeParams: true });
-
-/**
- * Controller Definitions
- */
 
 // GET rfcs
 rfcRouter.get('/', async (req: Request, res: Response) => {

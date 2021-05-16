@@ -1,17 +1,12 @@
 <script setup lang="ts">
 import { useAxios } from '@vueuse/integrations';
-const { data, error, isFinished } = useAxios('/api/calendar');
-const calendarItems = useAxios('/api/calendar/items');
+const { data, error, isFinished } = useAxios('/api/calendar/items');
 </script>
 
 <template>
   <div>
     <div v-if="isFinished">{{ data }}</div>
     <div v-else-if="error">{{ error }}</div>
-    <div v-else>loading...</div>
-
-    <div v-if="calendarItems.isFinished">{{ calendarItems.data }}</div>
-    <div v-else-if="calendarItems.error">{{ calendarItems.error }}</div>
     <div v-else>loading...</div>
   </div>
 </template>

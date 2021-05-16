@@ -4,9 +4,9 @@ import { Model, Optional } from 'sequelize';
 export interface CalendarItemAttributes {
   id: number;
   title: string;
-  category: string;
-  description: string;
-  imageUrl: string;
+  category?: string;
+  description?: string;
+  imageUrl?: string;
   start: Date;
   end: Date;
   allDay: boolean;
@@ -21,9 +21,9 @@ export interface CalendarItemInstance extends Model<CalendarItemAttributes, Cale
 export class CalendarItem extends Model<CalendarItemAttributes, CalendarItemCreationAttributes> implements CalendarItemAttributes {
   public id!: number; // Note that the `null assertion` `!` is required in strict mode.
   public title!: string;
-  public category!: string;
-  public description!: string;
-  public imageUrl!: string;
+  public category?: string;
+  public description?: string;
+  public imageUrl?: string;
   public start!: Date;
   public end!: Date;
   public allDay!: boolean;

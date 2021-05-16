@@ -2,15 +2,7 @@ import { Contact } from '@daiod/common';
 import express, { Request, Response } from 'express';
 import * as ContactService from './contact.service';
 
-/**
- * Router Definition
- */
-
 export const contactRouter = express.Router({ mergeParams: true });
-
-/**
- * Controller Definitions
- */
 
 // GET contacts
 contactRouter.get('/', async (req: Request, res: Response) => {
