@@ -1,11 +1,7 @@
-/**
- * Required External Modules
- */
-
-import * as dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+import dotEnvExtended from 'dotenv-extended';
 import { calendarRouter } from './calendar/calendar.router';
 import { rfcRouter } from './rfc/rfc.router';
 import { brdRouter } from './brd/brd.router';
@@ -13,7 +9,7 @@ import { contactRouter } from './contact/contact.router';
 import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/not-found.middleware';
 
-dotenv.config();
+dotEnvExtended.load();
 
 /**
  * App Variables
