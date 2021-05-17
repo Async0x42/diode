@@ -8,7 +8,7 @@ const props = defineProps({
   contact: { type: Object as PropType<ContactAttributes>, required: true },
 });
 
-const { useField, handleSubmit } = useForm<ContactAttributes>({
+const { useField, handleSubmit, set } = useForm<ContactAttributes>({
   defaultValues: { ...props.contact },
 });
 
@@ -17,17 +17,24 @@ const name = useField('name', {
 });
 
 const email = useField('email');
+const phone = useField('phone');
 const title = useField('title');
 const organization = useField('organization');
 const department = useField('department');
 const notes = useField('notes');
 
-const onSubmit = (data) => handleSubmit(data);
+// TODO: sent to REST API
+const onSubmit = handleSubmit((data) =>
+  console.log({
+    id: props.contact.id,
+    ...data,
+  })
+);
 </script>
 
 <template>
   <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-    <form class="divide-y space-y-8 divide-gray-200 py-5 px-4 sm:px-6">
+    <form class="divide-y space-y-8 divide-gray-200 py-5 px-4 sm:px-6" @submit="onSubmit">
       <div class="divide-y space-y-8 divide-gray-200">
         <div>
           <div>
@@ -41,6 +48,8 @@ const onSubmit = (data) => handleSubmit(data);
               <div class="mt-1">
                 <input
                   id="name"
+                  :ref="name.ref"
+                  v-model="name.value"
                   type="text"
                   name="name"
                   autocomplete="name"
@@ -54,6 +63,8 @@ const onSubmit = (data) => handleSubmit(data);
               <div class="mt-1">
                 <input
                   id="email"
+                  :ref="email.ref"
+                  v-model="email.value"
                   name="email"
                   type="email"
                   autocomplete="email"
@@ -67,6 +78,8 @@ const onSubmit = (data) => handleSubmit(data);
               <div class="mt-1">
                 <input
                   id="phone"
+                  :ref="phone.ref"
+                  v-model="phone.value"
                   name="phone"
                   type="tel"
                   autocomplete="tel"
@@ -78,16 +91,15 @@ const onSubmit = (data) => handleSubmit(data);
             <div class="sm:col-span-3">
               <label for="organization" class="font-medium text-sm text-gray-700 block"> Organization </label>
               <div class="mt-1">
-                <select
+                <input
                   id="organization"
+                  :ref="organization.ref"
+                  v-model="organization.value"
                   name="organization"
+                  type="text"
                   autocomplete="organization"
                   class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
-                >
-                  <option>DND</option>
-                  <option>SSC</option>
-                  <option>Other</option>
-                </select>
+                />
               </div>
             </div>
 
@@ -96,9 +108,26 @@ const onSubmit = (data) => handleSubmit(data);
               <div class="mt-1">
                 <input
                   id="department"
+                  :ref="department.ref"
+                  v-model="department.value"
                   name="department"
                   type="text"
                   autocomplete="department"
+                  class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
+                />
+              </div>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label for="title" class="font-medium text-sm text-gray-700 block"> Title </label>
+              <div class="mt-1">
+                <input
+                  id="title"
+                  :ref="title.ref"
+                  v-model="title.value"
+                  name="title"
+                  type="text"
+                  autocomplete="title"
                   class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
                 />
               </div>
@@ -109,6 +138,8 @@ const onSubmit = (data) => handleSubmit(data);
               <div class="mt-1">
                 <textarea
                   id="notes"
+                  :ref="notes.ref"
+                  v-model="notes.value"
                   name="notes"
                   :rows="3"
                   class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
