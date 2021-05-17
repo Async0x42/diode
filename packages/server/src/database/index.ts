@@ -25,6 +25,7 @@ const createTestEntries = () => {
   Contact.create({
     name: 'Jack John',
     title: 'Director',
+    organization: 'My Org 2',
     department: 'Org Department',
     notes: 'This is a much longer note that might wrap around',
     phone: '555-555-5555 x1234',
@@ -33,6 +34,7 @@ const createTestEntries = () => {
   Contact.create({
     name: 'John Wizer',
     title: 'IM/IT Programmer Analyst',
+    organization: 'My Org',
     department: 'Dep A',
     notes: 'This is a longer note',
     phone: 'CSN: 555-5555',
@@ -41,6 +43,7 @@ const createTestEntries = () => {
   Contact.create({
     name: 'Milly Mally',
     title: 'IM/IT Deployment Specialist',
+    organization: 'One Org',
     department: 'Deployment',
     notes: 'Note A',
     phone: '555-555-5555 2345',
