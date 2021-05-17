@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
 import HeaderSearch from './HeaderSearch.vue';
 import { toggleSidebar } from '~/logic';
-
-const route = useRoute();
 </script>
 
 <template>
@@ -17,12 +14,12 @@ const route = useRoute();
       <heroicons-outline-menu-alt-2 class="h-6 w-6" aria-hidden="true" />
     </button>
     <div class="flex flex-1 px-4 justify-between">
-      <HeaderSearch />
+      <HeaderSearch :key="$route.fullPath" />
       <div class="flex ml-4 items-center lg:ml-6">
         <router-link
-          v-if="route.name != null && ['calendar', 'brds', 'contacts', 'rfcs'].includes(route.name.toString())"
+          v-if="$route.name != null && ['calendar', 'brds', 'contacts', 'rfcs'].includes($route.name.toString())"
           v-slot="{ navigate }"
-          :to="route.fullPath + '/create'"
+          :to="$route.fullPath + '/create'"
           custom
         >
           <button
