@@ -8,7 +8,7 @@ const { data, error, isFinished } = useAxios<ContactAttributes[]>('/api/contacts
 </script>
 
 <template>
-  <ContactList v-if="isFinished" :contacts="data" />
+  <ContactList v-if="isFinished && data" :contacts="data" />
   <LoadingError v-else-if="error" :error="error" />
   <LoadingList v-else />
 </template>
