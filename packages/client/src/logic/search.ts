@@ -6,12 +6,9 @@ import type { Ref } from 'vue';
 const searchStorage: { [key: string]: Ref<string> } = {};
 
 export const useSearch = (key: string) => {
-  if (!searchStorage[key]) {
-    searchStorage[key] = ref('');
+  if (searchStorage[key]) return searchStorage[key];
 
-    return searchStorage[key];
-  }
-
+  searchStorage[key] = ref('');
   return searchStorage[key];
 };
 
