@@ -114,7 +114,9 @@ const onSubmit = (data) => handleSubmit(data);
                   class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
                 />
               </div>
-              <p class="mt-2 text-sm text-gray-500">Write a few sentences detailing the role of this contact.</p>
+              <p class="mt-2 text-sm text-gray-500">
+                Write a few sentences detailing the role of this contact, and for what reasons they would be contacted.
+              </p>
             </div>
           </div>
         </div>
