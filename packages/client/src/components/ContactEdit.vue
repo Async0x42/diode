@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 import { useForm } from 'vue-hooks-form';
+import { useAxios } from '@vueuse/integrations';
 import type { ContactAttributes } from '@daiod/common';
 import type { PropType } from 'vue';
 
@@ -8,7 +9,7 @@ const props = defineProps({
   contact: { type: Object as PropType<ContactAttributes>, required: true },
 });
 
-const { useField, handleSubmit, set } = useForm<ContactAttributes>({
+const { useField, handleSubmit } = useForm<ContactAttributes>({
   defaultValues: { ...props.contact },
 });
 
@@ -23,13 +24,10 @@ const organization = useField('organization');
 const department = useField('department');
 const notes = useField('notes');
 
-// TODO: sent to REST API
-const onSubmit = handleSubmit((data) =>
-  console.log({
-    id: props.contact.id,
-    ...data,
-  })
-);
+// TODO: remove async and display loading information and errors
+const onSubmit = handleSubmit(async (formData) => {
+  const { data, finished } = await useAxios(`/api/contacts/${props.contact.id}`, { method: 'PUT', data: formData });
+});
 </script>
 
 <template>
