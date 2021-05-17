@@ -7,7 +7,7 @@ import LoadingError from '~/components/LoadingError.vue';
 import LoadingList from '~/components/LoadingList.vue';
 
 const props = defineProps({
-  contactId: { type: Number, required: true },
+  contactId: { type: String, required: true },
 });
 const { data, error, isFinished } = useAxios<ContactAttributes>(`/api/contacts/${props.contactId}`);
 </script>
