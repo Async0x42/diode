@@ -31,8 +31,8 @@ const onSubmit = (data) => handleSubmit(data);
       <div class="divide-y space-y-8 divide-gray-200">
         <div>
           <div>
-            <h3 class="font-medium text-lg text-gray-900 leading-6">Personal Information</h3>
-            <p class="mt-1 text-sm text-gray-500">This information will be displayed publicly so be careful what you share.</p>
+            <h3 class="font-medium text-lg text-gray-900 leading-6">Contact Information</h3>
+            <p class="mt-1 text-sm text-gray-500">This information will be displayed publicly.</p>
           </div>
 
           <div class="mt-6 grid gap-y-6 gap-x-4 grid-cols-1 sm:grid-cols-6">
@@ -76,18 +76,31 @@ const onSubmit = (data) => handleSubmit(data);
             </div>
 
             <div class="sm:col-span-3">
-              <label for="country" class="font-medium text-sm text-gray-700 block"> Country / Region </label>
+              <label for="organization" class="font-medium text-sm text-gray-700 block"> Organization </label>
               <div class="mt-1">
                 <select
-                  id="country"
-                  name="country"
-                  autocomplete="country"
+                  id="organization"
+                  name="organization"
+                  autocomplete="organization"
                   class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
                 >
-                  <option>United States</option>
-                  <option>Canada</option>
-                  <option>Mexico</option>
+                  <option>DND</option>
+                  <option>SSC</option>
+                  <option>Other</option>
                 </select>
+              </div>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label for="department" class="font-medium text-sm text-gray-700 block"> Department </label>
+              <div class="mt-1">
+                <input
+                  id="department"
+                  name="department"
+                  type="text"
+                  autocomplete="department"
+                  class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
+                />
               </div>
             </div>
 
