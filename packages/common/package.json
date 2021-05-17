@@ -13,8 +13,8 @@
   "author": "SEE LICENSE IN LICENSE",
   "devDependencies": {
     "@antfu/eslint-config": "^0.6.5",
-    "@typescript-eslint/eslint-plugin": "^4.23.0",
-    "@typescript-eslint/parser": "^4.23.0",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/parser": "^4.24.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "eslint": "^7.26.0",
     "eslint-plugin-prettier": "^3.4.0",
