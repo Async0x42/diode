@@ -9,7 +9,7 @@ const props = defineProps({
   contacts: { type: Array as PropType<ContactAttributes[]>, required: true },
 });
 
-const { results } = useRouteSearchWithData(props.contacts, ['name', 'email', 'phone']);
+const { results } = useRouteSearchWithData(props.contacts, ['name', 'email', 'phone', 'title', 'organization', 'department', 'notes']);
 </script>
 
 <template>
