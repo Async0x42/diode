@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { useAxios } from '@vueuse/integrations';
+import type { CalendarItemAttributes } from '@daiod/common';
 import CalendarItemList from '~/components/CalendarItemList.vue';
 import LoadingList from '~/components/LoadingList.vue';
 import LoadingError from '~/components/LoadingError.vue';
-const { data, error, isFinished } = useAxios('/api/calendar/items');
+const { data, error, isFinished } = useAxios<CalendarItemAttributes[]>('/api/calendar/items');
 </script>
 
 <template>
