@@ -39,7 +39,14 @@ const props = defineProps({
       {{ props.contact.email }}
     </td>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
-      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+      <router-link is="a" :to="`${$route.fullPath}/${props.contact.id}/edit`">
+        <button
+          type="button"
+          class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white p-1 inline-flex items-center hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          <heroicons-solid-pencil class="h-5 w-5" aria-hidden="true" />
+        </button>
+      </router-link>
     </td>
   </tr>
 </template>
