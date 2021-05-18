@@ -1,4 +1,4 @@
-import { DI } from '../..';
+import { DI } from '../../';
 import { CalendarItem } from '../../entities';
 
 export const findAll = async (): Promise<CalendarItem[]> => (await DI.calendarItemRepo.find({})) || [];
@@ -9,6 +9,7 @@ export const create = async (newCalendarItem: CalendarItem): Promise<CalendarIte
   const createdCalendarItem = await DI.calendarItemRepo.create({
     ...newCalendarItem,
   });
+  DI.calendarItemRepo.persist(createdCalendarItem);
 
   return createdCalendarItem;
 };
@@ -34,5 +35,5 @@ export const remove = async (id: number): Promise<null | void> => {
     return null;
   }
 
-  DI.calendarItemRepo.remove(foundCalendarItem);
+  await DI.calendarItemRepo.remove(foundCalendarItem);
 };

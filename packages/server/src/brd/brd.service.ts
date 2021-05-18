@@ -9,6 +9,7 @@ export const create = async (newBrd: Brd): Promise<Brd> => {
   const createdBrd = await DI.brdRepo.create({
     ...newBrd,
   });
+  DI.brdRepo.persist(createdBrd);
 
   return createdBrd;
 };
@@ -34,5 +35,5 @@ export const remove = async (id: number): Promise<null | void> => {
     return null;
   }
 
-  await DI.brdRepo.removeAndFlush(foundBrd);
+  await DI.brdRepo.remove(foundBrd);
 };

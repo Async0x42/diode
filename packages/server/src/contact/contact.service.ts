@@ -1,4 +1,4 @@
-import { DI } from '..';
+import { DI } from '../';
 import { Contact } from '../entities';
 
 export const findAll = async (): Promise<Contact[]> => (await DI.contactRepo.find({})) || [];
@@ -9,6 +9,7 @@ export const create = async (newContact: Contact): Promise<Contact> => {
   const createdContact = await DI.contactRepo.create({
     ...newContact,
   });
+  DI.contactRepo.persist(createdContact);
 
   return createdContact;
 };
@@ -34,5 +35,5 @@ export const remove = async (id: number): Promise<null | void> => {
     return null;
   }
 
-  DI.contactRepo.remove(foundContact);
+  await DI.contactRepo.remove(foundContact);
 };

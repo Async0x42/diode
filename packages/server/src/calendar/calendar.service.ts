@@ -1,4 +1,4 @@
-import { DI } from '..';
+import { DI } from '../';
 import { Calendar } from '../entities';
 
 export const get = async (): Promise<Calendar | null> => await DI.calendarRepo.findOneOrFail({ id: 1 });

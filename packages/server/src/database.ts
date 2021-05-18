@@ -8,7 +8,7 @@ const createDefaultCalendar = () => {
     }),
   ];
 
-  DI.em.persistAndFlush(entities);
+  DI.em.persist(entities);
 };
 
 const createTestEntries = () => {
@@ -61,7 +61,7 @@ const createTestEntries = () => {
     }),
   ];
 
-  DI.em.persistAndFlush(entities);
+  DI.em.persist(entities);
 };
 
 export const initDb = async (forceSync = false, initTestEntries = false) => {

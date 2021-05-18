@@ -12,6 +12,7 @@ import { notFoundHandler } from './middleware/not-found.middleware';
 import { initDb } from './database';
 import config from './mikro-orm.config';
 import { Brd, Calendar, CalendarItem, Contact, Rfc } from './entities';
+export * from './entities';
 
 dotEnvExtended.load();
 
@@ -31,11 +32,13 @@ export const DI = {} as {
 (async () => {
   DI.orm = await MikroORM.init(config);
   DI.em = DI.orm.em;
+  DI.calendarRepo = DI.em.getRepository(Calendar);
+  DI.calendarItemRepo = DI.em.getRepository(CalendarItem);
   DI.rfcRepo = DI.em.getRepository(Rfc);
+  DI.brdRepo = DI.em.getRepository(Brd);
+  DI.contactRepo = DI.em.getRepository(Contact);
   app.use((req, res, next) => RequestContext.create(DI.orm.em, next));
   initDb(true, true);
-
-  console.log(DI);
 
   app.use(helmet());
   app.use(cors());

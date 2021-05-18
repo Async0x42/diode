@@ -1,4 +1,4 @@
-import { DI } from '..';
+import { DI } from '../';
 import { Rfc } from '../entities';
 
 export const findAll = async (): Promise<Rfc[]> => (await DI.rfcRepo.find({})) || [];
@@ -9,6 +9,7 @@ export const create = async (newRfc: Rfc): Promise<Rfc> => {
   const createdRfc = await DI.rfcRepo.create({
     ...newRfc,
   });
+  DI.rfcRepo.persist(createdRfc);
 
   return createdRfc;
 };
@@ -34,5 +35,5 @@ export const remove = async (id: number): Promise<null | void> => {
     return null;
   }
 
-  DI.rfcRepo.remove(foundRfc);
+  await DI.rfcRepo.remove(foundRfc);
 };
