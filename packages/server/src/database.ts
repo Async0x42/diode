@@ -68,6 +68,8 @@ export const initDb = async () => {
   await DI.orm.getSchemaGenerator().ensureDatabase();
   await DI.orm.getSchemaGenerator().dropSchema();
   await DI.orm.getSchemaGenerator().createSchema();
+  const migrator = DI.orm.getMigrator();
+  await migrator.up(); // runs migrations up to the latest
   await createDefaultCalendar();
   await createTestEntries();
   DI.em.flush();
