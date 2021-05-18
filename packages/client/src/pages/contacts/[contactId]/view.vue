@@ -17,3 +17,7 @@ const { data, error, isFinished } = useAxios<ContactAttributes>(`/api/contacts/$
   <LoadingError v-else-if="error" :error="error" />
   <LoadingList v-else />
 </template>
+
+<route lang="yaml">
+name: contact-view
+</route>
