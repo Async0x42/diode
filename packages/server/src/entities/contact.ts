@@ -25,16 +25,4 @@ export class Contact extends BaseEntity<Contact, 'id'> {
 
   @Property()
   notes?: string;
-
-  @Property()
-  createdAt = new Date();
-
-  @Property()
-  updatedAt = new Date();
-
-  // TODO: is needed?
-  constructor(name: string) {
-    super();
-    this.name = name;
-  }
 }

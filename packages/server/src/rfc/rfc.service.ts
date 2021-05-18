@@ -1,12 +1,13 @@
 import { orm } from '..';
 import { Rfc } from '../entities';
+const rfcRepo = orm.em.getRepository(Rfc);
 
-export const findAll = async (): Promise<Rfc[]> => orm.em.find(Rfc, {}) || [];
+export const findAll = async (): Promise<Rfc[]> => rfcRepo.find({}) || [];
 
-export const find = async (id: number): Promise<Rfc | null> => orm.em.findOneOrFail(Rfc, { id });
+export const find = async (id: number): Promise<Rfc | null> => rfcRepo.findOneOrFail({ id });
 
 export const create = async (newRfc: Rfc): Promise<Rfc> => {
-  const createdRfc = orm.em.create(Rfc, {
+  const createdRfc = rfcRepo.create({
     ...newRfc,
   });
 
@@ -14,13 +15,13 @@ export const create = async (newRfc: Rfc): Promise<Rfc> => {
 };
 
 export const update = async (id: number, rfcUpdate: Rfc): Promise<Rfc | null> => {
-  const foundRfc = await orm.em.findOneOrFail(Rfc, { id });
+  const foundRfc = await rfcRepo.findOneOrFail({ id });
 
   if (!foundRfc) {
     return null;
   }
 
-  const updatedRfc = await orm.em.assign(foundRfc, {
+  const updatedRfc = await rfcRepo.assign(foundRfc, {
     ...rfcUpdate,
   });
 
@@ -28,11 +29,11 @@ export const update = async (id: number, rfcUpdate: Rfc): Promise<Rfc | null> =>
 };
 
 export const remove = async (id: number): Promise<null | void> => {
-  const foundRfc = await orm.em.findOneOrFail(Rfc, { id });
+  const foundRfc = await rfcRepo.findOneOrFail({ id });
 
   if (!foundRfc) {
     return null;
   }
 
-  orm.em.remove(foundRfc);
+  rfcRepo.remove(foundRfc);
 };

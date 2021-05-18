@@ -1,12 +1,13 @@
 import { Brd } from '../entities';
 import { orm } from '../';
+const brdRepo = orm.em.getRepository(Brd);
 
-export const findAll = async (): Promise<Brd[]> => orm.em.find(Brd, {}) || [];
+export const findAll = async (): Promise<Brd[]> => brdRepo.find({}) || [];
 
-export const find = async (id: number): Promise<Brd | null> => orm.em.findOneOrFail(Brd, { id });
+export const find = async (id: number): Promise<Brd | null> => brdRepo.findOneOrFail({ id });
 
 export const create = async (newBrd: Brd): Promise<Brd> => {
-  const createdBrd = orm.em.create(Brd, {
+  const createdBrd = brdRepo.create({
     ...newBrd,
   });
 
@@ -14,13 +15,13 @@ export const create = async (newBrd: Brd): Promise<Brd> => {
 };
 
 export const update = async (id: number, brdUpdate: Brd): Promise<Brd | null> => {
-  const foundBrd = await orm.em.findOneOrFail(Brd, { id });
+  const foundBrd = await brdRepo.findOneOrFail({ id });
 
   if (!foundBrd) {
     return null;
   }
 
-  const updatedBrd = await orm.em.assign(foundBrd, {
+  const updatedBrd = await brdRepo.assign(foundBrd, {
     ...brdUpdate,
   });
 
@@ -28,11 +29,11 @@ export const update = async (id: number, brdUpdate: Brd): Promise<Brd | null> =>
 };
 
 export const remove = async (id: number): Promise<null | void> => {
-  const foundBrd = await orm.em.findOneOrFail(Brd, { id });
+  const foundBrd = await brdRepo.findOneOrFail({ id });
 
   if (!foundBrd) {
     return null;
   }
 
-  orm.em.removeAndFlush(foundBrd);
+  brdRepo.removeAndFlush(foundBrd);
 };

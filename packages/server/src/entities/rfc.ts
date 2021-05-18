@@ -49,18 +49,4 @@ export class Rfc extends BaseEntity<Rfc, 'id'> {
 
   @Property()
   impactAssessmentDueDate?: Date;
-
-  @Property()
-  createdAt = new Date();
-
-  @Property()
-  updatedAt = new Date();
-
-  // TODO: is needed?
-  constructor(title: string, rfcClass: RfcClass, purpose: RfcPurpose) {
-    super();
-    this.title = title;
-    this.class = rfcClass;
-    this.purpose = purpose;
-  }
 }

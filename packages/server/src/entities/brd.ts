@@ -7,16 +7,4 @@ export class Brd extends BaseEntity<Brd, 'id'> {
 
   @Property()
   title!: string;
-
-  @Property()
-  createdAt = new Date();
-
-  @Property()
-  updatedAt = new Date();
-
-  // TODO: is needed?
-  constructor(title: string) {
-    super();
-    this.title = title;
-  }
 }
