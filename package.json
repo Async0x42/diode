@@ -1,5 +1,5 @@
 {
-  "name": "daiod",
+  "name": "diode",
   "scripts": {
     "dev": "pnpm recursive run dev",
     "build": "pnpm recursive run build",

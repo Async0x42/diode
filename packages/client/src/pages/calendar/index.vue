@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAxios } from '@vueuse/integrations';
-import type { ICalendarItem } from '@daiod/common';
+import type { ICalendarItem } from '@diode/common';
 import CalendarItemList from '~/components/CalendarItemList.vue';
 import LoadingList from '~/components/LoadingList.vue';
 import LoadingError from '~/components/LoadingError.vue';

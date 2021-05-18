@@ -30,7 +30,7 @@ const toggleLocales = () => {
       <carbon-dicom-overlay />
     </router-link>
 
-    <a class="mx-2 icon-btn" rel="noreferrer" href="https://github.com/async0x42/daiod" target="_blank" title="GitHub">
+    <a class="mx-2 icon-btn" rel="noreferrer" href="https://github.com/async0x42/diode" target="_blank" title="GitHub">
       <carbon-logo-github />
     </a>
   </nav>

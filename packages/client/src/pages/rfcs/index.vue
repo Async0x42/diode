@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAxios } from '@vueuse/integrations';
-import type { IRfc } from '@daiod/common';
+import type { IRfc } from '@diode/common';
 const { data, error, isFinished } = useAxios<IRfc>('/api/rfcs');
 </script>
 

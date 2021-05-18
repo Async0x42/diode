@@ -1,4 +1,4 @@
-import { IContact } from '@daiod/common';
+import { IContact } from '@diode/common';
 import { BaseEntity, Entity, Property, PrimaryKey } from '@mikro-orm/core';
 
 @Entity()

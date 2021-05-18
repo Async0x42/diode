@@ -1,5 +1,5 @@
 {
-  "name": "@daiod/client",
+  "name": "@diode/client",
   "private": true,
   "scripts": {
     "dev": "vite --port 3333 --open",
@@ -13,7 +13,7 @@
     "preview-https": "serve dist"
   },
   "dependencies": {
-    "@daiod/common": "workspace:*",
+    "@diode/common": "workspace:*",
     "@headlessui/vue": "^1.2.0",
     "@heroicons/vue": "^1.0.1",
     "@vueuse/core": "^4.11.0",
@@ -52,11 +52,11 @@
     "vite-plugin-components": "^0.9.1",
     "vite-plugin-icons": "^0.5.1",
     "vite-plugin-md": "^0.6.7",
-    "vite-plugin-pages": "^0.11.4",
+    "vite-plugin-pages": "^0.12.1",
     "vite-plugin-pwa": "^0.7.3",
     "vite-plugin-vue-layouts": "^0.3.1",
     "vite-plugin-windicss": "^0.15.10",
-    "vite-ssg": "^0.10.0",
-    "vue-tsc": "^0.1.2"
+    "vite-ssg": "^0.10.1",
+    "vue-tsc": "^0.1.4"
   }
 }

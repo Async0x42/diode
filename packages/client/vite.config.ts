@@ -75,8 +75,8 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'DAIOD',
-        short_name: 'DAIOD',
+        name: 'DIODE',
+        short_name: 'DIODE',
         theme_color: '#ffffff',
         icons: [
           {

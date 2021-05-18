@@ -1,4 +1,4 @@
-import { IRfc } from '@daiod/common';
+import { IRfc } from '@diode/common';
 import { BaseEntity, Entity, Property, PrimaryKey } from '@mikro-orm/core';
 
 export type RfcPurpose = 'Sustain' | 'Evolve' | 'Transform';

@@ -41,13 +41,13 @@ jobs:
       - name: Archive Client Release
         uses: thedoctor0/zip-release@master
         with:
-          filename: 'daiod-client-${{ steps.get_version.outputs.VERSION }}.zip'
+          filename: 'diode-client-${{ steps.get_version.outputs.VERSION }}.zip'
           path: 'packages/client/dist'
 
       - name: Archive Server Release
         uses: thedoctor0/zip-release@master
         with:
-          filename: 'daiod-server-${{ steps.get_version.outputs.VERSION }}.zip'
+          filename: 'diode-server-${{ steps.get_version.outputs.VERSION }}.zip'
           path: 'packages/server/dist'
 
       - name: Release
@@ -61,5 +61,5 @@ jobs:
           ALLOW_TAG_PREFIX: 'true'
         with:
           args: |
-            daiod-client-${{ steps.get_version.outputs.VERSION }}.zip
-            daiod-server-${{ steps.get_version.outputs.VERSION }}.zip
+            diode-client-${{ steps.get_version.outputs.VERSION }}.zip
+            diode-server-${{ steps.get_version.outputs.VERSION }}.zip

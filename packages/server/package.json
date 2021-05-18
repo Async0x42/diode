@@ -1,5 +1,5 @@
 {
-  "name": "@daiod/server",
+  "name": "@diode/server",
   "version": "0.0.1",
   "description": "",
   "main": "src/index.ts",
@@ -16,15 +16,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Async0x42/daiod.git"
+    "url": "git+https://github.com/Async0x42/diode.git"
   },
   "author": "SEE LICENSE IN LICENSE",
   "bugs": {
-    "url": "https://github.com/Async0x42/daiod/issues"
+    "url": "https://github.com/Async0x42/diode/issues"
   },
-  "homepage": "https://github.com/Async0x42/daiod#readme",
+  "homepage": "https://github.com/Async0x42/diode#readme",
   "dependencies": {
-    "@daiod/common": "workspace:*",
+    "@diode/common": "workspace:*",
     "@mikro-orm/cli": "^4.5.5",
     "@mikro-orm/core": "^4.5.5",
     "@mikro-orm/reflection": "^4.5.5",

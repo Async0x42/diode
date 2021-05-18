@@ -1,4 +1,4 @@
-import { IBrd } from '@daiod/common';
+import { IBrd } from '@diode/common';
 import { BaseEntity, Entity, Property, PrimaryKey } from '@mikro-orm/core';
 
 @Entity()

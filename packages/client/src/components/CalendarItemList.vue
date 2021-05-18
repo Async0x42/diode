@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import type { ICalendarItem } from '@daiod/common';
+import type { ICalendarItem } from '@diode/common';
 import type { PropType } from 'vue';
 import { useRouteSearchWithData } from '~/logic';
 

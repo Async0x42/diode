@@ -38,7 +38,7 @@ export const DI = {} as {
   DI.brdRepo = DI.em.getRepository(Brd);
   DI.contactRepo = DI.em.getRepository(Contact);
   app.use((req, res, next) => RequestContext.create(DI.orm.em, next));
-  initDb(true, true);
+  initDb(true);
 
   app.use(helmet());
   app.use(cors());

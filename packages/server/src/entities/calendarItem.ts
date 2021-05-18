@@ -1,4 +1,4 @@
-import { ICalendarItem } from '@daiod/common';
+import { ICalendarItem } from '@diode/common';
 import { BaseEntity, Entity, Property, PrimaryKey } from '@mikro-orm/core';
 
 @Entity()

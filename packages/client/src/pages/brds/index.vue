@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAxios } from '@vueuse/integrations';
-import type { IBrd } from '@daiod/common';
+import type { IBrd } from '@diode/common';
 const { data, error, isFinished } = useAxios<IBrd>('/api/brds');
 </script>
 

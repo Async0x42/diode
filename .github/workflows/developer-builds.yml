@@ -37,13 +37,13 @@ jobs:
       - name: Archive Client Release
         uses: thedoctor0/zip-release@master
         with:
-          filename: 'daiod-client-${{ github.sha }}.zip'
+          filename: 'diode-client-${{ github.sha }}.zip'
           path: 'packages/client/dist'
 
       - name: Archive Server Release
         uses: thedoctor0/zip-release@master
         with:
-          filename: 'daiod-server-${{ github.sha }}.zip'
+          filename: 'diode-server-${{ github.sha }}.zip'
           path: 'packages/server/dist'
 
       - name: Release
@@ -54,5 +54,5 @@ jobs:
           automatic_release_tag: 'latest'
           title: 'Development Build (${{ github.sha }})'
           files: |
-            daiod-client-${{ github.sha }}.zip
-            daiod-server-${{ github.sha }}.zip
+            diode-client-${{ github.sha }}.zip
+            diode-server-${{ github.sha }}.zip

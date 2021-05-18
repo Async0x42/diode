@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 import { useAxios } from '@vueuse/integrations';
-import type { IContact } from '@daiod/common';
+import type { IContact } from '@diode/common';
 import ContactCreateEdit from '~/components/ContactCreateEdit.vue';
 import LoadingError from '~/components/LoadingError.vue';
 import LoadingList from '~/components/LoadingList.vue';

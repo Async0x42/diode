@@ -2,7 +2,7 @@
 import { defineProps } from 'vue';
 import { useForm } from 'vue-hooks-form';
 import { useAxios } from '@vueuse/integrations';
-import type { IContact } from '@daiod/common';
+import type { IContact } from '@diode/common';
 import type { PropType } from 'vue';
 
 const props = defineProps({
