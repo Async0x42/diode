@@ -44,7 +44,7 @@ const onSubmit = handleSubmit(async (formData) => {
       <div class="divide-y space-y-8 divide-gray-200">
         <div>
           <div>
-            <h3 class="font-medium text-lg text-gray-900 leading-6">IContact Information</h3>
+            <h3 class="font-medium text-lg text-gray-900 leading-6">Contact Information</h3>
             <p class="mt-1 text-sm text-gray-500">This information will be displayed publicly.</p>
           </div>
 
