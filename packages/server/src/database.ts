@@ -64,8 +64,11 @@ const createTestEntries = () => {
   DI.em.persist(entities);
 };
 
-export const initDb = async (forceSync = false, initTestEntries = false) => {
-  forceSync && createDefaultCalendar();
-  forceSync && initTestEntries && createTestEntries();
+export const initDb = async () => {
+  await DI.orm.getSchemaGenerator().ensureDatabase();
+  await DI.orm.getSchemaGenerator().dropSchema();
+  await DI.orm.getSchemaGenerator().createSchema();
+  await createDefaultCalendar();
+  await createTestEntries();
   DI.em.flush();
 };
