@@ -1,25 +1,27 @@
-import { Brd } from '@daiod/common';
+import { Brd } from '../entities';
+import { DI } from '../';
 
-export const findAll = async (): Promise<Brd[]> => Brd.findAll() || [];
+export const findAll = async (): Promise<Brd[]> => (await DI.brdRepo.find({})) || [];
 
-export const find = async (id: number): Promise<Brd | null> => Brd.findByPk(id);
+export const find = async (id: number): Promise<Brd | null> => await DI.brdRepo.findOneOrFail({ id });
 
 export const create = async (newBrd: Brd): Promise<Brd> => {
-  const createdBrd = Brd.create({
+  const createdBrd = await DI.brdRepo.create({
     ...newBrd,
   });
+  DI.brdRepo.persist(createdBrd);
 
   return createdBrd;
 };
 
 export const update = async (id: number, brdUpdate: Brd): Promise<Brd | null> => {
-  const foundBrd = await Brd.findByPk(id);
+  const foundBrd = await DI.brdRepo.findOneOrFail({ id });
 
   if (!foundBrd) {
     return null;
   }
 
-  const updatedBrd = await foundBrd.update({
+  const updatedBrd = await DI.brdRepo.assign(foundBrd, {
     ...brdUpdate,
   });
 
@@ -27,11 +29,11 @@ export const update = async (id: number, brdUpdate: Brd): Promise<Brd | null> =>
 };
 
 export const remove = async (id: number): Promise<null | void> => {
-  const foundBrd = await Brd.findByPk(id);
+  const foundBrd = await DI.brdRepo.findOneOrFail({ id });
 
   if (!foundBrd) {
     return null;
   }
 
-  foundBrd.destroy();
+  await DI.brdRepo.remove(foundBrd);
 };

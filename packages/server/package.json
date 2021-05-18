@@ -2,7 +2,7 @@
   "name": "@daiod/server",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.ts",
   "scripts": {
     "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
     "build": "tsc --project ./",
@@ -10,7 +10,9 @@
     "lint:all:eslint": "pnpm run lint:eslint",
     "lint:all:prettier": "pnpm run lint:prettier",
     "lint:eslint": "eslint --fix --ext .js,.ts .",
-    "lint:prettier": "prettier --write --loglevel warn **/*.{js,ts,json,md}"
+    "lint:prettier": "prettier --write --loglevel warn **/*.{js,ts,json,md}",
+    "db-debug": "mikro-orm debug",
+    "create-schema": "mikro-orm schema:create -r"
   },
   "repository": {
     "type": "git",
@@ -23,11 +25,17 @@
   "homepage": "https://github.com/Async0x42/daiod#readme",
   "dependencies": {
     "@daiod/common": "workspace:*",
+    "@mikro-orm/cli": "^4.5.5",
+    "@mikro-orm/core": "^4.5.5",
+    "@mikro-orm/reflection": "^4.5.5",
+    "@mikro-orm/sql-highlighter": "^1.0.1",
+    "@mikro-orm/sqlite": "^4.5.5",
     "cors": "^2.8.5",
     "dotenv-extended": "^2.9.0",
     "express": "^4.17.1",
     "helmet": "^4.6.0",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.2",
+    "ts-node": "^9.1.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.6.5",
@@ -44,5 +52,13 @@
     "prettier": "^2.3.0",
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.2.4"
+  },
+  "mikro-orm": {
+    "useTsNode": true,
+    "tsConfigPath": "./tsconfig.orm.json",
+    "configPaths": [
+      "./src/mikro-orm.config.ts",
+      "./dist/mikro-orm.config.js"
+    ]
   }
 }

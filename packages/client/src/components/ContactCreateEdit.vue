@@ -2,15 +2,15 @@
 import { defineProps } from 'vue';
 import { useForm } from 'vue-hooks-form';
 import { useAxios } from '@vueuse/integrations';
-import type { ContactAttributes } from '@daiod/common';
+import type { IContact } from '@daiod/common';
 import type { PropType } from 'vue';
 
 const props = defineProps({
-  contact: { type: Object as PropType<ContactAttributes> },
+  contact: { type: Object as PropType<IContact> },
 });
 
-const { useField, handleSubmit } = useForm<ContactAttributes>({
-  defaultValues: props.contact == null ? undefined : { ...props.contact },
+const { useField, handleSubmit } = useForm<IContact>({
+  defaultValues: props.contact,
 });
 
 const name = useField('name', {
@@ -163,13 +163,13 @@ const onSubmit = handleSubmit(async (formData) => {
         <div class="flex justify-end">
           <button
             type="button"
-            class="bg-white border rounded-md font-medium border-gray-300 shadow-sm text-sm py-2 px-4 text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            class="bg-white border rounded-md font-medium border-gray-300 shadow-sm text-sm py-2 px-4 text-gray-700 focus:outline-none hover:bg-gray-50 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Cancel
           </button>
           <button
             type="submit"
-            class="border border-transparent rounded-md font-medium bg-indigo-600 shadow-sm text-sm text-white ml-3 py-2 px-4 inline-flex justify-center hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            class="border border-transparent rounded-md font-medium bg-indigo-600 shadow-sm text-sm text-white ml-3 py-2 px-4 inline-flex justify-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Save
           </button>

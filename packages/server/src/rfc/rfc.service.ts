@@ -1,25 +1,27 @@
-import { Rfc } from '@daiod/common';
+import { DI } from '../';
+import { Rfc } from '../entities';
 
-export const findAll = async (): Promise<Rfc[]> => Rfc.findAll() || [];
+export const findAll = async (): Promise<Rfc[]> => (await DI.rfcRepo.find({})) || [];
 
-export const find = async (id: number): Promise<Rfc | null> => Rfc.findByPk(id);
+export const find = async (id: number): Promise<Rfc | null> => await DI.rfcRepo.findOneOrFail({ id });
 
 export const create = async (newRfc: Rfc): Promise<Rfc> => {
-  const createdRfc = Rfc.create({
+  const createdRfc = await DI.rfcRepo.create({
     ...newRfc,
   });
+  DI.rfcRepo.persist(createdRfc);
 
   return createdRfc;
 };
 
 export const update = async (id: number, rfcUpdate: Rfc): Promise<Rfc | null> => {
-  const foundRfc = await Rfc.findByPk(id);
+  const foundRfc = await DI.rfcRepo.findOneOrFail({ id });
 
   if (!foundRfc) {
     return null;
   }
 
-  const updatedRfc = await foundRfc.update({
+  const updatedRfc = await DI.rfcRepo.assign(foundRfc, {
     ...rfcUpdate,
   });
 
@@ -27,11 +29,11 @@ export const update = async (id: number, rfcUpdate: Rfc): Promise<Rfc | null> =>
 };
 
 export const remove = async (id: number): Promise<null | void> => {
-  const foundRfc = await Rfc.findByPk(id);
+  const foundRfc = await DI.rfcRepo.findOneOrFail({ id });
 
   if (!foundRfc) {
     return null;
   }
 
-  foundRfc.destroy();
+  await DI.rfcRepo.remove(foundRfc);
 };

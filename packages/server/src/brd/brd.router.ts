@@ -1,8 +1,8 @@
-import { Brd } from '@daiod/common';
-import express, { Request, Response } from 'express';
+import express, { Request, Response, Router } from 'express';
+import { Brd } from '../entities';
 import * as BrdService from './brd.service';
 
-export const brdRouter = express.Router({ mergeParams: true });
+export const brdRouter: Router = express.Router({ mergeParams: true });
 
 // GET brds
 brdRouter.get('/', async (req: Request, res: Response) => {

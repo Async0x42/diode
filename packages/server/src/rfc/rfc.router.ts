@@ -1,8 +1,8 @@
-import { Rfc } from '@daiod/common';
-import express, { Request, Response } from 'express';
+import express, { Request, Response, Router } from 'express';
+import { Rfc } from '../entities';
 import * as RfcService from './rfc.service';
 
-export const rfcRouter = express.Router({ mergeParams: true });
+export const rfcRouter: Router = express.Router({ mergeParams: true });
 
 // GET rfcs
 rfcRouter.get('/', async (req: Request, res: Response) => {

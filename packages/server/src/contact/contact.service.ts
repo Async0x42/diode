@@ -1,25 +1,27 @@
-import { Contact } from '@daiod/common';
+import { DI } from '../';
+import { Contact } from '../entities';
 
-export const findAll = async (): Promise<Contact[]> => Contact.findAll() || [];
+export const findAll = async (): Promise<Contact[]> => (await DI.contactRepo.find({})) || [];
 
-export const find = async (id: number): Promise<Contact | null> => Contact.findByPk(id);
+export const find = async (id: number): Promise<Contact | null> => await DI.contactRepo.findOneOrFail({ id });
 
 export const create = async (newContact: Contact): Promise<Contact> => {
-  const createdContact = Contact.create({
+  const createdContact = await DI.contactRepo.create({
     ...newContact,
   });
+  DI.contactRepo.persist(createdContact);
 
   return createdContact;
 };
 
 export const update = async (id: number, contactUpdate: Contact): Promise<Contact | null> => {
-  const foundContact = await Contact.findByPk(id);
+  const foundContact = await DI.contactRepo.findOneOrFail({ id });
 
   if (!foundContact) {
     return null;
   }
 
-  const updatedContact = await foundContact.update({
+  const updatedContact = await DI.contactRepo.assign(foundContact, {
     ...contactUpdate,
   });
 
@@ -27,11 +29,11 @@ export const update = async (id: number, contactUpdate: Contact): Promise<Contac
 };
 
 export const remove = async (id: number): Promise<null | void> => {
-  const foundContact = await Contact.findByPk(id);
+  const foundContact = await DI.contactRepo.findOneOrFail({ id });
 
   if (!foundContact) {
     return null;
   }
 
-  foundContact.destroy();
+  await DI.contactRepo.remove(foundContact);
 };

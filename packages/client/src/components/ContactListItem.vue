@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import type { ContactAttributes } from '@daiod/common';
+import type { IContact } from '@daiod/common';
 import type { PropType } from 'vue';
 
 const props = defineProps({
-  contact: { type: Object as PropType<ContactAttributes>, required: true },
+  contact: { type: Object as PropType<IContact>, required: true },
 });
 </script>
 
@@ -42,7 +42,7 @@ const props = defineProps({
       <router-link is="a" :to="`${$route.fullPath}/${props.contact.id}/edit`">
         <button
           type="button"
-          class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white p-1 inline-flex items-center hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white p-1 inline-flex items-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
           <heroicons-solid-pencil class="h-5 w-5" aria-hidden="true" />
         </button>
