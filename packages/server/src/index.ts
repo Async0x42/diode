@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import dotEnvExtended from 'dotenv-extended';
-import { MikroORM, RequestContext } from '@mikro-orm/core';
+import { EntityManager, EntityRepository, MikroORM, RequestContext } from '@mikro-orm/core';
 import { calendarRouter } from './calendar/calendar.router';
 import { rfcRouter } from './rfc/rfc.router';
 import { brdRouter } from './brd/brd.router';
@@ -11,31 +11,43 @@ import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/not-found.middleware';
 import { initDb } from './database';
 import config from './mikro-orm.config';
-export * from './entities';
+import { Brd, Calendar, CalendarItem, Contact, Rfc } from './entities';
 
 dotEnvExtended.load();
 
-if (!process.env.PORT) {
-  process.exit(1);
-}
-const PORT: number = parseInt(process.env.PORT as string, 10);
+const port: number = parseInt(process.env.PORT as string, 10) || 3000;
 const app = express();
-export const orm = await MikroORM.init(config);
-app.use((req, res, next) => {
-  RequestContext.create(orm.em, next);
-});
-initDb(true, true);
 
-app.use(helmet());
-app.use(cors());
-app.use(express.json());
-app.use('/api/calendar', calendarRouter);
-app.use('/api/rfcs', rfcRouter);
-app.use('/api/brds', brdRouter);
-app.use('/api/contacts', contactRouter);
-app.use(errorHandler);
-app.use(notFoundHandler);
+export const DI = {} as {
+  orm: MikroORM;
+  em: EntityManager;
+  calendarRepo: EntityRepository<Calendar>;
+  calendarItemRepo: EntityRepository<CalendarItem>;
+  rfcRepo: EntityRepository<Rfc>;
+  brdRepo: EntityRepository<Brd>;
+  contactRepo: EntityRepository<Contact>;
+};
 
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
-});
+(async () => {
+  DI.orm = await MikroORM.init(config);
+  DI.em = DI.orm.em;
+  DI.rfcRepo = DI.em.getRepository(Rfc);
+  app.use((req, res, next) => RequestContext.create(DI.orm.em, next));
+  initDb(true, true);
+
+  console.log(DI);
+
+  app.use(helmet());
+  app.use(cors());
+  app.use(express.json());
+  app.use('/api/calendar', calendarRouter);
+  app.use('/api/rfcs', rfcRouter);
+  app.use('/api/brds', brdRouter);
+  app.use('/api/contacts', contactRouter);
+  app.use(errorHandler);
+  app.use(notFoundHandler);
+
+  app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+  });
+})();

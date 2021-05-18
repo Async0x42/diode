@@ -1,17 +1,16 @@
-import { orm } from '..';
+import { DI } from '..';
 import { Calendar } from '../entities';
-const calendarRepo = orm.em.getRepository(Calendar);
 
-export const get = async (): Promise<Calendar | null> => calendarRepo.findOneOrFail({ id: 1 });
+export const get = async (): Promise<Calendar | null> => await DI.calendarRepo.findOneOrFail({ id: 1 });
 
 export const update = async (id: number, calendarUpdate: Calendar): Promise<Calendar | null> => {
-  const foundCalendar = await calendarRepo.findOneOrFail({ id });
+  const foundCalendar = await DI.calendarRepo.findOneOrFail({ id });
 
   if (!foundCalendar) {
     return null;
   }
 
-  const updatedCalendar = await calendarRepo.assign(foundCalendar, {
+  const updatedCalendar = await DI.calendarRepo.assign(foundCalendar, {
     ...calendarUpdate,
   });
 

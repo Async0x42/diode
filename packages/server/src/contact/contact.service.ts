@@ -1,13 +1,12 @@
-import { orm } from '..';
+import { DI } from '..';
 import { Contact } from '../entities';
-const contactRepo = orm.em.getRepository(Contact);
 
-export const findAll = async (): Promise<Contact[]> => contactRepo.find({}) || [];
+export const findAll = async (): Promise<Contact[]> => (await DI.contactRepo.find({})) || [];
 
-export const find = async (id: number): Promise<Contact | null> => contactRepo.findOneOrFail({ id });
+export const find = async (id: number): Promise<Contact | null> => await DI.contactRepo.findOneOrFail({ id });
 
 export const create = async (newContact: Contact): Promise<Contact> => {
-  const createdContact = contactRepo.create({
+  const createdContact = await DI.contactRepo.create({
     ...newContact,
   });
 
@@ -15,13 +14,13 @@ export const create = async (newContact: Contact): Promise<Contact> => {
 };
 
 export const update = async (id: number, contactUpdate: Contact): Promise<Contact | null> => {
-  const foundContact = await contactRepo.findOneOrFail({ id });
+  const foundContact = await DI.contactRepo.findOneOrFail({ id });
 
   if (!foundContact) {
     return null;
   }
 
-  const updatedContact = await contactRepo.assign(foundContact, {
+  const updatedContact = await DI.contactRepo.assign(foundContact, {
     ...contactUpdate,
   });
 
@@ -29,11 +28,11 @@ export const update = async (id: number, contactUpdate: Contact): Promise<Contac
 };
 
 export const remove = async (id: number): Promise<null | void> => {
-  const foundContact = await contactRepo.findOneOrFail({ id });
+  const foundContact = await DI.contactRepo.findOneOrFail({ id });
 
   if (!foundContact) {
     return null;
   }
 
-  contactRepo.remove(foundContact);
+  DI.contactRepo.remove(foundContact);
 };
