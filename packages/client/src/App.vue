@@ -6,7 +6,7 @@ import { useHead } from '@vueuse/head';
 // they will be rendered correctly in the html results with vite-ssg
 useHead({
   title: 'DIODE',
-  meta: [{ name: 'description', content: 'Deployment All-in-One Dashboard' }],
+  meta: [{ name: 'description', content: 'Deployment Information Organizer Dashboard _e_' }],
 });
 </script>
 
