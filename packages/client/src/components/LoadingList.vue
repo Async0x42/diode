@@ -1,14 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div
-    class="p-10 text-gray-600 leading-6 overflow-hidden"
-    style="
-      border-top-left-radius: 0.75rem;
-      border-top-right-radius: 0.75rem;
-      background-image: linear-gradient(to right, rgb(255, 241, 242), rgb(255, 228, 230));
-    "
-  >
+  <div class="rounded-t bg-red-300 p-10 text-gray-600 leading-6 overflow-hidden">
     <div class="flex text-gray-600 justify-around">
       <span class="rounded-md shadow-xs inline-flex">
         <button
@@ -21,13 +14,7 @@
               -webkit-backdrop-filter;
           "
         >
-          <svg
-            class="h-5 mr-3 -ml-1 w-5 block align-middle"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            style="animation: 1s linear 0s infinite normal none running spin"
-          >
+          <svg class="h-5 mr-3 animate-spin w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
             <path
               class="opacity-75"
