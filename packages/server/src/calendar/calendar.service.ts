@@ -1,4 +1,4 @@
-import { Calendar } from '@daiod/common';
+import { Calendar } from '../entities';
 
 export const get = async (): Promise<Calendar | null> => Calendar.findByPk(1);
 

@@ -1,19 +1,18 @@
-import { Brd, Calendar, CalendarItem, Contact, Rfc } from '@daiod/common';
-import { sequelize } from './sequelize';
-import './models';
+import { Brd, Calendar, CalendarItem, Contact, Rfc } from './entities';
+import { orm } from './';
 
 const createDefaultCalendar = () => {
-  Calendar.create({
+  orm.em.create(Calendar, {
     name: 'default',
   });
 };
 
 const createTestEntries = () => {
-  Brd.create({
+  orm.em.create(Brd, {
     title: 'BRD for a new server',
   });
 
-  CalendarItem.create({
+  orm.em.create(CalendarItem, {
     title: 'My event title',
     allDay: false,
     category: 'Test category',
@@ -22,7 +21,7 @@ const createTestEntries = () => {
     end: new Date(2021, 5, 16),
   });
 
-  Contact.create({
+  orm.em.create(Contact, {
     name: 'Jack John',
     title: 'Director',
     organization: 'My Org 2',
@@ -31,7 +30,7 @@ const createTestEntries = () => {
     phone: '555-555-5555 x1234',
     email: 'test@canadiantestorg.ca',
   });
-  Contact.create({
+  orm.em.create(Contact, {
     name: 'John Wizer',
     title: 'IM/IT Programmer Analyst',
     organization: 'My Org',
@@ -40,7 +39,7 @@ const createTestEntries = () => {
     phone: 'CSN: 555-5555',
     email: 'test@canadiantestorg.ca',
   });
-  Contact.create({
+  orm.em.create(Contact, {
     name: 'Milly Mally',
     title: 'IM/IT Deployment Specialist',
     organization: 'One Org',
@@ -50,18 +49,14 @@ const createTestEntries = () => {
     email: 'test@canadiantestorg.ca',
   });
 
-  Rfc.create({
+  orm.em.create(Rfc, {
     title: 'My RFC',
     class: 'Draft',
     purpose: 'Sustain',
   });
 };
 
-export const initialize = async (forceSync = false, initTestEntries = false) => {
-  await sequelize.sync({ force: forceSync });
+export const initDb = async (forceSync = false, initTestEntries = false) => {
   forceSync && createDefaultCalendar();
-
-  initTestEntries && createTestEntries();
+  forceSync && initTestEntries && createTestEntries();
 };
-
-export { sequelize as db } from './sequelize';

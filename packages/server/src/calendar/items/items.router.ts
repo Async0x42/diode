@@ -1,8 +1,8 @@
-import { CalendarItem } from '@daiod/common';
-import express, { Request, Response } from 'express';
+import express, { Request, Response, Router } from 'express';
+import { CalendarItem } from '../../entities';
 import * as ItemService from './items.service';
 
-export const itemsRouter = express.Router();
+export const itemsRouter: Router = express.Router();
 
 // GET items
 itemsRouter.get('/', async (req: Request, res: Response) => {

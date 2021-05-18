@@ -1,4 +1,4 @@
-import { Contact } from '@daiod/common';
+import { Contact } from '../entities';
 
 export const findAll = async (): Promise<Contact[]> => Contact.findAll() || [];
 

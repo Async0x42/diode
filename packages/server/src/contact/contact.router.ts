@@ -1,8 +1,8 @@
-import { Contact } from '@daiod/common';
-import express, { Request, Response } from 'express';
+import express, { Request, Response, Router } from 'express';
+import { Contact } from '../entities';
 import * as ContactService from './contact.service';
 
-export const contactRouter = express.Router({ mergeParams: true });
+export const contactRouter: Router = express.Router({ mergeParams: true });
 
 // GET contacts
 contactRouter.get('/', async (req: Request, res: Response) => {

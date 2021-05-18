@@ -2,13 +2,16 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import dotEnvExtended from 'dotenv-extended';
+import { MikroORM, RequestContext } from '@mikro-orm/core';
 import { calendarRouter } from './calendar/calendar.router';
 import { rfcRouter } from './rfc/rfc.router';
 import { brdRouter } from './brd/brd.router';
 import { contactRouter } from './contact/contact.router';
 import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/not-found.middleware';
-import { initialize } from './database';
+import { initDb } from './database';
+import config from './mikro-orm.config';
+export * from './entities';
 
 dotEnvExtended.load();
 
@@ -17,8 +20,11 @@ if (!process.env.PORT) {
 }
 const PORT: number = parseInt(process.env.PORT as string, 10);
 const app = express();
-
-initialize(true, true);
+export const orm = await MikroORM.init(config);
+app.use((req, res, next) => {
+  RequestContext.create(orm.em, next);
+});
+initDb(true, true);
 
 app.use(helmet());
 app.use(cors());

@@ -1,4 +1,4 @@
-import { Rfc } from '@daiod/common';
+import { Rfc } from '../entities';
 
 export const findAll = async (): Promise<Rfc[]> => Rfc.findAll() || [];
 

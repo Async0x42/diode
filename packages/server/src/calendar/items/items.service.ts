@@ -1,4 +1,4 @@
-import { CalendarItem } from '@daiod/common';
+import { CalendarItem } from '../../entities';
 
 export const findAll = async (): Promise<CalendarItem[]> => CalendarItem.findAll() || [];
 
