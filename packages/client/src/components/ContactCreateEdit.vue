@@ -10,7 +10,7 @@ const props = defineProps({
 });
 
 const { useField, handleSubmit } = useForm<Contact>({
-  defaultValues: props.contact == null ? undefined : { ...props.contact },
+  defaultValues: props.contact,
 });
 
 const name = useField('name', {
