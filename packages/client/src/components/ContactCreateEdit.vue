@@ -6,11 +6,11 @@ import type { ContactAttributes } from '@daiod/common';
 import type { PropType } from 'vue';
 
 const props = defineProps({
-  contact: { type: Object as PropType<ContactAttributes>, required: true },
+  contact: { type: Object as PropType<ContactAttributes> },
 });
 
 const { useField, handleSubmit } = useForm<ContactAttributes>({
-  defaultValues: { ...props.contact },
+  defaultValues: props.contact == null ? undefined : { ...props.contact },
 });
 
 const name = useField('name', {
@@ -26,7 +26,13 @@ const notes = useField('notes');
 
 // TODO: remove async and display loading information and errors
 const onSubmit = handleSubmit(async (formData) => {
-  const { data, finished } = await useAxios(`/api/contacts/${props.contact.id}`, { method: 'PUT', data: formData });
+  if (props.contact == null) {
+    // create
+    const { data, finished } = await useAxios(`/api/contacts`, { method: 'POST', data: formData });
+  } else {
+    // update
+    const { data, finished } = await useAxios(`/api/contacts/${props.contact.id}`, { method: 'PUT', data: formData });
+  }
 });
 </script>
 
