@@ -1,10 +1,11 @@
+import { IRfc } from '@daiod/common';
 import { BaseEntity, Entity, Property, PrimaryKey } from '@mikro-orm/core';
 
 export type RfcPurpose = 'Sustain' | 'Evolve' | 'Transform';
 export type RfcClass = 'Class 1' | 'Class 2' | 'Class 3' | 'Draft';
 
 @Entity()
-export class Rfc extends BaseEntity<Rfc, 'id'> {
+export class Rfc extends BaseEntity<Rfc, 'id'> implements IRfc {
   @PrimaryKey()
   id!: number;
 

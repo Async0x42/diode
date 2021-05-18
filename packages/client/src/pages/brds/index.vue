@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useAxios } from '@vueuse/integrations';
-import type { Brd } from '@daiod/server';
-const { data, error, isFinished } = useAxios<Brd>('/api/brds');
+import type { IBrd } from '@daiod/common';
+const { data, error, isFinished } = useAxios<IBrd>('/api/brds');
 </script>
 
 <template>

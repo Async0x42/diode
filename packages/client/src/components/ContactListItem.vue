@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import type { Contact } from '@daiod/server';
+import type { IContact } from '@daiod/common';
 import type { PropType } from 'vue';
 
 const props = defineProps({
-  contact: { type: Object as PropType<Contact>, required: true },
+  contact: { type: Object as PropType<IContact>, required: true },
 });
 </script>
 

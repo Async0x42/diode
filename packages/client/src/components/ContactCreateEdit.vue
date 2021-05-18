@@ -2,14 +2,14 @@
 import { defineProps } from 'vue';
 import { useForm } from 'vue-hooks-form';
 import { useAxios } from '@vueuse/integrations';
-import { Contact } from '@daiod/server';
+import type { IContact } from '@daiod/common';
 import type { PropType } from 'vue';
 
 const props = defineProps({
-  contact: { type: Object as PropType<Contact> },
+  contact: { type: Object as PropType<IContact> },
 });
 
-const { useField, handleSubmit } = useForm<Contact>({
+const { useField, handleSubmit } = useForm<IContact>({
   defaultValues: props.contact,
 });
 
@@ -44,7 +44,7 @@ const onSubmit = handleSubmit(async (formData) => {
       <div class="divide-y space-y-8 divide-gray-200">
         <div>
           <div>
-            <h3 class="font-medium text-lg text-gray-900 leading-6">Contact Information</h3>
+            <h3 class="font-medium text-lg text-gray-900 leading-6">IContact Information</h3>
             <p class="mt-1 text-sm text-gray-500">This information will be displayed publicly.</p>
           </div>
 

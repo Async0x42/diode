@@ -1,7 +1,8 @@
+import { ICalendarItem } from '@daiod/common';
 import { BaseEntity, Entity, Property, PrimaryKey } from '@mikro-orm/core';
 
 @Entity()
-export class CalendarItem extends BaseEntity<CalendarItem, 'id'> {
+export class CalendarItem extends BaseEntity<CalendarItem, 'id'> implements ICalendarItem {
   @PrimaryKey()
   id!: number;
 

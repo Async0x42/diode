@@ -13,7 +13,7 @@
     "preview-https": "serve dist"
   },
   "dependencies": {
-    "@daiod/server": "workspace:*",
+    "@daiod/common": "workspace:*",
     "@headlessui/vue": "^1.2.0",
     "@heroicons/vue": "^1.0.1",
     "@vueuse/core": "^4.11.0",

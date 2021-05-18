@@ -1,7 +1,8 @@
+import { IContact } from '@daiod/common';
 import { BaseEntity, Entity, Property, PrimaryKey } from '@mikro-orm/core';
 
 @Entity()
-export class Contact extends BaseEntity<Contact, 'id'> {
+export class Contact extends BaseEntity<Contact, 'id'> implements IContact {
   @PrimaryKey()
   id!: number;
 

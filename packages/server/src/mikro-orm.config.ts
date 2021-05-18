@@ -11,6 +11,7 @@ const config: Configuration<IDatabaseDriver<Connection>> | Options<IDatabaseDriv
   type: 'sqlite', // one of `mongo` | `mysql` | `mariadb` | `postgresql` | `sqlite`
   forceUtcTimezone: true,
   forceUndefined: true,
+  debug: true,
 };
 
 export default config;

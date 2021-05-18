@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useAxios } from '@vueuse/integrations';
-import type { Rfc } from '@daiod/server';
-const { data, error, isFinished } = useAxios<Rfc>('/api/rfcs');
+import type { IRfc } from '@daiod/common';
+const { data, error, isFinished } = useAxios<IRfc>('/api/rfcs');
 </script>
 
 <template>

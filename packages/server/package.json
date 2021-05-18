@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/Async0x42/daiod#readme",
   "dependencies": {
+    "@daiod/common": "workspace:*",
     "@mikro-orm/cli": "^4.5.5",
     "@mikro-orm/core": "^4.5.5",
     "@mikro-orm/reflection": "^4.5.5",
