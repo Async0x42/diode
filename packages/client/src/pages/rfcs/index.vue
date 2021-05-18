@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useAxios } from '@vueuse/integrations';
-const { data, error, isFinished } = useAxios('/api/rfcs');
+import type { RfcAttributes } from '@daiod/common';
+const { data, error, isFinished } = useAxios<RfcAttributes>('/api/rfcs');
 </script>
 
 <template>
