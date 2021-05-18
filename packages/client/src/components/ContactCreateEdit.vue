@@ -33,6 +33,8 @@ const onSubmit = handleSubmit(async (formData) => {
     // update
     const { data, finished } = await useAxios(`/api/contacts/${props.contact.id}`, { method: 'PUT', data: formData });
   }
+
+  // on success, display checkmark transition and then redirect to the new/edited contact
 });
 </script>
 
