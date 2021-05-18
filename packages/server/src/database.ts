@@ -59,4 +59,5 @@ const createTestEntries = () => {
 export const initDb = async (forceSync = false, initTestEntries = false) => {
   forceSync && createDefaultCalendar();
   forceSync && initTestEntries && createTestEntries();
+  orm.em.flush();
 };
