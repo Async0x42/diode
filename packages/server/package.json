@@ -12,7 +12,8 @@
     "lint:eslint": "eslint --fix --ext .js,.ts .",
     "lint:prettier": "prettier --write --loglevel warn **/*.{js,ts,json,md}",
     "db-debug": "mikro-orm debug",
-    "create-schema": "mikro-orm schema:create -r"
+    "create-schema": "mikro-orm schema:create -r",
+    "generate:cache": "mikro-orm cache:generate"
   },
   "repository": {
     "type": "git",
