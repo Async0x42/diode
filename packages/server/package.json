@@ -2,7 +2,7 @@
   "name": "@daiod/server",
   "version": "0.0.1",
   "description": "",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
     "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
     "build": "tsc --project ./",

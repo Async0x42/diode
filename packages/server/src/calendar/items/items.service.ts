@@ -1,11 +1,12 @@
+import { orm } from '../..';
 import { CalendarItem } from '../../entities';
 
-export const findAll = async (): Promise<CalendarItem[]> => CalendarItem.findAll() || [];
+export const findAll = async (): Promise<CalendarItem[]> => orm.em.find(CalendarItem, {}) || [];
 
-export const find = async (id: number): Promise<CalendarItem | null> => CalendarItem.findByPk(id);
+export const find = async (id: number): Promise<CalendarItem | null> => orm.em.findOneOrFail(CalendarItem, { id });
 
 export const create = async (newCalendarItem: CalendarItem): Promise<CalendarItem> => {
-  const createdCalendarItem = CalendarItem.create({
+  const createdCalendarItem = orm.em.create(CalendarItem, {
     ...newCalendarItem,
   });
 
@@ -13,13 +14,13 @@ export const create = async (newCalendarItem: CalendarItem): Promise<CalendarIte
 };
 
 export const update = async (id: number, calendarItemUpdate: CalendarItem): Promise<CalendarItem | null> => {
-  const foundCalendarItem = await CalendarItem.findByPk(id);
+  const foundCalendarItem = orm.em.findOneOrFail(CalendarItem, { id });
 
   if (!foundCalendarItem) {
     return null;
   }
 
-  const updatedCalendarItem = await foundCalendarItem.update({
+  const updatedCalendarItem = await orm.em.assign(foundCalendarItem, {
     ...calendarItemUpdate,
   });
 
@@ -27,11 +28,11 @@ export const update = async (id: number, calendarItemUpdate: CalendarItem): Prom
 };
 
 export const remove = async (id: number): Promise<null | void> => {
-  const foundCalendarItem = await CalendarItem.findByPk(id);
+  const foundCalendarItem = orm.em.findOneOrFail(CalendarItem, { id });
 
   if (!foundCalendarItem) {
     return null;
   }
 
-  foundCalendarItem.destroy();
+  orm.em.remove(foundCalendarItem);
 };

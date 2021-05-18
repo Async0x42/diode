@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 import ContactListItem from './ContactListItem.vue';
-import type { ContactAttributes } from '@daiod/common';
+import type { Contact } from '@daiod/server';
 import type { PropType } from 'vue';
 import { useRouteSearchWithData } from '~/logic';
 
 const props = defineProps({
-  contacts: { type: Array as PropType<ContactAttributes[]>, required: true },
+  contacts: { type: Array as PropType<Contact[]>, required: true },
 });
 
 const { results } = useRouteSearchWithData(props.contacts, ['name', 'email', 'phone', 'title', 'organization', 'department', 'notes']);

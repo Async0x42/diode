@@ -6,7 +6,7 @@ import { Contact } from '@daiod/server';
 import type { PropType } from 'vue';
 
 const props = defineProps({
-  contact: { type: Object as PropType<typeof Contact> },
+  contact: { type: Object as PropType<Contact> },
 });
 
 const { useField, handleSubmit } = useForm<Contact>({

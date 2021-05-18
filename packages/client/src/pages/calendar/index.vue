@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { useAxios } from '@vueuse/integrations';
-import type { CalendarItemAttributes } from '@daiod/common';
+import type { CalendarItem } from '@daiod/server';
 import CalendarItemList from '~/components/CalendarItemList.vue';
 import LoadingList from '~/components/LoadingList.vue';
 import LoadingError from '~/components/LoadingError.vue';
-const { data, error, isFinished } = useAxios<CalendarItemAttributes[]>('/api/calendar/items');
+const { data, error, isFinished } = useAxios<CalendarItem[]>('/api/calendar/items');
 </script>
 
 <template>
-  <CalendarItemList v-if="isFinished" :items="data" />
+  <CalendarItemList v-if="data && isFinished" :items="data" />
   <LoadingError v-else-if="error" :error="error" />
   <LoadingList v-else />
 </template>
