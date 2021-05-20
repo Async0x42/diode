@@ -41,7 +41,7 @@ const props = defineProps({
           <dd class="mt-1 text-sm text-gray-900">{{ props.contact.phone }}</dd>
         </div>
         <div class="sm:col-span-2">
-          <dt class="font-medium text-sm text-gray-500">About</dt>
+          <dt class="font-medium text-sm text-gray-500">Notes</dt>
           <dd class="mt-1 text-sm text-gray-900">
             {{ props.contact.notes }}
           </dd>
