@@ -9,3 +9,4 @@ node_modules
 .idea/
 packages/server/*.db
 packages/server/temp
+packages/server/.env
