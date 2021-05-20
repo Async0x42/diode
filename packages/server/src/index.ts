@@ -38,7 +38,12 @@ export const DI = {} as {
   DI.brdRepo = DI.em.getRepository(Brd);
   DI.contactRepo = DI.em.getRepository(Contact);
   app.use((req, res, next) => RequestContext.create(DI.orm.em, next));
-  initDb();
+
+  if (process.env.RESET_DB === 'true') {
+    console.log(process.env.RESET_DB);
+    console.log('dropping database');
+    initDb();
+  }
 
   app.use(helmet());
   app.use(cors());

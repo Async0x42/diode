@@ -7,8 +7,8 @@ const config: Configuration<IDatabaseDriver<Connection>> | Options<IDatabaseDriv
   highlighter: new SqlHighlighter(),
   entities: ['./dist/entities/**/*.js'], // TS entities (source), relative to `baseDir`
   entitiesTs: ['./src/entities/**/*.ts'], // TS entities (source), relative to `baseDir`
-  dbName: 'diode.db',
-  type: 'sqlite', // one of `mongo` | `mysql` | `mariadb` | `postgresql` | `sqlite`
+  dbName: process.env.DB_NAME || 'diode.db',
+  type: (process.env.DB_TYPE as keyof typeof Configuration.PLATFORMS) || 'sqlite',
   forceUtcTimezone: true,
   forceUndefined: true,
   debug: true,
