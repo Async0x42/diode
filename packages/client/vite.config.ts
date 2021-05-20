@@ -111,7 +111,7 @@ export default defineConfig({
   },
 
   optimizeDeps: {
-    include: ['vue', 'vue-router', '@vueuse/core', '@vueuse/integrations'],
+    include: ['vue', 'vue-router', '@vueuse/core', '@vueuse/integrations', 'vue-hooks-form'],
     exclude: ['vue-demi'],
   },
 });
