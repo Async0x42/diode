@@ -44,6 +44,9 @@ export const DI = {} as {
     console.log('dropping database');
     initDb();
   }
+  const migrator = DI.orm.getMigrator();
+  await migrator.up(); // runs migrations up to the latest
+  DI.em.flush();
 
   app.use(helmet());
   app.use(cors());
