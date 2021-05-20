@@ -5,15 +5,14 @@
   "main": "src/index.ts",
   "scripts": {
     "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
-    "build": "tsc --project ./",
+    "build": "tsc --project ./ ",
     "lint": "run-s lint:all:*",
     "lint:all:eslint": "pnpm run lint:eslint",
     "lint:all:prettier": "pnpm run lint:prettier",
     "lint:eslint": "eslint --fix --ext .js,.ts .",
     "lint:prettier": "prettier --write --loglevel warn **/*.{js,ts,json,md}",
     "db-debug": "mikro-orm debug",
-    "create-schema": "mikro-orm schema:create -r",
-    "generate:cache": "mikro-orm cache:generate"
+    "create-schema": "mikro-orm schema:create -r"
   },
   "repository": {
     "type": "git",
