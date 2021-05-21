@@ -9,7 +9,7 @@ export const create = async (newCalendarItem: CalendarItem): Promise<CalendarIte
   const createdCalendarItem = await DI.calendarItemRepo.create({
     ...newCalendarItem,
   });
-  DI.calendarItemRepo.persist(createdCalendarItem);
+  DI.calendarItemRepo.persistAndFlush(createdCalendarItem);
 
   return createdCalendarItem;
 };
@@ -24,6 +24,7 @@ export const update = async (id: number, calendarItemUpdate: CalendarItem): Prom
   const updatedCalendarItem = await DI.calendarItemRepo.assign(foundCalendarItem, {
     ...calendarItemUpdate,
   });
+  DI.calendarItemRepo.flush();
 
   return updatedCalendarItem;
 };
@@ -35,5 +36,5 @@ export const remove = async (id: number): Promise<null | void> => {
     return null;
   }
 
-  await DI.calendarItemRepo.remove(foundCalendarItem);
+  await DI.calendarItemRepo.removeAndFlush(foundCalendarItem);
 };

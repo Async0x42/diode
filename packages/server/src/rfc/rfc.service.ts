@@ -9,7 +9,7 @@ export const create = async (newRfc: Rfc): Promise<Rfc> => {
   const createdRfc = await DI.rfcRepo.create({
     ...newRfc,
   });
-  DI.rfcRepo.persist(createdRfc);
+  DI.rfcRepo.persistAndFlush(createdRfc);
 
   return createdRfc;
 };
@@ -24,6 +24,7 @@ export const update = async (id: number, rfcUpdate: Rfc): Promise<Rfc | null> =>
   const updatedRfc = await DI.rfcRepo.assign(foundRfc, {
     ...rfcUpdate,
   });
+  DI.rfcRepo.flush();
 
   return updatedRfc;
 };
@@ -35,5 +36,5 @@ export const remove = async (id: number): Promise<null | void> => {
     return null;
   }
 
-  await DI.rfcRepo.remove(foundRfc);
+  await DI.rfcRepo.removeAndFlush(foundRfc);
 };

@@ -9,7 +9,7 @@ export const create = async (newBrd: Brd): Promise<Brd> => {
   const createdBrd = await DI.brdRepo.create({
     ...newBrd,
   });
-  DI.brdRepo.persist(createdBrd);
+  DI.brdRepo.persistAndFlush(createdBrd);
 
   return createdBrd;
 };
@@ -24,6 +24,7 @@ export const update = async (id: number, brdUpdate: Brd): Promise<Brd | null> =>
   const updatedBrd = await DI.brdRepo.assign(foundBrd, {
     ...brdUpdate,
   });
+  DI.brdRepo.flush();
 
   return updatedBrd;
 };
@@ -35,5 +36,5 @@ export const remove = async (id: number): Promise<null | void> => {
     return null;
   }
 
-  await DI.brdRepo.remove(foundBrd);
+  await DI.brdRepo.removeAndFlush(foundBrd);
 };

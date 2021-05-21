@@ -9,7 +9,7 @@ export const create = async (newContact: Contact): Promise<Contact> => {
   const createdContact = await DI.contactRepo.create({
     ...newContact,
   });
-  DI.contactRepo.persist(createdContact);
+  DI.contactRepo.persistAndFlush(createdContact);
 
   return createdContact;
 };
@@ -24,6 +24,7 @@ export const update = async (id: number, contactUpdate: Contact): Promise<Contac
   const updatedContact = await DI.contactRepo.assign(foundContact, {
     ...contactUpdate,
   });
+  DI.contactRepo.flush();
 
   return updatedContact;
 };
@@ -35,5 +36,5 @@ export const remove = async (id: number): Promise<null | void> => {
     return null;
   }
 
-  await DI.contactRepo.remove(foundContact);
+  await DI.contactRepo.removeAndFlush(foundContact);
 };
