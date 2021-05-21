@@ -2,6 +2,7 @@
 import { defineProps } from 'vue';
 import { useForm } from 'vue-hooks-form';
 import { useAxios } from '@vueuse/integrations';
+import { useRouter } from 'vue-router';
 import type { IContact } from '@diode/common';
 import type { PropType } from 'vue';
 
@@ -12,6 +13,8 @@ const props = defineProps({
 const { useField, handleSubmit } = useForm<IContact>({
   defaultValues: props.contact,
 });
+
+const router = useRouter();
 
 const name = useField('name', {
   rule: { required: true },
@@ -29,13 +32,22 @@ const onSubmit = handleSubmit(async (formData) => {
   if (props.contact == null) {
     // create
     const { data, finished } = await useAxios(`/api/contacts`, { method: 'POST', data: formData });
+    router.push({ name: 'contacts' });
   } else {
     // update
     const { data, finished } = await useAxios(`/api/contacts/${props.contact.id}`, { method: 'PUT', data: formData });
+    router.push({ name: 'contacts' });
   }
 
   // on success, display checkmark transition and then redirect to the new/edited contact
 });
+
+const onDelete = async () => {
+  if (props.contact != null) {
+    const { data, finished } = await useAxios(`/api/contacts/${props.contact.id}`, { method: 'DELETE' });
+    router.push({ name: 'contacts' });
+  }
+};
 </script>
 
 <template>
@@ -162,8 +174,18 @@ const onSubmit = handleSubmit(async (formData) => {
       <div class="pt-5">
         <div class="flex justify-end">
           <button
+            v-if="props.contact != null"
+            type="button"
+            class="border border-transparent rounded-md font-medium bg-red-600 shadow-sm text-sm text-white mr-3 py-2 px-4 inline-flex justify-center focus:outline-none hover:bg-red-700 focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+            @click="onDelete()"
+          >
+            Delete
+          </button>
+          <div class="flex-1"></div>
+          <button
             type="button"
             class="bg-white border rounded-md font-medium border-gray-300 shadow-sm text-sm py-2 px-4 text-gray-700 focus:outline-none hover:bg-gray-50 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            @click="$router.back()"
           >
             Cancel
           </button>
