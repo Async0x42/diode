@@ -23,6 +23,7 @@ const { results } = useRouteSearchWithData(props.contacts, ['name', 'email', 'ph
                 <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Name</th>
                 <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Title</th>
                 <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Phone</th>
+                <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Notes</th>
                 <th scope="col" class="py-3 px-6 relative">
                   <span class="sr-only">Edit</span>
                 </th>
