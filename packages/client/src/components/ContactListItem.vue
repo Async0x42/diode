@@ -6,18 +6,40 @@ import type { PropType } from 'vue';
 const props = defineProps({
   contact: { type: Object as PropType<IContact>, required: true },
 });
+
+const onEmailContact = () => {
+  window.location.href = `mailto:${props.contact.email}`;
+};
+
+const onPhoneContact = () => {
+  window.location.href = `tel:${props.contact.phone}`;
+};
 </script>
 
 <template>
   <tr>
     <td class="py-4 px-6 whitespace-nowrap">
-      <router-link is="a" :to="`${$route.fullPath}/${props.contact.id}/view`">
-        <div class="flex items-center">
-          <!-- <div class="flex-shrink-0 h-10 w-10">
-                      <img class="rounded-full h-10 w-10" :src="props.contact.image" alt="" />
-                    </div>
-          <div class="ml-4"> if adding the img from above, change below div to ml-4 -->
-          <div>
+      <div class="flex items-center">
+        <div class="flex-shrink-0 h-10 w-20">
+          <button
+            v-if="props.contact.email"
+            type="button"
+            class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white p-1 inline-flex items-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            @click="onEmailContact"
+          >
+            <heroicons-solid-mail class="h-5 w-5" aria-hidden="true" />
+          </button>
+          <button
+            v-if="props.contact.phone"
+            type="button"
+            class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white ml-4 p-1 inline-flex items-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            @click="onPhoneContact"
+          >
+            <heroicons-solid-phone class="h-5 w-5" aria-hidden="true" />
+          </button>
+        </div>
+        <router-link is="a" :to="`${$route.fullPath}/${props.contact.id}/view`">
+          <div class="ml-4">
             <div class="font-medium text-sm text-gray-900">
               {{ props.contact.name }}
             </div>
@@ -25,8 +47,8 @@ const props = defineProps({
               {{ props.contact.email }}
             </div>
           </div>
-        </div>
-      </router-link>
+        </router-link>
+      </div>
     </td>
     <td class="py-4 px-6 whitespace-nowrap">
       <div class="text-sm text-gray-900">{{ props.contact.title }}</div>
@@ -34,9 +56,6 @@ const props = defineProps({
     </td>
     <td class="text-sm py-4 px-6 text-gray-500 whitespace-nowrap">
       {{ props.contact.phone }}
-    </td>
-    <td class="text-sm py-4 px-6 text-gray-500 whitespace-nowrap">
-      {{ props.contact.email }}
     </td>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
       <router-link is="a" :to="`${$route.fullPath}/${props.contact.id}/edit`">
