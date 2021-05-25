@@ -10,6 +10,9 @@ export class Rfc extends BaseEntity<Rfc, 'id'> implements IRfc {
   id!: number;
 
   @Property()
+  number?: number;
+
+  @Property()
   title!: string;
 
   @Property()
@@ -43,7 +46,7 @@ export class Rfc extends BaseEntity<Rfc, 'id'> implements IRfc {
   conceptOfTesting?: string;
 
   @Property()
-  conceptofImplementation?: string;
+  conceptOfImplementation?: string;
 
   @Property()
   backoutPlan?: string;

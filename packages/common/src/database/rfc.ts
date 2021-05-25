@@ -3,6 +3,7 @@ export type RfcClass = 'Class 1' | 'Class 2' | 'Class 3' | 'Draft';
 
 export interface IRfc {
   id: number;
+  number?: number;
   title: string;
   class: RfcClass;
   purpose: RfcPurpose;
@@ -14,7 +15,7 @@ export interface IRfc {
   affectedInformationSystem?: string;
   conceptOfOperation?: string;
   conceptOfTesting?: string;
-  conceptofImplementation?: string;
+  conceptOfImplementation?: string;
   backoutPlan?: string;
   impactAssessmentDueDate?: Date;
 }
