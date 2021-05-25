@@ -44,7 +44,7 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           filename: 'diode-server-${{ github.sha }}.zip'
-          path: 'packages/server/dist'
+          path: 'packages/server/src'
 
       - name: Release
         uses: 'marvinpinto/action-automatic-releases@latest'

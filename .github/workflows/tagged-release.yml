@@ -48,7 +48,7 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           filename: 'diode-server-${{ steps.get_version.outputs.VERSION }}.zip'
-          path: 'packages/server/dist'
+          path: 'packages/server/src'
 
       - name: Release
         uses: docker://antonyurchenko/git-release:latest
