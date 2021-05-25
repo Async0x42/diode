@@ -93,30 +93,79 @@ const onDelete = async () => {
             <div class="sm:col-span-3">
               <label for="rfcClass" class="font-medium text-sm text-gray-700 block"> Class </label>
               <div class="mt-1">
-                <input
+                <select
                   id="rfcClass"
                   :ref="rfcClass.ref"
                   v-model="rfcClass.value"
                   name="rfcClass"
-                  type="text"
-                  class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
-                />
+                  class="rounded-md border-gray-300 mt-1 text-base w-full py-2 pr-10 pl-3 block focus:outline-none sm:text-sm focus:ring-indigo-500 focus:border-indigo-500"
+                >
+                  <option>Draft</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                </select>
+              </div>
+              <div class="space-y-2 mt-2 text-sm text-gray-500">
+                <!-- was a p -->
+                <p>
+                  These descriptions are guidelines and are not absolute. The overriding consideration should be the measurable impact on related
+                  Configuration Items (CIs) and organizations.
+                </p>
+                <p>
+                  Draft:
+                  <br />
+                  When a new RFC is initiated, it’s classification is defaulted to RFCs. A draft RFC implies that it is still being worked on and as a
+                  result, is not yet viewable by other users. Once the Local Authority (LA) has reviewed the RFC, they will assign its class as Class
+                  1, Class 2 or Class 3 based on the potential impact as defined below. During processing, the Classification of a Change may be
+                  amended to a more appropriate level should it be determined that the Change needs to be escalated or de-escalated.
+                </p>
+                <p>
+                  Class 1:
+                  <br />
+                  A Change that has Departmental level impact such as an impact on common Information Management (IM) services (as defined in IMD 100)
+                  or standards, IM policies, or that impacts more than one Environmental Command or Group Principle (EC/GP). This class of change
+                  includes the modification of Configuration Items (CIs) used by more than one specific user community (EC/GP) nationally. The
+                  Information Management Configuration Control Board (IM CCB) approves all Class 1 Changes. For an Immediate Class 1 change, impact
+                  assessments must be submitted within 24 hours of the RFC being opened for Impact Assessment. Routine Class 1 impact assessments have
+                  a submission deadline of 10 business days.
+                </p>
+                <p>
+                  Class 2:
+                  <br />
+                  A change that impacts functional IM Services (as defined in IMD 100) but does not have an impact on common IM services and
+                  standards. Class 2 changes only affect Configuration Items (CIs) solely within a specific user community (EC/GP). For Class 2 impact
+                  assessment turnaround times please consult the appropriate Change Management Agent (CMA). The appropriate EC/GP CCB or CMA shall
+                  approve class 2 changes.
+                </p>
+                <p>
+                  Class 3:
+                  <br />
+                  A change that impacts the Local (delegated authority) level (Base, Wing, Formation or Units) but does not impact common or
+                  functional IM services or standards. This change only affects Configuration Items (CIs) that are used by a subset of users of a
+                  specific user community (EC/GP). Class 3 changes only affect CIs solely within a specific user community (EC/GP). For Class 3 impact
+                  assessment turnaround times please consult the appropriate Local Authority (LA). The appropriate Base/Wing/Formation CCB or LA is
+                  responsible for approving Class 3 changes.
+                </p>
               </div>
             </div>
 
             <div class="sm:col-span-3">
               <label for="purpose" class="font-medium text-sm text-gray-700 block"> Purpose </label>
               <div class="mt-1">
-                <input
+                <select
                   id="purpose"
                   :ref="purpose.ref"
                   v-model="purpose.value"
                   name="purpose"
-                  type="text"
-                  class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
-                />
+                  class="rounded-md border-gray-300 mt-1 text-base w-full py-2 pr-10 pl-3 block focus:outline-none sm:text-sm focus:ring-indigo-500 focus:border-indigo-500"
+                >
+                  <option>Sustain</option>
+                  <option>Evolve</option>
+                  <option>Transform</option>
+                </select>
               </div>
-              <div class="mt-2 text-sm text-gray-500">
+              <div class="space-y-2 mt-2 text-sm text-gray-500">
                 <!-- was a p -->
                 <p>
                   This field is mandatory. It documents why this particular change is required. Only one reason can be selected for the RFC. "The
@@ -142,20 +191,6 @@ const onDelete = async () => {
                   – Enterprise-wide files. GC IT Enterprise Services ( SSC's initiatives i.e. ETI, Data Center, etc.). New IT Strategy resulting from
                   major policy/legislative change. Major Modifications or additions to established program activities".
                 </p>
-              </div>
-            </div>
-
-            <div class="sm:col-span-3">
-              <label for="iaDueDate" class="font-medium text-sm text-gray-700 block"> Impact Assessment Due Date </label>
-              <div class="mt-1">
-                <input
-                  id="iaDueDate"
-                  :ref="iaDueDate.ref"
-                  v-model="iaDueDate.value"
-                  name="iaDueDate"
-                  type="text"
-                  class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
-                />
               </div>
             </div>
 
@@ -217,7 +252,7 @@ const onDelete = async () => {
               </p>
             </div>
 
-            <div class="sm:col-span-3">
+            <div class="sm:col-span-6">
               <label for="parentSystem" class="font-medium text-sm text-gray-700 block"> Parent System </label>
               <div class="mt-1">
                 <textarea
@@ -285,7 +320,7 @@ const onDelete = async () => {
                   class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
                 />
               </div>
-              <div class="mt-2 text-sm text-gray-500">
+              <div class="space-y-2 mt-2 text-sm text-gray-500">
                 <!-- was a p -->
                 <p>
                   Provide specific details (configuration identification numbers) about the workstation, server and/or software affected by the
@@ -384,6 +419,20 @@ const onDelete = async () => {
                 />
               </div>
               <p class="mt-2 text-sm text-gray-500">Description of activities required should the implementation of the requested change fail.</p>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label for="iaDueDate" class="font-medium text-sm text-gray-700 block"> Impact Assessment Due Date </label>
+              <div class="mt-1">
+                <input
+                  id="iaDueDate"
+                  :ref="iaDueDate.ref"
+                  v-model="iaDueDate.value"
+                  name="iaDueDate"
+                  type="text"
+                  class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
+                />
+              </div>
             </div>
           </div>
         </div>
