@@ -11,8 +11,8 @@ const props = defineProps({
 <template>
   <div class="bg-white shadow overflow-hidden sm:rounded-lg">
     <div class="py-5 px-4 sm:px-6">
-      <h3 class="font-medium text-lg text-gray-900 leading-6">RFC Information</h3>
-      <p class="mt-1 text-sm max-w-2xl text-gray-500">RFC details and notes.</p>
+      <h3 class="font-medium text-lg text-gray-900 leading-6">BRD Information</h3>
+      <p class="mt-1 text-sm max-w-2xl text-gray-500">BRD details and notes.</p>
     </div>
     <div class="border-t border-gray-200 py-5 px-4 sm:px-6">
       <dl class="grid gap-x-4 gap-y-8 grid-cols-1 sm:grid-cols-2">
