@@ -1,2 +1,2 @@
 export * from './misc';
-export * from './database';
+export * from './entities';
