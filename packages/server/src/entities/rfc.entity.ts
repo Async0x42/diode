@@ -37,6 +37,9 @@ export class Rfc extends BaseEntity<Rfc, 'id'> implements IRfc {
   affectedInfrastructure?: string;
 
   @Property()
+  affectedConfigurationItems?: string;
+
+  @Property()
   affectedInformationSystem?: string;
 
   @Property()

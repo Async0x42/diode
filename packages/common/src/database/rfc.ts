@@ -12,6 +12,7 @@ export interface IRfc {
   businessCase?: string;
   securityImplications?: string;
   affectedInfrastructure?: string;
+  affectedConfigurationItems?: string;
   affectedInformationSystem?: string;
   conceptOfOperation?: string;
   conceptOfTesting?: string;
