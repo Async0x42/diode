@@ -5,6 +5,8 @@ import { useAxios } from '@vueuse/integrations';
 import { useRouter } from 'vue-router';
 import type { IContact } from '@diode/common';
 import type { PropType } from 'vue';
+import FormInput from './FormInput.vue';
+import FormTextArea from './FormTextArea.vue';
 
 const props = defineProps({
   contact: { type: Object as PropType<IContact> },
@@ -61,112 +63,22 @@ const onDelete = async () => {
           </div>
 
           <div class="mt-6 grid gap-y-6 gap-x-4 grid-cols-1 sm:grid-cols-6">
-            <div class="sm:col-span-6">
-              <label for="name" class="font-medium text-sm text-gray-700 block"> Name </label>
-              <div class="mt-1">
-                <input
-                  id="name"
-                  :ref="name.ref"
-                  v-model="name.value"
-                  type="text"
-                  name="name"
-                  autocomplete="name"
-                  class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
-                />
-              </div>
-            </div>
+            <FormInput label="Name" :field="name" name="name" class="sm:col-span-3" />
+            <FormInput label="Title" :field="title" name="title" class="sm:col-span-3" />
 
-            <div class="sm:col-span-3">
-              <label for="email" class="font-medium text-sm text-gray-700 block"> Email address </label>
-              <div class="mt-1">
-                <input
-                  id="email"
-                  :ref="email.ref"
-                  v-model="email.value"
-                  name="email"
-                  type="email"
-                  autocomplete="email"
-                  class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
-                />
-              </div>
-            </div>
+            <FormInput label="Organization" :field="organization" name="organization" class="sm:col-span-3" />
+            <FormInput label="Department" :field="department" name="department" class="sm:col-span-3" />
 
-            <div class="sm:col-span-3">
-              <label for="phone" class="font-medium text-sm text-gray-700 block"> Phone number </label>
-              <div class="mt-1">
-                <input
-                  id="phone"
-                  :ref="phone.ref"
-                  v-model="phone.value"
-                  name="phone"
-                  type="tel"
-                  autocomplete="tel"
-                  class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
-                />
-              </div>
-            </div>
+            <FormInput label="Email address" :field="email" name="email" type="email" class="sm:col-span-3" />
+            <FormInput label="Phone number" :field="phone" name="phone" type="tel" class="sm:col-span-3" />
 
-            <div class="sm:col-span-3">
-              <label for="organization" class="font-medium text-sm text-gray-700 block"> Organization </label>
-              <div class="mt-1">
-                <input
-                  id="organization"
-                  :ref="organization.ref"
-                  v-model="organization.value"
-                  name="organization"
-                  type="text"
-                  autocomplete="organization"
-                  class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
-                />
-              </div>
-            </div>
-
-            <div class="sm:col-span-3">
-              <label for="department" class="font-medium text-sm text-gray-700 block"> Department </label>
-              <div class="mt-1">
-                <input
-                  id="department"
-                  :ref="department.ref"
-                  v-model="department.value"
-                  name="department"
-                  type="text"
-                  autocomplete="department"
-                  class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
-                />
-              </div>
-            </div>
-
-            <div class="sm:col-span-3">
-              <label for="title" class="font-medium text-sm text-gray-700 block"> Title </label>
-              <div class="mt-1">
-                <input
-                  id="title"
-                  :ref="title.ref"
-                  v-model="title.value"
-                  name="title"
-                  type="text"
-                  autocomplete="title"
-                  class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
-                />
-              </div>
-            </div>
-
-            <div class="sm:col-span-6">
-              <label for="notes" class="font-medium text-sm text-gray-700 block"> Notes </label>
-              <div class="mt-1">
-                <textarea
-                  id="notes"
-                  :ref="notes.ref"
-                  v-model="notes.value"
-                  name="notes"
-                  :rows="3"
-                  class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
-                />
-              </div>
-              <p class="mt-2 text-sm text-gray-500">
-                Write a few sentences detailing the role of this contact, and for what reasons they would be contacted.
-              </p>
-            </div>
+            <FormTextArea label="Description" :field="notes" name="notes" class="sm:col-span-6">
+              <template #note>
+                <p class="mt-2 text-sm text-gray-500">
+                  Write a few sentences detailing the role of this contact, and for what reasons they would be contacted.
+                </p>
+              </template>
+            </FormTextArea>
           </div>
         </div>
       </div>
