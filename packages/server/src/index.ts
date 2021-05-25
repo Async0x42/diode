@@ -11,7 +11,8 @@ import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/not-found.middleware';
 import { initDb } from './database';
 import config from './mikro-orm.config';
-import { Brd, Calendar, CalendarItem, Contact, Rfc } from './entities';
+import { Brd, Calendar, CalendarItem, Contact, Dns, Rfc } from './entities';
+import { dnsRouter } from './dns/dns.router';
 export * from './entities';
 
 dotEnvExtended.load();
@@ -27,6 +28,7 @@ export const DI = {} as {
   rfcRepo: EntityRepository<Rfc>;
   brdRepo: EntityRepository<Brd>;
   contactRepo: EntityRepository<Contact>;
+  dnsRepo: EntityRepository<Dns>;
 };
 
 (async () => {
@@ -37,6 +39,7 @@ export const DI = {} as {
   DI.rfcRepo = DI.em.getRepository(Rfc);
   DI.brdRepo = DI.em.getRepository(Brd);
   DI.contactRepo = DI.em.getRepository(Contact);
+  DI.dnsRepo = DI.em.getRepository(Dns);
   app.use((req, res, next) => RequestContext.create(DI.orm.em, next));
 
   if (process.env.RESET_DB === 'true') {
@@ -55,6 +58,7 @@ export const DI = {} as {
   app.use('/api/rfcs', rfcRouter);
   app.use('/api/brds', brdRouter);
   app.use('/api/contacts', contactRouter);
+  app.use('/api/dns', dnsRouter);
   app.use(errorHandler);
   app.use(notFoundHandler);
 
