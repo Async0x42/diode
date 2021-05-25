@@ -139,7 +139,7 @@ const onDelete = async () => {
                 </p>
                 <p>
                   TRANSFORM: Includes new IM/IT Services & Capabilities: Vote 5 projects. Partner Program Transformation. TBS CIOB Strategic Projects
-                  – Enterprise-wide files. GC IT Enterprise Services ( SSC’s initiatives i.e. ETI, Data Center, etc.). New IT Strategy resulting from
+                  – Enterprise-wide files. GC IT Enterprise Services ( SSC's initiatives i.e. ETI, Data Center, etc.). New IT Strategy resulting from
                   major policy/legislative change. Major Modifications or additions to established program activities".
                 </p>
               </div>
