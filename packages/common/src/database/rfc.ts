@@ -1,11 +1,21 @@
 export type RfcPurpose = 'Sustain' | 'Evolve' | 'Transform';
 export type RfcClass = 'Class 1' | 'Class 2' | 'Class 3' | 'Draft';
+export type RfcStatus =
+  | 'New'
+  | 'Open for Impact Analysis'
+  | 'Not Approved'
+  | 'Deferred'
+  | 'Approved'
+  | 'Closed'
+  | 'Cancelled'
+  | 'Returned for Modification';
 
 export interface IRfc {
   id: number;
   rfcNumber?: number;
   title: string;
   rfcClass: RfcClass;
+  status: RfcStatus;
   purpose: RfcPurpose;
   description?: string;
   parentSystem?: string;

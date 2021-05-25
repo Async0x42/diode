@@ -42,6 +42,9 @@ const onBrowseRfc = () => {
       </div>
     </td>
     <td class="text-sm py-4 px-6 text-gray-500">
+      {{ props.rfc.status }}
+    </td>
+    <td class="text-sm py-4 px-6 text-gray-500">
       {{ props.rfc.impactAssessmentDueDate }}
     </td>
     <td class="text-sm py-4 px-6 text-gray-500">

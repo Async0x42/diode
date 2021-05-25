@@ -1,8 +1,5 @@
-import { IRfc } from '@diode/common';
+import { IRfc, RfcClass, RfcPurpose, RfcStatus } from '@diode/common';
 import { BaseEntity, Entity, Property, PrimaryKey } from '@mikro-orm/core';
-
-export type RfcPurpose = 'Sustain' | 'Evolve' | 'Transform';
-export type RfcClass = 'Class 1' | 'Class 2' | 'Class 3' | 'Draft';
 
 @Entity()
 export class Rfc extends BaseEntity<Rfc, 'id'> implements IRfc {
@@ -20,6 +17,9 @@ export class Rfc extends BaseEntity<Rfc, 'id'> implements IRfc {
 
   @Property()
   purpose!: RfcPurpose;
+
+  @Property()
+  status!: RfcStatus;
 
   @Property()
   description?: string;

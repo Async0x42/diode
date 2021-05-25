@@ -31,6 +31,7 @@ const purpose = useField('purpose');
 const rfcNumber = useField('rfcNumber');
 const impactAssessmentDueDate = useField('impactAssessmentDueDate');
 const description = useField('description');
+const status = useField('status');
 const parentSystem = useField('parentSystem');
 const businessCase = useField('businessCase');
 const securityImplications = useField('securityImplications');
@@ -84,6 +85,81 @@ const onDelete = async () => {
                 </p>
               </template>
             </FormInput>
+
+            <FormSelect
+              label="Status"
+              :field="status"
+              name="status"
+              class="sm:col-span-3"
+              :options="[
+                'New',
+                'Open for Impact Analysis',
+                'Not Approved',
+                'Deferred',
+                'Approved',
+                'Closed',
+                'Cancelled',
+                'Returned for Modification',
+              ]"
+            >
+              <template #note>
+                <div class="space-y-2 mt-2 text-sm text-gray-500">
+                  <!-- was a p -->
+                  <p>
+                    New:
+                    <br />
+                    Indicates the RFC has been submitted for validation and processing.
+                  </p>
+                  <p>
+                    Open for Impact Analysis:
+                    <br />
+                    The RFC has been validated and is ready for Impact Assessment (IA). The Change Agent will request IA from designated individuals
+                    and organizations, within a predetermined timeframe. When all IAs have been returned and assessed, the Change Agent will determine
+                    the feasibility to approve the RFC or pursue otherwise.
+                  </p>
+                  <p>
+                    Not Approved:
+                    <br />
+                    Upon completion of assessing the Impact Analyses gathered, the Change Agent has determined that the RFC has been rejected for
+                    business, technical or operational reasons.
+                  </p>
+
+                  <p>
+                    Deferred:
+                    <br />
+                    A RFC may be deferred if the Change Agent deems that circumstances surrounding the change do not warrant further consideration of
+                    the RFC at this time. Although Deferred RFCs are placed temporarily outside of the Change Management process, this does not
+                    preclude the Change Initiator from continuing work on the RFC to address the issues that led to its deferral. All Deferred RFCs
+                    will be annotated with a Bring Forward Date, at which time they will re-enter the Change Management process at the Change Agent
+                    Validation stage
+                  </p>
+                  <p>
+                    Approved:
+                    <br />
+                    The appropriate Change Agent has approved The RFC for implementation.
+                  </p>
+                  <p>
+                    Closed:
+                    <br />
+                    The change has been implemented, verified by the Initiator, and confirmed by the Change Agent who completes the lifecycle by
+                    closing the RFC.
+                  </p>
+                  <p>
+                    Cancelled:
+                    <br />
+                    The Change Authority assigns A status of Cancelled to an RFC when circumstances warrant the cessation of further staffing or
+                    implementation of the proposed change. A RFC must be cancelled when the proposed change cannot be implemented as originally
+                    proposed.
+                  </p>
+                  <p>
+                    Returned for Modification:
+                    <br />
+                    The Change Agent returns the RFC to the Initiator in order for modifications to be made to the RFC as specified or requested by a
+                    Subject Matter Expert (SME).
+                  </p>
+                </div>
+              </template>
+            </FormSelect>
 
             <FormSelect label="Class" :field="rfcClass" name="rfcClass" class="sm:col-span-3" :options="['Draft', '1', '2', '3']">
               <template #note>
