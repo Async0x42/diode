@@ -10,7 +10,7 @@ export class Brd extends BaseEntity<Brd, 'id'> implements IBrd {
   title!: string;
 
   @Property()
-  description!: string;
+  description?: string;
 
   @Property()
   relatedRequests?: string;
