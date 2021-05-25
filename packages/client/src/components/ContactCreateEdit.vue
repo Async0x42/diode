@@ -31,11 +31,11 @@ const notes = useField('notes');
 const onSubmit = handleSubmit(async (formData) => {
   if (props.contact == null) {
     // create
-    const { data, finished } = await useAxios(`/api/contacts`, { method: 'POST', data: formData });
+    const { data, isFinished } = await useAxios(`/api/contacts`, { method: 'POST', data: formData });
     router.push({ name: 'contacts' });
   } else {
     // update
-    const { data, finished } = await useAxios(`/api/contacts/${props.contact.id}`, { method: 'PUT', data: formData });
+    const { data, isFinished } = await useAxios(`/api/contacts/${props.contact.id}`, { method: 'PUT', data: formData });
     router.push({ name: 'contacts' });
   }
 
@@ -44,7 +44,7 @@ const onSubmit = handleSubmit(async (formData) => {
 
 const onDelete = async () => {
   if (props.contact != null) {
-    const { data, finished } = await useAxios(`/api/contacts/${props.contact.id}`, { method: 'DELETE' });
+    const { data, isFinished } = await useAxios(`/api/contacts/${props.contact.id}`, { method: 'DELETE' });
     router.push({ name: 'contacts' });
   }
 };
