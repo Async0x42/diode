@@ -8,7 +8,7 @@ const props = defineProps({
 });
 
 const onBrowseRfc = () => {
-  window.location.href = `http://rfc.mil.ca/viewrfc_e.asp?id=${props.rfc.number}`;
+  window.location.href = `http://rfc.mil.ca/viewrfc_e.asp?id=${props.rfc.rfcNumber}`;
 };
 </script>
 
@@ -18,7 +18,7 @@ const onBrowseRfc = () => {
       <div class="flex items-center">
         <div class="flex-shrink-0 h-10 w-10">
           <button
-            v-if="props.rfc.number"
+            v-if="props.rfc.rfcNumber"
             type="button"
             class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white p-1 inline-flex items-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             @click="onBrowseRfc"
@@ -32,10 +32,10 @@ const onBrowseRfc = () => {
               {{ props.rfc.title }}
             </div>
             <div class="text-sm text-gray-500">
-              {{ props.rfc.number }}
+              {{ props.rfc.rfcNumber }}
             </div>
             <div class="text-xs text-gray-300">
-              {{ props.rfc.class }}
+              {{ props.rfc.rfcClass }}
             </div>
           </div>
         </router-link>

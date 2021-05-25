@@ -10,13 +10,13 @@ export class Rfc extends BaseEntity<Rfc, 'id'> implements IRfc {
   id!: number;
 
   @Property()
-  number?: number;
+  rfcNumber?: number;
 
   @Property()
   title!: string;
 
   @Property()
-  class!: RfcClass;
+  rfcClass!: RfcClass;
 
   @Property()
   purpose!: RfcPurpose;

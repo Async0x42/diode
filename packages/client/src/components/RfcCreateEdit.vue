@@ -25,7 +25,8 @@ const rfcClass = useField('rfcClass', {
 });
 
 const purpose = useField('purpose');
-const iaDueDate = useField('iaDueDate');
+const rfcNumber = useField('rfcNumber');
+const impactAssessmentDueDate = useField('impactAssessmentDueDate');
 const description = useField('description');
 const parentSystem = useField('parentSystem');
 const businessCase = useField('businessCase');
@@ -422,13 +423,27 @@ const onDelete = async () => {
             </div>
 
             <div class="sm:col-span-3">
-              <label for="iaDueDate" class="font-medium text-sm text-gray-700 block"> Impact Assessment Due Date </label>
+              <label for="number" class="font-medium text-sm text-gray-700 block"> RFC Number </label>
               <div class="mt-1">
                 <input
-                  id="iaDueDate"
-                  :ref="iaDueDate.ref"
-                  v-model="iaDueDate.value"
-                  name="iaDueDate"
+                  id="rfcNumber"
+                  :ref="rfcNumber.ref"
+                  v-model="rfcNumber.value"
+                  name="rfcNumber"
+                  type="text"
+                  class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
+                />
+              </div>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label for="impactAssessmentDueDate" class="font-medium text-sm text-gray-700 block"> Impact Assessment Due Date </label>
+              <div class="mt-1">
+                <input
+                  id="impactAssessmentDueDate"
+                  :ref="impactAssessmentDueDate.ref"
+                  v-model="impactAssessmentDueDate.value"
+                  name="impactAssessmentDueDate"
                   type="text"
                   class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
                 />

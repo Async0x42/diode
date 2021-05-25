@@ -3,9 +3,9 @@ export type RfcClass = 'Class 1' | 'Class 2' | 'Class 3' | 'Draft';
 
 export interface IRfc {
   id: number;
-  number?: number;
+  rfcNumber?: number;
   title: string;
-  class: RfcClass;
+  rfcClass: RfcClass;
   purpose: RfcPurpose;
   description?: string;
   parentSystem?: string;
