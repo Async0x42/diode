@@ -1,6 +1,6 @@
 import express, { Request, Response, Router } from 'express';
+import { CalendarItem } from '../../entities';
 import * as ItemService from './items.service';
-import { CalendarItem } from '~/entities';
 
 export const itemsRouter: Router = express.Router();
 

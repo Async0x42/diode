@@ -1,6 +1,6 @@
 import express, { Request, Response, Router } from 'express';
+import { Application } from '../entities';
 import * as ApplicationService from './application.service';
-import { Application } from '~/entities';
 
 export const applicationRouter: Router = express.Router({ mergeParams: true });
 

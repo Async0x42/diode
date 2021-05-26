@@ -1,6 +1,6 @@
 import express, { Request, Response, Router } from 'express';
+import { Brd } from '../entities';
 import * as BrdService from './brd.service';
-import { Brd } from '~/entities';
 
 export const brdRouter: Router = express.Router({ mergeParams: true });
 

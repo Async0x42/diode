@@ -1,5 +1,5 @@
 import { DI } from '../index';
-import { Contact } from '~/entities';
+import { Contact } from '../entities';
 
 export const findAll = async (): Promise<Contact[]> => (await DI.contactRepo.find({})) || [];
 
