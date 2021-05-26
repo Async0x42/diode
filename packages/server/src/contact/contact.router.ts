@@ -1,6 +1,6 @@
 import express, { Request, Response, Router } from 'express';
+import { Contact } from '../entities';
 import * as ContactService from './contact.service';
-import { Contact } from '~/entities';
 
 export const contactRouter: Router = express.Router({ mergeParams: true });
 

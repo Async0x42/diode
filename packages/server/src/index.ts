@@ -11,9 +11,10 @@ import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/not-found.middleware';
 import { initDb } from './database';
 import config from './mikro-orm.config';
-import { Application, Brd, Calendar, CalendarItem, Contact, Dns, Rfc } from './entities';
+import { Application, Brd, Calendar, CalendarItem, Contact, Dns, Rfc, Server } from './entities';
 import { dnsRouter } from './dns/dns.router';
 import { applicationRouter } from './application/application.router';
+import { serverRouter } from './server/server.router';
 export * from './entities';
 
 dotEnvExtended.load();
@@ -31,6 +32,7 @@ export const DI = {} as {
   contactRepo: EntityRepository<Contact>;
   dnsRepo: EntityRepository<Dns>;
   applicationRepo: EntityRepository<Application>;
+  serverRepo: EntityRepository<Server>;
 };
 
 (async () => {
@@ -43,6 +45,7 @@ export const DI = {} as {
   DI.contactRepo = DI.em.getRepository(Contact);
   DI.dnsRepo = DI.em.getRepository(Dns);
   DI.applicationRepo = DI.em.getRepository(Application);
+  DI.serverRepo = DI.em.getRepository(Server);
 
   app.use((req, res, next) => RequestContext.create(DI.orm.em, next));
 
@@ -64,6 +67,7 @@ export const DI = {} as {
   app.use('/api/contacts', contactRouter);
   app.use('/api/dns', dnsRouter);
   app.use('/api/applications', applicationRouter);
+  app.use('/api/servers', serverRouter);
   app.use(errorHandler);
   app.use(notFoundHandler);
 

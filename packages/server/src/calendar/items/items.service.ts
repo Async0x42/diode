@@ -1,5 +1,5 @@
 import { DI } from '../../index';
-import { CalendarItem } from '~/entities';
+import { CalendarItem } from '../../entities';
 
 export const findAll = async (): Promise<CalendarItem[]> => (await DI.calendarItemRepo.find({})) || [];
 

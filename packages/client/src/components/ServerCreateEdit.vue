@@ -3,19 +3,16 @@ import { defineProps } from 'vue';
 import { useForm } from 'vue-hooks-form';
 import { useAxios } from '@vueuse/integrations';
 import { useRouter } from 'vue-router';
-import type { IApplication } from '@diode/common';
+import type { IServer } from '@diode/common';
 import type { PropType } from 'vue';
 import FormInput from './FormInput.vue';
-import FormTextArea from './FormTextArea.vue';
-import FormServerSelector from './FormServerSelector.vue';
-import FormDnsSelector from './FormDnsSelector.vue';
 
 const props = defineProps({
-  application: { type: Object as PropType<IApplication> },
+  server: { type: Object as PropType<IServer> },
 });
 
-const { useField, handleSubmit } = useForm<IApplication>({
-  defaultValues: props.application,
+const { useField, handleSubmit } = useForm<IServer>({
+  defaultValues: props.server,
 });
 
 const router = useRouter();
@@ -24,30 +21,27 @@ const name = useField('name', {
   rule: { required: true },
 });
 
-const shortName = useField('shortName');
-const description = useField('description');
-const dns = useField('dns');
-const server = useField('server');
+const ip = useField('ip');
 
 // TODO: remove async and display loading information and errors
 const onSubmit = handleSubmit(async (formData) => {
-  if (props.application == null) {
+  if (props.server == null) {
     // create
-    const { data, isFinished } = await useAxios(`/api/applications`, { method: 'POST', data: formData });
-    router.push({ name: 'applications' });
+    const { data, isFinished } = await useAxios(`/api/servers`, { method: 'POST', data: formData });
+    router.push({ name: 'servers' });
   } else {
     // update
-    const { data, isFinished } = await useAxios(`/api/applications/${props.application.id}`, { method: 'PUT', data: formData });
-    router.push({ name: 'applications' });
+    const { data, isFinished } = await useAxios(`/api/servers/${props.server.id}`, { method: 'PUT', data: formData });
+    router.push({ name: 'servers' });
   }
 
-  // on success, display checkmark transition and then redirect to the new/edited application
+  // on success, display checkmark transition and then redirect to the new/edited server
 });
 
 const onDelete = async () => {
-  if (props.application != null) {
-    const { data, isFinished } = await useAxios(`/api/applications/${props.application.id}`, { method: 'DELETE' });
-    router.push({ name: 'applications' });
+  if (props.server != null) {
+    const { data, isFinished } = await useAxios(`/api/servers/${props.server.id}`, { method: 'DELETE' });
+    router.push({ name: 'servers' });
   }
 };
 </script>
@@ -58,18 +52,13 @@ const onDelete = async () => {
       <div class="divide-y space-y-8 divide-gray-200">
         <div>
           <div>
-            <h3 class="font-medium text-lg text-gray-900 leading-6">Application Information</h3>
+            <h3 class="font-medium text-lg text-gray-900 leading-6">Server Information</h3>
             <p class="mt-1 text-sm text-gray-500">This information will be displayed publicly.</p>
           </div>
 
           <div class="mt-6 grid gap-y-6 gap-x-4 grid-cols-1 sm:grid-cols-6">
             <FormInput label="Name" :field="name" name="name" class="sm:col-span-3" />
-            <FormInput label="Title" :field="shortName" name="title" class="sm:col-span-3" />
-
-            <FormServerSelector label="Server" :field="server" name="server" class="sm:col-span-3" />
-            <FormDnsSelector label="DNS" :field="dns" name="dns" class="sm:col-span-3" />
-
-            <FormTextArea label="Description" :field="description" name="notes" class="sm:col-span-6" :rows="6" />
+            <FormInput label="IP" :field="ip" name="title" class="sm:col-span-3" />
           </div>
         </div>
       </div>
@@ -77,7 +66,7 @@ const onDelete = async () => {
       <div class="pt-5">
         <div class="flex justify-end">
           <button
-            v-if="props.application != null"
+            v-if="props.server != null"
             type="button"
             class="border border-transparent rounded-md font-medium bg-red-600 shadow-sm text-sm text-white mr-3 py-2 px-4 inline-flex justify-center focus:outline-none hover:bg-red-700 focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
             @click="onDelete()"
