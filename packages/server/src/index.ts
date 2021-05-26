@@ -11,8 +11,9 @@ import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/not-found.middleware';
 import { initDb } from './database';
 import config from './mikro-orm.config';
-import { Brd, Calendar, CalendarItem, Contact, Dns, Rfc } from './entities';
+import { Application, Brd, Calendar, CalendarItem, Contact, Dns, Rfc } from './entities';
 import { dnsRouter } from './dns/dns.router';
+import { applicationRouter } from './application/application.router';
 export * from './entities';
 
 dotEnvExtended.load();
@@ -29,6 +30,7 @@ export const DI = {} as {
   brdRepo: EntityRepository<Brd>;
   contactRepo: EntityRepository<Contact>;
   dnsRepo: EntityRepository<Dns>;
+  applicationRepo: EntityRepository<Application>;
 };
 
 (async () => {
@@ -40,6 +42,8 @@ export const DI = {} as {
   DI.brdRepo = DI.em.getRepository(Brd);
   DI.contactRepo = DI.em.getRepository(Contact);
   DI.dnsRepo = DI.em.getRepository(Dns);
+  DI.applicationRepo = DI.em.getRepository(Application);
+
   app.use((req, res, next) => RequestContext.create(DI.orm.em, next));
 
   if (process.env.RESET_DB === 'true') {
@@ -59,6 +63,7 @@ export const DI = {} as {
   app.use('/api/brds', brdRouter);
   app.use('/api/contacts', contactRouter);
   app.use('/api/dns', dnsRouter);
+  app.use('/api/applications', applicationRouter);
   app.use(errorHandler);
   app.use(notFoundHandler);
 
