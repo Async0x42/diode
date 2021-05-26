@@ -5,3 +5,4 @@ export * from './contact.entity';
 export * from './rfc.entity';
 export * from './dns.entity';
 export * from './application.entity';
+export * from './server.entity';

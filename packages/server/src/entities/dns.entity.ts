@@ -1,5 +1,6 @@
 import { IDns } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey } from '@mikro-orm/core';
+import { BaseEntity, Entity, Property, PrimaryKey, OneToOne } from '@mikro-orm/core';
+import { Server } from './server.entity';
 
 @Entity()
 export class Dns extends BaseEntity<Dns, 'id'> implements IDns {
@@ -9,6 +10,6 @@ export class Dns extends BaseEntity<Dns, 'id'> implements IDns {
   @Property()
   name!: string;
 
-  @Property()
-  ip?: string;
+  @OneToOne()
+  server?: Server;
 }
