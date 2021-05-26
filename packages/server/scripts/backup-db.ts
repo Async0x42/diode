@@ -2,6 +2,7 @@ import fs from 'fs';
 
 const backupFile = 'diode.db';
 const backupDir = './backups';
+const backedUpFile = `${backupFile}-${new Date().getTime().toString()}`;
 
 if (!fs.existsSync(backupDir)) {
   fs.mkdirSync(backupDir, {
@@ -10,8 +11,8 @@ if (!fs.existsSync(backupDir)) {
 }
 
 try {
-  fs.copyFileSync(backupFile, `${backupDir}/${backupFile}-${new Date().getTime().toString()}`);
-  console.log('diode.db was copied to backups/diode.db');
+  fs.copyFileSync(backupFile, `${backupDir}/${backedUpFile}`);
+  console.log(`${backupFile} was copied to ${backupDir}/${backedUpFile}`);
 } catch {
   console.log('The file could not be copied');
 }
