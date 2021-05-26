@@ -21,8 +21,8 @@ const props = defineProps({
           <dd class="mt-1 text-sm text-gray-900">{{ props.dns.name }}</dd>
         </div>
         <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">IP</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.dns.ip }}</dd>
+          <dt class="font-medium text-sm text-gray-500">Server</dt>
+          <dd class="mt-1 text-sm text-gray-900">{{ props.dns.server }}</dd>
         </div>
       </dl>
     </div>

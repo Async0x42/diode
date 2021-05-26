@@ -6,6 +6,7 @@ import { useRouter } from 'vue-router';
 import type { IDns } from '@diode/common';
 import type { PropType } from 'vue';
 import FormInput from './FormInput.vue';
+import FormServerSelector from './FormServerSelector.vue';
 
 const props = defineProps({
   dns: { type: Object as PropType<IDns> },
@@ -21,7 +22,7 @@ const name = useField('name', {
   rule: { required: true },
 });
 
-const ip = useField('ip');
+const server = useField('server');
 
 // TODO: remove async and display loading information and errors
 const onSubmit = handleSubmit(async (formData) => {
@@ -58,7 +59,7 @@ const onDelete = async () => {
 
           <div class="mt-6 grid gap-y-6 gap-x-4 grid-cols-1 sm:grid-cols-6">
             <FormInput label="Name" :field="name" name="name" class="sm:col-span-3" />
-            <FormInput label="IP" :field="ip" name="ip" class="sm:col-span-3" />
+            <FormServerSelector label="Server" :field="server" name="server" class="sm:col-span-3" />
           </div>
         </div>
       </div>
