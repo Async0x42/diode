@@ -1,5 +1,5 @@
-import { DI } from '..';
-import { Application } from '../entities';
+import { DI } from '~/index';
+import { Application } from '~/entities';
 
 export const findAll = async (): Promise<Application[]> => (await DI.applicationRepo.find({})) || [];
 

@@ -1,6 +1,6 @@
 import express, { Request, Response, Router } from 'express';
-import { Rfc } from '../entities';
 import * as RfcService from './rfc.service';
+import { Rfc } from '~/entities';
 
 export const rfcRouter: Router = express.Router({ mergeParams: true });
 

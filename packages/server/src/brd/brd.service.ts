@@ -1,5 +1,5 @@
-import { Brd } from '../entities';
-import { DI } from '../';
+import { DI } from '~/index';
+import { Brd } from '~/entities';
 
 export const findAll = async (): Promise<Brd[]> => (await DI.brdRepo.find({})) || [];
 

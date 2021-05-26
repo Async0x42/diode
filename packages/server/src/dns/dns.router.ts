@@ -1,6 +1,6 @@
 import express, { Request, Response, Router } from 'express';
-import { Dns } from '../entities';
 import * as DnsService from './dns.service';
+import { Dns } from '~/entities';
 
 export const dnsRouter: Router = express.Router({ mergeParams: true });
 

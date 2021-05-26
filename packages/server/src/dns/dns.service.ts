@@ -1,5 +1,5 @@
-import { DI } from '..';
-import { Dns } from '../entities';
+import { DI } from '~/index';
+import { Dns } from '~/entities';
 
 export const findAll = async (): Promise<Dns[]> => (await DI.dnsRepo.find({})) || [];
 
