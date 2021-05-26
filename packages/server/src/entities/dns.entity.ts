@@ -1,5 +1,5 @@
 import { IDns } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, PrimaryKeyType, ManyToOne } from '@mikro-orm/core';
+import { BaseEntity, Entity, Property, PrimaryKey, ManyToOne } from '@mikro-orm/core';
 import { Server } from './server.entity';
 
 // Quick fix to make @mikro-orm collection compat with the IServer []
@@ -15,6 +15,6 @@ export class Dns extends BaseEntity<Dns, 'id'> implements IBackendDns {
   @Property()
   name!: string;
 
-  @ManyToOne({ primary: true })
+  @ManyToOne()
   server?: Server;
 }

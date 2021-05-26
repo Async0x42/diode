@@ -26,6 +26,6 @@ export class Application extends BaseEntity<Application, 'id'> implements IBacke
   @OneToOne()
   dns?: Dns;
 
-  @ManyToOne({ primary: true })
+  @ManyToOne()
   server?: Server;
 }
