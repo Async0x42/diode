@@ -1,4 +1,4 @@
-import { DI } from '~/index';
+import { DI } from '../index';
 import { Rfc } from '~/entities';
 
 export const findAll = async (): Promise<Rfc[]> => (await DI.rfcRepo.find({})) || [];
