@@ -1,7 +1,7 @@
 import { DI } from '../index';
 import { Application } from '../entities';
 
-export const findAll = async (): Promise<Application[]> => (await DI.applicationRepo.find({})) || [];
+export const findAll = async (): Promise<Application[]> => (await DI.applicationRepo.find({}, ['dns', 'server'])) || [];
 
 export const find = async (id: number): Promise<Application | null> => await DI.applicationRepo.findOneOrFail({ id });
 

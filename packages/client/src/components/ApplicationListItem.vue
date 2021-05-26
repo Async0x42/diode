@@ -24,6 +24,13 @@ const props = defineProps({
         </router-link>
       </div>
     </td>
+    <td class="py-4 px-6 whitespace-nowrap">
+      <div class="text-sm text-gray-900">{{ props.application.server?.name }}</div>
+      <div class="text-sm text-gray-900">{{ props.application.server?.ip }}</div>
+    </td>
+    <td class="py-4 px-6 whitespace-nowrap">
+      <div class="text-sm text-gray-900">{{ props.application.dns?.name }}</div>
+    </td>
     <td class="py-4 px-6">
       <div class="text-sm text-gray-900">{{ props.application.description }}</div>
     </td>

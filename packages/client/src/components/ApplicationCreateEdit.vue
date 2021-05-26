@@ -7,6 +7,8 @@ import type { IApplication } from '@diode/common';
 import type { PropType } from 'vue';
 import FormInput from './FormInput.vue';
 import FormTextArea from './FormTextArea.vue';
+import FormServerSelector from './FormServerSelector.vue';
+import FormDnsSelector from './FormDnsSelector.vue';
 
 const props = defineProps({
   application: { type: Object as PropType<IApplication> },
@@ -24,6 +26,8 @@ const name = useField('name', {
 
 const shortName = useField('shortName');
 const description = useField('description');
+const dns = useField('dns');
+const server = useField('server');
 
 // TODO: remove async and display loading information and errors
 const onSubmit = handleSubmit(async (formData) => {
@@ -61,6 +65,9 @@ const onDelete = async () => {
           <div class="mt-6 grid gap-y-6 gap-x-4 grid-cols-1 sm:grid-cols-6">
             <FormInput label="Name" :field="name" name="name" class="sm:col-span-3" />
             <FormInput label="Title" :field="shortName" name="title" class="sm:col-span-3" />
+
+            <FormServerSelector label="Server" :field="server" name="server" class="sm:col-span-3" />
+            <FormDnsSelector label="DNS" :field="dns" name="dns" class="sm:col-span-3" />
 
             <FormTextArea label="Description" :field="description" name="notes" class="sm:col-span-6" :rows="6" />
           </div>
