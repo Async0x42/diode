@@ -10,3 +10,4 @@ node_modules
 packages/server/*.db
 packages/server/temp
 packages/server/.env
+packages/server/backups

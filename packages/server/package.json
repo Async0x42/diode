@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
-    "start": "ts-node src/index.ts",
+    "dev": "pnpm run db-backup && ts-node-dev --respawn --pretty --transpile-only src/index.ts",
+    "start": "pnpm run db-backup && ts-node src/index.ts",
     "build": "tsc --project ./ ",
     "lint": "run-s lint:all:*",
     "lint:all:eslint": "pnpm run lint:eslint",
@@ -13,7 +13,8 @@
     "lint:eslint": "eslint --fix --ext .js,.ts .",
     "lint:prettier": "prettier --write --loglevel warn **/*.{js,ts,json,md}",
     "db-debug": "mikro-orm debug",
-    "create-schema": "mikro-orm schema:create -r"
+    "create-schema": "mikro-orm schema:create -r",
+    "db-backup": "ts-node scripts/backup-db.ts"
   },
   "repository": {
     "type": "git",
