@@ -18,9 +18,9 @@ const onPhoneContact = () => {
 
 <template>
   <tr>
-    <td class="py-4 px-6 whitespace-nowrap">
+    <td class="py-4 px-6">
       <div class="flex items-center">
-        <div class="flex-shrink-0 h-10 w-20">
+        <div class="flex-shrink-0 h-10 w-20 whitespace-nowrap">
           <button
             v-if="props.contact.email"
             type="button"
@@ -40,7 +40,7 @@ const onPhoneContact = () => {
         </div>
         <router-link is="a" :to="`${$route.fullPath}/${props.contact.id}/view`">
           <div class="ml-4">
-            <div class="font-medium text-sm text-gray-900">
+            <div class="font-medium text-sm text-gray-900 whitespace-nowrap">
               {{ props.contact.name }}
             </div>
             <div class="text-sm text-gray-500">
@@ -50,8 +50,8 @@ const onPhoneContact = () => {
         </router-link>
       </div>
     </td>
-    <td class="py-4 px-6 whitespace-nowrap">
-      <div class="text-sm text-gray-900">{{ props.contact.title }}</div>
+    <td class="py-4 px-6">
+      <div class="text-sm text-gray-900 whitespace-nowrap">{{ props.contact.title }}</div>
       <div class="text-sm text-gray-500">{{ props.contact.department }}</div>
       <div class="text-sm text-gray-300">{{ props.contact.organization }}</div>
     </td>
