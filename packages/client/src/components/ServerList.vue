@@ -14,8 +14,8 @@ const { results } = useRouteSearchWithData(props.servers, ['name', 'ip', 'dns', 
 
 <template>
   <div class="flex flex-col">
-    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="min-w-full py-2 align-middle inline-block sm:px-6 lg:px-8">
+    <div class="-my-2 overflow-x-auto">
+      <div class="min-w-full py-2 align-middle inline-block">
         <div class="border-b border-gray-200 shadow overflow-hidden sm:rounded-lg">
           <table class="divide-y min-w-full divide-gray-200">
             <thead class="bg-gray-50">
