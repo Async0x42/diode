@@ -10,13 +10,13 @@ const props = defineProps({
 
 <template>
   <tr>
-    <td class="py-4 px-6 whitespace-nowrap">
+    <td class="py-4 px-6">
       <div class="flex items-center">
         <router-link is="a" :to="`${$route.fullPath}/${props.application.id}/view`">
           <div class="ml-4">
             <div class="font-medium text-sm text-gray-900">{{ props.application.name }}</div>
-            <div class="text-sm text-gray-500">{{ props.application.shortName }}</div>
-            <div class="text-sm text-gray-400">{{ props.application.dns?.name }}</div>
+            <div class="text-sm text-gray-500 whitespace-nowrap">{{ props.application.shortName }}</div>
+            <div class="text-sm text-gray-400 whitespace-nowrap">{{ props.application.dns?.name }}</div>
           </div>
         </router-link>
       </div>
@@ -24,6 +24,7 @@ const props = defineProps({
     <td class="py-4 px-6 whitespace-nowrap">
       <div class="text-sm text-gray-900">{{ props.application.server?.name }}</div>
       <div class="text-sm text-gray-700">{{ props.application.server?.ip }}</div>
+      <div class="text-sm text-gray-500">{{ props.application.server?.os }}</div>
     </td>
     <td class="py-4 px-6">
       <div class="text-sm text-gray-900">{{ props.application.description }}</div>

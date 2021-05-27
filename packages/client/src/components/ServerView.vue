@@ -19,7 +19,8 @@ const props = defineProps({
         <div class="sm:col-span-1">
           <dt class="font-medium text-sm text-gray-500">Name</dt>
           <dd class="mt-1 text-sm text-gray-900">{{ props.server.name }}</dd>
-          <dd class="text-sm text-gray-500">{{ props.server.ip }}</dd>
+          <dd class="text-sm text-gray-700">{{ props.server.ip }}</dd>
+          <dd class="text-sm text-gray-500">{{ props.server.os }}</dd>
         </div>
         <div class="sm:col-span-2">
           <dt class="font-medium text-sm text-gray-500">DNS</dt>
