@@ -22,7 +22,6 @@ const { results } = useRouteSearchWithData(props.applications, ['name', 'shortNa
               <tr>
                 <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Name</th>
                 <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Server</th>
-                <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">DNS</th>
                 <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Description</th>
                 <th scope="col" class="py-3 px-6 relative">
                   <span class="sr-only">Edit</span>
