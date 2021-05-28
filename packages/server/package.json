@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "pnpm run db-backup && ts-node-dev --respawn --pretty --transpile-only src/index.ts",
-    "start": "pnpm run db-backup && ts-node src/index.ts",
+    "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
+    "start": "ts-node src/index.ts",
     "build": "tsc --project ./ ",
     "lint": "run-s lint:all:*",
     "lint:all:eslint": "pnpm run lint:eslint",
@@ -29,6 +29,7 @@
     "@diode/common": "workspace:*",
     "@mikro-orm/cli": "^4.5.5",
     "@mikro-orm/core": "^4.5.5",
+    "@mikro-orm/mysql": "^4.5.5",
     "@mikro-orm/reflection": "^4.5.5",
     "@mikro-orm/sql-highlighter": "^1.0.1",
     "@mikro-orm/sqlite": "^4.5.5",
@@ -36,6 +37,7 @@
     "dotenv-extended": "^2.9.0",
     "express": "^4.17.1",
     "helmet": "^4.6.0",
+    "mariadb": "^2.5.3",
     "sqlite3": "^5.0.2",
     "ts-node": "^10.0.0"
   },

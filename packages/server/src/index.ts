@@ -9,7 +9,6 @@ import { brdRouter } from './brd/brd.router';
 import { contactRouter } from './contact/contact.router';
 import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/not-found.middleware';
-import { initDb } from './database';
 import config from './mikro-orm.config';
 import { Application, Brd, Calendar, CalendarItem, Contact, Dns, Rfc, Server } from './entities';
 import { dnsRouter } from './dns/dns.router';
@@ -49,11 +48,6 @@ export const DI = {} as {
 
   app.use((req, res, next) => RequestContext.create(DI.orm.em, next));
 
-  if (process.env.RESET_DB === 'true') {
-    console.log(process.env.RESET_DB);
-    console.log('dropping database');
-    initDb();
-  }
   const migrator = DI.orm.getMigrator();
   await migrator.up(); // runs migrations up to the latest
   DI.em.flush();

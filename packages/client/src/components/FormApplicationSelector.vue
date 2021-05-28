@@ -2,7 +2,7 @@
 import { defineProps } from 'vue';
 import type { PropType } from 'vue';
 import { useAxios } from '@vueuse/integrations';
-import type { IDns } from '@diode/common';
+import type { IApplication } from '@diode/common';
 import LoadingList from './LoadingList.vue';
 import LoadingError from './LoadingError.vue';
 import type { FormField } from '~/types';
@@ -13,7 +13,7 @@ const props = defineProps({
   field: { type: Object as PropType<FormField>, required: true },
 });
 
-const { data, error, isFinished } = useAxios<IDns[]>('/api/dns');
+const { data, error, isFinished } = useAxios<IApplication[]>('/api/applications');
 </script>
 
 <template>
@@ -28,7 +28,7 @@ const { data, error, isFinished } = useAxios<IDns[]>('/api/dns');
         :name="props.name"
         class="rounded-md border-gray-300 mt-1 text-base w-full py-2 pr-10 pl-3 block focus:outline-none sm:text-sm focus:ring-indigo-500 focus:border-indigo-500"
       >
-        <option v-for="(option, index) in data" :key="index" :value="option.id">{{ option.name }}</option>
+        <option v-for="(option, index) in data" :key="index" :value="option.id">[{{ option.shortName }}] {{ option.name }}</option>
       </select>
       <LoadingError v-else-if="error" :error="error" />
       <LoadingList v-else />

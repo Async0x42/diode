@@ -24,6 +24,10 @@ const props = defineProps({
           <dt class="font-medium text-sm text-gray-500">Server</dt>
           <dd class="mt-1 text-sm text-gray-900">{{ props.dns.server }}</dd>
         </div>
+        <div class="sm:col-span-1">
+          <dt class="font-medium text-sm text-gray-500">Application</dt>
+          <dd class="mt-1 text-sm text-gray-900">{{ props.dns.application }}</dd>
+        </div>
       </dl>
     </div>
   </div>

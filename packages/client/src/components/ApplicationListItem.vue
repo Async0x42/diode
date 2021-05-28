@@ -27,6 +27,9 @@ const props = defineProps({
       <div class="text-sm text-gray-500">{{ props.application.server?.os }}</div>
     </td>
     <td class="py-4 px-6">
+      <div class="text-sm text-gray-900">{{ props.application.dns?.name }}</div>
+    </td>
+    <td class="py-4 px-6">
       <div class="text-sm text-gray-900">{{ props.application.description }}</div>
     </td>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">

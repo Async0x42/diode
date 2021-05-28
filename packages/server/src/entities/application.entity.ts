@@ -1,11 +1,11 @@
 import { IApplication } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, OneToOne, ManyToOne } from '@mikro-orm/core';
+import { BaseEntity, Entity, Property, PrimaryKey, OneToMany, ManyToOne, Collection } from '@mikro-orm/core';
 import { Dns } from './dns.entity';
 import { Server } from './server.entity';
 
 // Quick fix to make @mikro-orm collection compat with the IServer []
 export interface IBackendApplication extends Omit<IApplication, 'dns' | 'server'> {
-  dns?: Dns;
+  dns?: Collection<Dns>;
   server?: Server;
 }
 
@@ -23,8 +23,8 @@ export class Application extends BaseEntity<Application, 'id'> implements IBacke
   @Property()
   description?: string;
 
-  @OneToOne()
-  dns?: Dns;
+  @OneToMany(() => Dns, (dns) => dns.application)
+  dns = new Collection<Dns>(this);
 
   @ManyToOne()
   server?: Server;

@@ -25,6 +25,9 @@ const props = defineProps({
       <div class="text-sm text-gray-900">{{ props.dns.server?.name }}</div>
       <div class="text-sm text-gray-500">{{ props.dns.server?.ip }}</div>
     </td>
+    <td class="py-4 px-6 whitespace-nowrap">
+      <div class="text-sm text-gray-900">{{ props.dns.application?.name }}</div>
+    </td>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
       <router-link is="a" :to="`${$route.fullPath}/${props.dns.id}/edit`">
         <button

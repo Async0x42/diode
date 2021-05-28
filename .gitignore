@@ -7,7 +7,5 @@ dist-ssr
 node_modules
 # intellij stuff
 .idea/
-packages/server/*.db
 packages/server/temp
 packages/server/.env
-packages/server/backups
