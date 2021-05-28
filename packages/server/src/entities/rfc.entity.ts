@@ -21,37 +21,37 @@ export class Rfc extends BaseEntity<Rfc, 'id'> implements IRfc {
   @Property()
   status!: RfcStatus;
 
-  @Property()
+  @Property({ columnType: 'text' })
   description?: string;
 
-  @Property()
+  @Property({ columnType: 'text' })
   parentSystem?: string;
 
-  @Property()
+  @Property({ columnType: 'text' })
   businessCase?: string;
 
   @Property()
   securityImplications?: string;
 
-  @Property()
+  @Property({ columnType: 'text' })
   affectedInfrastructure?: string;
 
-  @Property()
+  @Property({ columnType: 'text' })
   affectedConfigurationItems?: string;
 
-  @Property()
+  @Property({ columnType: 'text' })
   affectedInformationSystem?: string;
 
-  @Property()
+  @Property({ columnType: 'text' })
   conceptOfOperation?: string;
 
-  @Property()
+  @Property({ columnType: 'text' })
   conceptOfTesting?: string;
 
-  @Property()
+  @Property({ columnType: 'text' })
   conceptOfImplementation?: string;
 
-  @Property()
+  @Property({ columnType: 'text' })
   backoutPlan?: string;
 
   @Property()

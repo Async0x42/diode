@@ -9,7 +9,7 @@ export class Brd extends BaseEntity<Brd, 'id'> implements IBrd {
   @Property()
   title!: string;
 
-  @Property()
+  @Property({ columnType: 'text' })
   description?: string;
 
   @Property()

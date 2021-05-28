@@ -28,4 +28,7 @@ export class Server extends BaseEntity<Server, 'id'> implements IBackendServer {
 
   @OneToMany(() => Dns, (dns) => dns.server)
   dns = new Collection<Dns>(this);
+
+  @Property({ columnType: 'text' })
+  notes?: string;
 }

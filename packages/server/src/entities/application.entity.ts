@@ -20,7 +20,7 @@ export class Application extends BaseEntity<Application, 'id'> implements IBacke
   @Property()
   shortName?: string;
 
-  @Property()
+  @Property({ columnType: 'text' })
   description?: string;
 
   @OneToMany(() => Dns, (dns) => dns.application)

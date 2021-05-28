@@ -12,7 +12,7 @@ export class CalendarItem extends BaseEntity<CalendarItem, 'id'> implements ICal
   @Property()
   category?: string;
 
-  @Property()
+  @Property({ columnType: 'text' })
   description?: string;
 
   @Property()

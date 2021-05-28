@@ -24,6 +24,7 @@ const name = useField('name', {
 
 const ip = useField('ip');
 const os = useField('os');
+const notes = useField('notes');
 
 // TODO: remove async and display loading information and errors
 const onSubmit = handleSubmit(async (formData) => {
@@ -68,6 +69,7 @@ const onDelete = async () => {
               :options="['[W] Server 2012R2', '[W] Server 2016', '[L] RHEL 7', '[L] CentOS 7', 'Unknown']"
               class="sm:col-span-3"
             />
+            <FormTextArea label="Notes" :field="notes" name="notes" class="sm:col-span-6" />
           </div>
         </div>
       </div>

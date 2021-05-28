@@ -24,6 +24,6 @@ export class Contact extends BaseEntity<Contact, 'id'> implements IContact {
   @Property()
   department?: string;
 
-  @Property()
+  @Property({ columnType: 'text' })
   notes?: string;
 }

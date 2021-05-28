@@ -64,7 +64,7 @@ const onDelete = async () => {
 
           <div class="mt-6 grid gap-y-6 gap-x-4 grid-cols-1 sm:grid-cols-6">
             <FormInput label="Name" :field="name" name="name" class="sm:col-span-3" />
-            <FormInput label="Title" :field="shortName" name="title" class="sm:col-span-3" />
+            <FormInput label="Short Name" :field="shortName" name="shortName" class="sm:col-span-3" />
 
             <FormServerSelector label="Server" :field="server" name="server" class="sm:col-span-3" />
             <FormDnsSelector label="DNS" :field="dns" name="dns" class="sm:col-span-3" />
