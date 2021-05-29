@@ -6,6 +6,6 @@ export interface IApplication {
   name: string;
   shortName?: string;
   description?: string;
-  dns?: IDns;
+  dns?: IDns[];
   server?: IServer;
 }
