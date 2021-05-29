@@ -3,7 +3,7 @@ import { Server } from '../entities';
 
 export const findAll = async (): Promise<Server[]> => (await DI.serverRepo.find({}, ['dns', 'applications'])) || [];
 
-export const find = async (id: number): Promise<Server | null> => await DI.serverRepo.findOneOrFail({ id });
+export const find = async (id: number): Promise<Server | null> => await DI.serverRepo.findOneOrFail({ id }, ['dns', 'applications']);
 
 export const create = async (newServer: Server): Promise<Server> => {
   const createdServer = await DI.serverRepo.create({

@@ -3,7 +3,7 @@ import { Application } from '../entities';
 
 export const findAll = async (): Promise<Application[]> => (await DI.applicationRepo.find({}, ['dns', 'server'])) || [];
 
-export const find = async (id: number): Promise<Application | null> => await DI.applicationRepo.findOneOrFail({ id });
+export const find = async (id: number): Promise<Application | null> => await DI.applicationRepo.findOneOrFail({ id }, ['dns', 'server']);
 
 export const create = async (newApplication: Application): Promise<Application> => {
   const createdApplication = await DI.applicationRepo.create({

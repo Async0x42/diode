@@ -26,7 +26,10 @@ const props = defineProps({
         </div>
         <div class="sm:col-span-1">
           <dt class="font-medium text-sm text-gray-500">Applications</dt>
-          <dd v-for="application in props.dns.applications" :key="application.id" class="mt-1 text-sm text-gray-900">{{ application }}</dd>
+          <dd v-for="application in props.dns.applications" :key="application.id" class="mt-1 text-sm text-gray-900">
+            <template v-if="application?.shortName"> [{{ application?.shortName }}] </template>
+            {{ application?.name }}
+          </dd>
         </div>
       </dl>
     </div>
