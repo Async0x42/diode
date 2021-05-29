@@ -9,6 +9,7 @@ import aspectRatio from 'windicss/plugin/aspect-ratio';
 export default defineConfig({
   darkMode: 'class',
   plugins: [typography(), forms, lineClamp, aspectRatio],
+  attributify: true,
   theme: {
     colors: {
       // Build your palette here
