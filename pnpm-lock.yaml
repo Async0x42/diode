@@ -37,7 +37,7 @@ importers:
       prism-theme-vars: ^0.2.2
       typescript: ^4.4.0-dev.20210528
       vite: ^2.3.4
-      vite-plugin-components: ^0.10.3
+      vite-plugin-components: ^0.10.4
       vite-plugin-icons: ^0.6.0
       vite-plugin-md: ^0.6.7
       vite-plugin-pages: ^0.12.1
@@ -86,7 +86,7 @@ importers:
       prettier: 2.3.0
       typescript: 4.4.0-dev.20210528
       vite: 2.3.4
-      vite-plugin-components: 0.10.3_vite@2.3.4
+      vite-plugin-components: 0.10.4_vite@2.3.4
       vite-plugin-icons: 0.6.0_ce5edfe3d11b5da5ce1fa2f35091ab3a
       vite-plugin-md: 0.6.7_vite@2.3.4
       vite-plugin-pages: 0.12.1_vite@2.3.4+vue@3.0.11
@@ -9351,8 +9351,8 @@ packages:
       vfile-message: 2.0.4
     dev: true
 
-  /vite-plugin-components/0.10.3_vite@2.3.4:
-    resolution: {integrity: sha512-xdQfPNvktTV3z/qnOU8K7gUfviYlgBS2NVeLrkv7YVuiGH0PANhwhFNnYKNcipWnqgQV3ZfspUTaz6EkgBKF6A==}
+  /vite-plugin-components/0.10.4_vite@2.3.4:
+    resolution: {integrity: sha512-QOGd+7IE4EonPGMlxmudj0HadVxKzCdvaZmZcRgap4gE8F55sAIztuAQN4IHACEKuappWsB6XpMAY1iVrJUqog==}
     peerDependencies:
       vite: ^2.0.0-beta.69
     dependencies:
