@@ -8,7 +8,7 @@ import type { PropType } from 'vue';
 import FormInput from './FormInput.vue';
 import FormTextArea from './FormTextArea.vue';
 import FormServerSelector from './FormServerSelector.vue';
-import FormDnsSelector from './FormDnsSelector.vue';
+import FormDnsMultiSelector from './FormDnsMultiSelector.vue';
 
 const props = defineProps({
   application: { type: Object as PropType<IApplication> },
@@ -67,8 +67,7 @@ const onDelete = async () => {
             <FormInput label="Short Name" :field="shortName" name="shortName" class="sm:col-span-3" />
 
             <FormServerSelector label="Server" :field="server" name="server" class="sm:col-span-3" />
-            <FormDnsSelector label="DNS" :field="dns" name="dns" class="sm:col-span-3" />
-
+            <FormDnsMultiSelector label="DNS" :field="dns" name="dns" class="sm:col-span-3" />
             <FormTextArea label="Description" :field="description" name="notes" class="sm:col-span-6" :rows="6" />
           </div>
         </div>
