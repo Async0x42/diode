@@ -2,7 +2,6 @@
 import { defineProps } from 'vue';
 import type { IApplication } from '@diode/common';
 import type { PropType } from 'vue';
-import ApplicationListItem from './ApplicationListItem.vue';
 import { useRouteSearchWithData } from '~/logic';
 
 const props = defineProps({

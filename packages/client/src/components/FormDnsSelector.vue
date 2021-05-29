@@ -3,8 +3,6 @@ import { defineProps } from 'vue';
 import type { PropType } from 'vue';
 import { useAxios } from '@vueuse/integrations';
 import type { IDns } from '@diode/common';
-import LoadingList from './LoadingList.vue';
-import LoadingError from './LoadingError.vue';
 import type { FormField } from '~/types';
 
 const props = defineProps({

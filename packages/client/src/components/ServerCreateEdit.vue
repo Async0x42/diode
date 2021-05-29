@@ -5,8 +5,6 @@ import { useAxios } from '@vueuse/integrations';
 import { useRouter } from 'vue-router';
 import type { IServer } from '@diode/common';
 import type { PropType } from 'vue';
-import FormInput from './FormInput.vue';
-import FormSelect from './FormSelect.vue';
 
 const props = defineProps({
   server: { type: Object as PropType<IServer> },

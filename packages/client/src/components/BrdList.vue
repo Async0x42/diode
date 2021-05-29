@@ -2,7 +2,6 @@
 import { defineProps } from 'vue';
 import type { IBrd } from '@diode/common';
 import type { PropType } from 'vue';
-import BrdListItem from './BrdListItem.vue';
 import { useRouteSearchWithData } from '~/logic';
 
 const props = defineProps({

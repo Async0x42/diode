@@ -2,7 +2,6 @@
 import { defineProps } from 'vue';
 import type { IRfc } from '@diode/common';
 import type { PropType } from 'vue';
-import RfcListItem from './RfcListItem.vue';
 import { useRouteSearchWithData } from '~/logic';
 
 const props = defineProps({

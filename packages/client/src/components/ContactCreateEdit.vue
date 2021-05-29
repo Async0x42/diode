@@ -5,8 +5,6 @@ import { useAxios } from '@vueuse/integrations';
 import { useRouter } from 'vue-router';
 import type { IContact } from '@diode/common';
 import type { PropType } from 'vue';
-import FormInput from './FormInput.vue';
-import FormTextArea from './FormTextArea.vue';
 
 const props = defineProps({
   contact: { type: Object as PropType<IContact> },

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { navigation, projects } from '~/logic';
-import SidebarFooter from '~/components/SidebarFooter.vue';
 </script>
 
 <template>
@@ -46,7 +45,7 @@ import SidebarFooter from '~/components/SidebarFooter.vue';
                   v-for="project in projects"
                   :key="project.id"
                   :href="project.href"
-                  class="rounded-md flex font-medium text-sm py-2 px-3 text-gray-300 group items-center hover:bg-gray-700 hover:text-white"
+                  class="rounded-md flex font-medium text-sm py-2 px-3 text-gray-300 group items-center hover:text-white hover:bg-gray-700"
                 >
                   <span class="truncate">
                     {{ project.name }}

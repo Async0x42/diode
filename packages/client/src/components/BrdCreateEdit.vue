@@ -5,9 +5,6 @@ import { useAxios } from '@vueuse/integrations';
 import { useRouter } from 'vue-router';
 import type { IBrd } from '@diode/common';
 import type { PropType } from 'vue';
-import FormInput from './FormInput.vue';
-import FormSelect from './FormSelect.vue';
-import FormTextArea from './FormTextArea.vue';
 
 const props = defineProps({
   brd: { type: Object as PropType<IBrd> },

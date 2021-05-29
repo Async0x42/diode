@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import HeaderSearch from './HeaderSearch.vue';
 import { toggleSidebar } from '~/logic';
 </script>
 

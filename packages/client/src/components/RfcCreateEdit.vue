@@ -5,9 +5,6 @@ import { useAxios } from '@vueuse/integrations';
 import { useRouter } from 'vue-router';
 import type { IRfc } from '@diode/common';
 import type { PropType } from 'vue';
-import FormInput from './FormInput.vue';
-import FormSelect from './FormSelect.vue';
-import FormTextArea from './FormTextArea.vue';
 
 const props = defineProps({
   rfc: { type: Object as PropType<IRfc> },

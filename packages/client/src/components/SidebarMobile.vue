@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Dialog, DialogOverlay, TransitionChild, TransitionRoot } from '@headlessui/vue';
 import { navigation, projects, isSidebarOpen, toggleSidebar } from '~/logic';
-import SidebarFooter from '~/components/SidebarFooter.vue';
 </script>
 
 <template>
@@ -86,7 +85,7 @@ import SidebarFooter from '~/components/SidebarFooter.vue';
                     v-for="project in projects"
                     :key="project.id"
                     :href="project.href"
-                    class="rounded-md flex font-medium text-base py-2 px-2 text-gray-300 items-center hover:bg-gray-700 hover:text-white"
+                    class="rounded-md flex font-medium text-base py-2 px-2 text-gray-300 items-center hover:text-white hover:bg-gray-700"
                   >
                     <span class="truncate">{{ project.name }}</span>
                   </a>

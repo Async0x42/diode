@@ -2,7 +2,6 @@
 import { defineProps } from 'vue';
 import type { IDns } from '@diode/common';
 import type { PropType } from 'vue';
-import DnsListItem from './DnsListItem.vue';
 import { useRouteSearchWithData } from '~/logic';
 
 const props = defineProps({

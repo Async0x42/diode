@@ -2,7 +2,6 @@
 import { defineProps } from 'vue';
 import type { IServer } from '@diode/common';
 import type { PropType } from 'vue';
-import ServerListItem from './ServerListItem.vue';
 import { useRouteSearchWithData } from '~/logic';
 
 const props = defineProps({

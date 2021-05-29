@@ -3,9 +3,6 @@ import { defineProps } from 'vue';
 import type { PropType } from 'vue';
 import { useAxios } from '@vueuse/integrations';
 import type { IDns } from '@diode/common';
-import LoadingList from './LoadingList.vue';
-import LoadingError from './LoadingError.vue';
-import FormMultiSelect from './FormMultiSelect.vue';
 import type { FormField } from '~/types';
 
 const props = defineProps({
@@ -27,7 +24,6 @@ const { data, error, isFinished } = useAxios<IDns[]>('/api/dns');
       :label="props.label"
       :options="data.map((d) => ({ id: d.id, name: d.name }))"
       :name="props.name"
-      label="Multi Select"
       class="sm:col-span-3"
     />
     <LoadingError v-else-if="error" :error="error" />

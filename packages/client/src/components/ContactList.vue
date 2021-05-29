@@ -2,7 +2,6 @@
 import { defineProps } from 'vue';
 import type { IContact } from '@diode/common';
 import type { PropType } from 'vue';
-import ContactListItem from './ContactListItem.vue';
 import { useRouteSearchWithData } from '~/logic';
 
 const props = defineProps({

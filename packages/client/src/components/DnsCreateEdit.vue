@@ -5,9 +5,6 @@ import { useAxios } from '@vueuse/integrations';
 import { useRouter } from 'vue-router';
 import type { IDns } from '@diode/common';
 import type { PropType } from 'vue';
-import FormInput from './FormInput.vue';
-import FormServerSelector from './FormServerSelector.vue';
-import FormApplicationSelector from './FormApplicationSelector.vue';
 
 const props = defineProps({
   dns: { type: Object as PropType<IDns> },
