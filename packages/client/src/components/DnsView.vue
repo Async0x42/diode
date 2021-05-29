@@ -22,11 +22,11 @@ const props = defineProps({
         </div>
         <div class="sm:col-span-1">
           <dt class="font-medium text-sm text-gray-500">Server</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.dns.server }}</dd>
+          <dd class="mt-1 text-sm text-gray-900">{{ props.dns.server?.name }}</dd>
         </div>
         <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Application</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.dns.application }}</dd>
+          <dt class="font-medium text-sm text-gray-500">Applications</dt>
+          <dd v-for="application in props.dns.applications" :key="application.id" class="mt-1 text-sm text-gray-900">{{ application }}</dd>
         </div>
       </dl>
     </div>

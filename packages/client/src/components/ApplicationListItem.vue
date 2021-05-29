@@ -16,7 +16,7 @@ const props = defineProps({
           <div class="ml-4">
             <div class="font-medium text-sm text-gray-900">{{ props.application.name }}</div>
             <div class="text-sm text-gray-500 whitespace-nowrap">{{ props.application.shortName }}</div>
-            <div class="text-sm text-gray-400 whitespace-nowrap">{{ props.application.dns?.name }}</div>
+            <div v-for="dns in props.application.dns" :key="dns.id" class="text-sm text-gray-400 whitespace-nowrap">{{ dns.name }}</div>
           </div>
         </router-link>
       </div>
