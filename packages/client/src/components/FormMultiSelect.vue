@@ -35,7 +35,7 @@ const toggleSelection = (selection: any) => {
       >
         <span v-if="selected.length > 1" class="block truncate">{{ selected.length }} items selected</span>
         <span v-else-if="selected.length === 1" class="block truncate">{{ props.options.find((o) => o.id === selected[0])?.name }}</span>
-        <span v-else class="block truncate">Nothing Selected</span>
+        <span v-else class="block truncate">No items selected</span>
         <span class="flex pr-2 inset-y-0 right-0 absolute items-center pointer-events-none">
           <heroicons-solid-selector class="h-5 text-gray-400 w-5" aria-hidden="true" />
         </span>
