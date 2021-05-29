@@ -22,18 +22,13 @@ const props = defineProps({
       </div>
     </td>
     <td class="py-4 px-6 whitespace-nowrap">
-      <template v-if="props.server.dns != null && props.server.dns.length > 0">
-        <div v-for="dns in props.server.dns" :key="dns.id" class="text-sm text-gray-900">
-          {{ dns.name }}
-        </div>
-      </template>
+      <div v-for="dns in props.server.dns" :key="dns.id" class="text-sm text-gray-900">{{ dns.name }}</div>
     </td>
     <td class="py-4 px-6">
-      <template v-if="props.server.applications != null && props.server.applications.length > 0">
-        <div v-for="application in props.server.applications" :key="application.id" class="text-sm text-gray-900">
-          [{{ application.shortName }}] {{ application.name }}
-        </div>
-      </template>
+      <div v-for="application in props.server.applications" :key="application.id" class="text-sm text-gray-900">
+        <template v-if="application?.shortName"> [{{ application?.shortName }}] </template>
+        {{ application?.name }}
+      </div>
     </td>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
       <router-link is="a" :to="`${$route.fullPath}/${props.server.id}/edit`">

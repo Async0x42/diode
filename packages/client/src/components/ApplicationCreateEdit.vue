@@ -68,7 +68,7 @@ const onDelete = async () => {
 
             <FormServerSelector label="Server" :field="server" name="server" class="sm:col-span-3" />
             <FormDnsMultiSelector label="DNS" :field="dns" name="dns" class="sm:col-span-3" />
-            <FormTextArea label="Description" :field="description" name="notes" class="sm:col-span-6" :rows="6" />
+            <FormTextArea label="Description" :field="description" name="description" class="sm:col-span-6" :rows="6" />
           </div>
         </div>
       </div>

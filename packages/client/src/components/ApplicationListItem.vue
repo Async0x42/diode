@@ -26,8 +26,8 @@ const props = defineProps({
       <div class="text-sm text-gray-700">{{ props.application.server?.ip }}</div>
       <div class="text-sm text-gray-500">{{ props.application.server?.os }}</div>
     </td>
-    <td class="py-4 px-6">
-      <div class="text-sm text-gray-900">{{ props.application.dns?.name }}</div>
+    <td class="py-4 px-6 whitespace-nowrap">
+      <div v-for="dns in props.application.dns" :key="dns.id" class="text-sm text-gray-900">{{ dns.name }}</div>
     </td>
     <td class="py-4 px-6">
       <div class="text-sm text-gray-900">{{ props.application.description }}</div>
