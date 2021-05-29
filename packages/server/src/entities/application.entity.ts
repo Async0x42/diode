@@ -1,5 +1,5 @@
 import { IApplication } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, OneToMany, ManyToOne, Collection } from '@mikro-orm/core';
+import { BaseEntity, Entity, Property, PrimaryKey, ManyToMany, ManyToOne, Collection } from '@mikro-orm/core';
 import { Dns } from './dns.entity';
 import { Server } from './server.entity';
 
@@ -23,7 +23,7 @@ export class Application extends BaseEntity<Application, 'id'> implements IBacke
   @Property({ columnType: 'text' })
   description?: string;
 
-  @OneToMany(() => Dns, (dns) => dns.application)
+  @ManyToMany(() => Dns, (dns) => dns.applications, { owner: true })
   dns = new Collection<Dns>(this);
 
   @ManyToOne()

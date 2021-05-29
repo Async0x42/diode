@@ -5,5 +5,5 @@ export interface IDns {
   id: number;
   name: string;
   server?: IServer;
-  application?: IApplication;
+  applications?: IApplication[];
 }

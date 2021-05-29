@@ -26,9 +26,9 @@ const props = defineProps({
       <div class="text-sm text-gray-500">{{ props.dns.server?.ip }}</div>
     </td>
     <td class="py-4 px-6 whitespace-nowrap">
-      <div class="text-sm text-gray-900">
-        <template v-if="props.dns.application?.shortName"> [{{ props.dns.application?.shortName }}] </template>
-        {{ props.dns.application?.name }}
+      <div v-for="application in props.dns.applications" :key="application.id" class="text-sm text-gray-900">
+        <template v-if="application?.shortName"> [{{ application?.shortName }}] </template>
+        {{ application?.name }}
       </div>
     </td>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
