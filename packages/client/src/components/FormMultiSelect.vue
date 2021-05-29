@@ -33,7 +33,9 @@ const toggleSelection = (selection: any) => {
       <ListboxButton
         class="bg-white border rounded-md cursor-default border-gray-300 shadow-sm text-left w-full py-2 pr-10 pl-3 relative focus:outline-none sm:text-sm focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
       >
-        <span class="block truncate">{{ selected.name }}</span>
+        <span v-if="selected.length > 1" class="block truncate">{{ selected.length }} items selected</span>
+        <span v-else-if="selected.length === 1" class="block truncate">{{ props.options.find((o) => o.id === selected[0])?.name }}</span>
+        <span v-else class="block truncate">Nothing Selected</span>
         <span class="flex pr-2 inset-y-0 right-0 absolute items-center pointer-events-none">
           <heroicons-solid-selector class="h-5 text-gray-400 w-5" aria-hidden="true" />
         </span>
