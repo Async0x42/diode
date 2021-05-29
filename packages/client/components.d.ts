@@ -20,6 +20,7 @@ declare module 'vue' {
     DnsList: typeof import('./src/components/DnsList.vue')['default']
     DnsListItem: typeof import('./src/components/DnsListItem.vue')['default']
     DnsView: typeof import('./src/components/DnsView.vue')['default']
+    FormApplicationMultiSelector: typeof import('./src/components/FormApplicationMultiSelector.vue')['default']
     FormApplicationSelector: typeof import('./src/components/FormApplicationSelector.vue')['default']
     FormDnsMultiSelector: typeof import('./src/components/FormDnsMultiSelector.vue')['default']
     FormDnsSelector: typeof import('./src/components/FormDnsSelector.vue')['default']
