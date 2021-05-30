@@ -2,7 +2,7 @@
 import { defineProps } from 'vue';
 import type { PropType } from 'vue';
 import { useAxios } from '@vueuse/integrations';
-import type { IDns } from '@diode/common';
+import type { IFqdn } from '@diode/common';
 import type { FormField } from '~/types';
 
 const props = defineProps({
@@ -11,7 +11,7 @@ const props = defineProps({
   field: { type: Object as PropType<FormField>, required: true },
 });
 
-const { data, error, isFinished } = useAxios<IDns[]>('/api/dns');
+const { data, error, isFinished } = useAxios<IFqdn[]>('/api/fqdns');
 </script>
 
 <template>

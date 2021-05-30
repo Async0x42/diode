@@ -1,12 +1,12 @@
 import { IServer, OperatingSystem } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, OneToMany, Collection } from '@mikro-orm/core';
+import { BaseEntity, Entity, Property, PrimaryKey, OneToMany, ManyToMany, Collection } from '@mikro-orm/core';
 import { Application } from './application.entity';
-import { Dns } from './dns.entity';
+import { Fqdn } from './fqdn.entity';
 
 // Quick fix to make @mikro-orm collection compat with the IServer []
-export interface IBackendServer extends Omit<IServer, 'applications' | 'dns'> {
+export interface IBackendServer extends Omit<IServer, 'applications' | 'fqdns'> {
   applications: Collection<Application>;
-  dns: Collection<Dns>;
+  fqdns: Collection<Fqdn>;
 }
 
 @Entity()
@@ -23,11 +23,11 @@ export class Server extends BaseEntity<Server, 'id'> implements IBackendServer {
   @Property()
   os?: OperatingSystem;
 
-  @OneToMany(() => Application, (application) => application.server)
+  @ManyToMany(() => Application, (application) => application.servers)
   applications = new Collection<Application>(this);
 
-  @OneToMany(() => Dns, (dns) => dns.server)
-  dns = new Collection<Dns>(this);
+  @OneToMany(() => Fqdn, (fqdn) => fqdn.server)
+  fqdns = new Collection<Fqdn>(this);
 
   @Property({ columnType: 'text' })
   notes?: string;

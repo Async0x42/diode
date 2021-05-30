@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import type { IDns } from '@diode/common';
+import type { IFqdn } from '@diode/common';
 import type { PropType } from 'vue';
 import { useRouteSearchWithData } from '~/logic';
 
 const props = defineProps({
-  dns: { type: Array as PropType<IDns[]>, required: true },
+  fqdn: { type: Array as PropType<IFqdn[]>, required: true },
 });
 
 // server is sometimes undefined, and throws and error for fuse.js
-// const { results } = useRouteSearchWithData(props.dns, ['name', 'server']);
-const { results } = useRouteSearchWithData(props.dns, ['name']);
+// const { results } = useRouteSearchWithData(props.fqdn, ['name', 'server']);
+const { results } = useRouteSearchWithData(props.fqdn, ['name']);
 </script>
 
 <template>
@@ -28,7 +28,7 @@ const { results } = useRouteSearchWithData(props.dns, ['name']);
           </tr>
         </thead>
         <tbody class="divide-y bg-white divide-gray-200">
-          <DnsListItem v-for="entry in results" :key="entry.id" :dns="entry" />
+          <FqdnListItem v-for="entry in results" :key="entry.id" :fqdn="entry" />
         </tbody>
       </table>
     </div>

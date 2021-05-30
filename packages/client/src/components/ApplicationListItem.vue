@@ -16,20 +16,17 @@ const props = defineProps({
           <div class="ml-4">
             <div class="font-medium text-sm text-gray-900">{{ props.application.name }}</div>
             <div class="text-sm text-gray-500 whitespace-nowrap">{{ props.application.shortName }}</div>
-            <div v-for="dns in props.application.dns" :key="dns.id" class="text-sm text-gray-400 whitespace-nowrap">{{ dns.name }}</div>
+            <div v-for="fqdn in props.application.fqdns" :key="fqdn.id" class="text-sm text-gray-400 whitespace-nowrap">{{ fqdn.name }}</div>
           </div>
         </router-link>
       </div>
     </td>
     <td class="py-4 px-6 whitespace-nowrap">
-      <div class="text-sm text-gray-900">{{ props.application.server?.name }}</div>
-      <div class="text-sm text-gray-700">{{ props.application.server?.ip }}</div>
-      <div class="text-sm text-gray-500">{{ props.application.server?.os }}</div>
-    </td>
-    <td class="py-4 px-6 whitespace-nowrap">
-      <dd v-for="dns in props.application.dns" :key="dns.id" class="mt-1 text-sm text-gray-900">
-        {{ dns?.name }}
-      </dd>
+      <template v-for="server in props.application.servers" :key="server.id">
+        <div class="text-sm text-gray-900">{{ server?.name }}</div>
+        <div class="text-sm text-gray-700">{{ server?.ip }}</div>
+        <div class="text-sm text-gray-500">{{ server?.os }}</div>
+      </template>
     </td>
     <td class="py-4 px-6">
       <div class="text-sm text-gray-900">{{ props.application.description }}</div>

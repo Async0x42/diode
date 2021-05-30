@@ -22,8 +22,8 @@ const name = useField('name', {
 
 const shortName = useField('shortName');
 const description = useField('description');
-const dns = useField('dns');
-const server = useField('server');
+const fqdns = useField('fqdns');
+const servers = useField('servers');
 
 // TODO: remove async and display loading information and errors
 const onSubmit = handleSubmit(async (formData) => {
@@ -62,8 +62,8 @@ const onDelete = async () => {
             <FormInput label="Name" :field="name" name="name" class="sm:col-span-3" />
             <FormInput label="Short Name" :field="shortName" name="shortName" class="sm:col-span-3" />
 
-            <FormServerSelector label="Server" :field="server" name="server" class="sm:col-span-3" />
-            <FormDnsMultiSelector label="DNS" :field="dns" name="dns" class="sm:col-span-3" />
+            <FormServerMultiSelector label="Server" :field="servers" name="server" class="sm:col-span-3" />
+            <FormFqdnMultiSelector label="FQDN" :field="fqdns" name="fqdns" class="sm:col-span-3" />
             <FormTextArea label="Description" :field="description" name="description" class="sm:col-span-6" :rows="6" />
           </div>
         </div>

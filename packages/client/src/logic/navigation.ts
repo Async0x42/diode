@@ -7,7 +7,7 @@ export const navigation = ref([
   { name: 'Contacts', to: { name: 'contacts' }, icon: PhoneIcon },
   { name: 'BRDs', to: { name: 'brds' }, icon: DocumentTextIcon },
   { name: 'RFCs', to: { name: 'rfcs' }, icon: ClockIcon },
-  { name: 'DNS', to: { name: 'dns' }, icon: GlobeAltIcon },
+  { name: 'FQDN', to: { name: 'fqdn' }, icon: GlobeAltIcon },
   { name: 'Applications', to: { name: 'applications' }, icon: CodeIcon },
   { name: 'Servers', to: { name: 'servers' }, icon: ChipIcon },
 ]);

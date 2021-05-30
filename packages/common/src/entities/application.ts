@@ -1,4 +1,4 @@
-import { IDns } from './dns';
+import { IFqdn } from './fqdn';
 import { IServer } from './server';
 
 export interface IApplication {
@@ -6,6 +6,6 @@ export interface IApplication {
   name: string;
   shortName?: string;
   description?: string;
-  dns?: IDns[];
-  server?: IServer;
+  fqdns?: IFqdn[];
+  servers?: IServer[];
 }

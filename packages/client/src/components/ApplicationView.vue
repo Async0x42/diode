@@ -22,13 +22,17 @@ const props = defineProps({
           <dd class="text-sm text-gray-500">{{ props.application.shortName }}</dd>
         </div>
         <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Server</dt>
-          <dd class="text-sm text-gray-500">{{ props.application.server?.name }}</dd>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.application.server?.ip }}</dd>
+          <dt class="font-medium text-sm text-gray-500">Servers</dt>
+          <template v-for="server in props.application.servers" :key="server.id">
+            <dd class="text-sm text-gray-500">{{ server.name }}</dd>
+            <dd class="mt-1 text-sm text-gray-900">{{ server.ip }}</dd>
+          </template>
         </div>
         <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">DNS</dt>
-          <dd class="text-sm text-gray-500">{{ props.application.dns?.name }}</dd>
+          <dt class="font-medium text-sm text-gray-500">FQDNs</dt>
+          <template v-for="fqdn in props.application.fqdns" :key="fqdn.id">
+            <dd class="text-sm text-gray-500">{{ fqdn.name }}</dd>
+          </template>
         </div>
         <div class="sm:col-span-2">
           <dt class="font-medium text-sm text-gray-500">Description</dt>

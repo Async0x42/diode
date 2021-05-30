@@ -1,9 +1,9 @@
 import { DI } from '../index';
 import { Application } from '../entities';
 
-export const findAll = async (): Promise<Application[]> => (await DI.applicationRepo.find({}, ['dns', 'server'])) || [];
+export const findAll = async (): Promise<Application[]> => (await DI.applicationRepo.find({}, ['fqdns', 'servers'])) || [];
 
-export const find = async (id: number): Promise<Application | null> => await DI.applicationRepo.findOneOrFail({ id }, ['dns', 'server']);
+export const find = async (id: number): Promise<Application | null> => await DI.applicationRepo.findOneOrFail({ id }, ['fqdns', 'servers']);
 
 export const create = async (newApplication: Application): Promise<Application> => {
   const createdApplication = await DI.applicationRepo.create({
@@ -14,7 +14,7 @@ export const create = async (newApplication: Application): Promise<Application> 
   return createdApplication;
 };
 
-export const update = async (id: number, dnsUpdate: Application): Promise<Application | null> => {
+export const update = async (id: number, fqdnUpdate: Application): Promise<Application | null> => {
   const foundApplication = await DI.applicationRepo.findOneOrFail({ id });
 
   if (!foundApplication) {
@@ -22,7 +22,7 @@ export const update = async (id: number, dnsUpdate: Application): Promise<Applic
   }
 
   const updatedApplication = await DI.applicationRepo.assign(foundApplication, {
-    ...dnsUpdate,
+    ...fqdnUpdate,
   });
   DI.applicationRepo.flush();
 

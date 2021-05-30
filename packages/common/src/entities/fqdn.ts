@@ -1,7 +1,7 @@
 import { IApplication } from './application';
 import { IServer } from './server';
 
-export interface IDns {
+export interface IFqdn {
   id: number;
   name: string;
   server?: IServer;

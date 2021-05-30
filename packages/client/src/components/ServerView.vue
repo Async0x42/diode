@@ -23,9 +23,9 @@ const props = defineProps({
           <dd class="text-sm text-gray-500">{{ props.server.os }}</dd>
         </div>
         <div class="sm:col-span-2">
-          <dt class="font-medium text-sm text-gray-500">DNS</dt>
-          <dd class="mt-1 text-sm text-gray-900">
-            {{ props.server.dns }}
+          <dt class="font-medium text-sm text-gray-500">FQDN</dt>
+          <dd v-for="fqdn in props.server.fqdns" :key="fqdn.id" class="mt-1 text-sm text-gray-900">
+            {{ fqdn.name }}
           </dd>
         </div>
         <div class="sm:col-span-2">

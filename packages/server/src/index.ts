@@ -10,8 +10,8 @@ import { contactRouter } from './contact/contact.router';
 import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/not-found.middleware';
 import config from './mikro-orm.config';
-import { Application, Brd, Calendar, CalendarItem, Contact, Dns, Rfc, Server } from './entities';
-import { dnsRouter } from './dns/dns.router';
+import { Application, Brd, Calendar, CalendarItem, Contact, Fqdn, Rfc, Server } from './entities';
+import { fqdnRouter } from './fqdn/fqdn.router';
 import { applicationRouter } from './application/application.router';
 import { serverRouter } from './server/server.router';
 export * from './entities';
@@ -29,7 +29,7 @@ export const DI = {} as {
   rfcRepo: EntityRepository<Rfc>;
   brdRepo: EntityRepository<Brd>;
   contactRepo: EntityRepository<Contact>;
-  dnsRepo: EntityRepository<Dns>;
+  fqdnRepo: EntityRepository<Fqdn>;
   applicationRepo: EntityRepository<Application>;
   serverRepo: EntityRepository<Server>;
 };
@@ -42,7 +42,7 @@ export const DI = {} as {
   DI.rfcRepo = DI.em.getRepository(Rfc);
   DI.brdRepo = DI.em.getRepository(Brd);
   DI.contactRepo = DI.em.getRepository(Contact);
-  DI.dnsRepo = DI.em.getRepository(Dns);
+  DI.fqdnRepo = DI.em.getRepository(Fqdn);
   DI.applicationRepo = DI.em.getRepository(Application);
   DI.serverRepo = DI.em.getRepository(Server);
 
@@ -59,7 +59,7 @@ export const DI = {} as {
   app.use('/api/rfcs', rfcRouter);
   app.use('/api/brds', brdRouter);
   app.use('/api/contacts', contactRouter);
-  app.use('/api/dns', dnsRouter);
+  app.use('/api/fqdns', fqdnRouter);
   app.use('/api/applications', applicationRouter);
   app.use('/api/servers', serverRouter);
   app.use(errorHandler);

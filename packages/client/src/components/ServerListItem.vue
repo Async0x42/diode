@@ -22,7 +22,7 @@ const props = defineProps({
       </div>
     </td>
     <td class="py-4 px-6 whitespace-nowrap">
-      <div v-for="dns in props.server.dns" :key="dns.id" class="text-sm text-gray-900">{{ dns.name }}</div>
+      <div v-for="fqdn in props.server.fqdns" :key="fqdn.id" class="text-sm text-gray-900">{{ fqdn.name }}</div>
     </td>
     <td class="py-4 px-6">
       <div v-for="application in props.server.applications" :key="application.id" class="text-sm text-gray-900">

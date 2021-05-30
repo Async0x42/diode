@@ -3,15 +3,15 @@ import { defineProps } from 'vue';
 import { useForm } from 'vue-hooks-form';
 import { useAxios } from '@vueuse/integrations';
 import { useRouter } from 'vue-router';
-import type { IDns } from '@diode/common';
+import type { IFqdn } from '@diode/common';
 import type { PropType } from 'vue';
 
 const props = defineProps({
-  dns: { type: Object as PropType<IDns> },
+  fqdn: { type: Object as PropType<IFqdn> },
 });
 
-const { useField, handleSubmit } = useForm<IDns>({
-  defaultValues: props.dns,
+const { useField, handleSubmit } = useForm<IFqdn>({
+  defaultValues: props.fqdn,
 });
 
 const router = useRouter();
@@ -25,23 +25,23 @@ const applications = useField('applications');
 
 // TODO: remove async and display loading information and errors
 const onSubmit = handleSubmit(async (formData) => {
-  if (props.dns == null) {
+  if (props.fqdn == null) {
     // create
-    const { data, isFinished } = await useAxios(`/api/dns`, { method: 'POST', data: formData });
-    router.push({ name: 'dns' });
+    const { data, isFinished } = await useAxios(`/api/fqdns`, { method: 'POST', data: formData });
+    router.push({ name: 'fqdn' });
   } else {
     // update
-    const { data, isFinished } = await useAxios(`/api/dns/${props.dns.id}`, { method: 'PUT', data: formData });
-    router.push({ name: 'dns' });
+    const { data, isFinished } = await useAxios(`/api/fqdns/${props.fqdn.id}`, { method: 'PUT', data: formData });
+    router.push({ name: 'fqdn' });
   }
 
-  // on success, display checkmark transition and then redirect to the new/edited dns
+  // on success, display checkmark transition and then redirect to the new/edited fqdn
 });
 
 const onDelete = async () => {
-  if (props.dns != null) {
-    const { data, isFinished } = await useAxios(`/api/dns/${props.dns.id}`, { method: 'DELETE' });
-    router.push({ name: 'dns' });
+  if (props.fqdn != null) {
+    const { data, isFinished } = await useAxios(`/api/fqdns/${props.fqdn.id}`, { method: 'DELETE' });
+    router.push({ name: 'fqdn' });
   }
 };
 </script>
@@ -52,7 +52,7 @@ const onDelete = async () => {
       <div class="divide-y space-y-8 divide-gray-200">
         <div>
           <div>
-            <h3 class="font-medium text-lg text-gray-900 leading-6">DNS Information</h3>
+            <h3 class="font-medium text-lg text-gray-900 leading-6">FQDN Information</h3>
             <p class="mt-1 text-sm text-gray-500">This information will be displayed publicly.</p>
           </div>
 
@@ -67,7 +67,7 @@ const onDelete = async () => {
       <div class="pt-5">
         <div class="flex justify-end">
           <button
-            v-if="props.dns != null"
+            v-if="props.fqdn != null"
             type="button"
             class="border border-transparent rounded-md font-medium bg-red-600 shadow-sm text-sm text-white mr-3 py-2 px-4 inline-flex justify-center focus:outline-none hover:bg-red-700 focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
             @click="onDelete()"
