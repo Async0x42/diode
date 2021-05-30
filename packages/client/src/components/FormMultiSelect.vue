@@ -5,17 +5,19 @@ import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } f
 
 const props = defineProps({
   options: { type: Array as PropType<{ id: number; name: string }[]>, required: true },
-  modelValue: { type: Array as PropType<number[] | { id: number }[] | { id: number }>, default: () => [] },
+  modelValue: { type: Array as PropType<number[] | { id: number }[]>, default: () => [] },
   label: { type: String },
 });
 
-// using form defaults from vue-hooks-form it returns the whole object, or object array, so we check and map it to integer ids if needed
+// using form defaults from vue-hooks-form it returns the object array, so we check and map it to integer ids if needed
 const selected = ref<number[]>(
   Array.isArray(props.modelValue)
-    ? Number.isInteger(props.modelValue[0])
-      ? props.modelValue
-      : props.modelValue.map((i: any) => i.id)
-    : [props.modelValue.id]
+    ? props.modelValue.length > 0
+      ? Number.isInteger(props.modelValue[0])
+        ? props.modelValue // array is already integers, just return the modelValue
+        : props.modelValue.map((i: any) => i.id) // array is vue-hooks-form objects, map their ids
+      : [] // nothing in the array
+    : [] // not an array, undefined or otherwise
 );
 
 const emit = defineEmit(['update:modelValue']);
