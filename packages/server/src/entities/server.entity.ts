@@ -1,4 +1,4 @@
-import { IServer, OperatingSystem } from '@diode/common';
+import { IServer, OperatingSystem, ServerType } from '@diode/common';
 import { BaseEntity, Entity, Property, PrimaryKey, OneToMany, ManyToMany, Collection } from '@mikro-orm/core';
 import { Application } from './application.entity';
 import { Fqdn } from './fqdn.entity';
@@ -22,6 +22,9 @@ export class Server extends BaseEntity<Server, 'id'> implements IBackendServer {
 
   @Property()
   os?: OperatingSystem;
+
+  @Property()
+  type?: ServerType[];
 
   @ManyToMany(() => Application, (application) => application.servers)
   applications = new Collection<Application>(this);
