@@ -14,6 +14,12 @@ import { Application, Brd, Calendar, CalendarItem, Contact, Fqdn, Rfc, Server } 
 import { fqdnRouter } from './fqdn/fqdn.router';
 import { applicationRouter } from './application/application.router';
 import { serverRouter } from './server/server.router';
+import { OperatingSystem } from './entities/operatingSystem.entity';
+import { ServerLocation } from './entities/serverLocation.entity';
+import { ServerType } from './entities/serverType.entity';
+import { operatingSystemRouter } from './operatingSystem/operatingSystem.router';
+import { serverLocationRouter } from './serverLocation/serverLocation.router';
+import { serverTypeRouter } from './serverType/serverType.router';
 export * from './entities';
 
 dotEnvExtended.load();
@@ -32,6 +38,9 @@ export const DI = {} as {
   fqdnRepo: EntityRepository<Fqdn>;
   applicationRepo: EntityRepository<Application>;
   serverRepo: EntityRepository<Server>;
+  operatingSystemRepo: EntityRepository<OperatingSystem>;
+  serverLocationRepo: EntityRepository<ServerLocation>;
+  serverTypeRepo: EntityRepository<ServerType>;
 };
 
 (async () => {
@@ -45,6 +54,9 @@ export const DI = {} as {
   DI.fqdnRepo = DI.em.getRepository(Fqdn);
   DI.applicationRepo = DI.em.getRepository(Application);
   DI.serverRepo = DI.em.getRepository(Server);
+  DI.operatingSystemRepo = DI.em.getRepository(OperatingSystem);
+  DI.serverLocationRepo = DI.em.getRepository(ServerLocation);
+  DI.serverTypeRepo = DI.em.getRepository(ServerType);
 
   app.use((req, res, next) => RequestContext.create(DI.orm.em, next));
 
@@ -62,6 +74,9 @@ export const DI = {} as {
   app.use('/api/fqdns', fqdnRouter);
   app.use('/api/applications', applicationRouter);
   app.use('/api/servers', serverRouter);
+  app.use('/api/operatingsystems', operatingSystemRouter);
+  app.use('/api/serverlocations', serverLocationRouter);
+  app.use('/api/servertypes', serverTypeRouter);
   app.use(errorHandler);
   app.use(notFoundHandler);
 

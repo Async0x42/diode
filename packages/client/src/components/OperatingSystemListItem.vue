@@ -1,0 +1,50 @@
+<script setup lang="ts">
+import { defineProps } from 'vue';
+import type { IOperatingSystem } from '@diode/common';
+import type { PropType } from 'vue';
+
+const props = defineProps({
+  operatingSystem: { type: Object as PropType<IOperatingSystem>, required: true },
+});
+</script>
+
+<template>
+  <tr>
+    <td class="py-4 px-6 whitespace-nowrap">
+      <div class="flex items-center">
+        <router-link is="a" :to="`${$route.fullPath}/${props.operatingSystem.id}/view`">
+          <div class="ml-4">
+            <div class="font-medium text-sm text-gray-900">
+              {{ props.operatingSystem.title }}
+            </div>
+            <div class="text-sm text-gray-500">
+              {{ props.operatingSystem.operatingSystemNumber }}
+            </div>
+          </div>
+        </router-link>
+      </div>
+    </td>
+    <td class="text-sm py-4 px-6 text-gray-500">
+      {{ props.operatingSystem.priority }}
+    </td>
+    <td class="text-sm py-4 px-6 text-gray-500">
+      {{ props.operatingSystem.status }}
+    </td>
+    <td class="text-sm py-4 px-6 text-gray-500">
+      {{ props.operatingSystem.initialCost }}
+    </td>
+    <td class="text-sm py-4 px-6 text-gray-500">
+      {{ props.operatingSystem.upkeepCost }}
+    </td>
+    <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
+      <router-link is="a" :to="`${$route.fullPath}/${props.operatingSystem.id}/edit`">
+        <button
+          type="button"
+          class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white p-1 inline-flex items-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          <heroicons-solid-pencil class="h-5 w-5" aria-hidden="true" />
+        </button>
+      </router-link>
+    </td>
+  </tr>
+</template>

@@ -1,12 +1,14 @@
-import { IServer, OperatingSystem, ServerLocation, ServerType } from '@diode/common';
+import { IOperatingSystem, IServer, IServerLocation } from '@diode/common';
 import { BaseEntity, Entity, Property, PrimaryKey, OneToMany, ManyToMany, Collection } from '@mikro-orm/core';
 import { Application } from './application.entity';
 import { Fqdn } from './fqdn.entity';
+import { ServerType } from './serverType.entity';
 
 // Quick fix to make @mikro-orm collection compat with the IServer []
-export interface IBackendServer extends Omit<IServer, 'applications' | 'fqdns'> {
+export interface IBackendServer extends Omit<IServer, 'applications' | 'fqdns' | 'types'> {
   applications: Collection<Application>;
   fqdns: Collection<Fqdn>;
+  types: Collection<ServerType>;
 }
 
 @Entity()
@@ -21,13 +23,13 @@ export class Server extends BaseEntity<Server, 'id'> implements IBackendServer {
   ip?: string;
 
   @Property()
-  os?: OperatingSystem;
+  os?: IOperatingSystem;
+
+  @ManyToMany(() => ServerType, (type) => type.servers, { owner: true })
+  types = new Collection<ServerType>(this);
 
   @Property()
-  types?: ServerType[];
-
-  @Property()
-  location?: ServerLocation;
+  location?: IServerLocation;
 
   @ManyToMany(() => Application, (application) => application.servers)
   applications = new Collection<Application>(this);

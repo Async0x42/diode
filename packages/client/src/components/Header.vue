@@ -16,7 +16,21 @@ import { toggleSidebar } from '~/logic';
       <HeaderSearch :key="$route.path" />
       <div class="flex ml-4 items-center lg:ml-6">
         <router-link
-          v-if="$route.name != null && ['calendar', 'brds', 'contacts', 'rfcs', 'fqdn', 'applications', 'servers'].includes($route.name.toString())"
+          v-if="
+            $route.name != null &&
+            [
+              'calendar',
+              'brds',
+              'contacts',
+              'rfcs',
+              'fqdn',
+              'applications',
+              'servers',
+              'operatingSystems',
+              'serverTypes',
+              'serverLocations',
+            ].includes($route.name.toString())
+          "
           v-slot="{ navigate }"
           :to="$route.path + '/create'"
           custom
@@ -32,9 +46,18 @@ import { toggleSidebar } from '~/logic';
         <router-link
           v-if="
             $route.name != null &&
-            ['calendar-item-view', 'brd-view', 'contact-view', 'rfc-view', 'fqdn-view', 'application-view', 'server-view'].includes(
-              $route.name.toString()
-            )
+            [
+              'calendar-item-view',
+              'brd-view',
+              'contact-view',
+              'rfc-view',
+              'fqdn-view',
+              'application-view',
+              'server-view',
+              'operatingSystem-view',
+              'serverType-view',
+              'serverLocation-view',
+            ].includes($route.name.toString())
           "
           v-slot="{ navigate }"
           :to="$route.path.replace('/view', '/edit')"
