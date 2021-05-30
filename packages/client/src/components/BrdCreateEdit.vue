@@ -29,6 +29,7 @@ const submissionDate = useField('submissionDate');
 const dateEnteredIntoBits = useField('dateEnteredIntoBits');
 const initialCost = useField('initialCost');
 const upkeepCost = useField('upkeepCost');
+const application = useField('application');
 
 // TODO: remove async and display loading information and errors
 const onSubmit = handleSubmit(async (formData) => {
@@ -83,6 +84,7 @@ const onDelete = async () => {
             <FormInput label="Submission Date" :field="submissionDate" name="submissionDate" class="sm:col-span-3" />
             <FormInput label="Date Entered Into Bits" :field="dateEnteredIntoBits" name="dateEnteredIntoBits" class="sm:col-span-3" />
 
+            <FormApplicationSelect label="Application" :field="application" name="application" class="sm:col-span-3" />
             <FormInput label="Initial Cost" :field="initialCost" name="initialCost" class="sm:col-span-3" />
             <FormInput label="Upkeep Cost" :field="upkeepCost" name="upkeepCost" class="sm:col-span-3" />
           </div>

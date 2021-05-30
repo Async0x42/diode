@@ -18,6 +18,7 @@ declare module 'vue' {
     ContactView: typeof import('./src/components/ContactView.vue')['default']
     FormApplicationMultiSelect: typeof import('./src/components/FormApplicationMultiSelect.vue')['default']
     FormApplicationSelect: typeof import('./src/components/FormApplicationSelect.vue')['default']
+    FormBrdMultiSelect: typeof import('./src/components/FormBrdMultiSelect.vue')['default']
     FormFqdnMultiSelect: typeof import('./src/components/FormFqdnMultiSelect.vue')['default']
     FormFqdnSelect: typeof import('./src/components/FormFqdnSelect.vue')['default']
     FormInput: typeof import('./src/components/FormInput.vue')['default']

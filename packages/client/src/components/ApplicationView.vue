@@ -34,6 +34,12 @@ const props = defineProps({
             <dd class="text-sm text-gray-500">{{ fqdn.name }}</dd>
           </template>
         </div>
+        <div class="sm:col-span-1">
+          <dt class="font-medium text-sm text-gray-500">BRDs</dt>
+          <template v-for="brd in props.application.brds" :key="brd.id">
+            <dd class="text-sm text-gray-500">{{ brd.title }}</dd>
+          </template>
+        </div>
         <div class="sm:col-span-2">
           <dt class="font-medium text-sm text-gray-500">Description</dt>
           <dd class="mt-1 text-sm text-gray-900">
