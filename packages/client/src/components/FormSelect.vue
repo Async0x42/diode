@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, onMounted } from 'vue';
 import type { PropType } from 'vue';
+import { isObject } from '@vueuse/core';
 import type { FormField } from '~/types';
 
 const props = defineProps({
@@ -8,6 +9,11 @@ const props = defineProps({
   name: { type: String, required: true },
   options: { type: Array as PropType<string[]>, required: true },
   field: { type: Object as PropType<FormField>, required: true },
+});
+
+onMounted(() => {
+  // vue-hooks-form default value is the entire object, so if it is an object we map the id of that object
+  isObject(props.field.value) && (props.field.value = (props.field.value as any).id);
 });
 </script>
 
