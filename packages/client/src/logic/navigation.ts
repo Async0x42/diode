@@ -1,4 +1,4 @@
-import { DocumentTextIcon, ClockIcon, HomeIcon, PhoneIcon, CalendarIcon, GlobeAltIcon, CodeIcon, ChipIcon, CogIcon } from '@heroicons/vue/outline';
+import { DocumentTextIcon, ClockIcon, HomeIcon, PhoneIcon, CalendarIcon, GlobeAltIcon, ChipIcon, CogIcon } from '@heroicons/vue/outline';
 import { ref } from 'vue';
 
 export const navigation = ref([
@@ -7,9 +7,9 @@ export const navigation = ref([
   { name: 'Contacts', to: { name: 'contacts' }, icon: PhoneIcon },
   { name: 'BRDs', to: { name: 'brds' }, icon: DocumentTextIcon },
   { name: 'RFCs', to: { name: 'rfcs' }, icon: ClockIcon },
-  { name: 'FQDN', to: { name: 'fqdn' }, icon: GlobeAltIcon },
-  { name: 'Applications', to: { name: 'applications' }, icon: CodeIcon },
+  { name: 'Applications', to: { name: 'applications' }, icon: GlobeAltIcon },
   { name: 'Servers', to: { name: 'servers' }, icon: ChipIcon },
+  { name: 'FQDN', to: { name: 'fqdn' }, icon: CogIcon },
   { name: 'Operating Systems', to: { name: 'operatingSystems' }, icon: CogIcon },
   { name: 'Server Types', to: { name: 'serverTypes' }, icon: CogIcon },
   { name: 'Server Locations', to: { name: 'serverLocations' }, icon: CogIcon },
