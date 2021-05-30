@@ -1,8 +1,14 @@
 import { BrdStatus, IBrd } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey } from '@mikro-orm/core';
+import { BaseEntity, Entity, Property, PrimaryKey, ManyToOne } from '@mikro-orm/core';
+import { Application } from './application.entity';
+
+// Quick fix to make @mikro-orm collection compat with the IServer []
+export interface IBackendBrd extends Omit<IBrd, 'application'> {
+  application?: Application;
+}
 
 @Entity()
-export class Brd extends BaseEntity<Brd, 'id'> implements IBrd {
+export class Brd extends BaseEntity<Brd, 'id'> implements IBackendBrd {
   @PrimaryKey()
   id!: number;
 
@@ -35,4 +41,7 @@ export class Brd extends BaseEntity<Brd, 'id'> implements IBrd {
 
   @Property()
   upkeepCost?: number;
+
+  @ManyToOne()
+  application?: Application;
 }

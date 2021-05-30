@@ -1,3 +1,4 @@
+import { IBrd } from './brd';
 import { IFqdn } from './fqdn';
 import { IServer } from './server';
 
@@ -8,4 +9,5 @@ export interface IApplication {
   description?: string;
   fqdns?: IFqdn[];
   servers?: IServer[];
+  brds?: IBrd[];
 }

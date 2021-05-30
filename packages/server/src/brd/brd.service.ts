@@ -1,9 +1,9 @@
 import { Brd } from '../entities';
 import { DI } from '../index';
 
-export const findAll = async (): Promise<Brd[]> => (await DI.brdRepo.find({})) || [];
+export const findAll = async (): Promise<Brd[]> => (await DI.brdRepo.find({}, ['application'])) || [];
 
-export const find = async (id: number): Promise<Brd | null> => await DI.brdRepo.findOneOrFail({ id });
+export const find = async (id: number): Promise<Brd | null> => await DI.brdRepo.findOneOrFail({ id }, ['application']);
 
 export const create = async (newBrd: Brd): Promise<Brd> => {
   const createdBrd = await DI.brdRepo.create({

@@ -1,3 +1,5 @@
+import { IApplication } from './application';
+
 export type BrdStatus = 'Draft' | 'Assessment' | 'Design' | 'WIF' | 'SA' | 'Implementation' | 'Done';
 
 export interface IBrd {
@@ -12,4 +14,5 @@ export interface IBrd {
   dateEnteredIntoBits?: Date;
   initialCost?: number;
   upkeepCost?: number;
+  application?: IApplication;
 }
