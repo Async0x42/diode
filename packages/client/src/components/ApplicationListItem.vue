@@ -25,7 +25,7 @@ const props = defineProps({
       <template v-for="server in props.application.servers" :key="server.id">
         <div class="text-sm text-gray-900">{{ server?.name }}</div>
         <div class="text-sm text-gray-700">{{ server?.ip }}</div>
-        <div class="text-sm text-gray-500">{{ server?.os }}</div>
+        <div class="text-sm text-gray-500">{{ server?.operatingSystem }}</div>
       </template>
     </td>
     <td class="py-4 px-6">

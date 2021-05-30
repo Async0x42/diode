@@ -1,14 +1,17 @@
 import { IApplication } from './application';
 import { IFqdn } from './fqdn';
+import { IOperatingSystem } from './operatingSystem';
+import { IServerLocation } from './serverLocation';
+import { IServerType } from './serverType';
 
 export interface IServer {
   id: number;
   name: string;
   ip?: string;
   notes?: string;
-  os?: OperatingSystem;
+  operatingSystem?: IOperatingSystem;
   applications?: IApplication[];
   fqdns?: IFqdn[];
-  types?: ServerType[];
-  location?: ServerLocation;
+  types?: IServerType[];
+  location?: IServerLocation;
 }

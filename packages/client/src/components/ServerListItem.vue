@@ -16,7 +16,7 @@ const props = defineProps({
           <div class="ml-4">
             <div class="font-medium text-sm text-gray-900">{{ props.server.name }}</div>
             <div class="text-sm text-gray-500">{{ props.server.ip }}</div>
-            <div class="text-sm text-gray-300">{{ props.server.os }}</div>
+            <div class="text-sm text-gray-300">{{ props.server.operatingSystem?.name }}</div>
           </div>
         </router-link>
       </div>

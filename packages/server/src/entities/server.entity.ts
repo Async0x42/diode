@@ -25,7 +25,7 @@ export class Server extends BaseEntity<Server, 'id'> implements IBackendServer {
   ip?: string;
 
   @ManyToOne()
-  os?: OperatingSystem;
+  operatingSystem?: OperatingSystem;
 
   @ManyToMany(() => ServerType, (type) => type.servers, { owner: true })
   types = new Collection<ServerType>(this);

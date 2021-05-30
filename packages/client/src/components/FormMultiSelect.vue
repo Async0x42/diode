@@ -29,7 +29,6 @@ const changeSelection = () => {
 const toggleSelection = (selection: any) => {
   selected.value.includes(selection) ? selected.value.splice(selected.value.indexOf(selection), 1) : selected.value.push(selection);
   changeSelection();
-  console.log(selected.value);
 };
 </script>
 

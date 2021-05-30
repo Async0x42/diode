@@ -10,6 +10,6 @@ export class OperatingSystem extends BaseEntity<OperatingSystem, 'id'> implement
   @Property()
   name!: string;
 
-  @OneToMany(() => Server, (server) => server.os)
+  @OneToMany(() => Server, (server) => server.operatingSystem)
   servers?: Collection<Server>;
 }

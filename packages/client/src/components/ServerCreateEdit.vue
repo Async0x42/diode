@@ -3,7 +3,7 @@ import { defineProps } from 'vue';
 import { useForm } from 'vue-hooks-form';
 import { useAxios } from '@vueuse/integrations';
 import { useRouter } from 'vue-router';
-import type { IServer, ServerLocation, ServerType } from '@diode/common';
+import type { IServer } from '@diode/common';
 import type { PropType } from 'vue';
 
 const props = defineProps({
@@ -21,11 +21,11 @@ const name = useField('name', {
 });
 
 const ip = useField('ip');
-const os = useField('os');
 const notes = useField('notes');
 const fqdns = useField('fqdns');
 const types = useField('types');
 const location = useField('location');
+const operatingSystem = useField('operatingSystem');
 
 // TODO: remove async and display loading information and errors
 const onSubmit = handleSubmit(async (formData) => {
@@ -48,9 +48,6 @@ const onDelete = async () => {
     router.push({ name: 'servers' });
   }
 };
-
-const serverTypes: ServerType[] = ['Application', 'Database', 'Load Balancer', 'Multi-function'];
-const serverLocations: ServerLocation[] = ['DC Barrie', 'DC Borden', 'DC Gatineau'];
 </script>
 
 <template>
@@ -66,16 +63,10 @@ const serverLocations: ServerLocation[] = ['DC Barrie', 'DC Borden', 'DC Gatinea
           <div class="mt-6 grid gap-y-6 gap-x-4 grid-cols-1 sm:grid-cols-6">
             <FormInput label="Name" :field="name" name="name" class="sm:col-span-3" />
             <FormInput label="IP" :field="ip" name="ip" class="sm:col-span-3" />
-            <FormSelect
-              label="OS"
-              :field="os"
-              name="os"
-              :options="['[W] Server 2012R2', '[W] Server 2016', '[L] RHEL 7', '[L] CentOS 7', 'Unknown']"
-              class="sm:col-span-3"
-            />
             <FormFqdnMultiSelect label="FQDNs" :field="fqdns" name="fqdns" class="sm:col-span-3" />
-            <!-- <FormMultiSelect label="Types" :field="types" name="types" :options="serverTypes" class="sm:col-span-3" /> -->
-            <FormSelect label="Location" :field="location" name="location" :options="serverLocations" class="sm:col-span-3" />
+            <FormServerTypeMultiSelect label="Server Types" :field="types" name="types" class="sm:col-span-3" />
+            <FormServerLocationSelect label="Location" :field="location" name="location" class="sm:col-span-3" />
+            <FormOperatingSystemSelect label="Operating System" :field="operatingSystem" name="operatingSystem" class="sm:col-span-3" />
             <FormTextArea label="Notes" :field="notes" name="notes" class="sm:col-span-6" />
           </div>
         </div>
