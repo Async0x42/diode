@@ -24,7 +24,7 @@ export class Server extends BaseEntity<Server, 'id'> implements IBackendServer {
   os?: OperatingSystem;
 
   @Property()
-  type?: ServerType[];
+  types?: ServerType[];
 
   @Property()
   location?: ServerLocation;

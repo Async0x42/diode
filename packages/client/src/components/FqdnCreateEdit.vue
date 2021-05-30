@@ -58,8 +58,8 @@ const onDelete = async () => {
 
           <div class="mt-6 grid gap-y-6 gap-x-4 grid-cols-1 sm:grid-cols-6">
             <FormInput label="Name" :field="name" name="name" class="sm:col-span-3" />
-            <FormServerSelector label="Server" :field="server" name="server" class="sm:col-span-3" />
-            <FormApplicationMultiSelector label="Applications" :field="applications" name="applications" class="sm:col-span-3" />
+            <FormServerSelect label="Server" :field="server" name="server" class="sm:col-span-3" />
+            <FormApplicationMultiSelect label="Applications" :field="applications" name="applications" class="sm:col-span-3" />
           </div>
         </div>
       </div>

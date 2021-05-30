@@ -13,6 +13,6 @@ export interface IServer {
   os?: OperatingSystem;
   applications?: IApplication[];
   fqdns?: IFqdn[];
-  type?: ServerType[];
+  types?: ServerType[];
   location?: ServerLocation;
 }
