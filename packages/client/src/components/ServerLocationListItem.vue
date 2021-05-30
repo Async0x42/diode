@@ -15,26 +15,11 @@ const props = defineProps({
         <router-link is="a" :to="`${$route.fullPath}/${props.serverLocation.id}/view`">
           <div class="ml-4">
             <div class="font-medium text-sm text-gray-900">
-              {{ props.serverLocation.title }}
-            </div>
-            <div class="text-sm text-gray-500">
-              {{ props.serverLocation.serverLocationNumber }}
+              {{ props.serverLocation.name }}
             </div>
           </div>
         </router-link>
       </div>
-    </td>
-    <td class="text-sm py-4 px-6 text-gray-500">
-      {{ props.serverLocation.priority }}
-    </td>
-    <td class="text-sm py-4 px-6 text-gray-500">
-      {{ props.serverLocation.status }}
-    </td>
-    <td class="text-sm py-4 px-6 text-gray-500">
-      {{ props.serverLocation.initialCost }}
-    </td>
-    <td class="text-sm py-4 px-6 text-gray-500">
-      {{ props.serverLocation.upkeepCost }}
     </td>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
       <router-link is="a" :to="`${$route.fullPath}/${props.serverLocation.id}/edit`">

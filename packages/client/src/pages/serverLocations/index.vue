@@ -8,7 +8,7 @@ const { data, error, isFinished } = useAxios<IServerLocation[]>('/api/serverLoca
 </script>
 
 <template>
-  <ServerLocationList v-if="data && isFinished && data" :contacts="data" />
+  <ServerLocationList v-if="data && isFinished && data" :server-locations="data" />
   <LoadingError v-else-if="error" :error="error" />
   <LoadingList v-else />
 </template>

@@ -13,7 +13,7 @@ const { data, error, isFinished } = useAxios<IServerType>(`/api/serverTypes/${pr
 </script>
 
 <template>
-  <ServerTypeCreateEdit v-if="isFinished && data" :contact="data" />
+  <ServerTypeCreateEdit v-if="isFinished && data" :server-type="data" />
   <LoadingError v-else-if="error" :error="error" />
   <LoadingList v-else />
 </template>

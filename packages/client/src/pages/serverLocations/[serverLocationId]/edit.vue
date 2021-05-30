@@ -9,11 +9,11 @@ import LoadingList from '~/components/LoadingList.vue';
 const props = defineProps({
   serverLocationId: { type: String, required: true },
 });
-const { data, error, isFinished } = useAxios<IServerLocation>(`/api/contacts/${props.serverLocationId}`);
+const { data, error, isFinished } = useAxios<IServerLocation>(`/api/serverLocations/${props.serverLocationId}`);
 </script>
 
 <template>
-  <ServerLocationCreateEdit v-if="isFinished && data" :contact="data" />
+  <ServerLocationCreateEdit v-if="isFinished && data" :server-location="data" />
   <LoadingError v-else-if="error" :error="error" />
   <LoadingList v-else />
 </template>

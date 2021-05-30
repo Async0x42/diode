@@ -8,7 +8,7 @@ const { data, error, isFinished } = useAxios<IServerType[]>('/api/serverTypes');
 </script>
 
 <template>
-  <ServerTypeList v-if="data && isFinished && data" :contacts="data" />
+  <ServerTypeList v-if="data && isFinished && data" :server-types="data" />
   <LoadingError v-else-if="error" :error="error" />
   <LoadingList v-else />
 </template>
