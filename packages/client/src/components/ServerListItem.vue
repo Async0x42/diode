@@ -12,7 +12,7 @@ const props = defineProps({
   <tr>
     <td class="py-4 px-6 whitespace-nowrap">
       <div class="flex items-center">
-        <router-link is="a" :to="`${$route.fullPath}/${props.server.id}/view`">
+        <router-link is="a" :to="{ name: 'server-view', params: { serverId: props.server.id } }">
           <div class="ml-4">
             <div class="font-medium text-sm text-gray-900">{{ props.server.name }}</div>
             <div class="text-sm text-gray-500">{{ props.server.ip }}</div>
@@ -26,10 +26,16 @@ const props = defineProps({
       <div v-for="fqdn in props.server.fqdns" :key="fqdn.id" class="text-sm text-gray-900">{{ fqdn.name }}</div>
     </td>
     <td class="py-4 px-6">
-      <div v-for="application in props.server.applications" :key="application.id" class="text-sm text-gray-900">
+      <router-link
+        is="a"
+        v-for="application in props.server.applications"
+        :key="application.id"
+        :to="{ name: 'application-view', params: { applicationId: application.id } }"
+        class="text-sm text-gray-900"
+      >
         <template v-if="application?.shortName"> [{{ application?.shortName }}] </template>
         {{ application?.name }}
-      </div>
+      </router-link>
     </td>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
       <router-link is="a" :to="`${$route.fullPath}/${props.server.id}/edit`">
