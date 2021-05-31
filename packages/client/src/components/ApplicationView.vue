@@ -24,20 +24,21 @@ const props = defineProps({
         <div class="sm:col-span-1">
           <dt class="font-medium text-sm text-gray-500">Servers</dt>
           <template v-for="server in props.application.servers" :key="server.id">
-            <dd class="text-sm text-gray-500">{{ server.name }}</dd>
-            <dd class="mt-1 text-sm text-gray-900">{{ server.ip }}</dd>
+            <dd class="text-sm text-gray-900">{{ server.name }}</dd>
+            <dd class="mt-1 text-sm text-gray-500">{{ server.ip }}</dd>
+            <dd class="mt-1 text-sm text-gray-500">{{ server.operatingSystem?.name }}</dd>
           </template>
         </div>
         <div class="sm:col-span-1">
           <dt class="font-medium text-sm text-gray-500">FQDNs</dt>
           <template v-for="fqdn in props.application.fqdns" :key="fqdn.id">
-            <dd class="text-sm text-gray-500">{{ fqdn.name }}</dd>
+            <dd class="text-sm text-gray-900">{{ fqdn.name }}</dd>
           </template>
         </div>
         <div class="sm:col-span-1">
           <dt class="font-medium text-sm text-gray-500">BRDs</dt>
           <template v-for="brd in props.application.brds" :key="brd.id">
-            <dd class="text-sm text-gray-500">{{ brd.title }}</dd>
+            <dd class="text-sm text-gray-900">[{{ brd.brdNumber }}] {{ brd.title }}</dd>
           </template>
         </div>
         <div class="sm:col-span-2">

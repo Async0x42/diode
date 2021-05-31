@@ -9,7 +9,7 @@ import LoadingList from '~/components/LoadingList.vue';
 const props = defineProps({
   serverId: { type: String, required: true },
 });
-const { data, error, isFinished } = useAxios<IServer>(`/api/server/${props.serverId}`);
+const { data, error, isFinished } = useAxios<IServer>(`/api/servers/${props.serverId}`);
 </script>
 
 <template>
