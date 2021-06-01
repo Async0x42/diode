@@ -18,7 +18,7 @@ const props = defineProps({
       custom
       class="text-sm text-gray-900"
     >
-      <div role="link" class="cursor-pointer" @click="navigate" @keypress.enter="navigate">
+      <div role="link" class="cursor-pointer hover:border-l-1 hover:border-blue-300" @click="navigate" @keypress.enter="navigate">
         <template v-if="application?.shortName"> [{{ application?.shortName }}] </template>
         {{ application?.name }}
       </div>

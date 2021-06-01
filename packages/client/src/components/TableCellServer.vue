@@ -10,9 +10,9 @@ const props = defineProps({
 
 <template>
   <td class="py-4 px-6 whitespace-nowrap">
-    <router-link :to="{ name: 'server-view', params: { serverId: server.id } }">
-      <div class="text-sm text-gray-900">{{ props.server?.name }}</div>
-      <div class="text-sm text-gray-500">{{ props.server?.ip }}</div>
+    <router-link class="group" :to="{ name: 'server-view', params: { serverId: server.id } }">
+      <div class="text-sm text-gray-900 group-hover:border-l-1 group-hover:border-blue-300">{{ props.server?.name }}</div>
+      <div class="text-sm text-gray-500 group-hover:border-l-1 group-hover:border-blue-300">{{ props.server?.ip }}</div>
     </router-link>
   </td>
 </template>

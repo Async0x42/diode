@@ -10,11 +10,11 @@ const props = defineProps({
 
 <template>
   <td class="py-4 px-6 whitespace-nowrap">
-    <router-link v-for="server in props.servers" :key="server.id" :to="{ name: 'server-view', params: { serverId: server.id } }">
-      <div class="text-sm text-gray-900">{{ server?.name }}</div>
-      <div class="text-sm text-gray-700">{{ server?.ip }}</div>
-      <div class="text-sm text-gray-500">{{ server?.location?.name }}</div>
-      <div class="text-sm text-gray-500">{{ server?.operatingSystem?.name }}</div>
+    <router-link v-for="server in props.servers" :key="server.id" class="group" :to="{ name: 'server-view', params: { serverId: server.id } }">
+      <div class="text-sm text-gray-900 group-hover:border-l-1 group-hover:border-blue-300">{{ server?.name }}</div>
+      <div class="text-sm text-gray-700 group-hover:border-l-1 group-hover:border-blue-300">{{ server?.ip }}</div>
+      <div class="text-sm text-gray-500 group-hover:border-l-1 group-hover:border-blue-300">{{ server?.location?.name }}</div>
+      <div class="text-sm text-gray-500 group-hover:border-l-1 group-hover:border-blue-300">{{ server?.operatingSystem?.name }}</div>
     </router-link>
   </td>
 </template>
