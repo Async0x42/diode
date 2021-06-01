@@ -28,7 +28,10 @@ const rfcClass = useField('rfcClass', {
   rule: { required: true },
 });
 
-const purpose = useField('purpose');
+const purpose = useField('purpose', {
+  rule: { required: true },
+});
+
 const rfcNumber = useField('rfcNumber');
 const impactAssessmentDueDate = useField('impactAssessmentDueDate');
 const description = useField('description');
@@ -82,10 +85,12 @@ const onDelete = async () => {
               <template #note>
                 <p class="mt-2 text-sm text-gray-500">
                   This field is mandatory. A brief title that reflects the proposed change. Keeping in mind that this field will be used as a
-                  potential search criterion therefore avoid making the title too generic.
+                  potential search criteria therefore avoid making the title too generic.
                 </p>
               </template>
             </FormInput>
+
+            <FormInput label="RFC Number" :field="rfcNumber" name="rfcNumber" class="sm:col-span-3" />
 
             <FormApplicationSelect label="Application" :field="application" name="application" class="sm:col-span-3" />
 
@@ -380,8 +385,6 @@ const onDelete = async () => {
                 <p class="mt-2 text-sm text-gray-500">Description of activities required should the implementation of the requested change fail.</p>
               </template>
             </FormTextArea>
-
-            <FormInput label="Security Implications" :field="rfcNumber" name="rfcNumber" class="sm:col-span-3" />
 
             <FormInput label="Impact Assessment Due Date" :field="impactAssessmentDueDate" name="impactAssessmentDueDate" class="sm:col-span-3" />
           </div>

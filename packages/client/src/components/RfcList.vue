@@ -40,7 +40,7 @@ const { results } = useRouteSearchWithData(props.rfcs, [
             <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">IA Due Date</th>
             <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Description</th>
             <th scope="col" class="py-3 px-6 relative">
-              <span class="sr-only">Edit</span>
+              <span class="sr-only">Actions</span>
             </th>
           </tr>
         </thead>
