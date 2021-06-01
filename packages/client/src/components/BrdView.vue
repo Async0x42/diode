@@ -57,31 +57,6 @@ const props = defineProps({
           <dt class="font-medium text-sm text-gray-500">Upkeep Cost</dt>
           <dd class="mt-1 text-sm text-gray-900">{{ props.brd.upkeepCost }}</dd>
         </div>
-        <!-- <div class="sm:col-span-2">
-          <dt class="font-medium text-sm text-gray-500">Attachments</dt>
-          <dd class="mt-1 text-sm text-gray-900">
-            <ul class="divide-y border rounded-md divide-gray-200 border-gray-200">
-              <li class="flex text-sm py-3 pr-4 pl-3 items-center justify-between">
-                <div class="flex flex-1 w-0 items-center">
-                  <heroicons-solid-paper-clip class="flex-shrink-0 h-5 text-gray-400 w-5" aria-hidden="true" />
-                  <span class="flex-1 ml-2 w-0 truncate"> resume_back_end_developer.pdf </span>
-                </div>
-                <div class="flex-shrink-0 ml-4">
-                  <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> Download </a>
-                </div>
-              </li>
-              <li class="flex text-sm py-3 pr-4 pl-3 items-center justify-between">
-                <div class="flex flex-1 w-0 items-center">
-                  <heroicons-solid-paper-clip class="flex-shrink-0 h-5 text-gray-400 w-5" aria-hidden="true" />
-                  <span class="flex-1 ml-2 w-0 truncate"> coverletter_back_end_developer.pdf </span>
-                </div>
-                <div class="flex-shrink-0 ml-4">
-                  <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> Download </a>
-                </div>
-              </li>
-            </ul>
-          </dd>
-        </div> -->
       </dl>
     </div>
   </div>
