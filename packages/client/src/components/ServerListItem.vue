@@ -2,6 +2,8 @@
 import { defineProps } from 'vue';
 import type { IServer } from '@diode/common';
 import type { PropType } from 'vue';
+import TableCellApplications from './TableCellApplications.vue';
+import TableCellFqdns from './TableCellFqdns.vue';
 
 const props = defineProps({
   server: { type: Object as PropType<IServer>, required: true },
@@ -15,28 +17,15 @@ const props = defineProps({
         <router-link is="a" :to="{ name: 'server-view', params: { serverId: props.server.id } }">
           <div class="ml-4">
             <div class="font-medium text-sm text-gray-900">{{ props.server.name }}</div>
-            <div class="text-sm text-gray-500">{{ props.server.ip }}</div>
+            <div class="text-sm text-gray-700">{{ props.server.ip }}</div>
             <div class="text-sm text-gray-500">{{ props.server.location?.name }}</div>
-            <div class="text-sm text-gray-400">{{ props.server.operatingSystem?.name }}</div>
+            <div class="text-sm text-gray-500">{{ props.server.operatingSystem?.name }}</div>
           </div>
         </router-link>
       </div>
     </td>
-    <td class="py-4 px-6 whitespace-nowrap">
-      <div v-for="fqdn in props.server.fqdns" :key="fqdn.id" class="text-sm text-gray-900">{{ fqdn.name }}</div>
-    </td>
-    <td class="py-4 px-6">
-      <router-link
-        is="a"
-        v-for="application in props.server.applications"
-        :key="application.id"
-        :to="{ name: 'application-view', params: { applicationId: application.id } }"
-        class="text-sm text-gray-900"
-      >
-        <template v-if="application?.shortName"> [{{ application?.shortName }}] </template>
-        {{ application?.name }}
-      </router-link>
-    </td>
+    <TableCellFqdns :fqdns="props.server.fqdns" />
+    <TableCellApplications :applications="props.server.applications" />
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
       <router-link is="a" :to="`${$route.fullPath}/${props.server.id}/edit`">
         <button

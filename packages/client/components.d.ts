@@ -19,6 +19,10 @@ declare module 'vue' {
     FormApplicationMultiSelect: typeof import('./src/components/FormApplicationMultiSelect.vue')['default']
     FormApplicationSelect: typeof import('./src/components/FormApplicationSelect.vue')['default']
     FormBrdMultiSelect: typeof import('./src/components/FormBrdMultiSelect.vue')['default']
+    FormButton: typeof import('./src/components/FormButton.vue')['default']
+    FormButtonCancel: typeof import('./src/components/FormButtonCancel.vue')['default']
+    FormButtonDelete: typeof import('./src/components/FormButtonDelete.vue')['default']
+    FormButtonOk: typeof import('./src/components/FormButtonOk.vue')['default']
     FormFqdnMultiSelect: typeof import('./src/components/FormFqdnMultiSelect.vue')['default']
     FormFqdnSelect: typeof import('./src/components/FormFqdnSelect.vue')['default']
     FormInput: typeof import('./src/components/FormInput.vue')['default']
@@ -62,6 +66,9 @@ declare module 'vue' {
     SidebarDesktop: typeof import('./src/components/SidebarDesktop.vue')['default']
     SidebarFooter: typeof import('./src/components/SidebarFooter.vue')['default']
     SidebarMobile: typeof import('./src/components/SidebarMobile.vue')['default']
+    TableCellApplications: typeof import('./src/components/TableCellApplications.vue')['default']
+    TableCellFqdns: typeof import('./src/components/TableCellFqdns.vue')['default']
+    TableCellServers: typeof import('./src/components/TableCellServers.vue')['default']
   }
 }
 

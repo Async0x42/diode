@@ -25,12 +25,7 @@ const props = defineProps({
       <div class="text-sm text-gray-900">{{ props.fqdn.server?.name }}</div>
       <div class="text-sm text-gray-500">{{ props.fqdn.server?.ip }}</div>
     </td>
-    <td class="py-4 px-6 whitespace-nowrap">
-      <div v-for="application in props.fqdn.applications" :key="application.id" class="text-sm text-gray-900">
-        <template v-if="application?.shortName"> [{{ application?.shortName }}] </template>
-        {{ application?.name }}
-      </div>
-    </td>
+    <TableCellApplications :applications="props.fqdn.applications" />
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
       <router-link is="a" :to="`${$route.fullPath}/${props.fqdn.id}/edit`">
         <button

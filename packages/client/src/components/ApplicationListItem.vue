@@ -21,14 +21,7 @@ const props = defineProps({
         </router-link>
       </div>
     </td>
-    <td class="py-4 px-6 whitespace-nowrap">
-      <router-link is="a" v-for="server in props.application.servers" :key="server.id" :to="{ name: 'server-view', params: { serverId: server.id } }">
-        <div class="text-sm text-gray-900">{{ server?.name }}</div>
-        <div class="text-sm text-gray-700">{{ server?.ip }}</div>
-        <div class="text-sm text-gray-500">{{ server?.location?.name }}</div>
-        <div class="text-sm text-gray-500">{{ server?.operatingSystem?.name }}</div>
-      </router-link>
-    </td>
+    <TableCellServers :servers="props.application.servers" />
     <td class="py-4 px-6">
       <div class="text-sm text-gray-900">{{ props.application.description }}</div>
     </td>
