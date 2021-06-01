@@ -13,11 +13,14 @@ const props = defineProps({
     <router-link
       v-for="fqdn in props.fqdns"
       :key="fqdn.id"
-      tag="div"
+      v-slot="{ navigate }"
       :to="{ name: 'fqdn-view', params: { fqdnId: fqdn.id } }"
+      custom
       class="text-sm text-gray-900"
     >
-      {{ fqdn.name }}
+      <div role="link" class="cursor-pointer" @click="navigate" @keypress.enter="navigate">
+        {{ fqdn.name }}
+      </div>
     </router-link>
   </td>
 </template>

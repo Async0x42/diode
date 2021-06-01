@@ -10,7 +10,7 @@ const props = defineProps({
 
 <template>
   <td class="py-4 px-6 whitespace-nowrap">
-    <router-link is="a" v-for="server in props.servers" :key="server.id" :to="{ name: 'server-view', params: { serverId: server.id } }">
+    <router-link v-for="server in props.servers" :key="server.id" :to="{ name: 'server-view', params: { serverId: server.id } }">
       <div class="text-sm text-gray-900">{{ server?.name }}</div>
       <div class="text-sm text-gray-700">{{ server?.ip }}</div>
       <div class="text-sm text-gray-500">{{ server?.location?.name }}</div>

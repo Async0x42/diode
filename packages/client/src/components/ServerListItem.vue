@@ -14,7 +14,7 @@ const props = defineProps({
   <tr>
     <td class="py-4 px-6 whitespace-nowrap">
       <div class="flex items-center">
-        <router-link is="a" :to="{ name: 'server-view', params: { serverId: props.server.id } }">
+        <router-link :to="{ name: 'server-view', params: { serverId: props.server.id } }">
           <div class="ml-4">
             <div class="font-medium text-sm text-gray-900">{{ props.server.name }}</div>
             <div class="text-sm text-gray-700">{{ props.server.ip }}</div>
@@ -27,10 +27,22 @@ const props = defineProps({
     <TableCellFqdns :fqdns="props.server.fqdns" />
     <TableCellApplications :applications="props.server.applications" />
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
-      <router-link is="a" :to="`${$route.fullPath}/${props.server.id}/edit`">
+      <router-link :to="`${$route.fullPath}/${props.server.id}/edit`">
         <button
           type="button"
-          class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white p-1 inline-flex items-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          class="
+            border border-transparent
+            rounded-full
+            bg-indigo-600
+            shadow-sm
+            text-white
+            p-1
+            inline-flex
+            items-center
+            focus:outline-none
+            hover:bg-indigo-700
+            focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
+          "
         >
           <heroicons-solid-pencil class="h-5 w-5" aria-hidden="true" />
         </button>

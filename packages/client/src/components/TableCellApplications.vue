@@ -11,14 +11,17 @@ const props = defineProps({
 <template>
   <td class="py-4 px-6 whitespace-nowrap">
     <router-link
-      is="a"
       v-for="application in props.applications"
       :key="application.id"
+      v-slot="{ navigate }"
       :to="{ name: 'application-view', params: { applicationId: application.id } }"
+      custom
       class="text-sm text-gray-900"
     >
-      <template v-if="application?.shortName"> [{{ application?.shortName }}] </template>
-      {{ application?.name }}
+      <div role="link" class="cursor-pointer" @click="navigate" @keypress.enter="navigate">
+        <template v-if="application?.shortName"> [{{ application?.shortName }}] </template>
+        {{ application?.name }}
+      </div>
     </router-link>
   </td>
 </template>
