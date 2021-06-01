@@ -16,7 +16,7 @@ export const useRouteSearch = () => {
 };
 
 // see this for typing issues: https://github.com/vuejs/vue-next/issues/2136
-export const useRouteSearchWithData = <T extends Object>(data: T[], keys: Array<keyof T>) => {
+export const useRouteSearchWithData = <T extends Object>(data: T[], keys: Array<keyof T | string>) => {
   const searchData = reactive(data);
   const search = useRouteSearch();
   const options: Fuse.IFuseOptions<T> = {

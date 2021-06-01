@@ -10,7 +10,7 @@ const props = defineProps({
 
 // server is sometimes undefined, and throws and error for fuse.js
 // const { results } = useRouteSearchWithData(props.fqdn, ['name', 'server']);
-const { results } = useRouteSearchWithData(props.fqdn, ['name']);
+const { results } = useRouteSearchWithData(props.fqdn, ['name', 'servers.name', 'servers.ip', 'applications.name', 'applications.shortName']);
 </script>
 
 <template>

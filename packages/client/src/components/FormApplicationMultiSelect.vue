@@ -22,7 +22,7 @@ const { data, error, isFinished } = useAxios<IApplication[]>('/api/applications'
       :ref="props.field.ref"
       v-model="props.field.value"
       :label="props.label"
-      :options="data.map((d) => ({ id: d.id, name: `[${d.shortName}] ${d.name}` }))"
+      :options="data.map((d) => ({ id: d.id, name: `${d.shortName ? `[${d.shortName}] ` : ''}${d.name}` }))"
       :name="props.name"
       class="sm:col-span-3"
     />

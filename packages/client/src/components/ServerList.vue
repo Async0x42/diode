@@ -8,7 +8,16 @@ const props = defineProps({
   servers: { type: Array as PropType<IServer[]>, required: true },
 });
 
-const { results } = useRouteSearchWithData(props.servers, ['name', 'ip', 'fqdns', 'applications']);
+const { results } = useRouteSearchWithData(props.servers, [
+  'name',
+  'ip',
+  'fqdns.name',
+  'applications.name',
+  'applications.shortName',
+  'operatingSystem.name',
+  'types.name',
+  'location.name',
+]);
 </script>
 
 <template>

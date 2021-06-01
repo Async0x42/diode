@@ -8,7 +8,15 @@ const props = defineProps({
   brds: { type: Array as PropType<IBrd[]>, required: true },
 });
 
-const { results } = useRouteSearchWithData(props.brds, ['brdNumber', 'title', 'description', 'relatedRequests', 'status']);
+const { results } = useRouteSearchWithData(props.brds, [
+  'brdNumber',
+  'title',
+  'description',
+  'relatedRequests',
+  'status',
+  'applications.name',
+  'applications.shortName',
+]);
 </script>
 
 <template>
