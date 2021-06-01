@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { IFqdn } from '@diode/common';
-import { defineProps } from '@vue/runtime-core';
+import { defineProps } from 'vue';
 import type { PropType } from 'vue';
 
 const props = defineProps({
@@ -11,9 +11,9 @@ const props = defineProps({
 <template>
   <td class="py-4 px-6 whitespace-nowrap">
     <router-link
-      is="a"
       v-for="fqdn in props.fqdns"
       :key="fqdn.id"
+      tag="div"
       :to="{ name: 'fqdn-view', params: { fqdnId: fqdn.id } }"
       class="text-sm text-gray-900"
     >
