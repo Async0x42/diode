@@ -13,7 +13,7 @@ const { data, error, isFinished } = useAxios<IOperatingSystem>(`/api/operatingSy
 </script>
 
 <template>
-  <OperatingSystemCreateEdit v-if="isFinished && data" :contact="data" />
+  <OperatingSystemCreateEdit v-if="isFinished && data" :operating-system="data" />
   <LoadingError v-else-if="error" :error="error" />
   <LoadingList v-else />
 </template>

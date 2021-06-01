@@ -19,5 +19,5 @@ const { data, error, isFinished } = useAxios<IBrd>(`/api/brds/${props.brdId}`);
 </template>
 
 <route lang="yaml">
-name: Brd-view
+name: brd-view
 </route>
