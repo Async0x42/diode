@@ -23,16 +23,16 @@ jobs:
 
       - uses: actions/cache@v2.1.6
         with:
-          path: ~/.npm-store
-          key: ${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
 
-      - name: Install npm
-        run: sudo npm i -g npm
+      - name: Install pnpm
+        run: sudo npm i -g pnpm
 
       - name: Install Dependencies
-        run: npm install --frozen-lockfile=false
+        run: pnpm recursive install --frozen-lockfile=false
 
-      - run: npm run build
+      - run: pnpm run build
 
       - name: Archive Client Release
         uses: thedoctor0/zip-release@master

@@ -9,7 +9,7 @@
       "request": "launch",
       "cwd": "${workspaceFolder}/packages/client",
       "runtimeArgs": ["run-script", "dev"],
-      "runtimeExecutable": "npm",
+      "runtimeExecutable": "pnpm",
       "skipFiles": ["<node_internals>/**"],
       "type": "pwa-node"
     },
@@ -18,7 +18,7 @@
       "request": "launch",
       "cwd": "${workspaceFolder}/packages/server",
       "runtimeArgs": ["run-script", "dev"],
-      "runtimeExecutable": "npm",
+      "runtimeExecutable": "pnpm",
       "skipFiles": ["<node_internals>/**"],
       "type": "pwa-node"
     }
