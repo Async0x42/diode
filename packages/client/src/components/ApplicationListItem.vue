@@ -2,6 +2,7 @@
 import { defineProps } from 'vue';
 import type { IApplication } from '@diode/common';
 import type { PropType } from 'vue';
+import TableCellFqdns1 from './TableCellFqdns.vue';
 
 const props = defineProps({
   application: { type: Object as PropType<IApplication>, required: true },
@@ -22,6 +23,7 @@ const props = defineProps({
       </div>
     </td>
     <TableCellServers :servers="props.application.servers" />
+    <TableCellFqdns :servers="props.application.fqdns" />
     <td class="py-4 px-6">
       <div class="text-sm text-gray-900">{{ props.application.description }}</div>
     </td>

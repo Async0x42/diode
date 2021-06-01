@@ -14,6 +14,7 @@ const onBrowseRfc = () => {
 
 <template>
   <tr>
+    <TableCellApplication :application="props.rfc.application" />
     <td class="py-4 px-6 whitespace-nowrap">
       <div class="flex items-center">
         <div class="flex-shrink-0 h-10 w-10">

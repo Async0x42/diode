@@ -1,8 +1,14 @@
 import { IRfc, RfcClass, RfcPurpose, RfcStatus } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey } from '@mikro-orm/core';
+import { BaseEntity, Entity, Property, PrimaryKey, ManyToOne } from '@mikro-orm/core';
+import { Application } from './application.entity';
+
+// Quick fix to make @mikro-orm collection compat with the common interface
+export interface IBackendRfc extends Omit<IRfc, 'application'> {
+  application?: Application;
+}
 
 @Entity()
-export class Rfc extends BaseEntity<Rfc, 'id'> implements IRfc {
+export class Rfc extends BaseEntity<Rfc, 'id'> implements IBackendRfc {
   @PrimaryKey()
   id!: number;
 
@@ -11,6 +17,9 @@ export class Rfc extends BaseEntity<Rfc, 'id'> implements IRfc {
 
   @Property()
   title!: string;
+
+  @ManyToOne()
+  application?: Application;
 
   @Property()
   rfcClass!: RfcClass;

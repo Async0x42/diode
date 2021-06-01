@@ -25,6 +25,7 @@ const description = useField('description');
 const fqdns = useField('fqdns');
 const servers = useField('servers');
 const brds = useField('brds');
+const rfcs = useField('rfcs');
 
 // TODO: remove async and display loading information and errors
 const onSubmit = handleSubmit(async (formData) => {
@@ -66,6 +67,7 @@ const onDelete = async () => {
             <FormServerMultiSelect label="Servers" :field="servers" name="server" class="sm:col-span-3" />
             <FormFqdnMultiSelect label="FQDNs" :field="fqdns" name="fqdns" class="sm:col-span-3" />
             <FormBrdMultiSelect label="BRDs" :field="brds" name="brds" class="sm:col-span-3" />
+            <FormRfcMultiSelect label="RFCs" :field="rfcs" name="rfc" class="sm:col-span-3" />
             <FormTextArea label="Description" :field="description" name="description" class="sm:col-span-6" :rows="6" />
           </div>
         </div>

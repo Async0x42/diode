@@ -1,9 +1,9 @@
 import { DI } from '../index';
 import { Rfc } from '../entities';
 
-export const findAll = async (): Promise<Rfc[]> => (await DI.rfcRepo.find({})) || [];
+export const findAll = async (): Promise<Rfc[]> => (await DI.rfcRepo.find({}, ['application'])) || [];
 
-export const find = async (id: number): Promise<Rfc | null> => await DI.rfcRepo.findOneOrFail({ id });
+export const find = async (id: number): Promise<Rfc | null> => await DI.rfcRepo.findOneOrFail({ id }, ['application']);
 
 export const create = async (newRfc: Rfc): Promise<Rfc> => {
   const createdRfc = await DI.rfcRepo.create({

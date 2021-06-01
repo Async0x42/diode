@@ -20,6 +20,10 @@ const title = useField('title', {
   rule: { required: true },
 });
 
+const application = useField('application', {
+  rule: { required: true },
+});
+
 const rfcClass = useField('rfcClass', {
   rule: { required: true },
 });
@@ -82,6 +86,8 @@ const onDelete = async () => {
                 </p>
               </template>
             </FormInput>
+
+            <FormApplicationSelect label="Application" :field="application" name="application" class="sm:col-span-3" />
 
             <FormSelect
               label="Status"

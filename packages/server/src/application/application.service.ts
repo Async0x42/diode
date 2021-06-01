@@ -2,10 +2,10 @@ import { DI } from '../index';
 import { Application } from '../entities';
 
 export const findAll = async (): Promise<Application[]> =>
-  (await DI.applicationRepo.find({}, ['fqdns', 'servers', 'servers.operatingSystem', 'servers.location', 'brds'])) || [];
+  (await DI.applicationRepo.find({}, ['fqdns', 'servers', 'servers.operatingSystem', 'servers.location', 'brds', 'rfcs'])) || [];
 
 export const find = async (id: number): Promise<Application | null> =>
-  await DI.applicationRepo.findOneOrFail({ id }, ['fqdns', 'servers', 'servers.operatingSystem', 'servers.location', 'brds']);
+  await DI.applicationRepo.findOneOrFail({ id }, ['fqdns', 'servers', 'servers.operatingSystem', 'servers.location', 'brds', 'rfcs']);
 
 export const create = async (newApplication: Application): Promise<Application> => {
   const createdApplication = await DI.applicationRepo.create({

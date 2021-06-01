@@ -21,6 +21,10 @@ const props = defineProps({
           <dd class="mt-1 text-sm text-gray-900">{{ props.rfc.title }}</dd>
         </div>
         <div class="sm:col-span-1">
+          <dt class="font-medium text-sm text-gray-500">Application</dt>
+          <dd class="mt-1 text-sm text-gray-900">{{ props.rfc.application }}</dd>
+        </div>
+        <div class="sm:col-span-1">
           <dt class="font-medium text-sm text-gray-500">Class</dt>
           <dd class="mt-1 text-sm text-gray-900">{{ props.rfc.rfcClass }}</dd>
         </div>

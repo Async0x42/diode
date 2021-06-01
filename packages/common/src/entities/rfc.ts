@@ -1,3 +1,5 @@
+import { IApplication } from './application';
+
 export type RfcPurpose = 'Sustain' | 'Evolve' | 'Transform';
 export type RfcClass = 'Class 1' | 'Class 2' | 'Class 3' | 'Draft';
 export type RfcStatus =
@@ -14,6 +16,7 @@ export interface IRfc {
   id: number;
   rfcNumber?: number;
   title: string;
+  application?: IApplication;
   rfcClass: RfcClass;
   status: RfcStatus;
   purpose: RfcPurpose;

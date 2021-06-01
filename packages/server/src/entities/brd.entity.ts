@@ -2,7 +2,7 @@ import { BrdStatus, IBrd } from '@diode/common';
 import { BaseEntity, Entity, Property, PrimaryKey, ManyToOne } from '@mikro-orm/core';
 import { Application } from './application.entity';
 
-// Quick fix to make @mikro-orm collection compat with the IServer []
+// Quick fix to make @mikro-orm collection compat with the common interface
 export interface IBackendBrd extends Omit<IBrd, 'application'> {
   application?: Application;
 }
