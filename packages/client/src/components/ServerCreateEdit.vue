@@ -26,6 +26,7 @@ const fqdns = useField('fqdns');
 const types = useField('types');
 const location = useField('location');
 const operatingSystem = useField('operatingSystem');
+const applications = useField('applications');
 
 // TODO: remove async and display loading information and errors
 const onSubmit = handleSubmit(async (formData) => {
@@ -66,6 +67,7 @@ const onDelete = async () => {
             <FormFqdnMultiSelect label="FQDNs" :field="fqdns" name="fqdns" class="sm:col-span-3" />
             <FormServerTypeMultiSelect label="Server Types" :field="types" name="types" class="sm:col-span-3" />
             <FormServerLocationSelect label="Location" :field="location" name="location" class="sm:col-span-3" />
+            <FormApplicationMultiSelect label="Applications" :field="applications" name="applications" class="sm:col-span-3" />
             <FormOperatingSystemSelect label="Operating System" :field="operatingSystem" name="operatingSystem" class="sm:col-span-3" />
             <FormTextArea label="Notes" :field="notes" name="notes" class="sm:col-span-6" />
           </div>
