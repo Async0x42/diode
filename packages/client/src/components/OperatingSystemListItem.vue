@@ -17,6 +17,9 @@ const props = defineProps({
             <div class="font-medium text-sm text-gray-900">
               {{ props.operatingSystem.name }}
             </div>
+            <div class="font-medium text-sm text-gray-700">
+              {{ props.operatingSystem.shortName }}
+            </div>
           </div>
         </router-link>
       </div>
