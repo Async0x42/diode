@@ -105,6 +105,7 @@ const onDelete = async () => {
                 'Not Approved',
                 'Deferred',
                 'Approved',
+                'Approved Conditionally',
                 'Closed',
                 'Cancelled',
                 'Returned for Modification',

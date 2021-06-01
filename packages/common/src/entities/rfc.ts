@@ -10,7 +10,8 @@ export type RfcStatus =
   | 'Approved'
   | 'Closed'
   | 'Cancelled'
-  | 'Returned for Modification';
+  | 'Returned for Modification'
+  | 'Approved Conditionally';
 
 export interface IRfc {
   id: number;
