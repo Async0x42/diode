@@ -27,6 +27,6 @@ jobs:
         run: sudo npm i -g npm
 
       - name: Install Dependencies
-        run: npm recursive install --frozen-lockfile=false
+        run: npm install --frozen-lockfile=false
 
       - run: npm run lint
