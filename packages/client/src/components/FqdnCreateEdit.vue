@@ -66,28 +66,10 @@ const onDelete = async () => {
 
       <div class="pt-5">
         <div class="flex justify-end">
-          <button
-            v-if="props.fqdn != null"
-            type="button"
-            class="border border-transparent rounded-md font-medium bg-red-600 shadow-sm text-sm text-white mr-3 py-2 px-4 inline-flex justify-center focus:outline-none hover:bg-red-700 focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-            @click="onDelete()"
-          >
-            Delete
-          </button>
+          <FormButtonDelete v-if="props.fqdn" class="mr-3 inline-flex justify-center" @click="onDelete()" />
           <div class="flex-1"></div>
-          <button
-            type="button"
-            class="bg-white border rounded-md font-medium border-gray-300 shadow-sm text-sm py-2 px-4 text-gray-700 focus:outline-none hover:bg-gray-50 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            @click="$router.back()"
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            class="border border-transparent rounded-md font-medium bg-indigo-600 shadow-sm text-sm text-white ml-3 py-2 px-4 inline-flex justify-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            Save
-          </button>
+          <FormButtonCancel @click="$router.back()" />
+          <FormButtonOk class="ml-3 inline-flex justify-center" />
         </div>
       </div>
     </form>
