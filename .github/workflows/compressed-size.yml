@@ -20,14 +20,14 @@ jobs:
 
       - uses: actions/cache@v2.1.6
         with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ~/.npm-store
+          key: ${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
 
-      - name: Install pnpm
-        run: sudo npm i -g pnpm
+      - name: Install npm
+        run: sudo npm i -g npm
 
       - name: Install Dependencies
-        run: pnpm recursive install --frozen-lockfile=false
+        run: npm recursive install --frozen-lockfile=false
         
       - uses: preactjs/compressed-size-action@2.1.0
         with:
