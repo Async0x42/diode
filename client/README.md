@@ -17,7 +17,7 @@ Mocking up web app with <b>Vitesse</b><sup><em>(speed)</em></sup><br>
 
 ## Features
 
-- ⚡️ [Vue 3](https://github.com/vuejs/vue-next), [Vite 2](https://github.com/vitejs/vite), [pnpm](https://pnpm.js.org/), [ESBuild](https://github.com/evanw/esbuild) - born with fastness
+- ⚡️ [Vue 3](https://github.com/vuejs/vue-next), [Vite 2](https://github.com/vitejs/vite), [npm](https://npm.js.org/), [ESBuild](https://github.com/evanw/esbuild) - born with fastness
 
 - 🗂 [File based routing](./src/pages)
 
@@ -81,7 +81,7 @@ Mocking up web app with <b>Vitesse</b><sup><em>(speed)</em></sup><br>
 ### Dev tools
 
 - [TypeScript](https://www.typescriptlang.org/)
-- [pnpm](https://pnpm.js.org/) - fast, disk space efficient package manager
+- [npm](https://npm.js.org/) - fast, disk space efficient package manager
 - [`vite-ssg`](https://github.com/antfu/vite-ssg) - Server-side generation
 - [Netlify](https://www.netlify.com/) - zero-config deployment
 - [VS Code Extensions](./.vscode/extensions.json)
@@ -113,7 +113,7 @@ If you prefer to do it manually with the cleaner git history
 ```bash
 npx degit antfu/vitesse my-vitesse-app
 cd my-vitesse-app
-pnpm i # If you don't have pnpm installed, run: npm install -g pnpm
+npm i # If you don't have npm installed, run: npm install -g npm
 ```
 
 ## Checklist
@@ -136,7 +136,7 @@ And, enjoy :)
 Just run and visit http://localhost:3333
 
 ```bash
-pnpm dev
+npm dev
 ```
 
 ### Build
@@ -144,7 +144,7 @@ pnpm dev
 To build the App, run
 
 ```bash
-pnpm build
+npm build
 ```
 
 And you will see the generated file in `dist` that ready to be served.

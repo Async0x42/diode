@@ -1,8 +1,13 @@
 {
   "name": "diode",
+  "workspaces": [
+    "client",
+    "common",
+    "server"
+  ],
   "scripts": {
-    "dev": "pnpm recursive run dev",
-    "build": "pnpm recursive run build",
-    "lint": "pnpm recursive run lint"
+    "dev": "npm run dev --workspaces",
+    "build": "npm run build --workspaces",
+    "lint": "npm run lint --workspaces"
   }
 }
