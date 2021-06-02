@@ -6,12 +6,16 @@ const numberFormats = {
     currency: {
       style: 'currency',
       currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
     },
   },
   fr: {
     currency: {
       style: 'currency',
       currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
     },
   },
 };
