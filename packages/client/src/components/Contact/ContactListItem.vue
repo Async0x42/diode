@@ -20,26 +20,8 @@ const onPhoneContact = () => {
   <tr>
     <td class="py-4 px-6">
       <div class="flex items-center">
-        <div class="flex-shrink-0 h-10 w-20 whitespace-nowrap">
-          <button
-            v-if="props.contact.email"
-            type="button"
-            class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white p-1 inline-flex items-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            @click="onEmailContact"
-          >
-            <heroicons-solid-mail class="h-5 w-5" aria-hidden="true" />
-          </button>
-          <button
-            v-if="props.contact.phone"
-            type="button"
-            class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white ml-4 p-1 inline-flex items-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            @click="onPhoneContact"
-          >
-            <heroicons-solid-phone class="h-5 w-5" aria-hidden="true" />
-          </button>
-        </div>
         <router-link :to="`${$route.fullPath}/${props.contact.id}/view`">
-          <div class="ml-4">
+          <div>
             <div class="font-medium text-sm text-gray-900 whitespace-nowrap">
               {{ props.contact.name }}
             </div>
@@ -62,10 +44,26 @@ const onPhoneContact = () => {
       {{ props.contact.notes }}
     </td>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
+      <button
+        v-if="props.contact.email"
+        type="button"
+        class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white p-1 inline-flex items-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        @click="onEmailContact"
+      >
+        <heroicons-solid-mail class="h-5 w-5" aria-hidden="true" />
+      </button>
+      <button
+        v-if="props.contact.phone"
+        type="button"
+        class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white ml-4 p-1 inline-flex items-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        @click="onPhoneContact"
+      >
+        <heroicons-solid-phone class="h-5 w-5" aria-hidden="true" />
+      </button>
       <router-link :to="`${$route.fullPath}/${props.contact.id}/edit`">
         <button
           type="button"
-          class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white p-1 inline-flex items-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white ml-4 p-1 inline-flex items-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
           <heroicons-solid-pencil class="h-5 w-5" aria-hidden="true" />
         </button>
