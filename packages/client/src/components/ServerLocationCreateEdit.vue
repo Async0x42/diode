@@ -20,6 +20,8 @@ const name = useField('name', {
   rule: { required: true },
 });
 
+const shortName = useField('shortName');
+
 // TODO: remove async and display loading information and errors
 const onSubmit = handleSubmit(async (formData) => {
   if (props.serverLocation == null) {
@@ -55,6 +57,7 @@ const onDelete = async () => {
 
           <div class="mt-6 grid gap-y-6 gap-x-4 grid-cols-1 sm:grid-cols-6">
             <FormInput label="Name" :field="name" name="name" class="sm:col-span-3" />
+            <FormInput label="Short Name" :field="shortName" name="shortName" class="sm:col-span-3" />
           </div>
         </div>
       </div>

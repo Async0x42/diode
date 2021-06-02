@@ -19,6 +19,7 @@ const props = defineProps({
         <div class="sm:col-span-1">
           <dt class="font-medium text-sm text-gray-500">Title</dt>
           <dd class="mt-1 text-sm text-gray-900">{{ props.serverLocation.name }}</dd>
+          <dd class="mt-1 text-sm text-gray-700">{{ props.serverLocation.shortName }}</dd>
         </div>
       </dl>
     </div>

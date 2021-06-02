@@ -10,6 +10,9 @@ export class ServerLocation extends BaseEntity<ServerLocation, 'id'> implements 
   @Property()
   name!: string;
 
+  @Property()
+  shortName?: string;
+
   @OneToMany(() => Server, (server) => server.location)
   servers?: Collection<Server>;
 }
