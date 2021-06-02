@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { computed, defineProps } from 'vue';
 import type { IBrd } from '@diode/common';
 import type { PropType } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useRouteSearchWithData } from '~/logic';
+const { n } = useI18n();
 
 const props = defineProps({
   brds: { type: Array as PropType<IBrd[]>, required: true },
@@ -17,6 +19,8 @@ const { results } = useRouteSearchWithData(props.brds, [
   'applications.name',
   'applications.shortName',
 ]);
+
+const totalUpkeep = computed(() => results.value.map((r) => r.upkeepCost || 0).reduce((a, b) => a + b));
 </script>
 
 <template>
@@ -38,6 +42,18 @@ const { results } = useRouteSearchWithData(props.brds, [
         <tbody class="divide-y bg-white divide-gray-200">
           <BrdListItem v-for="brd in results" :key="brd.id" :brd="brd" />
         </tbody>
+        <tfoot class="bg-gray-50">
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">
+              {{ n(totalUpkeep, 'currency') }}
+            </th>
+            <th></th>
+          </tr>
+        </tfoot>
       </table>
     </div>
   </div>
