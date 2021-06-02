@@ -2,7 +2,6 @@
 import { defineProps } from 'vue';
 import type { IApplication } from '@diode/common';
 import type { PropType } from 'vue';
-import TableCellFqdns1 from './TableCellFqdns.vue';
 
 const props = defineProps({
   application: { type: Object as PropType<IApplication>, required: true },
@@ -14,7 +13,7 @@ const props = defineProps({
     <td class="py-4 px-6">
       <div class="flex items-center">
         <router-link :to="`${$route.fullPath}/${props.application.id}/view`">
-          <div class="ml-4">
+          <div>
             <div class="font-medium text-sm text-gray-900">{{ props.application.name }}</div>
             <div class="text-sm text-gray-500 whitespace-nowrap">{{ props.application.shortName }}</div>
             <div v-for="fqdn in props.application.fqdns" :key="fqdn.id" class="text-sm text-gray-400 whitespace-nowrap">{{ fqdn.name }}</div>

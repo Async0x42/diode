@@ -13,7 +13,7 @@ const props = defineProps({
     <td class="py-4 px-6 whitespace-nowrap">
       <div class="flex items-center">
         <router-link :to="`${$route.fullPath}/${props.serverLocation.id}/view`">
-          <div class="ml-4">
+          <div>
             <div class="font-medium text-sm text-gray-900">
               {{ props.serverLocation.name }}
             </div>

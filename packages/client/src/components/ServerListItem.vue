@@ -2,8 +2,6 @@
 import { defineProps } from 'vue';
 import type { IServer } from '@diode/common';
 import type { PropType } from 'vue';
-import TableCellApplications from './TableCellApplications.vue';
-import TableCellFqdns from './TableCellFqdns.vue';
 
 const props = defineProps({
   server: { type: Object as PropType<IServer>, required: true },
@@ -15,7 +13,7 @@ const props = defineProps({
     <td class="py-4 px-6 whitespace-nowrap">
       <div class="flex items-center">
         <router-link :to="{ name: 'server-view', params: { serverId: props.server.id } }">
-          <div class="ml-4">
+          <div>
             <div class="font-medium text-sm text-gray-900">{{ props.server.name }}</div>
             <div class="text-sm text-gray-700">{{ props.server.ip }}</div>
             <div class="text-sm text-gray-500">{{ props.server.location?.name }}</div>
@@ -30,19 +28,7 @@ const props = defineProps({
       <router-link :to="`${$route.fullPath}/${props.server.id}/edit`">
         <button
           type="button"
-          class="
-            border border-transparent
-            rounded-full
-            bg-indigo-600
-            shadow-sm
-            text-white
-            p-1
-            inline-flex
-            items-center
-            focus:outline-none
-            hover:bg-indigo-700
-            focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
-          "
+          class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white p-1 inline-flex items-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
           <heroicons-solid-pencil class="h-5 w-5" aria-hidden="true" />
         </button>
