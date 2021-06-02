@@ -2,6 +2,8 @@
 import { defineProps } from 'vue';
 import type { IBrd } from '@diode/common';
 import type { PropType } from 'vue';
+import { useI18n } from 'vue-i18n';
+const { n } = useI18n();
 
 const props = defineProps({
   brd: { type: Object as PropType<IBrd>, required: true },
@@ -51,11 +53,11 @@ const props = defineProps({
         </div>
         <div class="sm:col-span-1">
           <dt class="font-medium text-sm text-gray-500">Initial Cost</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.brd.initialCost }}</dd>
+          <dd class="mt-1 text-sm text-gray-900">{{ n(props.brd.initialCost || 0, 'currency') }}</dd>
         </div>
         <div class="sm:col-span-1">
           <dt class="font-medium text-sm text-gray-500">Upkeep Cost</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.brd.upkeepCost }}</dd>
+          <dd class="mt-1 text-sm text-gray-900">{{ n(props.brd.upkeepCost || 0, 'currency') }}</dd>
         </div>
       </dl>
     </div>

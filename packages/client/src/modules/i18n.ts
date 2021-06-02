@@ -1,6 +1,21 @@
 import { createI18n } from 'vue-i18n';
 import { UserModule } from '~/types';
 
+const numberFormats = {
+  en: {
+    currency: {
+      style: 'currency',
+      currency: 'USD',
+    },
+  },
+  fr: {
+    currency: {
+      style: 'currency',
+      currency: 'USD',
+    },
+  },
+};
+
 // import i18n resources
 // https://vitejs.dev/guide/features.html#glob-import
 const messages = Object.fromEntries(
@@ -15,6 +30,7 @@ export const install: UserModule = ({ app }) => {
     legacy: false,
     locale: 'en',
     messages,
+    numberFormats,
   });
 
   app.use(i18n);
