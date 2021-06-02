@@ -10,6 +10,9 @@ export class ServerType extends BaseEntity<ServerType, 'id'> implements IServerT
   @Property()
   name!: string;
 
+  @Property()
+  shortName?: string;
+
   @ManyToMany(() => Server, (server) => server.types)
   servers?: Collection<Server>;
 }
