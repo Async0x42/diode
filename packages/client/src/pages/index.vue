@@ -4,11 +4,11 @@ import { activity } from '~/logic';
 
 <template>
   <div class="py-8 xl:py-10">
-    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 xl:max-w-5xl xl:grid xl:grid-cols-3">
+    <div class="mx-auto max-w-3xl px-4 xl:grid sm:px-6 lg:px-8 xl:max-w-5xl xl:grid-cols-3">
       <div class="xl:border-r xl:border-gray-200 xl:pr-8 xl:col-span-2">
         <div>
           <div>
-            <div class="md:flex md:space-x-4 md:items-center md:justify-between xl:border-b xl:pb-6">
+            <div class="md:flex md:items-center md:justify-between xl:border-b md:space-x-4 xl:pb-6">
               <div>
                 <h1 class="font-bold text-2xl text-gray-900">ARIA attribute misspelled</h1>
                 <p class="mt-2 text-sm text-gray-500">
@@ -24,14 +24,14 @@ import { activity } from '~/logic';
               <div class="flex space-x-3 mt-4 md:mt-0">
                 <button
                   type="button"
-                  class="bg-white border rounded-md font-medium border-gray-300 shadow-sm text-sm py-2 px-4 text-gray-700 inline-flex justify-center hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+                  class="bg-white border rounded-md font-medium border-gray-300 shadow-sm text-sm py-2 px-4 text-gray-700 inline-flex justify-center focus:outline-none hover:bg-gray-50 focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
                 >
                   <heroicons-solid-pencil class="h-5 mr-2 -ml-1 text-gray-400 w-5" aria-hidden="true" />
                   <span>Edit</span>
                 </button>
                 <button
                   type="button"
-                  class="bg-white border rounded-md font-medium border-gray-300 shadow-sm text-sm py-2 px-4 text-gray-700 inline-flex justify-center hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+                  class="bg-white border rounded-md font-medium border-gray-300 shadow-sm text-sm py-2 px-4 text-gray-700 inline-flex justify-center focus:outline-none hover:bg-gray-50 focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
                 >
                   <heroicons-solid-bell class="h-5 mr-2 -ml-1 text-gray-400 w-5" aria-hidden="true" />
                   <span>Subscribe</span>
@@ -252,7 +252,7 @@ import { activity } from '~/logic';
                         <div class="flex space-x-4 mt-6 items-center justify-end">
                           <button
                             type="button"
-                            class="bg-white border rounded-md font-medium border-gray-300 shadow-sm text-sm py-2 px-4 text-gray-700 inline-flex justify-center hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+                            class="bg-white border rounded-md font-medium border-gray-300 shadow-sm text-sm py-2 px-4 text-gray-700 inline-flex justify-center focus:outline-none hover:bg-gray-50 focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
                           >
                             <heroicons-solid-check-circle class="h-5 mr-2 -ml-1 text-green-500 w-5" aria-hidden="true" />
                             <span>Close issue</span>
@@ -273,7 +273,7 @@ import { activity } from '~/logic';
           </div>
         </section>
       </div>
-      <aside class="hidden xl:pl-8 xl:block">
+      <aside class="hidden xl:block xl:pl-8">
         <h2 class="sr-only">Details</h2>
         <div class="space-y-5">
           <div class="flex space-x-2 items-center">

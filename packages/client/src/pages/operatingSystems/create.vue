@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import OperatingSystemCreateEdit from '~/components/OperatingSystemCreateEdit.vue';
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <OperatingSystemCreateEdit />

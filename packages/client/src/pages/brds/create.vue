@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import BrdCreateEdit from '~/components/BrdCreateEdit.vue';
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <BrdCreateEdit />

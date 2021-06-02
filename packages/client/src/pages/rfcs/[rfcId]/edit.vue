@@ -2,9 +2,6 @@
 import { defineProps } from 'vue';
 import { useAxios } from '@vueuse/integrations';
 import type { IRfc } from '@diode/common';
-import RfcCreateEdit from '~/components/RfcCreateEdit.vue';
-import LoadingError from '~/components/LoadingError.vue';
-import LoadingList from '~/components/LoadingList.vue';
 
 const props = defineProps({
   rfcId: { type: String, required: true },

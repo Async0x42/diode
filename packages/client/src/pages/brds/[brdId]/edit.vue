@@ -2,9 +2,6 @@
 import { defineProps } from 'vue';
 import { useAxios } from '@vueuse/integrations';
 import type { IBrd } from '@diode/common';
-import BrdCreateEdit from '~/components/BrdCreateEdit.vue';
-import LoadingError from '~/components/LoadingError.vue';
-import LoadingList from '~/components/LoadingList.vue';
 
 const props = defineProps({
   brdId: { type: String, required: true },

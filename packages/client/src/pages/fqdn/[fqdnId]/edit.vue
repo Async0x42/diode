@@ -2,9 +2,6 @@
 import { defineProps } from 'vue';
 import { useAxios } from '@vueuse/integrations';
 import type { IFqdn } from '@diode/common';
-import FqdnCreateEdit from '~/components/FqdnCreateEdit.vue';
-import LoadingError from '~/components/LoadingError.vue';
-import LoadingList from '~/components/LoadingList.vue';
 
 const props = defineProps({
   fqdnId: { type: String, required: true },

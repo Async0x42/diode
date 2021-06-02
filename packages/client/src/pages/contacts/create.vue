@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import ContactCreateEdit from '~/components/ContactCreateEdit.vue';
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <ContactCreateEdit />

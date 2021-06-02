@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { useAxios } from '@vueuse/integrations';
 import type { IFqdn } from '@diode/common';
-import FqdnList from '~/components/FqdnList.vue';
-import LoadingList from '~/components/LoadingList.vue';
-import LoadingError from '~/components/LoadingError.vue';
 const { data, error, isFinished } = useAxios<IFqdn[]>('/api/fqdns');
 </script>
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import SidebarMobile from '~/components/SidebarMobile.vue';
-import SidebarDesktop from '~/components/SidebarDesktop.vue';
-import Header from '~/components/Header.vue';
+import SidebarMobile from '~/components/Sidebar/SidebarMobile.vue';
+import SidebarDesktop from '~/components/Sidebar/SidebarDesktop.vue';
+import Header from '~/components/Header/Header.vue';
 </script>
 
 <template>

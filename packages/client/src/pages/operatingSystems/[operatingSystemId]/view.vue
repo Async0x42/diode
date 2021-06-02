@@ -2,9 +2,6 @@
 import { defineProps } from 'vue';
 import { useAxios } from '@vueuse/integrations';
 import type { IOperatingSystem } from '@diode/common';
-import OperatingSystemView from '~/components/OperatingSystemView.vue';
-import LoadingError from '~/components/LoadingError.vue';
-import LoadingList from '~/components/LoadingList.vue';
 
 const props = defineProps({
   operatingSystemId: { type: String, required: true },

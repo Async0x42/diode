@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import RfcCreateEdit from '~/components/RfcCreateEdit.vue';
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <RfcCreateEdit />

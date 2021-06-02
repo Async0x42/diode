@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { useAxios } from '@vueuse/integrations';
 import type { IServerLocation } from '@diode/common';
-import ServerLocationList from '~/components/ServerLocationList.vue';
-import LoadingList from '~/components/LoadingList.vue';
-import LoadingError from '~/components/LoadingError.vue';
 const { data, error, isFinished } = useAxios<IServerLocation[]>('/api/serverLocations');
 </script>
 

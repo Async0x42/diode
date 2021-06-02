@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import FqdnCreateEdit from '~/components/FqdnCreateEdit.vue';
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <FqdnCreateEdit />

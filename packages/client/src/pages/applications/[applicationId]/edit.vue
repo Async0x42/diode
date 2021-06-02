@@ -2,9 +2,6 @@
 import { defineProps } from 'vue';
 import { useAxios } from '@vueuse/integrations';
 import type { IApplication } from '@diode/common';
-import ApplicationCreateEdit from '~/components/ApplicationCreateEdit.vue';
-import LoadingError from '~/components/LoadingError.vue';
-import LoadingList from '~/components/LoadingList.vue';
 
 const props = defineProps({
   applicationId: { type: String, required: true },

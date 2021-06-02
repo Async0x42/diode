@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import ServerLocationCreateEdit from '~/components/ServerLocationCreateEdit.vue';
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <ServerLocationCreateEdit />

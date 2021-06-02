@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import ApplicationCreateEdit from '~/components/ApplicationCreateEdit.vue';
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <ApplicationCreateEdit />

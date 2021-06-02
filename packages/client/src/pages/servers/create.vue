@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import ServerCreateEdit from '~/components/ServerCreateEdit.vue';
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <ServerCreateEdit />
