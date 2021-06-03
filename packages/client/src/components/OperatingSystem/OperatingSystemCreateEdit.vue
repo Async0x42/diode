@@ -1,48 +1,20 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import { useForm } from 'vue-hooks-form';
-import { useAxios } from '@vueuse/integrations';
-import { useRouter } from 'vue-router';
 import type { IOperatingSystem } from '@diode/common';
 import type { PropType } from 'vue';
+import { useFormActions } from '~/logic';
 
 const props = defineProps({
   operatingSystem: { type: Object as PropType<IOperatingSystem> },
 });
 
-const { useField, handleSubmit } = useForm<IOperatingSystem>({
-  defaultValues: props.operatingSystem,
-});
-
-const router = useRouter();
+const { useField, onSubmit, onDelete } = useFormActions<IOperatingSystem>('/api/operatingSystems', 'operatingSystems', props.operatingSystem);
 
 const name = useField('name', {
   rule: { required: true },
 });
 
 const shortName = useField('shortName');
-
-// TODO: remove async and display loading information and errors
-const onSubmit = handleSubmit(async (formData) => {
-  if (props.operatingSystem == null) {
-    // create
-    const { data, isFinished } = await useAxios(`/api/operatingSystems`, { method: 'POST', data: formData });
-    router.push({ name: 'operatingSystems' });
-  } else {
-    // update
-    const { data, isFinished } = await useAxios(`/api/operatingSystems/${props.operatingSystem.id}`, { method: 'PUT', data: formData });
-    router.push({ name: 'operatingSystems' });
-  }
-
-  // on success, display checkmark transition and then redirect to the new/edited operatingSystem
-});
-
-const onDelete = async () => {
-  if (props.operatingSystem != null) {
-    const { data, isFinished } = await useAxios(`/api/operatingSystems/${props.operatingSystem.id}`, { method: 'DELETE' });
-    router.push({ name: 'operatingSystems' });
-  }
-};
 </script>
 
 <template>

@@ -1,20 +1,14 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import { useForm } from 'vue-hooks-form';
-import { useAxios } from '@vueuse/integrations';
-import { useRouter } from 'vue-router';
 import type { IBrd } from '@diode/common';
 import type { PropType } from 'vue';
+import { useFormActions } from '~/logic';
 
 const props = defineProps({
   brd: { type: Object as PropType<IBrd> },
 });
 
-const { useField, handleSubmit } = useForm<IBrd>({
-  defaultValues: props.brd,
-});
-
-const router = useRouter();
+const { useField, onSubmit, onDelete } = useFormActions<IBrd>('/api/brds', 'brds', props.brd);
 
 const title = useField('title', {
   rule: { required: true },
@@ -30,28 +24,6 @@ const dateEnteredIntoBits = useField('dateEnteredIntoBits');
 const initialCost = useField('initialCost');
 const upkeepCost = useField('upkeepCost');
 const application = useField('application');
-
-// TODO: remove async and display loading information and errors
-const onSubmit = handleSubmit(async (formData) => {
-  if (props.brd == null) {
-    // create
-    const { data, isFinished } = await useAxios(`/api/brds`, { method: 'POST', data: formData });
-    router.push({ name: 'brds' });
-  } else {
-    // update
-    const { data, isFinished } = await useAxios(`/api/brds/${props.brd.id}`, { method: 'PUT', data: formData });
-    router.push({ name: 'brds' });
-  }
-
-  // on success, display checkmark transition and then redirect to the new/edited brd
-});
-
-const onDelete = async () => {
-  if (props.brd != null) {
-    const { data, isFinished } = await useAxios(`/api/brds/${props.brd.id}`, { method: 'DELETE' });
-    router.push({ name: 'brds' });
-  }
-};
 </script>
 
 <template>

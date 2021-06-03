@@ -1,48 +1,20 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import { useForm } from 'vue-hooks-form';
-import { useAxios } from '@vueuse/integrations';
-import { useRouter } from 'vue-router';
 import type { IServerType } from '@diode/common';
 import type { PropType } from 'vue';
+import { useFormActions } from '~/logic';
 
 const props = defineProps({
   serverType: { type: Object as PropType<IServerType> },
 });
 
-const { useField, handleSubmit } = useForm<IServerType>({
-  defaultValues: props.serverType,
-});
-
-const router = useRouter();
+const { useField, onSubmit, onDelete } = useFormActions<IServerType>('/api/serverTypes', 'serverTypes', props.serverType);
 
 const name = useField('name', {
   rule: { required: true },
 });
 
 const shortName = useField('shortName');
-
-// TODO: remove async and display loading information and errors
-const onSubmit = handleSubmit(async (formData) => {
-  if (props.serverType == null) {
-    // create
-    const { data, isFinished } = await useAxios(`/api/serverTypes`, { method: 'POST', data: formData });
-    router.push({ name: 'serverTypes' });
-  } else {
-    // update
-    const { data, isFinished } = await useAxios(`/api/serverTypes/${props.serverType.id}`, { method: 'PUT', data: formData });
-    router.push({ name: 'serverTypes' });
-  }
-
-  // on success, display checkmark transition and then redirect to the new/edited serverType
-});
-
-const onDelete = async () => {
-  if (props.serverType != null) {
-    const { data, isFinished } = await useAxios(`/api/serverTypes/${props.serverType.id}`, { method: 'DELETE' });
-    router.push({ name: 'serverTypes' });
-  }
-};
 </script>
 
 <template>

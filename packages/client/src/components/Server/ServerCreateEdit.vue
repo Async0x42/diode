@@ -1,20 +1,14 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import { useForm } from 'vue-hooks-form';
-import { useAxios } from '@vueuse/integrations';
-import { useRouter } from 'vue-router';
 import type { IServer } from '@diode/common';
 import type { PropType } from 'vue';
+import { useFormActions } from '~/logic';
 
 const props = defineProps({
   server: { type: Object as PropType<IServer> },
 });
 
-const { useField, handleSubmit } = useForm<IServer>({
-  defaultValues: props.server,
-});
-
-const router = useRouter();
+const { useField, onSubmit, onDelete } = useFormActions<IServer>('/api/servers', 'servers', props.server);
 
 const name = useField('name', {
   rule: { required: true },
@@ -27,28 +21,6 @@ const types = useField('types');
 const location = useField('location');
 const operatingSystem = useField('operatingSystem');
 const applications = useField('applications');
-
-// TODO: remove async and display loading information and errors
-const onSubmit = handleSubmit(async (formData) => {
-  if (props.server == null) {
-    // create
-    const { data, isFinished } = await useAxios(`/api/servers`, { method: 'POST', data: formData });
-    router.push({ name: 'servers' });
-  } else {
-    // update
-    const { data, isFinished } = await useAxios(`/api/servers/${props.server.id}`, { method: 'PUT', data: formData });
-    router.push({ name: 'servers' });
-  }
-
-  // on success, display checkmark transition and then redirect to the new/edited server
-});
-
-const onDelete = async () => {
-  if (props.server != null) {
-    const { data, isFinished } = await useAxios(`/api/servers/${props.server.id}`, { method: 'DELETE' });
-    router.push({ name: 'servers' });
-  }
-};
 </script>
 
 <template>

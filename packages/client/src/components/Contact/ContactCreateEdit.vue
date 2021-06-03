@@ -1,20 +1,14 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import { useForm } from 'vue-hooks-form';
-import { useAxios } from '@vueuse/integrations';
-import { useRouter } from 'vue-router';
 import type { IContact } from '@diode/common';
 import type { PropType } from 'vue';
+import { useFormActions } from '~/logic';
 
 const props = defineProps({
   contact: { type: Object as PropType<IContact> },
 });
 
-const { useField, handleSubmit } = useForm<IContact>({
-  defaultValues: props.contact,
-});
-
-const router = useRouter();
+const { useField, onSubmit, onDelete } = useFormActions<IContact>('/api/contacts', 'contacts', props.contact);
 
 const name = useField('name', {
   rule: { required: true },
@@ -26,28 +20,6 @@ const title = useField('title');
 const organization = useField('organization');
 const department = useField('department');
 const notes = useField('notes');
-
-// TODO: remove async and display loading information and errors
-const onSubmit = handleSubmit(async (formData) => {
-  if (props.contact == null) {
-    // create
-    const { data, isFinished } = await useAxios(`/api/contacts`, { method: 'POST', data: formData });
-    router.push({ name: 'contacts' });
-  } else {
-    // update
-    const { data, isFinished } = await useAxios(`/api/contacts/${props.contact.id}`, { method: 'PUT', data: formData });
-    router.push({ name: 'contacts' });
-  }
-
-  // on success, display checkmark transition and then redirect to the new/edited contact
-});
-
-const onDelete = async () => {
-  if (props.contact != null) {
-    const { data, isFinished } = await useAxios(`/api/contacts/${props.contact.id}`, { method: 'DELETE' });
-    router.push({ name: 'contacts' });
-  }
-};
 </script>
 
 <template>

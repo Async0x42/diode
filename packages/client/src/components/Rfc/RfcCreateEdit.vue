@@ -1,20 +1,14 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import { useForm } from 'vue-hooks-form';
-import { useAxios } from '@vueuse/integrations';
-import { useRouter } from 'vue-router';
 import type { IRfc } from '@diode/common';
 import type { PropType } from 'vue';
+import { useFormActions } from '~/logic';
 
 const props = defineProps({
   rfc: { type: Object as PropType<IRfc> },
 });
 
-const { useField, handleSubmit } = useForm<IRfc>({
-  defaultValues: props.rfc,
-});
-
-const router = useRouter();
+const { useField, onSubmit, onDelete } = useFormActions<IRfc>('/api/rfcs', 'rfcs', props.rfc);
 
 const title = useField('title', {
   rule: { required: true },
@@ -46,28 +40,6 @@ const conceptOfOperation = useField('conceptOfOperation');
 const conceptOfTesting = useField('conceptOfTesting');
 const conceptOfImplementation = useField('conceptOfImplementation');
 const backoutPlan = useField('backoutPlan');
-
-// TODO: remove async and display loading information and errors
-const onSubmit = handleSubmit(async (formData) => {
-  if (props.rfc == null) {
-    // create
-    const { data, isFinished } = await useAxios(`/api/rfcs`, { method: 'POST', data: formData });
-    router.push({ name: 'rfcs' });
-  } else {
-    // update
-    const { data, isFinished } = await useAxios(`/api/rfcs/${props.rfc.id}`, { method: 'PUT', data: formData });
-    router.push({ name: 'rfcs' });
-  }
-
-  // on success, display checkmark transition and then redirect to the new/edited rfc
-});
-
-const onDelete = async () => {
-  if (props.rfc != null) {
-    const { data, isFinished } = await useAxios(`/api/rfcs/${props.rfc.id}`, { method: 'DELETE' });
-    router.push({ name: 'rfcs' });
-  }
-};
 </script>
 
 <template>
