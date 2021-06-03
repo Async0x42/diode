@@ -12,7 +12,8 @@ const onEmailContact = () => {
 };
 
 const onPhoneContact = () => {
-  window.location.href = `tel:${props.contact.phone}`;
+  // replace extensions w/ comma's for phone support, TODO: improve
+  window.location.href = `tel:${props.contact.phone?.replace(' x ', ',').replace(' x', ',').replace('x', ',')}`;
 };
 </script>
 
