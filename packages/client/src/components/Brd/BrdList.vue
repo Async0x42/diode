@@ -21,6 +21,7 @@ const { results } = useRouteSearchWithData(props.brds, [
 ]);
 
 const totalUpkeep = computed(() => results.value.map((r) => r.upkeepCost || 0).reduce((a, b) => a + b));
+const totalInitialCost = computed(() => results.value.map((r) => r.initialCost || 0).reduce((a, b) => a + b));
 </script>
 
 <template>
@@ -47,7 +48,9 @@ const totalUpkeep = computed(() => results.value.map((r) => r.upkeepCost || 0).r
             <th></th>
             <th></th>
             <th></th>
-            <th></th>
+            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">
+              {{ n(totalInitialCost, 'currency') }}
+            </th>
             <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">
               {{ n(totalUpkeep, 'currency') }}
             </th>
