@@ -30,11 +30,11 @@ const totalInitialCost = computed(() => results.value.map((r) => r.initialCost |
       <table class="divide-y min-w-full divide-gray-200">
         <thead class="bg-gray-50">
           <tr>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Title</th>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Priority</th>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Status</th>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Init Cost</th>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Upkeep</th>
+            <TableHeaderCell>Title</TableHeaderCell>
+            <TableHeaderCell>Priority</TableHeaderCell>
+            <TableHeaderCell>Status</TableHeaderCell>
+            <TableHeaderCell>Init Cost</TableHeaderCell>
+            <TableHeaderCell>Upkeep</TableHeaderCell>
             <th scope="col" class="py-3 px-6 relative">
               <span class="sr-only">Edit</span>
             </th>
@@ -48,12 +48,12 @@ const totalInitialCost = computed(() => results.value.map((r) => r.initialCost |
             <th></th>
             <th></th>
             <th></th>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">
+            <TableHeaderCell>
               {{ n(totalInitialCost, 'currency') }}
-            </th>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">
+            </TableHeaderCell>
+            <TableHeaderCell>
               {{ n(totalUpkeep, 'currency') }}
-            </th>
+            </TableHeaderCell>
             <th></th>
           </tr>
         </tfoot>

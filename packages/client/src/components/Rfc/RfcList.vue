@@ -34,11 +34,11 @@ const { results } = useRouteSearchWithData(props.rfcs, [
       <table class="divide-y min-w-full divide-gray-200">
         <thead class="bg-gray-50">
           <tr>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Application</th>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Title</th>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Status</th>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">IA Due Date</th>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Description</th>
+            <TableHeaderCell>Application</TableHeaderCell>
+            <TableHeaderCell>Title</TableHeaderCell>
+            <TableHeaderCell>Status</TableHeaderCell>
+            <TableHeaderCell>IA Due Date</TableHeaderCell>
+            <TableHeaderCell>Description</TableHeaderCell>
             <th scope="col" class="py-3 px-6 relative">
               <span class="sr-only">Actions</span>
             </th>

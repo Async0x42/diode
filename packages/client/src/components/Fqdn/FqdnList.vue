@@ -19,9 +19,9 @@ const { results } = useRouteSearchWithData(props.fqdn, ['name', 'servers.name', 
       <table class="divide-y min-w-full divide-gray-200">
         <thead class="bg-gray-50">
           <tr>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Name</th>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Server</th>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Applications</th>
+            <TableHeaderCell>Name</TableHeaderCell>
+            <TableHeaderCell>Server</TableHeaderCell>
+            <TableHeaderCell>Applications</TableHeaderCell>
             <th scope="col" class="py-3 px-6 relative">
               <span class="sr-only">Edit</span>
             </th>
