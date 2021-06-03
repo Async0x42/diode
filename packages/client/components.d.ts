@@ -72,6 +72,7 @@ declare module 'vue' {
     TableCellRfcs: typeof import('./src/components/Table/TableCellRfcs.vue')['default']
     TableCellServer: typeof import('./src/components/Table/TableCellServer.vue')['default']
     TableCellServers: typeof import('./src/components/Table/TableCellServers.vue')['default']
+    TableHeader: typeof import('./src/components/Table/TableHeader.vue')['default']
     TableHeaderCell: typeof import('./src/components/Table/TableHeaderCell.vue')['default']
   }
 }
