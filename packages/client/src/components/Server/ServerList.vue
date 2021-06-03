@@ -21,14 +21,9 @@ const { results } = useRouteSearchWithData(props.servers, [
 </script>
 
 <template>
-  <div class="min-w-full -my-2 py-2 align-middle inline-block">
-    <div class="border-b border-gray-200 shadow overflow-hidden sm:rounded-lg">
-      <table class="divide-y min-w-full divide-gray-200">
-        <TableHeader :headers="['Name', 'FQDN', 'Applications', '']" />
-        <tbody class="divide-y bg-white divide-gray-200">
-          <ServerListItem v-for="server in results" :key="server.id" :server="server" />
-        </tbody>
-      </table>
-    </div>
-  </div>
+  <TableWrapper>
+    <TableView :headers="['Name', 'FQDN', 'Applications', '']">
+      <ServerListItem v-for="server in results" :key="server.id" :server="server" />
+    </TableView>
+  </TableWrapper>
 </template>
