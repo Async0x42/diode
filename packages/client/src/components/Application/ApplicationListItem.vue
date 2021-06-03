@@ -22,7 +22,6 @@ const props = defineProps({
       </div>
     </td>
     <TableCellServers :servers="props.application.servers" />
-    <TableCellFqdns :servers="props.application.fqdns" />
     <td class="py-4 px-6">
       <div class="text-sm text-gray-900">{{ props.application.description }}</div>
     </td>
