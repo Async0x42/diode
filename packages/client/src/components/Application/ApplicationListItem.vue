@@ -22,9 +22,7 @@ const props = defineProps({
       </div>
     </td>
     <TableCellServers :servers="props.application.servers" />
-    <td class="py-4 px-6">
-      <div class="text-sm text-gray-900">{{ props.application.description }}</div>
-    </td>
+    <TableCell>{{ props.application.description }}</TableCell>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
       <router-link :to="`${$route.fullPath}/${props.application.id}/edit`">
         <button

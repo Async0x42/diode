@@ -9,10 +9,10 @@ const props = defineProps({
 </script>
 
 <template>
-  <td class="py-4 px-6 whitespace-nowrap">
+  <TableCell class="whitespace-nowrap">
     <router-link v-if="props.server" class="group" :to="{ name: 'server-view', params: { serverId: props.server.id } }">
       <div class="text-sm text-gray-900 group-hover:border-l-1 group-hover:border-blue-300">{{ props.server?.name }}</div>
       <div class="text-sm text-gray-500 group-hover:border-l-1 group-hover:border-blue-300">{{ props.server?.ip }}</div>
     </router-link>
-  </td>
+  </TableCell>
 </template>

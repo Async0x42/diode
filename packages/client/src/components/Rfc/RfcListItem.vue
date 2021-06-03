@@ -28,15 +28,9 @@ const onBrowseRfc = () => {
         </router-link>
       </div>
     </td>
-    <td class="text-sm py-4 px-6 text-gray-500">
-      {{ props.rfc.status }}
-    </td>
-    <td class="text-sm py-4 px-6 text-gray-500">
-      {{ props.rfc.impactAssessmentDueDate }}
-    </td>
-    <td class="text-sm py-4 px-6 text-gray-500">
-      {{ props.rfc.description }}
-    </td>
+    <TableCell>{{ props.rfc.status }}</TableCell>
+    <TableCell>{{ props.rfc.impactAssessmentDueDate }}</TableCell>
+    <TableCell>{{ props.rfc.description }}</TableCell>
     <td class="flex font-medium text-right text-sm py-4 px-6 whitespace-nowrap items-center">
       <button
         v-if="props.rfc.rfcNumber"

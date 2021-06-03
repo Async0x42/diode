@@ -9,7 +9,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <td class="py-4 px-6 whitespace-nowrap">
+  <TableCell class="whitespace-nowrap">
     <router-link v-for="fqdn in props.fqdns" :key="fqdn.id" v-slot="{ navigate }" :to="{ name: 'fqdn-view', params: { fqdnId: fqdn.id } }" custom>
       <div
         role="link"
@@ -20,5 +20,5 @@ const props = defineProps({
         {{ fqdn.name }}
       </div>
     </router-link>
-  </td>
+  </TableCell>
 </template>

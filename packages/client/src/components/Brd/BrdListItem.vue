@@ -26,18 +26,10 @@ const props = defineProps({
         </router-link>
       </div>
     </td>
-    <td class="text-sm py-4 px-6 text-gray-500">
-      {{ props.brd.priority }}
-    </td>
-    <td class="text-sm py-4 px-6 text-gray-500">
-      {{ props.brd.status }}
-    </td>
-    <td class="text-sm py-4 px-6 text-gray-500">
-      {{ n(props.brd.initialCost || 0, 'currency') }}
-    </td>
-    <td class="text-sm py-4 px-6 text-gray-500">
-      {{ n(props.brd.upkeepCost || 0, 'currency') }}
-    </td>
+    <TableCell>{{ props.brd.priority }}</TableCell>
+    <TableCell>{{ props.brd.status }}</TableCell>
+    <TableCell>{{ n(props.brd.initialCost || 0, 'currency') }}</TableCell>
+    <TableCell>{{ n(props.brd.upkeepCost || 0, 'currency') }}</TableCell>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
       <router-link :to="`${$route.fullPath}/${props.brd.id}/edit`">
         <button
