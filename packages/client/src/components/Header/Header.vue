@@ -1,5 +1,43 @@
 <script setup lang="ts">
 import { toggleSidebar } from '~/logic';
+const routesForCreate = [
+  'calendar',
+  'brds',
+  'contacts',
+  'rfcs',
+  'fqdn',
+  'applications',
+  'servers',
+  'operatingSystems',
+  'serverTypes',
+  'serverLocations',
+];
+
+const routesForSearch = [
+  'calendar',
+  'brds',
+  'contacts',
+  'rfcs',
+  'fqdn',
+  'applications',
+  'servers',
+  'operatingSystems',
+  'serverTypes',
+  'serverLocations',
+];
+
+const routesForEdit = [
+  'calendar-item-view',
+  'brd-view',
+  'contact-view',
+  'rfc-view',
+  'fqdn-view',
+  'application-view',
+  'server-view',
+  'operatingSystem-view',
+  'serverType-view',
+  'serverLocation-view',
+];
 </script>
 
 <template>
@@ -13,24 +51,10 @@ import { toggleSidebar } from '~/logic';
       <heroicons-outline-menu-alt-2 class="h-6 w-6" aria-hidden="true" />
     </button>
     <div class="flex flex-1 px-4 justify-between">
-      <HeaderSearch :key="$route.path" />
+      <HeaderSearch v-if="$route.name != null && routesForSearch.includes($route.name.toString())" :key="$route.path" />
       <div class="flex ml-4 items-center lg:ml-6">
         <router-link
-          v-if="
-            $route.name != null &&
-            [
-              'calendar',
-              'brds',
-              'contacts',
-              'rfcs',
-              'fqdn',
-              'applications',
-              'servers',
-              'operatingSystems',
-              'serverTypes',
-              'serverLocations',
-            ].includes($route.name.toString())
-          "
+          v-if="$route.name != null && routesForCreate.includes($route.name.toString())"
           v-slot="{ navigate }"
           :to="$route.path + '/create'"
           custom
@@ -44,21 +68,7 @@ import { toggleSidebar } from '~/logic';
           </button>
         </router-link>
         <router-link
-          v-if="
-            $route.name != null &&
-            [
-              'calendar-item-view',
-              'brd-view',
-              'contact-view',
-              'rfc-view',
-              'fqdn-view',
-              'application-view',
-              'server-view',
-              'operatingSystem-view',
-              'serverType-view',
-              'serverLocation-view',
-            ].includes($route.name.toString())
-          "
+          v-if="$route.name != null && routesForEdit.includes($route.name.toString())"
           v-slot="{ navigate }"
           :to="$route.path.replace('/view', '/edit')"
           custom
