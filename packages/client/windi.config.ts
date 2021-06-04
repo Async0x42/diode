@@ -43,8 +43,6 @@ export default defineConfig({
       white: colors.white,
       yellow: colors.yellow,
     },
-  },
-  extend: {
     fontFamily: {
       sans: ['"Inter var"', ...defaultTheme.fontFamily.sans],
     },
