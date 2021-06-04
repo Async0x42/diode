@@ -66,6 +66,8 @@ declare module 'vue' {
     SidebarDesktop: typeof import('./src/components/Sidebar/SidebarDesktop.vue')['default']
     SidebarFooter: typeof import('./src/components/Sidebar/SidebarFooter.vue')['default']
     SidebarMobile: typeof import('./src/components/Sidebar/SidebarMobile.vue')['default']
+    TableButtonEdit: typeof import('./src/components/Table/TableButtonEdit.vue')['default']
+    TableButtonRound: typeof import('./src/components/Table/TableButtonRound.vue')['default']
     TableCell: typeof import('./src/components/Table/TableCell.vue')['default']
     TableCellApplication: typeof import('./src/components/Table/TableCellApplication.vue')['default']
     TableCellApplications: typeof import('./src/components/Table/TableCellApplications.vue')['default']
