@@ -67,7 +67,7 @@ export const DI = {} as {
 
   app.use('/api/rfcs', createRouter<Rfc>(createService(DI.rfcRepo, ['application'])));
   app.use('/api/brds', createRouter<Brd>(createService(DI.brdRepo, ['application'])));
-  app.use('/api/contacts', createRouter<Contact>(createService(DI.fqdnRepo)));
+  app.use('/api/contacts', createRouter<Contact>(createService(DI.contactRepo)));
   app.use('/api/fqdns', createRouter<Fqdn>(createService(DI.fqdnRepo, ['applications', 'server'])));
   app.use('/api/physicalServers', createRouter<PhysicalServer>(createService(DI.physicalServerRepo, ['servers'])));
   app.use(
