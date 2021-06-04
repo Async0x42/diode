@@ -1,6 +1,6 @@
-import { IContactGroup } from './contactGroup';
+import { IContact } from './contact';
 
-export interface IContact {
+export interface IContactGroup {
   id: number;
   name: string;
   phone?: string;
@@ -9,5 +9,5 @@ export interface IContact {
   organization?: string;
   department?: string;
   notes?: string;
-  contactGroups: IContactGroup[];
+  contacts: IContact[];
 }

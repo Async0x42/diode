@@ -1,14 +1,14 @@
-import { IContact } from '@diode/common';
+import { IContactGroup } from '@diode/common';
 import { BaseEntity, Entity, Property, PrimaryKey, Collection, ManyToMany } from '@mikro-orm/core';
-import { ContactGroup } from './contactGroup.entity';
+import { Contact } from './contact.entity';
 
 // Quick fix to make @mikro-orm collection compat with the common interface
-export interface IBackendContact extends Omit<IContact, 'contactGroups'> {
-  contactGroups: Collection<ContactGroup>;
+export interface IBackendContactGroup extends Omit<IContactGroup, 'contacts'> {
+  contacts: Collection<Contact>;
 }
 
 @Entity()
-export class Contact extends BaseEntity<Contact, 'id'> implements IBackendContact {
+export class ContactGroup extends BaseEntity<ContactGroup, 'id'> implements IBackendContactGroup {
   @PrimaryKey()
   id!: number;
 
@@ -33,6 +33,6 @@ export class Contact extends BaseEntity<Contact, 'id'> implements IBackendContac
   @Property({ columnType: 'text' })
   notes?: string;
 
-  @ManyToMany(() => ContactGroup, (contactGroup) => contactGroup.contacts)
-  contactGroups = new Collection<ContactGroup>(this);
+  @ManyToMany(() => Contact, (contact) => contact.contactGroups, { owner: true })
+  contacts = new Collection<Contact>(this);
 }

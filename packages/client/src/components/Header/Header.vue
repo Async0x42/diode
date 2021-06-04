@@ -12,6 +12,7 @@ const routesForCreate = [
   'serverTypes',
   'serverLocations',
   'physicalServers',
+  'contactGroups',
 ];
 
 const routesForSearch = [
@@ -26,6 +27,7 @@ const routesForSearch = [
   'serverTypes',
   'serverLocations',
   'physicalServers',
+  'contactGroups',
 ];
 
 const routesForEdit = [
@@ -40,6 +42,7 @@ const routesForEdit = [
   'serverType-view',
   'serverLocation-view',
   'physicalServer-view',
+  'contactGroup-view',
 ];
 </script>
 

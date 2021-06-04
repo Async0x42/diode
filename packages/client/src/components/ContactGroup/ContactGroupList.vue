@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import type { IContact } from '@diode/common';
+import type { IContactGroup } from '@diode/common';
 import type { PropType } from 'vue';
 import { useRouteSearchWithData } from '~/logic';
 
 const props = defineProps({
-  contacts: { type: Array as PropType<IContact[]>, required: true },
+  contactGroups: { type: Array as PropType<IContactGroup[]>, required: true },
 });
 
-const { results } = useRouteSearchWithData(props.contacts, [
+const { results } = useRouteSearchWithData(props.contactGroups, [
   'name',
   'email',
   'phone',
@@ -16,14 +16,14 @@ const { results } = useRouteSearchWithData(props.contacts, [
   'organization',
   'department',
   'notes',
-  'contactGroups.name',
+  'contacts.name',
 ]);
 </script>
 
 <template>
   <TableWrapper>
     <TableView :headers="['Name', 'Title', 'Phone', 'Notes', '']">
-      <ContactListItem v-for="contact in results" :key="contact.id" :contact="contact" />
+      <ContactGroupListItem v-for="contactGroup in results" :key="contactGroup.id" :contact-group="contactGroup" />
     </TableView>
   </TableWrapper>
 </template>

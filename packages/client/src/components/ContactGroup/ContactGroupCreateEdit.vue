@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import type { IContact } from '@diode/common';
+import type { IContactGroup } from '@diode/common';
 import type { PropType } from 'vue';
 import { useFormActions } from '~/logic';
 
 const props = defineProps({
-  contact: { type: Object as PropType<IContact> },
+  contactGroup: { type: Object as PropType<IContactGroup> },
 });
 
-const { useField, onSubmit, onDelete } = useFormActions<IContact>('/api/contacts', 'contacts', props.contact);
+const { useField, onSubmit, onDelete } = useFormActions<IContactGroup>('/api/contactGroups', 'contactGroups', props.contactGroup);
 
 const name = useField('name', {
   rule: { required: true },
@@ -20,7 +20,7 @@ const title = useField('title');
 const organization = useField('organization');
 const department = useField('department');
 const notes = useField('notes');
-const contactGroups = useField('contactGroups');
+const contacts = useField('contacts');
 </script>
 
 <template>
@@ -29,7 +29,7 @@ const contactGroups = useField('contactGroups');
       <div class="divide-y space-y-8 divide-gray-200">
         <div>
           <div>
-            <h3 class="font-medium text-lg text-gray-900 leading-6">Contact Information</h3>
+            <h3 class="font-medium text-lg text-gray-900 leading-6">Contact Group Information</h3>
             <p class="mt-1 text-sm text-gray-500">This information will be displayed publicly.</p>
           </div>
 
@@ -43,7 +43,7 @@ const contactGroups = useField('contactGroups');
             <FormInput label="Email address" :field="email" name="email" type="email" class="sm:col-span-3" />
             <FormInput label="Phone number" :field="phone" name="phone" type="tel" class="sm:col-span-3" />
 
-            <FormContactGroupMultiSelect label="Contact Groups" :field="contactGroups" name="contactGroups" class="sm:col-span-3" />
+            <FormContactMultiSelect label="Contacts" :field="contacts" name="contacts" class="sm:col-span-3" />
 
             <FormTextArea label="Description" :field="notes" name="notes" class="sm:col-span-6">
               <template #note>
@@ -58,7 +58,7 @@ const contactGroups = useField('contactGroups');
 
       <div class="pt-5">
         <div class="flex justify-end">
-          <FormButtonDelete v-if="props.contact" class="mr-3 inline-flex justify-center" @click="onDelete()" />
+          <FormButtonDelete v-if="props.contactGroup" class="mr-3 inline-flex justify-center" @click="onDelete()" />
           <div class="flex-1"></div>
           <FormButtonCancel @click="$router.back()" />
           <FormButtonOk class="ml-3 inline-flex justify-center" />
