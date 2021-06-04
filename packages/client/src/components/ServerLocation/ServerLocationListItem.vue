@@ -17,7 +17,7 @@ const props = defineProps({
             <div class="font-medium text-sm text-gray-900">
               {{ props.serverLocation.name }}
             </div>
-            <div class="font-medium text-sm text-gray-700">
+            <div class="text-sm text-gray-700">
               {{ props.serverLocation.shortName }}
             </div>
           </div>

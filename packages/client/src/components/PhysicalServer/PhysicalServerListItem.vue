@@ -15,7 +15,7 @@ const props = defineProps({
         <router-link :to="{ name: 'server-view', params: { serverId: props.server.id } }">
           <div>
             <div class="font-medium text-sm text-gray-900">{{ props.server.name }}</div>
-            <div class="font-medium text-sm text-gray-700">{{ props.server.location }}</div>
+            <div class="text-sm text-gray-500">{{ props.server.location?.shortName || props.server.location?.name }}</div>
           </div>
         </router-link>
       </div>

@@ -9,23 +9,23 @@ const props = defineProps({
 });
 
 const { results } = useRouteSearchWithData(props.servers, [
-  'name',
-  'baseOperatingSystem',
-  'hypervisor',
-  'deviceManufacturer',
-  'deviceModel',
-  'processorManufacturer',
-  'processorModel',
-  'clusterName',
-  'location',
-  'servers.name',
+  // 'name',
+  // 'baseOperatingSystem',
+  // 'hypervisor',
+  // 'deviceManufacturer',
+  // 'deviceModel',
+  // 'processorManufacturer',
+  // 'processorModel',
+  // 'clusterName',
+  // 'location',
+  // 'servers.name',
 ]);
 </script>
 
 <template>
   <TableWrapper>
     <TableView :headers="['Name', 'Servers', '']">
-      <ServerListItem v-for="server in results" :key="server.id" :server="server" />
+      <PhysicalServerListItem v-for="server in results" :key="server.id" :server="server" />
     </TableView>
   </TableWrapper>
 </template>
