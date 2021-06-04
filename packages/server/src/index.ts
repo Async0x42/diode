@@ -3,23 +3,15 @@ import cors from 'cors';
 import helmet from 'helmet';
 import dotEnvExtended from 'dotenv-extended';
 import { EntityManager, EntityRepository, MikroORM, RequestContext } from '@mikro-orm/core';
-import { calendarRouter } from './calendar/calendar.router';
-import { rfcRouter } from './rfc/rfc.router';
-import { brdRouter } from './brd/brd.router';
-import { contactRouter } from './contact/contact.router';
 import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/not-found.middleware';
 import config from './mikro-orm.config';
 import { Application, Brd, Calendar, CalendarItem, Contact, Fqdn, Rfc, Server } from './entities';
-import { fqdnRouter } from './fqdn/fqdn.router';
-import { applicationRouter } from './application/application.router';
-import { serverRouter } from './server/server.router';
 import { OperatingSystem } from './entities/operatingSystem.entity';
 import { ServerLocation } from './entities/serverLocation.entity';
 import { ServerType } from './entities/serverType.entity';
-import { operatingSystemRouter } from './operatingSystem/operatingSystem.router';
-import { serverLocationRouter } from './serverLocation/serverLocation.router';
-import { serverTypeRouter } from './serverType/serverType.router';
+import { createRouter, createService } from './utils';
+import { calendarRouter } from './calendar/calendar.router';
 export * from './entities';
 
 dotEnvExtended.load();
@@ -67,16 +59,21 @@ export const DI = {} as {
   app.use(helmet());
   app.use(cors());
   app.use(express.json());
+
   app.use('/api/calendar', calendarRouter);
-  app.use('/api/rfcs', rfcRouter);
-  app.use('/api/brds', brdRouter);
-  app.use('/api/contacts', contactRouter);
-  app.use('/api/fqdns', fqdnRouter);
-  app.use('/api/applications', applicationRouter);
-  app.use('/api/servers', serverRouter);
-  app.use('/api/operatingsystems', operatingSystemRouter);
-  app.use('/api/serverlocations', serverLocationRouter);
-  app.use('/api/servertypes', serverTypeRouter);
+
+  app.use('/api/rfcs', createRouter<Rfc>(createService(DI.rfcRepo, ['application'])));
+  app.use('/api/brds', createRouter<Brd>(createService(DI.brdRepo, ['application'])));
+  app.use('/api/contacts', createRouter<Contact>(createService(DI.fqdnRepo)));
+  app.use('/api/fqdns', createRouter<Fqdn>(createService(DI.fqdnRepo, ['applications', 'server'])));
+  app.use(
+    '/api/applications',
+    createRouter<Application>(createService(DI.applicationRepo, ['fqdns', 'servers', 'servers.operatingSystem', 'servers.location', 'brds', 'rfcs']))
+  );
+  app.use('/api/servers', createRouter<Server>(createService(DI.serverRepo, ['fqdns', 'applications', 'types', 'location', 'operatingSystem'])));
+  app.use('/api/operatingsystems', createRouter<OperatingSystem>(createService(DI.operatingSystemRepo)));
+  app.use('/api/serverlocations', createRouter<ServerLocation>(createService(DI.serverLocationRepo)));
+  app.use('/api/servertypes', createRouter<ServerType>(createService(DI.serverTypeRepo)));
   app.use(errorHandler);
   app.use(notFoundHandler);
 
