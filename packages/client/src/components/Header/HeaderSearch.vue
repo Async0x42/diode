@@ -5,7 +5,7 @@ const searchBar = useRouteSearch();
 </script>
 
 <template>
-  <div class="flex flex-1">
+  <div>
     <form class="flex w-full lg:ml-0" action="#" method="GET">
       <label for="search_field" class="sr-only">Search</label>
       <div class="w-full text-gray-400 relative focus-within:text-gray-600">
