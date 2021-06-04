@@ -57,14 +57,7 @@ const onPhoneContact = () => {
       >
         <heroicons-solid-phone class="h-5 w-5" aria-hidden="true" />
       </button>
-      <router-link :to="`${$route.fullPath}/${props.contact.id}/edit`">
-        <button
-          type="button"
-          class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white ml-4 p-1 inline-flex items-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          <heroicons-solid-pencil class="h-5 w-5" aria-hidden="true" />
-        </button>
-      </router-link>
+      <TableButtonEdit class="ml-4" :to="`${$route.fullPath}/${props.contact.id}/edit`" />
     </td>
   </tr>
 </template>
