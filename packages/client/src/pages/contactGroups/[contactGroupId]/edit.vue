@@ -16,5 +16,5 @@ const { data, error, isFinished } = useAxios<IContactGroup>(`/api/contactGroups/
 </template>
 
 <route lang="yaml">
-name: contactGroupGroup-edit
+name: contactGroup-edit
 </route>
