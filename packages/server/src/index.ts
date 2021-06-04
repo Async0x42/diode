@@ -12,6 +12,7 @@ import { ServerLocation } from './entities/serverLocation.entity';
 import { ServerType } from './entities/serverType.entity';
 import { createRouter, createService } from './utils';
 import { calendarRouter } from './calendar/calendar.router';
+import { PhysicalServer } from './entities/physicalServer.entity';
 export * from './entities';
 
 dotEnvExtended.load();
@@ -33,6 +34,7 @@ export const DI = {} as {
   operatingSystemRepo: EntityRepository<OperatingSystem>;
   serverLocationRepo: EntityRepository<ServerLocation>;
   serverTypeRepo: EntityRepository<ServerType>;
+  physicalServerRepo: EntityRepository<PhysicalServer>;
 };
 
 (async () => {
@@ -49,6 +51,7 @@ export const DI = {} as {
   DI.operatingSystemRepo = DI.em.getRepository(OperatingSystem);
   DI.serverLocationRepo = DI.em.getRepository(ServerLocation);
   DI.serverTypeRepo = DI.em.getRepository(ServerType);
+  DI.physicalServerRepo = DI.em.getRepository(PhysicalServer);
 
   app.use((req, res, next) => RequestContext.create(DI.orm.em, next));
 
@@ -66,6 +69,7 @@ export const DI = {} as {
   app.use('/api/brds', createRouter<Brd>(createService(DI.brdRepo, ['application'])));
   app.use('/api/contacts', createRouter<Contact>(createService(DI.fqdnRepo)));
   app.use('/api/fqdns', createRouter<Fqdn>(createService(DI.fqdnRepo, ['applications', 'server'])));
+  app.use('/api/physicalServers', createRouter<PhysicalServer>(createService(DI.physicalServerRepo, ['servers'])));
   app.use(
     '/api/applications',
     createRouter<Application>(createService(DI.applicationRepo, ['fqdns', 'servers', 'servers.operatingSystem', 'servers.location', 'brds', 'rfcs']))
