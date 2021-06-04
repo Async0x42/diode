@@ -24,14 +24,7 @@ const props = defineProps({
     <TableCellServer :server="props.fqdn.server" />
     <TableCellApplications :applications="props.fqdn.applications" />
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
-      <router-link :to="`${$route.fullPath}/${props.fqdn.id}/edit`">
-        <button
-          type="button"
-          class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white p-1 inline-flex items-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          <heroicons-solid-pencil class="h-5 w-5" aria-hidden="true" />
-        </button>
-      </router-link>
+      <TableButtonEdit :to="`${$route.fullPath}/${props.fqdn.id}/edit`" />
     </td>
   </tr>
 </template>

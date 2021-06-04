@@ -6,6 +6,7 @@ export * from './rfc';
 export * from './fqdn';
 export * from './application';
 export * from './server';
+export * from './physicalServer';
 export * from './operatingSystem';
 export * from './serverLocation';
 export * from './serverType';

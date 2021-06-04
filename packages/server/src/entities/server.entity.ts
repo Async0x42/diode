@@ -3,14 +3,16 @@ import { BaseEntity, Entity, Property, PrimaryKey, OneToMany, ManyToMany, Collec
 import { Application } from './application.entity';
 import { Fqdn } from './fqdn.entity';
 import { OperatingSystem } from './operatingSystem.entity';
+import { PhysicalServer } from './physicalServer.entity';
 import { ServerLocation } from './serverLocation.entity';
 import { ServerType } from './serverType.entity';
 
 // Quick fix to make @mikro-orm collection compat with the IServer []
-export interface IBackendServer extends Omit<IServer, 'applications' | 'fqdns' | 'types'> {
+export interface IBackendServer extends Omit<IServer, 'applications' | 'fqdns' | 'types' | 'physicalServer'> {
   applications: Collection<Application>;
   fqdns: Collection<Fqdn>;
   types: Collection<ServerType>;
+  physicalServer?: PhysicalServer;
 }
 
 @Entity()
@@ -38,6 +40,9 @@ export class Server extends BaseEntity<Server, 'id'> implements IBackendServer {
 
   @OneToMany(() => Fqdn, (fqdn) => fqdn.server)
   fqdns = new Collection<Fqdn>(this);
+
+  @ManyToOne()
+  physicalServer?: PhysicalServer;
 
   @Property({ columnType: 'text' })
   notes?: string;

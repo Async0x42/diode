@@ -51,7 +51,9 @@ const routesForEdit = [
       <heroicons-outline-menu-alt-2 class="h-6 w-6" aria-hidden="true" />
     </button>
     <div class="flex flex-1 px-4 justify-between">
-      <HeaderSearch v-if="$route.name != null && routesForSearch.includes($route.name.toString())" :key="$route.path" />
+      <HeaderSearch v-if="$route.name != null && routesForSearch.includes($route.name.toString())" :key="$route.path" class="flex flex-1" />
+      <div v-else class="flex flex-1"></div>
+
       <div class="flex ml-4 items-center lg:ml-6">
         <router-link
           v-if="$route.name != null && routesForCreate.includes($route.name.toString())"

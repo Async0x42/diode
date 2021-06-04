@@ -9,7 +9,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <td class="py-4 px-6 whitespace-nowrap">
+  <TableCell class="whitespace-nowrap">
     <router-link v-for="server in props.servers" :key="server.id" class="group" :to="{ name: 'server-view', params: { serverId: server.id } }">
       <div class="text-sm text-gray-900 group-hover:border-l-1 group-hover:border-blue-300" :class="{ 'mt-2': props.servers.length > 1 }">
         {{ server?.name }}
@@ -20,5 +20,5 @@ const props = defineProps({
         <template v-if="server?.operatingSystem"> [{{ server.operatingSystem.shortName || server.operatingSystem.name }}]</template>
       </div>
     </router-link>
-  </td>
+  </TableCell>
 </template>

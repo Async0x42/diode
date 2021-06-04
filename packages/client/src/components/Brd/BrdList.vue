@@ -25,39 +25,12 @@ const totalInitialCost = computed(() => results.value.map((r) => r.initialCost |
 </script>
 
 <template>
-  <div class="min-w-full -my-2 py-2 align-middle inline-block">
-    <div class="border-b border-gray-200 shadow overflow-hidden sm:rounded-lg">
-      <table class="divide-y min-w-full divide-gray-200">
-        <thead class="bg-gray-50">
-          <tr>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Title</th>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Priority</th>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Status</th>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Init Cost</th>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">Upkeep</th>
-            <th scope="col" class="py-3 px-6 relative">
-              <span class="sr-only">Edit</span>
-            </th>
-          </tr>
-        </thead>
-        <tbody class="divide-y bg-white divide-gray-200">
-          <BrdListItem v-for="brd in results" :key="brd.id" :brd="brd" />
-        </tbody>
-        <tfoot class="bg-gray-50">
-          <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">
-              {{ n(totalInitialCost, 'currency') }}
-            </th>
-            <th scope="col" class="font-medium text-left text-xs tracking-wider py-3 px-6 text-gray-500 uppercase">
-              {{ n(totalUpkeep, 'currency') }}
-            </th>
-            <th></th>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-  </div>
+  <TableWrapper>
+    <TableView
+      :headers="['Title', 'Priority', 'Status', 'Init Cost', 'Upkeep', '']"
+      :footers="['', '', '', `${n(totalInitialCost, 'currency')}`, `${n(totalUpkeep, 'currency')}`, '']"
+    >
+      <BrdListItem v-for="brd in results" :key="brd.id" :brd="brd" />
+    </TableView>
+  </TableWrapper>
 </template>

@@ -9,7 +9,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <td class="py-4 px-6 whitespace-nowrap">
+  <TableCell class="whitespace-nowrap">
     <router-link
       v-for="application in props.applications"
       :key="application.id"
@@ -27,5 +27,5 @@ const props = defineProps({
         {{ application?.name }}
       </div>
     </router-link>
-  </td>
+  </TableCell>
 </template>

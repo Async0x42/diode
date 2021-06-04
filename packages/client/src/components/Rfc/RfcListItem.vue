@@ -28,15 +28,9 @@ const onBrowseRfc = () => {
         </router-link>
       </div>
     </td>
-    <td class="text-sm py-4 px-6 text-gray-500">
-      {{ props.rfc.status }}
-    </td>
-    <td class="text-sm py-4 px-6 text-gray-500">
-      {{ props.rfc.impactAssessmentDueDate }}
-    </td>
-    <td class="text-sm py-4 px-6 text-gray-500">
-      {{ props.rfc.description }}
-    </td>
+    <TableCell>{{ props.rfc.status }}</TableCell>
+    <TableCell>{{ props.rfc.impactAssessmentDueDate }}</TableCell>
+    <TableCell>{{ props.rfc.description }}</TableCell>
     <td class="flex font-medium text-right text-sm py-4 px-6 whitespace-nowrap items-center">
       <button
         v-if="props.rfc.rfcNumber"
@@ -46,14 +40,7 @@ const onBrowseRfc = () => {
       >
         <heroicons-solid-eye class="h-5 w-5" aria-hidden="true" />
       </button>
-      <router-link :to="`${$route.fullPath}/${props.rfc.id}/edit`">
-        <button
-          type="button"
-          class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white ml-3 p-1 inline-flex items-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          <heroicons-solid-pencil class="h-5 w-5" aria-hidden="true" />
-        </button>
-      </router-link>
+      <TableButtonEdit class="ml-4" :to="`${$route.fullPath}/${props.rfc.id}/edit`" />
     </td>
   </tr>
 </template>

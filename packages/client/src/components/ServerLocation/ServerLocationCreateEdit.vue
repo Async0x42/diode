@@ -1,48 +1,20 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import { useForm } from 'vue-hooks-form';
-import { useAxios } from '@vueuse/integrations';
-import { useRouter } from 'vue-router';
 import type { IServerLocation } from '@diode/common';
 import type { PropType } from 'vue';
+import { useFormActions } from '~/logic';
 
 const props = defineProps({
   serverLocation: { type: Object as PropType<IServerLocation> },
 });
 
-const { useField, handleSubmit } = useForm<IServerLocation>({
-  defaultValues: props.serverLocation,
-});
-
-const router = useRouter();
+const { useField, onSubmit, onDelete } = useFormActions<IServerLocation>('/api/serverLocations', 'serverLocations', props.serverLocation);
 
 const name = useField('name', {
   rule: { required: true },
 });
 
 const shortName = useField('shortName');
-
-// TODO: remove async and display loading information and errors
-const onSubmit = handleSubmit(async (formData) => {
-  if (props.serverLocation == null) {
-    // create
-    const { data, isFinished } = await useAxios(`/api/serverLocations`, { method: 'POST', data: formData });
-    router.push({ name: 'serverLocations' });
-  } else {
-    // update
-    const { data, isFinished } = await useAxios(`/api/serverLocations/${props.serverLocation.id}`, { method: 'PUT', data: formData });
-    router.push({ name: 'serverLocations' });
-  }
-
-  // on success, display checkmark transition and then redirect to the new/edited serverLocation
-});
-
-const onDelete = async () => {
-  if (props.serverLocation != null) {
-    const { data, isFinished } = await useAxios(`/api/serverLocations/${props.serverLocation.id}`, { method: 'DELETE' });
-    router.push({ name: 'serverLocations' });
-  }
-};
 </script>
 
 <template>

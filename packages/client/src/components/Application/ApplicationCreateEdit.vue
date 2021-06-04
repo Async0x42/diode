@@ -1,20 +1,14 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import { useForm } from 'vue-hooks-form';
-import { useAxios } from '@vueuse/integrations';
-import { useRouter } from 'vue-router';
 import type { IApplication } from '@diode/common';
 import type { PropType } from 'vue';
+import { useFormActions } from '~/logic';
 
 const props = defineProps({
   application: { type: Object as PropType<IApplication> },
 });
 
-const { useField, handleSubmit } = useForm<IApplication>({
-  defaultValues: props.application,
-});
-
-const router = useRouter();
+const { useField, onSubmit, onDelete } = useFormActions<IApplication>('/api/applications', 'applications', props.application);
 
 const name = useField('name', {
   rule: { required: true },
@@ -26,28 +20,6 @@ const fqdns = useField('fqdns');
 const servers = useField('servers');
 const brds = useField('brds');
 const rfcs = useField('rfcs');
-
-// TODO: remove async and display loading information and errors
-const onSubmit = handleSubmit(async (formData) => {
-  if (props.application == null) {
-    // create
-    const { data, isFinished } = await useAxios(`/api/applications`, { method: 'POST', data: formData });
-    router.push({ name: 'applications' });
-  } else {
-    // update
-    const { data, isFinished } = await useAxios(`/api/applications/${props.application.id}`, { method: 'PUT', data: formData });
-    router.push({ name: 'applications' });
-  }
-
-  // on success, display checkmark transition and then redirect to the new/edited application
-});
-
-const onDelete = async () => {
-  if (props.application != null) {
-    const { data, isFinished } = await useAxios(`/api/applications/${props.application.id}`, { method: 'DELETE' });
-    router.push({ name: 'applications' });
-  }
-};
 </script>
 
 <template>

@@ -3,6 +3,7 @@ import { IFqdn } from './fqdn';
 import { IOperatingSystem } from './operatingSystem';
 import { IServerLocation } from './serverLocation';
 import { IServerType } from './serverType';
+import { IPhysicalServer } from './physicalServer';
 
 export interface IServer {
   id: number;
@@ -10,8 +11,9 @@ export interface IServer {
   ip?: string;
   notes?: string;
   operatingSystem?: IOperatingSystem;
-  applications?: IApplication[];
-  fqdns?: IFqdn[];
-  types?: IServerType[];
+  applications: IApplication[];
+  fqdns: IFqdn[];
+  types: IServerType[];
   location?: IServerLocation;
+  physicalServer?: IPhysicalServer;
 }

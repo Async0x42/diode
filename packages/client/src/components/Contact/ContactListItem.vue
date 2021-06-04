@@ -33,17 +33,13 @@ const onPhoneContact = () => {
         </router-link>
       </div>
     </td>
-    <td class="py-4 px-6">
-      <div class="text-sm text-gray-900 whitespace-nowrap">{{ props.contact.title }}</div>
-      <div class="text-sm text-gray-500">{{ props.contact.department }}</div>
-      <div class="text-sm text-gray-300">{{ props.contact.organization }}</div>
-    </td>
-    <td class="text-sm py-4 px-6 text-gray-500 whitespace-nowrap">
-      {{ props.contact.phone }}
-    </td>
-    <td class="text-sm py-4 px-6 text-gray-500">
-      {{ props.contact.notes }}
-    </td>
+    <TableCell>
+      <div class="text-gray-900 whitespace-nowrap">{{ props.contact.title }}</div>
+      <div class="text-gray-500">{{ props.contact.department }}</div>
+      <div class="text-gray-300">{{ props.contact.organization }}</div>
+    </TableCell>
+    <TableCell class="whitespace-nowrap">{{ props.contact.phone }}</TableCell>
+    <TableCell>{{ props.contact.notes }}</TableCell>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
       <button
         v-if="props.contact.email"
@@ -61,14 +57,7 @@ const onPhoneContact = () => {
       >
         <heroicons-solid-phone class="h-5 w-5" aria-hidden="true" />
       </button>
-      <router-link :to="`${$route.fullPath}/${props.contact.id}/edit`">
-        <button
-          type="button"
-          class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white ml-4 p-1 inline-flex items-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          <heroicons-solid-pencil class="h-5 w-5" aria-hidden="true" />
-        </button>
-      </router-link>
+      <TableButtonEdit class="ml-4" :to="`${$route.fullPath}/${props.contact.id}/edit`" />
     </td>
   </tr>
 </template>
