@@ -12,7 +12,7 @@ const props = defineProps({
   <tr>
     <td class="py-4 px-6 whitespace-nowrap">
       <div class="flex items-center">
-        <router-link :to="{ name: 'server-view', params: { serverId: props.server.id } }">
+        <router-link :to="{ name: 'physicalServer-view', params: { serverId: props.server.id } }">
           <div>
             <div class="font-medium text-sm text-gray-900">{{ props.server.name }}</div>
             <div class="text-sm text-gray-500">{{ props.server.location?.shortName || props.server.location?.name }}</div>

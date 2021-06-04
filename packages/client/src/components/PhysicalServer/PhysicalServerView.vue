@@ -11,7 +11,7 @@ const props = defineProps({
 <template>
   <div class="bg-white shadow overflow-hidden sm:rounded-lg">
     <div class="py-5 px-4 sm:px-6">
-      <h3 class="font-medium text-lg text-gray-900 leading-6">Server Information</h3>
+      <h3 class="font-medium text-lg text-gray-900 leading-6">Physical Server Information</h3>
       <p class="mt-1 text-sm max-w-2xl text-gray-500">{{ props.server.name }}</p>
       <p class="text-sm max-w-2xl text-gray-500">{{ props.server.location?.name }}</p>
     </div>
@@ -42,7 +42,7 @@ const props = defineProps({
           <dd class="mt-1 text-sm text-gray-900">{{ props.server.processorModel }}</dd>
         </div>
         <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Processor Frequency</dt>
+          <dt class="font-medium text-sm text-gray-500">Processor Frequency (GHz)</dt>
           <dd class="mt-1 text-sm text-gray-900">{{ props.server.processorFrequency }}</dd>
         </div>
         <div class="sm:col-span-1">
@@ -62,7 +62,7 @@ const props = defineProps({
           <dd class="mt-1 text-sm text-gray-900">{{ props.server.clusterName }}</dd>
         </div>
         <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Servers</dt>
+          <dt class="font-medium text-sm text-gray-500">Servers (Virtual Machines)</dt>
           <dd v-for="server in props.server.servers" :key="server.id" class="mt-1 text-sm text-gray-900">
             {{ server.name }}
           </dd>

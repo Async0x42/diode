@@ -83,7 +83,7 @@ const location = useField('location');
             <FormInput label="Device Model" :field="deviceModel" name="deviceModel" class="sm:col-span-3" />
             <FormInput label="Processor Manufacturer" :field="processorManufacturer" name="name" class="sm:col-span-3" />
             <FormInput label="Processor Model" :field="processorModel" name="processorModel" class="sm:col-span-3" />
-            <FormInput label="Processor Frequency" :field="processorFrequency" name="processorFrequency" class="sm:col-span-3" />
+            <FormInput label="Processor Frequency (GHz)" :field="processorFrequency" name="processorFrequency" class="sm:col-span-3" />
             <FormInput label="Number of Processors" :field="numberOfProcessors" name="numberOfProcessors" class="sm:col-span-3" />
             <FormInput label="Number of Cores" :field="numberOfCores" name="numberOfCores" class="sm:col-span-3" />
             <FormInput label="Number of Virtual Machines" :field="numberOfVirtualMachines" name="numberOfVirtualMachines" class="sm:col-span-3" />

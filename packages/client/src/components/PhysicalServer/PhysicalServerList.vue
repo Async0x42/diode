@@ -24,7 +24,7 @@ const { results } = useRouteSearchWithData(props.servers, [
 
 <template>
   <TableWrapper>
-    <TableView :headers="['Name', 'Servers', '']">
+    <TableView :headers="['Name', 'Servers (VM)', '']">
       <PhysicalServerListItem v-for="server in results" :key="server.id" :server="server" />
     </TableView>
   </TableWrapper>
