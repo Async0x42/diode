@@ -11,12 +11,7 @@ const props = defineProps({
 <template>
   <TableCell class="whitespace-nowrap">
     <router-link v-for="fqdn in props.fqdns" :key="fqdn.id" v-slot="{ navigate }" :to="{ name: 'fqdn-view', params: { fqdnId: fqdn.id } }" custom>
-      <div
-        role="link"
-        class="cursor-pointer text-sm text-gray-900 hover:border-l-1 hover:border-blue-300"
-        @click="navigate"
-        @keypress.enter="navigate"
-      >
+      <div role="link" class="cursor-pointer text-sm text-gray-900 hover:bg-gray-200" @click="navigate" @keypress.enter="navigate">
         {{ fqdn.name }}
       </div>
     </router-link>

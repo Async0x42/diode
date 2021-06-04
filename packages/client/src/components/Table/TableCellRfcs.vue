@@ -11,12 +11,7 @@ const props = defineProps({
 <template>
   <TableCell class="whitespace-nowrap">
     <router-link v-for="rfc in props.rfcs" :key="rfc.id" v-slot="{ navigate }" :to="{ name: 'rfc-view', params: { rfcId: rfc.id } }" custom>
-      <div
-        role="link"
-        class="cursor-pointer text-sm text-gray-900 hover:border-l-1 hover:border-blue-300"
-        @click="navigate"
-        @keypress.enter="navigate"
-      >
+      <div role="link" class="cursor-pointer text-sm text-gray-900 hover:bg-gray-200" @click="navigate" @keypress.enter="navigate">
         <template v-if="rfc?.rfcNumber"> [{{ rfc?.rfcNumber }}] </template>
         {{ rfc.title }}
       </div>
