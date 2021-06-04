@@ -14,5 +14,5 @@ export class OperatingSystem extends BaseEntity<OperatingSystem, 'id'> implement
   shortName?: string;
 
   @OneToMany(() => Server, (server) => server.operatingSystem)
-  servers?: Collection<Server>;
+  servers = new Collection<Server>(this);
 }

@@ -8,8 +8,8 @@ export interface IApplication {
   name: string;
   shortName?: string;
   description?: string;
-  fqdns?: IFqdn[];
-  servers?: IServer[];
-  brds?: IBrd[];
-  rfcs?: IRfc[];
+  fqdns: IFqdn[];
+  servers: IServer[];
+  brds: IBrd[];
+  rfcs: IRfc[];
 }

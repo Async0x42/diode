@@ -7,9 +7,9 @@ import { Server } from './server.entity';
 
 // Quick fix to make @mikro-orm collection compat with the IServer []
 export interface IBackendApplication extends Omit<IApplication, 'fqdns' | 'servers' | 'brds' | 'rfcs'> {
-  fqdns?: Collection<Fqdn>;
-  servers?: Collection<Server>;
-  brds?: Collection<Brd>;
+  fqdns: Collection<Fqdn>;
+  servers: Collection<Server>;
+  brds: Collection<Brd>;
   rfcs: Collection<Rfc>;
 }
 

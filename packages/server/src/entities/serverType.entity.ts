@@ -14,5 +14,5 @@ export class ServerType extends BaseEntity<ServerType, 'id'> implements IServerT
   shortName?: string;
 
   @ManyToMany(() => Server, (server) => server.types)
-  servers?: Collection<Server>;
+  servers = new Collection<Server>(this);
 }

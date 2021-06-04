@@ -10,8 +10,8 @@ export interface IServer {
   ip?: string;
   notes?: string;
   operatingSystem?: IOperatingSystem;
-  applications?: IApplication[];
-  fqdns?: IFqdn[];
-  types?: IServerType[];
+  applications: IApplication[];
+  fqdns: IFqdn[];
+  types: IServerType[];
   location?: IServerLocation;
 }

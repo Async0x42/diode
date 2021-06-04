@@ -5,5 +5,5 @@ export interface IFqdn {
   id: number;
   name: string;
   server?: IServer;
-  applications?: IApplication[];
+  applications: IApplication[];
 }
