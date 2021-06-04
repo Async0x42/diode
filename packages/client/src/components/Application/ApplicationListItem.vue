@@ -24,7 +24,7 @@ const props = defineProps({
     <TableCellServers :servers="props.application.servers" />
     <TableCell>{{ props.application.description }}</TableCell>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
-      <TableButtonEdit :to="`${$route.fullPath}/${props.application.id}/edit`" />
+      <TableButtonEdit :to="{ path: `${$route.fullPath}/${props.application.id}/edit` }" />
     </td>
   </tr>
 </template>

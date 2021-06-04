@@ -13,4 +13,5 @@ export const navigation = ref([
   { name: 'Operating Systems', to: { name: 'operatingSystems' }, icon: CogIcon },
   { name: 'Server Types', to: { name: 'serverTypes' }, icon: CogIcon },
   { name: 'Server Locations', to: { name: 'serverLocations' }, icon: CogIcon },
+  { name: 'Physical Servers', to: { name: 'physicalServers' }, icon: CogIcon },
 ]);

@@ -1,29 +1,30 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import type { IServer } from '@diode/common';
+import type { IPhysicalServer } from '@diode/common';
 import type { PropType } from 'vue';
 import { useRouteSearchWithData } from '~/logic';
 
 const props = defineProps({
-  servers: { type: Array as PropType<IServer[]>, required: true },
+  servers: { type: Array as PropType<IPhysicalServer[]>, required: true },
 });
 
 const { results } = useRouteSearchWithData(props.servers, [
   'name',
-  'ip',
-  'fqdns.name',
-  'applications.name',
-  'applications.shortName',
-  'operatingSystem.name',
-  'types.name',
-  'location.name',
-  'servers.physicalServer',
+  'baseOperatingSystem',
+  'hypervisor',
+  'deviceManufacturer',
+  'deviceModel',
+  'processorManufacturer',
+  'processorModel',
+  'clusterName',
+  'location',
+  'servers.name',
 ]);
 </script>
 
 <template>
   <TableWrapper>
-    <TableView :headers="['Name', 'FQDN', 'Applications', '']">
+    <TableView :headers="['Name', 'Servers', '']">
       <ServerListItem v-for="server in results" :key="server.id" :server="server" />
     </TableView>
   </TableWrapper>

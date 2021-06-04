@@ -17,6 +17,9 @@ export class PhysicalServer extends BaseEntity<PhysicalServer, 'id'> implements 
   name!: string;
 
   @Property()
+  baseOperatingSystem?: string;
+
+  @Property()
   hypervisor?: string;
 
   @Property()

@@ -11,6 +11,7 @@ const routesForCreate = [
   'operatingSystems',
   'serverTypes',
   'serverLocations',
+  'physicalServers',
 ];
 
 const routesForSearch = [
@@ -24,6 +25,7 @@ const routesForSearch = [
   'operatingSystems',
   'serverTypes',
   'serverLocations',
+  'physicalServers',
 ];
 
 const routesForEdit = [
@@ -37,6 +39,7 @@ const routesForEdit = [
   'operatingSystem-view',
   'serverType-view',
   'serverLocation-view',
+  'physicalServer-view',
 ];
 </script>
 

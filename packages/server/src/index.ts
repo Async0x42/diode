@@ -74,7 +74,10 @@ export const DI = {} as {
     '/api/applications',
     createRouter<Application>(createService(DI.applicationRepo, ['fqdns', 'servers', 'servers.operatingSystem', 'servers.location', 'brds', 'rfcs']))
   );
-  app.use('/api/servers', createRouter<Server>(createService(DI.serverRepo, ['fqdns', 'applications', 'types', 'location', 'operatingSystem'])));
+  app.use(
+    '/api/servers',
+    createRouter<Server>(createService(DI.serverRepo, ['fqdns', 'applications', 'types', 'location', 'operatingSystem', 'physicalServer']))
+  );
   app.use('/api/operatingsystems', createRouter<OperatingSystem>(createService(DI.operatingSystemRepo)));
   app.use('/api/serverlocations', createRouter<ServerLocation>(createService(DI.serverLocationRepo)));
   app.use('/api/servertypes', createRouter<ServerType>(createService(DI.serverTypeRepo)));

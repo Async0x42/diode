@@ -4,6 +4,7 @@ import { IServerLocation } from './serverLocation';
 export interface IPhysicalServer {
   id: number;
   name: string;
+  baseOperatingSystem?: string;
   hypervisor?: string;
   deviceManufacturer?: string;
   deviceModel?: string;

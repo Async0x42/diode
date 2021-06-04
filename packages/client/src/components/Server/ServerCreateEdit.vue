@@ -21,6 +21,7 @@ const types = useField('types');
 const location = useField('location');
 const operatingSystem = useField('operatingSystem');
 const applications = useField('applications');
+const physicalServer = useField('physicalServer');
 </script>
 
 <template>
@@ -41,6 +42,7 @@ const applications = useField('applications');
             <FormServerLocationSelect label="Location" :field="location" name="location" class="sm:col-span-3" />
             <FormApplicationMultiSelect label="Applications" :field="applications" name="applications" class="sm:col-span-3" />
             <FormOperatingSystemSelect label="Operating System" :field="operatingSystem" name="operatingSystem" class="sm:col-span-3" />
+            <FormPhysicalServerSelect label="Physical Server" :field="physicalServer" name="physicalServer" class="sm:col-span-3" />
             <FormTextArea label="Notes" :field="notes" name="notes" class="sm:col-span-6" />
           </div>
         </div>

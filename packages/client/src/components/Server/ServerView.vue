@@ -32,6 +32,10 @@ const props = defineProps({
             {{ application?.name }}
           </dd>
         </div>
+        <div class="sm:col-span-1">
+          <dt class="font-medium text-sm text-gray-500">Physical Server</dt>
+          <dd class="mt-1 text-sm text-gray-900">{{ props.server.physicalServer?.name }}</dd>
+        </div>
         <div class="sm:col-span-2">
           <dt class="font-medium text-sm text-gray-500">Notes</dt>
           <dd class="mt-1 text-sm text-gray-900">

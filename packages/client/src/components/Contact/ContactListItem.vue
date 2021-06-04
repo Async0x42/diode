@@ -57,7 +57,7 @@ const onPhoneContact = () => {
       >
         <heroicons-solid-phone class="h-5 w-5" aria-hidden="true" />
       </button>
-      <TableButtonEdit class="ml-4" :to="`${$route.fullPath}/${props.contact.id}/edit`" />
+      <TableButtonEdit class="ml-4" :to="{ path: `${$route.fullPath}/${props.contact.id}/edit` }" />
     </td>
   </tr>
 </template>

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import type { IServer } from '@diode/common';
+import type { IPhysicalServer } from '@diode/common';
 import type { PropType } from 'vue';
 
 const props = defineProps({
-  server: { type: Object as PropType<IServer>, required: true },
+  server: { type: Object as PropType<IPhysicalServer>, required: true },
 });
 </script>
 
@@ -15,15 +15,12 @@ const props = defineProps({
         <router-link :to="{ name: 'server-view', params: { serverId: props.server.id } }">
           <div>
             <div class="font-medium text-sm text-gray-900">{{ props.server.name }}</div>
-            <div class="text-sm text-gray-700">{{ props.server.ip }}</div>
-            <div class="text-sm text-gray-500">{{ props.server.location?.name }}</div>
-            <div class="text-sm text-gray-500">{{ props.server.operatingSystem?.name }}</div>
+            <div class="font-medium text-sm text-gray-700">{{ props.server.location }}</div>
           </div>
         </router-link>
       </div>
     </td>
-    <TableCellFqdns :fqdns="props.server.fqdns" />
-    <TableCellApplications :applications="props.server.applications" />
+    <TableCellServers :servers="props.server.servers" />
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
       <TableButtonEdit :to="{ path: `${$route.fullPath}/${props.server.id}/edit` }" />
     </td>

@@ -40,7 +40,7 @@ const onBrowseRfc = () => {
       >
         <heroicons-solid-eye class="h-5 w-5" aria-hidden="true" />
       </button>
-      <TableButtonEdit class="ml-4" :to="`${$route.fullPath}/${props.rfc.id}/edit`" />
+      <TableButtonEdit class="ml-4" :to="{ path: `${$route.fullPath}/${props.rfc.id}/edit` }" />
     </td>
   </tr>
 </template>

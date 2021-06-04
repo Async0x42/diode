@@ -8,8 +8,11 @@ export const useFormActions = <T extends { id: number }>(apiPath: string, nextRo
   const { useField, handleSubmit } = dataObject
     ? useForm<T>({
         defaultValues: dataObject,
+        validateMode: 'focusout',
       })
-    : useForm<T>({});
+    : useForm<T>({
+        validateMode: 'focusout',
+      });
 
   // TODO: remove async and display loading information and errors
   const onSubmit = handleSubmit(async (formData) => {

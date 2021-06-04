@@ -25,7 +25,7 @@ const props = defineProps({
       </div>
     </td>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
-      <TableButtonEdit :to="`${$route.fullPath}/${props.serverLocation.id}/edit`" />
+      <TableButtonEdit :to="{ path: `${$route.fullPath}/${props.serverLocation.id}/edit` }" />
     </td>
   </tr>
 </template>
