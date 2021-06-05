@@ -24,7 +24,6 @@ const { data, error, isFinished } = useAxios<IContact[]>('/api/contacts');
       :label="props.label"
       :options="data.map((d) => ({ id: d.id, name: d.name }))"
       :name="props.name"
-      class="sm:col-span-3"
     />
     <LoadingError v-else-if="error" :error="error" />
     <LoadingList v-else />
