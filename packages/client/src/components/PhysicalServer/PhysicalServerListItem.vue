@@ -22,7 +22,7 @@ const props = defineProps({
     </td>
     <TableCellServers :servers="props.server.servers" />
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
-      <TableButtonEdit :to="{ path: `${$route.fullPath}/${props.server.id}/edit` }" />
+      <TableButtonEdit :to="{ name: 'physicalServer-edit', params: { serverId: server.id } }" />
     </td>
   </tr>
 </template>

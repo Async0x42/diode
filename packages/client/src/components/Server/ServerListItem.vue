@@ -25,7 +25,7 @@ const props = defineProps({
     <TableCellFqdns :fqdns="props.server.fqdns" />
     <TableCellApplications :applications="props.server.applications" />
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
-      <TableButtonEdit :to="{ path: `${$route.fullPath}/${props.server.id}/edit` }" />
+      <TableButtonEdit :to="{ name: 'server-edit', params: { serverId: server.id } }" />
     </td>
   </tr>
 </template>

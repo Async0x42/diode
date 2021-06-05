@@ -21,7 +21,7 @@ const onPhoneContact = () => {
   <tr>
     <td class="py-4 px-6">
       <div class="flex items-center">
-        <router-link :to="`${$route.fullPath}/${props.contactGroup.id}/view`">
+        <router-link :to="{ name: 'contactGroup-view', params: { contactGroupId: contactGroup.id } }">
           <div>
             <div class="font-medium text-sm text-gray-900 whitespace-nowrap">
               {{ props.contactGroup.name }}
@@ -57,7 +57,7 @@ const onPhoneContact = () => {
       >
         <heroicons-solid-phone class="h-5 w-5" aria-hidden="true" />
       </button>
-      <TableButtonEdit class="ml-4" :to="{ path: `${$route.fullPath}/${props.contactGroup.id}/edit` }" />
+      <TableButtonEdit class="ml-4" :to="{ name: 'contactGroup-edit', params: { contactGroupId: contactGroup.id } }" />
     </td>
   </tr>
 </template>

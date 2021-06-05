@@ -17,7 +17,7 @@ const onBrowseRfc = () => {
     <TableCellApplication :application="props.rfc.application" />
     <td class="py-4 px-6 whitespace-nowrap">
       <div class="flex items-center">
-        <router-link :to="`${$route.fullPath}/${props.rfc.id}/view`">
+        <router-link :to="{ name: 'rfc-view', params: { rfcId: rfc.id } }">
           <div class="font-medium text-sm text-gray-900">
             {{ props.rfc.title }}
           </div>
@@ -40,7 +40,7 @@ const onBrowseRfc = () => {
       >
         <heroicons-solid-eye class="h-5 w-5" aria-hidden="true" />
       </button>
-      <TableButtonEdit class="ml-4" :to="{ path: `${$route.fullPath}/${props.rfc.id}/edit` }" />
+      <TableButtonEdit :to="{ name: 'rfc-edit', params: { rfcId: rfc.id } }" />
     </td>
   </tr>
 </template>

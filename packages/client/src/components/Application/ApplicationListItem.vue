@@ -12,7 +12,7 @@ const props = defineProps({
   <tr>
     <td class="py-4 px-6">
       <div class="flex items-center">
-        <router-link :to="`${$route.fullPath}/${props.application.id}/view`">
+        <router-link :to="{ name: 'application-view', params: { applicationId: application.id } }">
           <div>
             <div class="font-medium text-sm text-gray-900">{{ props.application.name }}</div>
             <div class="text-sm text-gray-500 whitespace-nowrap">{{ props.application.shortName }}</div>
@@ -24,7 +24,7 @@ const props = defineProps({
     <TableCellServers :servers="props.application.servers" />
     <TableCell>{{ props.application.description }}</TableCell>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
-      <TableButtonEdit :to="{ path: `${$route.fullPath}/${props.application.id}/edit` }" />
+      <TableButtonEdit :to="{ name: 'application-edit', params: { applicationId: application.id } }" />
     </td>
   </tr>
 </template>

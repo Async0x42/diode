@@ -12,7 +12,7 @@ const props = defineProps({
   <tr>
     <td class="py-4 px-6 whitespace-nowrap">
       <div class="flex items-center">
-        <router-link :to="`${$route.fullPath}/${props.operatingSystem.id}/view`">
+        <router-link :to="{ name: 'operatingSystem-view', params: { operatingSystemId: operatingSystem.id } }">
           <div>
             <div class="font-medium text-sm text-gray-900">
               {{ props.operatingSystem.name }}
@@ -25,7 +25,7 @@ const props = defineProps({
       </div>
     </td>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
-      <TableButtonEdit :to="{ path: `${$route.fullPath}/${props.operatingSystem.id}/edit` }" />
+      <TableButtonEdit :to="{ name: 'operatingSystem-edit', params: { operatingSystemId: operatingSystem.id } }" />
     </td>
   </tr>
 </template>

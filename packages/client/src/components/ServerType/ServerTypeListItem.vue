@@ -12,7 +12,7 @@ const props = defineProps({
   <tr>
     <td class="py-4 px-6 whitespace-nowrap">
       <div class="flex items-center">
-        <router-link :to="`${$route.fullPath}/${props.serverType.id}/view`">
+        <router-link :to="{ name: 'serverType-view', params: { serverTypeId: serverType.id } }">
           <div>
             <div class="font-medium text-sm text-gray-900">
               {{ props.serverType.name }}
@@ -25,7 +25,7 @@ const props = defineProps({
       </div>
     </td>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
-      <TableButtonEdit :to="{ path: `${$route.fullPath}/${props.serverType.id}/edit` }" />
+      <TableButtonEdit :to="{ name: 'serverType-edit', params: { serverTypeId: serverType.id } }" />
     </td>
   </tr>
 </template>

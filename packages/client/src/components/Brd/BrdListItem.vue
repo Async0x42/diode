@@ -14,7 +14,7 @@ const props = defineProps({
   <tr>
     <td class="py-4 px-6 whitespace-nowrap">
       <div class="flex items-center">
-        <router-link :to="`${$route.fullPath}/${props.brd.id}/view`">
+        <router-link :to="{ name: 'brd-view', params: { brdId: brd.id } }">
           <div>
             <div class="font-medium text-sm text-gray-900">
               {{ props.brd.title }}
@@ -31,7 +31,7 @@ const props = defineProps({
     <TableCell>{{ n(props.brd.initialCost || 0, 'currency') }}</TableCell>
     <TableCell>{{ n(props.brd.upkeepCost || 0, 'currency') }}</TableCell>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
-      <TableButtonEdit :to="{ path: `${$route.fullPath}/${props.brd.id}/edit` }" />
+      <TableButtonEdit :to="{ name: 'brd-edit', params: { brdId: brd.id } }" />
     </td>
   </tr>
 </template>
