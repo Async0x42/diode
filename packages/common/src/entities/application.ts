@@ -12,4 +12,6 @@ export interface IApplication {
   servers: IServer[];
   brds: IBrd[];
   rfcs: IRfc[];
+  createdOn: Date;
+  modifiedOn: Date;
 }

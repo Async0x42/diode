@@ -16,4 +16,6 @@ export interface IServer {
   types: IServerType[];
   location?: IServerLocation;
   physicalServer?: IPhysicalServer;
+  createdOn: Date;
+  modifiedOn: Date;
 }

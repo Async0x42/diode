@@ -15,4 +15,6 @@ export interface IBrd {
   initialCost?: number;
   upkeepCost?: number;
   application?: IApplication;
+  createdOn: Date;
+  modifiedOn: Date;
 }

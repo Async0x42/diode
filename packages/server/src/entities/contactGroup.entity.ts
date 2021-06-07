@@ -35,4 +35,10 @@ export class ContactGroup extends BaseEntity<ContactGroup, 'id'> implements IBac
 
   @ManyToMany(() => Contact, (contact) => contact.contactGroups, { owner: true })
   contacts = new Collection<Contact>(this);
+
+  @Property({ onCreate: () => new Date() })
+  createdOn!: Date;
+
+  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
+  modifiedOn!: Date;
 }

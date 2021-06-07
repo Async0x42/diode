@@ -7,4 +7,6 @@ export interface ICalendarItem {
   start: Date;
   end: Date;
   allDay?: boolean;
+  createdOn: Date;
+  modifiedOn: Date;
 }

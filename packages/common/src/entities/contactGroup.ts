@@ -10,4 +10,6 @@ export interface IContactGroup {
   department?: string;
   notes?: string;
   contacts: IContact[];
+  createdOn: Date;
+  modifiedOn: Date;
 }

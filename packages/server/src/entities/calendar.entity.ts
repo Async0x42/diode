@@ -8,4 +8,10 @@ export class Calendar extends BaseEntity<Calendar, 'id'> implements ICalendar {
 
   @Property()
   name!: string;
+
+  @Property({ onCreate: () => new Date() })
+  createdOn!: Date;
+
+  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
+  modifiedOn!: Date;
 }

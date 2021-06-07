@@ -15,4 +15,10 @@ export class ServerType extends BaseEntity<ServerType, 'id'> implements IServerT
 
   @ManyToMany(() => Server, (server) => server.types)
   servers = new Collection<Server>(this);
+
+  @Property({ onCreate: () => new Date() })
+  createdOn!: Date;
+
+  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
+  modifiedOn!: Date;
 }

@@ -33,4 +33,6 @@ export interface IRfc {
   conceptOfImplementation?: string;
   backoutPlan?: string;
   impactAssessmentDueDate?: Date;
+  createdOn: Date;
+  modifiedOn: Date;
 }

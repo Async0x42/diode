@@ -35,4 +35,10 @@ export class Contact extends BaseEntity<Contact, 'id'> implements IBackendContac
 
   @ManyToMany(() => ContactGroup, (contactGroup) => contactGroup.contacts)
   contactGroups = new Collection<ContactGroup>(this);
+
+  @Property({ onCreate: () => new Date() })
+  createdOn!: Date;
+
+  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
+  modifiedOn!: Date;
 }

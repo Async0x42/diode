@@ -15,4 +15,10 @@ export class ServerLocation extends BaseEntity<ServerLocation, 'id'> implements 
 
   @OneToMany(() => Server, (server) => server.location)
   servers = new Collection<Server>(this);
+
+  @Property({ onCreate: () => new Date() })
+  createdOn!: Date;
+
+  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
+  modifiedOn!: Date;
 }

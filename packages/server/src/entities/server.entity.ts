@@ -46,4 +46,10 @@ export class Server extends BaseEntity<Server, 'id'> implements IBackendServer {
 
   @Property({ columnType: 'text' })
   notes?: string;
+
+  @Property({ onCreate: () => new Date() })
+  createdOn!: Date;
+
+  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
+  modifiedOn!: Date;
 }

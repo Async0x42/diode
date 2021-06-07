@@ -22,4 +22,10 @@ export class Fqdn extends BaseEntity<Fqdn, 'id'> implements IBackendFqdn {
 
   @ManyToMany(() => Application, (application) => application.fqdns)
   applications?: Application;
+
+  @Property({ onCreate: () => new Date() })
+  createdOn!: Date;
+
+  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
+  modifiedOn!: Date;
 }

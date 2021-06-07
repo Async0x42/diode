@@ -26,4 +26,10 @@ export class CalendarItem extends BaseEntity<CalendarItem, 'id'> implements ICal
 
   @Property()
   allDay = false;
+
+  @Property({ onCreate: () => new Date() })
+  createdOn!: Date;
+
+  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
+  modifiedOn!: Date;
 }

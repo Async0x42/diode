@@ -6,4 +6,6 @@ export interface IFqdn {
   name: string;
   server?: IServer;
   applications: IApplication[];
+  createdOn: Date;
+  modifiedOn: Date;
 }

@@ -18,4 +18,6 @@ export interface IPhysicalServer {
   notes?: string;
   servers: IServer[];
   location?: IServerLocation;
+  createdOn: Date;
+  modifiedOn: Date;
 }

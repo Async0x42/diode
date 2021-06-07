@@ -38,4 +38,10 @@ export class Application extends BaseEntity<Application, 'id'> implements IBacke
 
   @OneToMany(() => Rfc, (rfc) => rfc.application)
   rfcs = new Collection<Rfc>(this);
+
+  @Property({ onCreate: () => new Date() })
+  createdOn!: Date;
+
+  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
+  modifiedOn!: Date;
 }

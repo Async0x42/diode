@@ -15,4 +15,10 @@ export class OperatingSystem extends BaseEntity<OperatingSystem, 'id'> implement
 
   @OneToMany(() => Server, (server) => server.operatingSystem)
   servers = new Collection<Server>(this);
+
+  @Property({ onCreate: () => new Date() })
+  createdOn!: Date;
+
+  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
+  modifiedOn!: Date;
 }
