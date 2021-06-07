@@ -1,8 +1,4 @@
-<script setup lang="ts">
-import SidebarMobile from '~/components/Sidebar/SidebarMobile.vue';
-import SidebarDesktop from '~/components/Sidebar/SidebarDesktop.vue';
-import Header from '~/components/Header/Header.vue';
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="bg-white flex h-screen overflow-hidden">
