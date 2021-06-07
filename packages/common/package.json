@@ -21,6 +21,6 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.3.1",
     "ts-node-dev": "^1.1.6",
-    "typescript": "^4.4.0-dev.20210607"
+    "typescript": "^4.4.0-dev.20210605"
   }
 }

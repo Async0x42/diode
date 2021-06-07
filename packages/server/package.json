@@ -27,11 +27,12 @@
   "homepage": "https://github.com/Async0x42/diode#readme",
   "dependencies": {
     "@diode/common": "workspace:*",
-    "@mikro-orm/cli": "^4.5.6",
-    "@mikro-orm/core": "^4.5.6",
-    "@mikro-orm/mariadb": "^4.5.6",
-    "@mikro-orm/reflection": "^4.5.6",
+    "@mikro-orm/cli": "^4.5.5",
+    "@mikro-orm/core": "^4.5.5",
+    "@mikro-orm/mariadb": "^4.5.5",
+    "@mikro-orm/reflection": "^4.5.5",
     "@mikro-orm/sql-highlighter": "^1.0.1",
+    "@mikro-orm/sqlite": "^4.5.5",
     "cors": "^2.8.5",
     "dotenv-extended": "^2.9.0",
     "express": "^4.17.1",
@@ -53,7 +54,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.3.1",
     "ts-node-dev": "^1.1.6",
-    "typescript": "^4.4.0-dev.20210607"
+    "typescript": "^4.4.0-dev.20210605"
   },
   "mikro-orm": {
     "useTsNode": true,
