@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { computed, defineProps } from 'vue';
 import type { IRfc } from '@diode/common';
 import type { PropType } from 'vue';
+import { parseJSON, format } from 'date-fns';
 
 const props = defineProps({
   rfc: { type: Object as PropType<IRfc>, required: true },
@@ -10,26 +11,28 @@ const props = defineProps({
 const onBrowseRfc = () => {
   window.location.href = `http://rfc.mil.ca/viewrfc_e.asp?id=${props.rfc.rfcNumber}`;
 };
+
+const iaDueDate = computed(() => props.rfc.impactAssessmentDueDate && format(parseJSON(props.rfc.impactAssessmentDueDate), 'yyyy-MM-dd'));
 </script>
 
 <template>
   <tr>
     <TableCellApplication :application="props.rfc.application" />
-    <td class="py-4 px-6 whitespace-nowrap">
+    <td class="py-4 px-6">
       <div class="flex items-center">
         <router-link :to="{ name: 'rfc-view', params: { rfcId: rfc.id } }">
           <div class="font-medium text-sm text-gray-900">
             {{ props.rfc.title }}
           </div>
-          <div class="text-sm text-gray-500">
+          <div class="text-sm text-gray-500 whitespace-nowrap">
             {{ props.rfc.rfcNumber }}
           </div>
-          <div class="text-xs text-gray-300">Class: {{ props.rfc.rfcClass }}</div>
+          <div class="text-xs text-gray-300 whitespace-nowrap">Class: {{ props.rfc.rfcClass }}</div>
         </router-link>
       </div>
     </td>
     <TableCell>{{ props.rfc.status }}</TableCell>
-    <TableCell>{{ props.rfc.impactAssessmentDueDate }}</TableCell>
+    <TableCell class="whitespace-nowrap">{{ iaDueDate }}</TableCell>
     <TableCell>{{ props.rfc.description }}</TableCell>
     <td class="flex font-medium text-right text-sm py-4 px-6 whitespace-nowrap items-center">
       <button
