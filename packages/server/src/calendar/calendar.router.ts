@@ -12,7 +12,7 @@ calendarRouter.get('/', async (req: Request, res: Response) => {
     const calendar = await CalendarService.get();
 
     res.status(200).send(calendar);
-  } catch (e) {
+  } catch (e: any) {
     res.status(500).send(e.message);
   }
 });
@@ -23,7 +23,7 @@ calendarRouter.post('/', async (req: Request, res: Response) => {
     const calendarUpdate: Calendar = req.body;
     const updatedCalendar = await CalendarService.update(1, calendarUpdate);
     return res.status(200).json(updatedCalendar);
-  } catch (e) {
+  } catch (e: any) {
     res.status(500).send(e.message);
   }
 });

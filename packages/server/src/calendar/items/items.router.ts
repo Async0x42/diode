@@ -10,7 +10,7 @@ itemsRouter.get('/', async (req: Request, res: Response) => {
     const items: CalendarItem[] = await ItemService.findAll();
 
     res.status(200).send(items);
-  } catch (e) {
+  } catch (e: any) {
     res.status(500).send(e.message);
   }
 });
@@ -26,7 +26,7 @@ itemsRouter.get('/:itemId', async (req: Request, res: Response) => {
     }
 
     res.status(404).send('item not found');
-  } catch (e) {
+  } catch (e: any) {
     res.status(500).send(e.message);
   }
 });
@@ -38,7 +38,7 @@ itemsRouter.post('/', async (req: Request, res: Response) => {
     const newItem = await ItemService.create(item);
 
     res.status(201).json(newItem);
-  } catch (e) {
+  } catch (e: any) {
     res.status(500).send(e.message);
   }
 });
@@ -58,7 +58,7 @@ itemsRouter.put('/:itemId', async (req: Request, res: Response) => {
     const newItem = await ItemService.create(itemUpdate);
 
     res.status(201).json(newItem);
-  } catch (e) {
+  } catch (e: any) {
     res.status(500).send(e.message);
   }
 });
@@ -70,7 +70,7 @@ itemsRouter.delete('/:itemId', async (req: Request, res: Response) => {
     await ItemService.remove(itemId);
 
     res.sendStatus(204);
-  } catch (e) {
+  } catch (e: any) {
     res.status(500).send(e.message);
   }
 });

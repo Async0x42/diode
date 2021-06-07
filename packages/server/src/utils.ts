@@ -66,7 +66,7 @@ export const createRouter = <T>(service: IService<T>) => {
       const item: T[] = await service.findAll();
 
       res.status(200).send(item);
-    } catch (e) {
+    } catch (e: any) {
       res.status(500).send(e.message);
     }
   });
@@ -82,7 +82,7 @@ export const createRouter = <T>(service: IService<T>) => {
       }
 
       res.status(404).send('item not found');
-    } catch (e) {
+    } catch (e: any) {
       res.status(500).send(e.message);
     }
   });
@@ -94,7 +94,7 @@ export const createRouter = <T>(service: IService<T>) => {
       const newItem = await service.create(item);
 
       res.status(201).json(newItem);
-    } catch (e) {
+    } catch (e: any) {
       res.status(500).send(e.message);
     }
   });
@@ -114,7 +114,7 @@ export const createRouter = <T>(service: IService<T>) => {
       const newItem = await service.create(itemUpdate);
 
       res.status(201).json(newItem);
-    } catch (e) {
+    } catch (e: any) {
       res.status(500).send(e.message);
     }
   });
@@ -126,7 +126,7 @@ export const createRouter = <T>(service: IService<T>) => {
       await service.remove(itemId);
 
       res.sendStatus(204);
-    } catch (e) {
+    } catch (e: any) {
       res.status(500).send(e.message);
     }
   });
