@@ -37,8 +37,8 @@ export class ContactGroup extends BaseEntity<ContactGroup, 'id'> implements IBac
   contacts = new Collection<Contact>(this);
 
   @Property({ onCreate: () => new Date() })
-  createdOn!: Date;
+  createdOn = new Date();
 
   @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn!: Date;
+  modifiedOn = new Date();
 }

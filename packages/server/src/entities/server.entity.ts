@@ -48,8 +48,8 @@ export class Server extends BaseEntity<Server, 'id'> implements IBackendServer {
   notes?: string;
 
   @Property({ onCreate: () => new Date() })
-  createdOn!: Date;
+  createdOn = new Date();
 
   @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn!: Date;
+  modifiedOn = new Date();
 }

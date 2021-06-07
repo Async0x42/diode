@@ -67,8 +67,8 @@ export class Rfc extends BaseEntity<Rfc, 'id'> implements IBackendRfc {
   impactAssessmentDueDate?: Date;
 
   @Property({ onCreate: () => new Date() })
-  createdOn!: Date;
+  createdOn = new Date();
 
   @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn!: Date;
+  modifiedOn = new Date();
 }

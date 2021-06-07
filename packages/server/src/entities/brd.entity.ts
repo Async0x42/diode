@@ -46,8 +46,8 @@ export class Brd extends BaseEntity<Brd, 'id'> implements IBackendBrd {
   application?: Application;
 
   @Property({ onCreate: () => new Date() })
-  createdOn!: Date;
+  createdOn = new Date();
 
   @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn!: Date;
+  modifiedOn = new Date();
 }

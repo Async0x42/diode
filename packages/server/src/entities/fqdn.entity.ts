@@ -24,8 +24,8 @@ export class Fqdn extends BaseEntity<Fqdn, 'id'> implements IBackendFqdn {
   applications?: Application;
 
   @Property({ onCreate: () => new Date() })
-  createdOn!: Date;
+  createdOn = new Date();
 
   @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn!: Date;
+  modifiedOn = new Date();
 }

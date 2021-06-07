@@ -59,8 +59,8 @@ export class PhysicalServer extends BaseEntity<PhysicalServer, 'id'> implements 
   notes?: string;
 
   @Property({ onCreate: () => new Date() })
-  createdOn!: Date;
+  createdOn = new Date();
 
   @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn!: Date;
+  modifiedOn = new Date();
 }

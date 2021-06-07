@@ -17,8 +17,8 @@ export class ServerLocation extends BaseEntity<ServerLocation, 'id'> implements 
   servers = new Collection<Server>(this);
 
   @Property({ onCreate: () => new Date() })
-  createdOn!: Date;
+  createdOn = new Date();
 
   @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn!: Date;
+  modifiedOn = new Date();
 }

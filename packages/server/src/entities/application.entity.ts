@@ -40,8 +40,8 @@ export class Application extends BaseEntity<Application, 'id'> implements IBacke
   rfcs = new Collection<Rfc>(this);
 
   @Property({ onCreate: () => new Date() })
-  createdOn!: Date;
+  createdOn = new Date();
 
   @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn!: Date;
+  modifiedOn = new Date();
 }

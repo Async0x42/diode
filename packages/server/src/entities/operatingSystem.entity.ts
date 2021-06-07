@@ -17,8 +17,8 @@ export class OperatingSystem extends BaseEntity<OperatingSystem, 'id'> implement
   servers = new Collection<Server>(this);
 
   @Property({ onCreate: () => new Date() })
-  createdOn!: Date;
+  createdOn = new Date();
 
   @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn!: Date;
+  modifiedOn = new Date();
 }

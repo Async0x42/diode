@@ -37,8 +37,8 @@ export class Contact extends BaseEntity<Contact, 'id'> implements IBackendContac
   contactGroups = new Collection<ContactGroup>(this);
 
   @Property({ onCreate: () => new Date() })
-  createdOn!: Date;
+  createdOn = new Date();
 
   @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn!: Date;
+  modifiedOn = new Date();
 }
