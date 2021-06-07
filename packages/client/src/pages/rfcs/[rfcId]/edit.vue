@@ -16,5 +16,5 @@ const { data, error, isFinished } = useAxios<IRfc>(`/api/rfcs/${props.rfcId}`);
 </template>
 
 <route lang="yaml">
-name: Rfc-edit
+name: rfc-edit
 </route>
