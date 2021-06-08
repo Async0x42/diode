@@ -11,3 +11,4 @@ export * from './operatingSystem';
 export * from './serverLocation';
 export * from './serverType';
 export * from './contactGroup';
+export * from './sslCertificate';

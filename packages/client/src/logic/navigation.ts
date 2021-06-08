@@ -15,4 +15,5 @@ export const navigation = ref([
   { name: 'Server Locations', to: { name: 'serverLocations' }, icon: CogIcon },
   { name: 'Physical Servers', to: { name: 'physicalServers' }, icon: CogIcon },
   { name: 'Contact Groups', to: { name: 'contactGroups' }, icon: CogIcon },
+  { name: 'SSL Certificates', to: { name: 'sslCertificates' }, icon: CogIcon },
 ]);

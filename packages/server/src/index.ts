@@ -14,6 +14,7 @@ import { createRouter, createService } from './utils';
 import { calendarRouter } from './calendar/calendar.router';
 import { PhysicalServer } from './entities/physicalServer.entity';
 import { ContactGroup } from './entities/contactGroup.entity';
+import { SslCertificate } from './entities/sslCertificate.entity';
 export * from './entities';
 
 dotEnvExtended.load();
@@ -37,6 +38,7 @@ export const DI = {} as {
   serverTypeRepo: EntityRepository<ServerType>;
   physicalServerRepo: EntityRepository<PhysicalServer>;
   contactGroupRepo: EntityRepository<ContactGroup>;
+  sslCertificateRepo: EntityRepository<SslCertificate>;
 };
 
 (async () => {
@@ -55,6 +57,7 @@ export const DI = {} as {
   DI.serverTypeRepo = DI.em.getRepository(ServerType);
   DI.physicalServerRepo = DI.em.getRepository(PhysicalServer);
   DI.contactGroupRepo = DI.em.getRepository(ContactGroup);
+  DI.sslCertificateRepo = DI.em.getRepository(SslCertificate);
 
   app.use((req, res, next) => RequestContext.create(DI.orm.em, next));
 
@@ -88,6 +91,7 @@ export const DI = {} as {
   app.use('/api/serverlocations', createRouter<ServerLocation>(createService(DI.serverLocationRepo)));
   app.use('/api/servertypes', createRouter<ServerType>(createService(DI.serverTypeRepo)));
   app.use('/api/contactGroups', createRouter<ContactGroup>(createService(DI.contactGroupRepo, ['contacts'])));
+  app.use('/api/sslCertificates', createRouter<SslCertificate>(createService(DI.sslCertificateRepo)));
   app.use(errorHandler);
   app.use(notFoundHandler);
 
