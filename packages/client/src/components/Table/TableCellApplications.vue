@@ -9,7 +9,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <TableCell class="whitespace-nowrap">
+  <TableCell>
     <router-link
       v-for="application in props.applications"
       :key="application.id"
@@ -18,7 +18,7 @@ const props = defineProps({
       custom
     >
       <div role="link" class="cursor-pointer text-sm text-gray-900 hover:bg-gray-200" @click="navigate" @keypress.enter="navigate">
-        <template v-if="application?.shortName"> [{{ application?.shortName }}] </template>
+        <span v-if="application?.shortName" class="whitespace-nowrap"> [{{ application?.shortName }}] </span>
         {{ application?.name }}
       </div>
     </router-link>
