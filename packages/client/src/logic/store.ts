@@ -1,12 +1,5 @@
 import { ref } from 'vue';
 
-export const projects = ref([
-  { id: 1, name: 'GraphQL API', href: '#' },
-  { id: 2, name: 'iOS App', href: '#' },
-  { id: 3, name: 'Marketing Site Redesign', href: '#' },
-  { id: 4, name: 'Customer Portal', href: '#' },
-]);
-
 export const activity = ref([
   {
     id: 1,

@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { navigation, projects } from '~/logic';
+import { computed } from '@vue/runtime-core';
+import { navigation } from '~/logic';
+
+const mainNav = computed(() => navigation.value.filter((n) => n.category !== 'settings'));
+const settingsNav = computed(() => navigation.value.filter((n) => n.category === 'settings'));
 </script>
 
 <template>
@@ -18,7 +22,7 @@ import { navigation, projects } from '~/logic';
           <nav class="bg-gray-800 flex-1 py-4 px-2">
             <div class="space-y-1">
               <router-link
-                v-for="item in navigation"
+                v-for="item in mainNav"
                 v-slot="{ href, navigate, isExactActive }"
                 :key="item.name"
                 :to="item.to ? item.to : undefined"
@@ -43,18 +47,27 @@ import { navigation, projects } from '~/logic';
               </router-link>
             </div>
             <div class="mt-10">
-              <p class="font-semibold text-xs tracking-wider px-3 text-gray-400 uppercase">Projects</p>
+              <p class="font-semibold text-xs tracking-wider px-3 text-gray-400 uppercase">Settings</p>
               <div class="space-y-1 mt-2">
-                <a
-                  v-for="project in projects"
-                  :key="project.id"
-                  :href="project.href"
-                  class="rounded-md flex font-medium text-sm py-2 px-3 text-gray-300 group items-center hover:text-white hover:bg-gray-700"
+                <router-link
+                  v-for="item in settingsNav"
+                  v-slot="{ href, navigate, isExactActive }"
+                  :key="item.name"
+                  :to="item.to ? item.to : undefined"
+                  custom
                 >
-                  <span class="truncate">
-                    {{ project.name }}
-                  </span>
-                </a>
+                  <a
+                    :href="href"
+                    :class="[
+                      isExactActive ? 'bg-gray-900 text-white cursor-default' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                      'group flex items-center px-3 py-2 text-sm font-medium rounded-md',
+                    ]"
+                    :aria-current="isExactActive ? 'page' : undefined"
+                    @click="navigate"
+                  >
+                    <span class="truncate">{{ item.name }}</span>
+                  </a>
+                </router-link>
               </div>
             </div>
           </nav>
