@@ -126,6 +126,7 @@ export default defineConfig({
       '@headlessui/vue',
       '@heroicons/vue/outline',
       'date-fns',
+      'v-calendar',
     ],
     exclude: ['vue-demi'],
   },
