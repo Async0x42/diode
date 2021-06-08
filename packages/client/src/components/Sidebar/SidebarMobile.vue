@@ -48,7 +48,11 @@ import { navigation, projects, isSidebarOpen, toggleSidebar } from '~/logic';
             </div>
           </TransitionChild>
           <div class="flex flex-shrink-0 px-4 items-center">
-            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-rose-500-mark-white-text.svg" alt="Workflow" />
+            <heroicons-solid-light-bulb class="h-8 text-indigo-600 w-8" aria-hidden="true" />
+            <div class="ml-2 w-auto text-gray-300">
+              <div class="font-bold text-center text-xl">DIODE</div>
+              <div class="text-xs">Keeping the lights on</div>
+            </div>
           </div>
           <div class="flex-1 h-0 mt-5 overflow-y-auto">
             <nav class="px-2">

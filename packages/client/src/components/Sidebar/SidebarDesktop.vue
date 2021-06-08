@@ -8,7 +8,11 @@ import { navigation, projects } from '~/logic';
       <!-- Sidebar component, swap this element with another sidebar if you like -->
       <div class="flex flex-col flex-1 h-0">
         <div class="flex bg-gray-900 flex-shrink-0 h-16 px-4 items-center">
-          <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-rose-500-mark-white-text.svg" alt="Workflow" />
+          <heroicons-solid-light-bulb class="h-8 text-indigo-600 w-8" aria-hidden="true" />
+          <div class="ml-2 w-auto text-gray-300">
+            <div class="font-bold text-center text-xl">DIODE</div>
+            <div class="text-xs">Keeping the lights on</div>
+          </div>
         </div>
         <div class="flex flex-col flex-1 overflow-y-auto">
           <nav class="bg-gray-800 flex-1 py-4 px-2">
