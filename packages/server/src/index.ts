@@ -15,6 +15,7 @@ import { calendarRouter } from './calendar/calendar.router';
 import { PhysicalServer } from './entities/physicalServer.entity';
 import { ContactGroup } from './entities/contactGroup.entity';
 import { SslCertificate } from './entities/sslCertificate.entity';
+import { backupDatabase, createSchedules } from './scheduler';
 export * from './entities';
 
 dotEnvExtended.load();
@@ -62,7 +63,12 @@ export const DI = {} as {
   app.use((req, res, next) => RequestContext.create(DI.orm.em, next));
 
   const migrator = DI.orm.getMigrator();
-  await migrator.up(); // runs migrations up to the latest
+  const pendingMigrations = await migrator.getPendingMigrations();
+
+  if (pendingMigrations.length > 0) {
+    await backupDatabase();
+    await migrator.up(); // runs migrations up to the latest
+  }
   DI.em.flush();
 
   app.use(helmet());
@@ -98,6 +104,8 @@ export const DI = {} as {
   app.use('/api/sslCertificates', createRouter<SslCertificate>(createService(DI.sslCertificateRepo, ['applications', 'servers'])));
   app.use(errorHandler);
   app.use(notFoundHandler);
+
+  createSchedules();
 
   app.listen(port, () => {
     console.log(`Listening on port ${port}`);
