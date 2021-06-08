@@ -31,6 +31,7 @@ declare module 'vue' {
     FormButtonOk: typeof import('./src/components/Form/FormButtonOk.vue')['default']
     FormContactGroupMultiSelect: typeof import('./src/components/Form/FormContactGroupMultiSelect.vue')['default']
     FormContactMultiSelect: typeof import('./src/components/Form/FormContactMultiSelect.vue')['default']
+    FormDatePicker: typeof import('./src/components/Form/FormDatePicker.vue')['default']
     FormFqdnMultiSelect: typeof import('./src/components/Form/FormFqdnMultiSelect.vue')['default']
     FormFqdnSelect: typeof import('./src/components/Form/FormFqdnSelect.vue')['default']
     FormInput: typeof import('./src/components/Form/FormInput.vue')['default']

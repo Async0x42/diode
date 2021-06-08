@@ -12,6 +12,12 @@ module.exports = {
   ],
   attributify: true,
   theme: {
+    extend: {
+      colors: {
+        'litepie-primary': colors.lightBlue, // color system for light mode
+        'litepie-secondary': colors.coolGray, // color system for dark mode
+      },
+    },
     colors: {
       // Build your palette here
       transparent: 'transparent',

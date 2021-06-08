@@ -129,6 +129,7 @@ export default defineConfig({
       '@headlessui/vue',
       '@heroicons/vue/outline',
       'date-fns',
+      'litepie-datepicker',
     ],
     exclude: ['vue-demi'],
   },
