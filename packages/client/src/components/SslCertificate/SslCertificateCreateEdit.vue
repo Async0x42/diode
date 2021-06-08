@@ -28,7 +28,7 @@ const expiry = useField('expiry');
           </div>
 
           <div class="mt-6 grid gap-y-6 gap-x-4 grid-cols-1 sm:grid-cols-6">
-            <FormInput label="SANs" :field="sans" name="sans" class="sm:col-span-3" />
+            <FormInput label="Subject Alternate Names" :field="sans" name="sans" class="sm:col-span-3" />
             <FormInput label="Expiry" :field="expiry" name="expiry" class="sm:col-span-3" />
           </div>
         </div>

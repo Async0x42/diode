@@ -13,6 +13,7 @@ const routesForCreate = [
   'serverLocations',
   'physicalServers',
   'contactGroups',
+  'sslCertificates',
 ];
 
 const routesForSearch = [
@@ -28,6 +29,7 @@ const routesForSearch = [
   'serverLocations',
   'physicalServers',
   'contactGroups',
+  'sslCertificates',
 ];
 
 const routesForEdit = [
@@ -43,6 +45,7 @@ const routesForEdit = [
   'serverLocation-view',
   'physicalServer-view',
   'contactGroup-view',
+  'sslCertificate-view',
 ];
 </script>
 
