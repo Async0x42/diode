@@ -6,13 +6,15 @@ import { OperatingSystem } from './operatingSystem.entity';
 import { PhysicalServer } from './physicalServer.entity';
 import { ServerLocation } from './serverLocation.entity';
 import { ServerType } from './serverType.entity';
+import { SslCertificate } from './sslCertificate.entity';
 
 // Quick fix to make @mikro-orm collection compat with the IServer []
-export interface IBackendServer extends Omit<IServer, 'applications' | 'fqdns' | 'types' | 'physicalServer'> {
+export interface IBackendServer extends Omit<IServer, 'applications' | 'fqdns' | 'types' | 'physicalServer' | 'sslCertificates'> {
   applications: Collection<Application>;
   fqdns: Collection<Fqdn>;
   types: Collection<ServerType>;
   physicalServer?: PhysicalServer;
+  sslCertificates: Collection<SslCertificate>;
 }
 
 @Entity()
@@ -37,6 +39,9 @@ export class Server extends BaseEntity<Server, 'id'> implements IBackendServer {
 
   @ManyToMany(() => Application, (application) => application.servers)
   applications = new Collection<Application>(this);
+
+  @ManyToMany(() => SslCertificate, (sslCert) => sslCert.servers, { owner: true })
+  sslCertificates = new Collection<SslCertificate>(this);
 
   @OneToMany(() => Fqdn, (fqdn) => fqdn.server)
   fqdns = new Collection<Fqdn>(this);

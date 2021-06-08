@@ -28,8 +28,15 @@ const props = defineProps({
         <div class="sm:col-span-1">
           <dt class="font-medium text-sm text-gray-500">Applications</dt>
           <dd v-for="application in props.server.applications" :key="application.id" class="mt-1 text-sm text-gray-900">
-            <template v-if="application?.shortName"> [{{ application?.shortName }}] </template>
+            <template v-if="application.shortName"> [{{ application?.shortName }}] </template>
             {{ application?.name }}
+          </dd>
+        </div>
+        <div class="sm:col-span-1">
+          <dt class="font-medium text-sm text-gray-500">SSL Certificates</dt>
+          <dd v-for="sslCert in props.server.sslCertificates" :key="sslCert.id" class="mt-1 text-sm text-gray-900">
+            <template v-if="sslCert.expiry"> [{{ sslCert?.expiry }}] </template>
+            {{ sslCert?.sans }}
           </dd>
         </div>
         <div class="sm:col-span-1">

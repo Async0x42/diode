@@ -20,6 +20,7 @@ const fqdns = useField('fqdns');
 const servers = useField('servers');
 const brds = useField('brds');
 const rfcs = useField('rfcs');
+const sslCertificates = useField('sslCertificates');
 </script>
 
 <template>
@@ -40,6 +41,7 @@ const rfcs = useField('rfcs');
             <FormFqdnMultiSelect label="FQDNs" :field="fqdns" name="fqdns" class="sm:col-span-3" />
             <FormBrdMultiSelect label="BRDs" :field="brds" name="brds" class="sm:col-span-3" />
             <FormRfcMultiSelect label="RFCs" :field="rfcs" name="rfc" class="sm:col-span-3" />
+            <FormSslCertificateMultiSelect label="SSL Certificates" :field="sslCertificates" name="sslCertificates" class="sm:col-span-3" />
             <FormTextArea label="Description" :field="description" name="description" class="sm:col-span-6" :rows="6" />
           </div>
         </div>

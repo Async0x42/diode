@@ -24,6 +24,21 @@ const sslExpiry = computed(() => props.sslCertificate.expiry && format(parseJSON
           <dd class="mt-1 text-sm text-gray-900">{{ props.sslCertificate.sans }}</dd>
           <dd class="mt-1 text-sm text-gray-700">{{ sslExpiry }}</dd>
         </div>
+        <div class="sm:col-span-1">
+          <dt class="font-medium text-sm text-gray-500">Applications</dt>
+          <dd v-for="application in props.sslCertificate.applications" :key="application.id" class="mt-1 text-sm text-gray-900">
+            <template v-if="application.shortName"> [{{ application?.shortName }}] </template>
+            {{ application?.name }}
+          </dd>
+        </div>
+        <div class="sm:col-span-1">
+          <dt class="font-medium text-sm text-gray-500">Servers</dt>
+          <template v-for="server in props.sslCertificate.servers" :key="server.id">
+            <dd class="text-sm text-gray-900">{{ server.name }}</dd>
+            <dd class="mt-1 text-sm text-gray-500">{{ server.ip }}</dd>
+            <dd class="mt-1 text-sm text-gray-500">{{ server.operatingSystem?.name }}</dd>
+          </template>
+        </div>
       </dl>
     </div>
   </div>

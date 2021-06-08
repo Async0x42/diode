@@ -47,6 +47,12 @@ const props = defineProps({
             <dd class="text-sm text-gray-900">[{{ rfc.rfcNumber }}] {{ rfc.title }}</dd>
           </template>
         </div>
+        <div class="sm:col-span-1">
+          <dt class="font-medium text-sm text-gray-500">SSL Certificates</dt>
+          <template v-for="sslCert in props.application.sslCertificates" :key="sslCert.id">
+            <dd class="text-sm text-gray-900">[{{ sslCert.rfcNumber }}] {{ sslCert.title }}</dd>
+          </template>
+        </div>
         <div class="sm:col-span-2">
           <dt class="font-medium text-sm text-gray-500">Description</dt>
           <dd class="mt-1 text-sm text-gray-900">

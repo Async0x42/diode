@@ -2,6 +2,7 @@ import { IBrd } from './brd';
 import { IFqdn } from './fqdn';
 import { IRfc } from './rfc';
 import { IServer } from './server';
+import { ISslCertificate } from './sslCertificate';
 
 export interface IApplication {
   id: number;
@@ -12,6 +13,7 @@ export interface IApplication {
   servers: IServer[];
   brds: IBrd[];
   rfcs: IRfc[];
+  sslCertificates: ISslCertificate[];
   createdOn: Date;
   modifiedOn: Date;
 }

@@ -28,7 +28,7 @@ const props = defineProps({
           <dt class="font-medium text-sm text-gray-500">Applications</dt>
           <dd v-for="application in props.fqdn.applications" :key="application.id" class="mt-1 text-sm text-gray-900">
             <template v-if="application?.shortName"> [{{ application?.shortName }}] </template>
-            {{ application?.name }}
+            {{ application.name }}
           </dd>
         </div>
       </dl>

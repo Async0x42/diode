@@ -15,6 +15,8 @@ const sans = useField('sans', {
 });
 
 const expiry = useField('expiry');
+const applications = useField('applications');
+const servers = useField('servers');
 </script>
 
 <template>
@@ -30,6 +32,8 @@ const expiry = useField('expiry');
           <div class="mt-6 grid gap-y-6 gap-x-4 grid-cols-1 sm:grid-cols-6">
             <FormInput label="Subject Alternate Names" :field="sans" name="sans" class="sm:col-span-3" />
             <FormInput label="Expiry" :field="expiry" name="expiry" class="sm:col-span-3" />
+            <FormApplicationMultiSelect label="Applications" :field="applications" name="applications" class="sm:col-span-3" />
+            <FormServerMultiSelect label="Servers" :field="servers" name="server" class="sm:col-span-3" />
           </div>
         </div>
       </div>

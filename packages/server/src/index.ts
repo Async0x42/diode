@@ -81,17 +81,21 @@ export const DI = {} as {
   );
   app.use(
     '/api/applications',
-    createRouter<Application>(createService(DI.applicationRepo, ['fqdns', 'servers', 'servers.operatingSystem', 'servers.location', 'brds', 'rfcs']))
+    createRouter<Application>(
+      createService(DI.applicationRepo, ['sslCertificates', 'fqdns', 'servers', 'servers.operatingSystem', 'servers.location', 'brds', 'rfcs'])
+    )
   );
   app.use(
     '/api/servers',
-    createRouter<Server>(createService(DI.serverRepo, ['fqdns', 'applications', 'types', 'location', 'operatingSystem', 'physicalServer']))
+    createRouter<Server>(
+      createService(DI.serverRepo, ['sslCertificates', 'fqdns', 'applications', 'types', 'location', 'operatingSystem', 'physicalServer'])
+    )
   );
   app.use('/api/operatingsystems', createRouter<OperatingSystem>(createService(DI.operatingSystemRepo)));
   app.use('/api/serverlocations', createRouter<ServerLocation>(createService(DI.serverLocationRepo)));
   app.use('/api/servertypes', createRouter<ServerType>(createService(DI.serverTypeRepo)));
   app.use('/api/contactGroups', createRouter<ContactGroup>(createService(DI.contactGroupRepo, ['contacts'])));
-  app.use('/api/sslCertificates', createRouter<SslCertificate>(createService(DI.sslCertificateRepo)));
+  app.use('/api/sslCertificates', createRouter<SslCertificate>(createService(DI.sslCertificateRepo, ['applications', 'servers'])));
   app.use(errorHandler);
   app.use(notFoundHandler);
 

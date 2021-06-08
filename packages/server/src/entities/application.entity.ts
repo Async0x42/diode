@@ -4,13 +4,15 @@ import { Brd } from './brd.entity';
 import { Fqdn } from './fqdn.entity';
 import { Rfc } from './rfc.entity';
 import { Server } from './server.entity';
+import { SslCertificate } from './sslCertificate.entity';
 
 // Quick fix to make @mikro-orm collection compat with the IServer []
-export interface IBackendApplication extends Omit<IApplication, 'fqdns' | 'servers' | 'brds' | 'rfcs'> {
+export interface IBackendApplication extends Omit<IApplication, 'fqdns' | 'servers' | 'brds' | 'rfcs' | 'sslCertificates'> {
   fqdns: Collection<Fqdn>;
   servers: Collection<Server>;
   brds: Collection<Brd>;
   rfcs: Collection<Rfc>;
+  sslCertificates: Collection<SslCertificate>;
 }
 
 @Entity()
@@ -32,6 +34,9 @@ export class Application extends BaseEntity<Application, 'id'> implements IBacke
 
   @ManyToMany(() => Server, (server) => server.applications, { owner: true })
   servers = new Collection<Server>(this);
+
+  @ManyToMany(() => SslCertificate, (sslCert) => sslCert.applications, { owner: true })
+  sslCertificates = new Collection<SslCertificate>(this);
 
   @OneToMany(() => Brd, (brd) => brd.application)
   brds = new Collection<Brd>(this);

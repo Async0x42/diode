@@ -4,6 +4,7 @@ import { IOperatingSystem } from './operatingSystem';
 import { IServerLocation } from './serverLocation';
 import { IServerType } from './serverType';
 import { IPhysicalServer } from './physicalServer';
+import { ISslCertificate } from './sslCertificate';
 
 export interface IServer {
   id: number;
@@ -13,6 +14,7 @@ export interface IServer {
   operatingSystem?: IOperatingSystem;
   applications: IApplication[];
   fqdns: IFqdn[];
+  sslCertificates: ISslCertificate[];
   types: IServerType[];
   location?: IServerLocation;
   physicalServer?: IPhysicalServer;

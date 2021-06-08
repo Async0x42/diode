@@ -43,6 +43,7 @@ declare module 'vue' {
     FormServerMultiSelect: typeof import('./src/components/Form/FormServerMultiSelect.vue')['default']
     FormServerSelect: typeof import('./src/components/Form/FormServerSelect.vue')['default']
     FormServerTypeMultiSelect: typeof import('./src/components/Form/FormServerTypeMultiSelect.vue')['default']
+    FormSslCertificateMultiSelect: typeof import('./src/components/Form/FormSslCertificateMultiSelect.vue')['default']
     FormTextArea: typeof import('./src/components/Form/FormTextArea.vue')['default']
     FqdnCreateEdit: typeof import('./src/components/Fqdn/FqdnCreateEdit.vue')['default']
     FqdnList: typeof import('./src/components/Fqdn/FqdnList.vue')['default']
