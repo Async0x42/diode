@@ -1,21 +1,21 @@
-import { defineConfig } from 'vite-plugin-windicss';
-import defaultTheme from 'windicss/defaultTheme';
-import colors from 'windicss/colors';
-import forms from 'windicss/plugin/forms';
-import typography from 'windicss/plugin/typography';
-import lineClamp from 'windicss/plugin/line-clamp';
-import aspectRatio from 'windicss/plugin/aspect-ratio';
+import colors from 'tailwindcss/colors';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
-export default defineConfig({
+module.exports = {
+  mode: 'jit',
   darkMode: 'class',
-  plugins: [typography(), forms, lineClamp, aspectRatio],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
   attributify: true,
   theme: {
     colors: {
       // Build your palette here
       transparent: 'transparent',
       current: 'currentColor',
-      // waiting on windicss 3.0
       // light: colors.light,
       // dark: colors.dark,
       amber: colors.amber,
@@ -48,6 +48,7 @@ export default defineConfig({
     },
   },
   purge: {
+    content: ['./index.html', './src/**/*.{html,js,jsx,ts,tsx,vue}'],
     options: {
       safelist: [
         // backgrounds for selection
@@ -108,4 +109,4 @@ export default defineConfig({
       ],
     },
   },
-});
+};

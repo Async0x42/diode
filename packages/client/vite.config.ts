@@ -6,10 +6,10 @@ import Layouts from 'vite-plugin-vue-layouts';
 import ViteIcons, { ViteIconsResolver } from 'vite-plugin-icons';
 import ViteComponents, { HeadlessUiResolver, VueUseComponentsResolver } from 'vite-plugin-components';
 import Markdown from 'vite-plugin-md';
-import WindiCSS from 'vite-plugin-windicss';
 import { VitePWA } from 'vite-plugin-pwa';
 import VueI18n from '@intlify/vite-plugin-vue-i18n';
 import Prism from 'markdown-it-prism';
+import tailwindVitePlugin from 'vite-plugin-tailwind';
 
 export default defineConfig({
   resolve: {
@@ -71,9 +71,12 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-icons
     ViteIcons(),
 
-    // https://github.com/antfu/vite-plugin-windicss
-    WindiCSS({
-      safelist: 'prose prose-sm m-auto text-left',
+    tailwindVitePlugin({
+      jit: true,
+      autoprefixer: true,
+      nesting: true,
+      cssPath: path.resolve(__dirname, 'src', 'tailwind.css'),
+      tailwind: require('./tailwind.config'),
     }),
 
     // https://github.com/antfu/vite-plugin-pwa
