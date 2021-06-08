@@ -53,7 +53,7 @@ const application = useField('application');
               :options="['Draft', 'Assessment', 'Design', 'WIF', 'SA', 'Implementation', 'Done']"
             />
 
-            <FormInput label="Submission Date" :field="submissionDate" name="submissionDate" class="sm:col-span-3" />
+            <FormDatePicker label="Submission Date" :field="submissionDate" name="submissionDate" class="sm:col-span-3" />
             <FormInput label="Date Entered Into Bits" :field="dateEnteredIntoBits" name="dateEnteredIntoBits" class="sm:col-span-3" />
 
             <FormApplicationSelect label="Application" :field="application" name="application" class="sm:col-span-3" />

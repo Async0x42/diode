@@ -359,7 +359,12 @@ const backoutPlan = useField('backoutPlan');
               </template>
             </FormTextArea>
 
-            <FormInput label="Impact Assessment Due Date" :field="impactAssessmentDueDate" name="impactAssessmentDueDate" class="sm:col-span-3" />
+            <FormDatePicker
+              label="Impact Assessment Due Date"
+              :field="impactAssessmentDueDate"
+              name="impactAssessmentDueDate"
+              class="sm:col-span-3"
+            />
           </div>
         </div>
       </div>
