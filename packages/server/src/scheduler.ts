@@ -25,9 +25,6 @@ export const backupDatabase = async () => {
       database: process.env.MIKRO_ORM_DB_NAME || 'diode',
     },
     dump: {
-      data: {
-        lockTables: true,
-      },
       schema: {
         table: {
           dropIfExist: true,
