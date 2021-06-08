@@ -6,7 +6,7 @@ import { EntityManager, EntityRepository, MikroORM, RequestContext } from '@mikr
 import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/not-found.middleware';
 import config from './mikro-orm.config';
-import { Application, Brd, Calendar, CalendarItem, Contact, Fqdn, Rfc, Server } from './entities';
+import { Application, Brd, Calendar, CalendarItem, Contact, Environment, Fqdn, Network, Rfc, Server } from './entities';
 import { OperatingSystem } from './entities/operatingSystem.entity';
 import { ServerLocation } from './entities/serverLocation.entity';
 import { ServerType } from './entities/serverType.entity';
@@ -40,6 +40,8 @@ export const DI = {} as {
   physicalServerRepo: EntityRepository<PhysicalServer>;
   contactGroupRepo: EntityRepository<ContactGroup>;
   sslCertificateRepo: EntityRepository<SslCertificate>;
+  environmentRepo: EntityRepository<Environment>;
+  networkRepo: EntityRepository<Network>;
 };
 
 (async () => {
@@ -59,6 +61,8 @@ export const DI = {} as {
   DI.physicalServerRepo = DI.em.getRepository(PhysicalServer);
   DI.contactGroupRepo = DI.em.getRepository(ContactGroup);
   DI.sslCertificateRepo = DI.em.getRepository(SslCertificate);
+  DI.environmentRepo = DI.em.getRepository(Environment);
+  DI.networkRepo = DI.em.getRepository(Network);
 
   app.use((req, res, next) => RequestContext.create(DI.orm.em, next));
 
@@ -94,12 +98,24 @@ export const DI = {} as {
   app.use(
     '/api/servers',
     createRouter<Server>(
-      createService(DI.serverRepo, ['sslCertificates', 'fqdns', 'applications', 'types', 'location', 'operatingSystem', 'physicalServer'])
+      createService(DI.serverRepo, [
+        'sslCertificates',
+        'fqdns',
+        'applications',
+        'types',
+        'location',
+        'operatingSystem',
+        'physicalServer',
+        'network',
+        'environment',
+      ])
     )
   );
   app.use('/api/operatingsystems', createRouter<OperatingSystem>(createService(DI.operatingSystemRepo)));
   app.use('/api/serverlocations', createRouter<ServerLocation>(createService(DI.serverLocationRepo)));
   app.use('/api/servertypes', createRouter<ServerType>(createService(DI.serverTypeRepo)));
+  app.use('/api/environments', createRouter<Environment>(createService(DI.environmentRepo)));
+  app.use('/api/networks', createRouter<Network>(createService(DI.networkRepo)));
   app.use('/api/contactGroups', createRouter<ContactGroup>(createService(DI.contactGroupRepo, ['contacts'])));
   app.use('/api/sslCertificates', createRouter<SslCertificate>(createService(DI.sslCertificateRepo, ['applications', 'servers'])));
   app.use(errorHandler);

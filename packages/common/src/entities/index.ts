@@ -12,3 +12,5 @@ export * from './serverLocation';
 export * from './serverType';
 export * from './contactGroup';
 export * from './sslCertificate';
+export * from './environment';
+export * from './network';

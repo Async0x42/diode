@@ -1,7 +1,9 @@
 import { IServer } from '@diode/common';
 import { BaseEntity, Entity, Property, PrimaryKey, OneToMany, ManyToMany, Collection, ManyToOne } from '@mikro-orm/core';
 import { Application } from './application.entity';
+import { Environment } from './environment.entity';
 import { Fqdn } from './fqdn.entity';
+import { Network } from './network.entity';
 import { OperatingSystem } from './operatingSystem.entity';
 import { PhysicalServer } from './physicalServer.entity';
 import { ServerLocation } from './serverLocation.entity';
@@ -27,6 +29,12 @@ export class Server extends BaseEntity<Server, 'id'> implements IBackendServer {
 
   @Property()
   ip?: string;
+
+  @ManyToOne()
+  environment?: Environment;
+
+  @ManyToOne()
+  network?: Network;
 
   @ManyToOne()
   operatingSystem?: OperatingSystem;

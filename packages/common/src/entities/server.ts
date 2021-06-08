@@ -5,6 +5,8 @@ import { IServerLocation } from './serverLocation';
 import { IServerType } from './serverType';
 import { IPhysicalServer } from './physicalServer';
 import { ISslCertificate } from './sslCertificate';
+import { IEnvironment } from './environment';
+import { INetwork } from './network';
 
 export interface IServer {
   id: number;
@@ -18,6 +20,8 @@ export interface IServer {
   types: IServerType[];
   location?: IServerLocation;
   physicalServer?: IPhysicalServer;
+  environment?: IEnvironment;
+  network?: INetwork;
   createdOn: Date;
   modifiedOn: Date;
 }

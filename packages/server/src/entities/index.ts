@@ -10,3 +10,5 @@ export * from './operatingSystem.entity';
 export * from './serverLocation.entity';
 export * from './serverType.entity';
 export * from './sslCertificate.entity';
+export * from './environment.entity';
+export * from './network.entity';

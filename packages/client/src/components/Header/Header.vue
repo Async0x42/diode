@@ -14,6 +14,8 @@ const routesForCreate = [
   'physicalServers',
   'contactGroups',
   'sslCertificates',
+  'environments',
+  'networks',
 ];
 
 const routesForSearch = [
@@ -30,6 +32,8 @@ const routesForSearch = [
   'physicalServers',
   'contactGroups',
   'sslCertificates',
+  'environments',
+  'networks',
 ];
 
 const routesForEdit = [
@@ -46,6 +50,8 @@ const routesForEdit = [
   'physicalServer-view',
   'contactGroup-view',
   'sslCertificate-view',
+  'environment-view',
+  'network-view',
 ];
 </script>
 
