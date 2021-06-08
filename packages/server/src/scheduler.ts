@@ -38,7 +38,7 @@ export const backupDatabase = async () => {
 export const createSchedules = () => {
   console.log('creating schedules');
 
-  cron.schedule('0,15,30,45 * * * *', async () => {
+  cron.schedule('0 * * * *', async () => {
     console.log('---------------------');
     console.log('Running Database Backup Cron Job');
     await backupDatabase();
