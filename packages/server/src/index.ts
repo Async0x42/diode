@@ -99,7 +99,7 @@ export const DI = {} as {
   app.use('/api/brds', createRouter<Brd>(createService(DI.brdRepo, ['application'])));
   app.use('/api/contacts', createRouter<Contact>(createService(DI.contactRepo, ['contactGroups', 'tickets'])));
   app.use('/api/fqdns', createRouter<Fqdn>(createService(DI.fqdnRepo, ['applications', 'server'])));
-  app.use('/api/tickets', createRouter<Ticket>(createService(DI.ticketRepo, ['applications', 'servers', 'contacts'])));
+  app.use('/api/tickets', createRouter<Ticket>(createService(DI.ticketRepo, ['applications', 'servers', 'owners'])));
   app.use(
     '/api/physicalServers',
     createRouter<PhysicalServer>(createService(DI.physicalServerRepo, ['location', 'servers', 'servers.location', 'servers.operatingSystem']))

@@ -2,7 +2,6 @@
 import { defineProps } from 'vue';
 import type { IServer } from '@diode/common';
 import type { PropType } from 'vue';
-import FormEnvironmentSelect from '../Form/FormEnvironmentSelect.vue';
 import { useFormActions } from '~/logic';
 
 const props = defineProps({
