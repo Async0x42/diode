@@ -20,8 +20,8 @@ const { results } = useRouteSearchWithData(props.brds, [
   'applications.shortName',
 ]);
 
-const totalUpkeep = computed(() => results.value.map((r) => r.upkeepCost || 0).reduce((a, b) => a + b));
-const totalInitialCost = computed(() => results.value.map((r) => r.initialCost || 0).reduce((a, b) => a + b));
+const totalUpkeep = computed(() => results.value.map((r) => r.upkeepCost || 0).reduce((a, b) => a + b, 0));
+const totalInitialCost = computed(() => results.value.map((r) => r.initialCost || 0).reduce((a, b) => a + b, 0));
 </script>
 
 <template>
