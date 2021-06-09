@@ -48,9 +48,7 @@ const props = defineProps({
         </div>
         <div class="sm:col-span-2">
           <dt class="font-medium text-sm text-gray-500">Notes</dt>
-          <dd class="mt-1 text-sm text-gray-900">
-            {{ props.contactGroup.notes }}
-          </dd>
+          <dd class="mt-1 text-sm text-gray-900" v-html="props.contactGroup.notes" />
         </div>
       </dl>
     </div>
