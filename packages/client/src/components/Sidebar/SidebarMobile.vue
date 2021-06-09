@@ -52,7 +52,7 @@ const settingsNav = computed(() => navigation.value.filter((n) => n.category ===
             </div>
           </TransitionChild>
           <div class="flex flex-shrink-0 px-4 items-center">
-            <heroicons-solid-light-bulb class="h-8 text-indigo-600 w-8" aria-hidden="true" />
+            <heroicons-solid-light-bulb class="h-8 text-gray-200 w-8" aria-hidden="true" />
             <div class="ml-2 w-auto text-gray-300">
               <div class="font-bold text-center text-xl">DIODE</div>
               <div class="text-xs">Keeping the lights on</div>
