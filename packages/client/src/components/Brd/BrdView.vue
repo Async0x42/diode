@@ -3,11 +3,14 @@ import { defineProps } from 'vue';
 import type { IBrd } from '@diode/common';
 import type { PropType } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { parseJSON, format } from 'date-fns';
 const { n } = useI18n();
 
 const props = defineProps({
   brd: { type: Object as PropType<IBrd>, required: true },
 });
+
+const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 'yyyy-MM-dd');
 </script>
 
 <template>
@@ -46,11 +49,11 @@ const props = defineProps({
         </div>
         <div class="sm:col-span-2">
           <dt class="font-medium text-sm text-gray-500">Submission Date</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.brd.submissionDate }}</dd>
+          <dd class="mt-1 text-sm text-gray-900">{{ formatDate(props.brd.submissionDate) }}</dd>
         </div>
         <div class="sm:col-span-1">
           <dt class="font-medium text-sm text-gray-500">Date Entered Into Bits</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.brd.dateEnteredIntoBits }}</dd>
+          <dd class="mt-1 text-sm text-gray-900">{{ formatDate(props.brd.dateEnteredIntoBits) }}</dd>
         </div>
         <div class="sm:col-span-1">
           <dt class="font-medium text-sm text-gray-500">Initial Cost</dt>

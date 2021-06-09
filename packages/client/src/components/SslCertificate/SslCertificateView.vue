@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, defineProps } from 'vue';
+import { defineProps } from 'vue';
 import type { ISslCertificate } from '@diode/common';
 import type { PropType } from 'vue';
 import { format, parseJSON } from 'date-fns';
@@ -8,7 +8,7 @@ const props = defineProps({
   sslCertificate: { type: Object as PropType<ISslCertificate>, required: true },
 });
 
-const sslExpiry = computed(() => props.sslCertificate.expiry && format(parseJSON(props.sslCertificate.expiry), 'yyyy-MM-dd'));
+const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 'yyyy-MM-dd');
 </script>
 
 <template>
@@ -22,7 +22,7 @@ const sslExpiry = computed(() => props.sslCertificate.expiry && format(parseJSON
         <div class="sm:col-span-1">
           <dt class="font-medium text-sm text-gray-500">Subject Alternate Names</dt>
           <dd class="mt-1 text-sm text-gray-900">{{ props.sslCertificate.sans }}</dd>
-          <dd class="mt-1 text-sm text-gray-700">{{ sslExpiry }}</dd>
+          <dd class="mt-1 text-sm text-gray-700">{{ formatDate(props.sslCertificate.expiry) }}</dd>
         </div>
         <div class="sm:col-span-1">
           <dt class="font-medium text-sm text-gray-500">Applications</dt>

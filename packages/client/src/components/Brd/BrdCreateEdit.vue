@@ -54,7 +54,7 @@ const application = useField('application');
             />
 
             <FormDatePicker label="Submission Date" :field="submissionDate" name="submissionDate" class="sm:col-span-3" />
-            <FormInput label="Date Entered Into Bits" :field="dateEnteredIntoBits" name="dateEnteredIntoBits" class="sm:col-span-3" />
+            <FormDatePicker label="Date Entered Into Bits" :field="dateEnteredIntoBits" name="dateEnteredIntoBits" class="sm:col-span-3" />
 
             <FormApplicationSelect label="Application" :field="application" name="application" class="sm:col-span-3" />
             <FormInput label="Initial Cost" :field="initialCost" name="initialCost" class="sm:col-span-3" />
