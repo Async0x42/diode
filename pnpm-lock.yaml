@@ -51,6 +51,7 @@ importers:
       vue: ^3.0.11
       vue-hooks-form: ^0.2.2
       vue-i18n: ^9.1.6
+      vue-router: ^4.0.8
       vue-tsc: ^0.1.7
     dependencies:
       '@diode/common': link:../common
@@ -69,6 +70,7 @@ importers:
       vue: 3.0.11
       vue-hooks-form: 0.2.2_vue@3.0.11
       vue-i18n: 9.1.6_vue@3.0.11
+      vue-router: 4.0.8_vue@3.0.11
     devDependencies:
       '@antfu/eslint-config': 0.6.5_ef69c776bc56b56077bf5077d26ed12a
       '@iconify/json': 1.1.352
@@ -97,7 +99,7 @@ importers:
       vite-plugin-pwa: 0.7.3_vite@2.3.6
       vite-plugin-vue-layouts: 0.3.1_vite@2.3.6
       vite-plugin-windicss: 0.16.7_vite@2.3.6
-      vite-ssg: 0.11.2_02103c1fa2d2dc1da42b43bdf9739f70
+      vite-ssg: 0.11.2_a0b64f0666044de7622b795d7c1d3cd2
       vue-tsc: 0.1.7_vue@3.0.11
 
   packages/common:
@@ -2476,7 +2478,6 @@ packages:
 
   /@vue/devtools-api/6.0.0-beta.13:
     resolution: {integrity: sha512-oZ0n/N4UWpkMvbR1OrBtu+YhaVADo+bYX5lxo9tou7h10p0+v2K9yzzaZATVr0lqHb7iY1wALfO8yojwg0MTHw==}
-    dev: true
 
   /@vue/eslint-config-prettier/6.0.0_1b894ba56749e45702603668172aebd8:
     resolution: {integrity: sha512-wFQmv45c3ige5EA+ngijq40YpVcIkAy0Lihupnsnd1Dao5CBbPyfCzqtejFLZX1EwH/kCJdpz3t6s+5wd3+KxQ==}
@@ -9505,7 +9506,7 @@ packages:
       - supports-color
     dev: true
 
-  /vite-ssg/0.11.2_02103c1fa2d2dc1da42b43bdf9739f70:
+  /vite-ssg/0.11.2_a0b64f0666044de7622b795d7c1d3cd2:
     resolution: {integrity: sha512-OQk950M8RQCxBdm1IRO75keAf/Dkv9OmqnK6ZtwXxaNgr9qnKK0A8H9pybrhp5CNDnndyBUZ2ll3QNb/KuGzcQ==}
     engines: {node: '>=14.0.0'}
     hasBin: true
@@ -9527,6 +9528,7 @@ packages:
       prettier: 2.3.0
       vite: 2.3.6
       vue: 3.0.11
+      vue-router: 4.0.8_vue@3.0.11
       yargs: 17.0.1
     transitivePeerDependencies:
       - bufferutil
@@ -9753,7 +9755,6 @@ packages:
     dependencies:
       '@vue/devtools-api': 6.0.0-beta.13
       vue: 3.0.11
-    dev: true
 
   /vue-template-es2015-compiler/1.9.1:
     resolution: {integrity: sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==}
