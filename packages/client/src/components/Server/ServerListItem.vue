@@ -16,7 +16,12 @@ const props = defineProps({
           <div>
             <div class="font-medium text-sm text-gray-900">{{ props.server.name }}</div>
             <div class="text-sm text-gray-700">{{ props.server.ip }}</div>
-            <div class="text-sm text-gray-500">{{ props.server.location?.name }}</div>
+            <div class="text-sm text-gray-500">
+              <span v-if="props.server.environment">
+                {{ props.server.environment.shortName || props.server.environment.name }}
+              </span>
+              {{ props.server.location?.name }}
+            </div>
             <div class="text-sm text-gray-500">{{ props.server.operatingSystem?.name }}</div>
           </div>
         </router-link>
