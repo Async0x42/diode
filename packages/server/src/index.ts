@@ -6,15 +6,27 @@ import { EntityManager, EntityRepository, MikroORM, RequestContext } from '@mikr
 import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/not-found.middleware';
 import config from './mikro-orm.config';
-import { Application, Brd, Calendar, CalendarItem, Contact, Environment, Fqdn, Network, Rfc, Server } from './entities';
-import { OperatingSystem } from './entities/operatingSystem.entity';
-import { ServerLocation } from './entities/serverLocation.entity';
-import { ServerType } from './entities/serverType.entity';
+import {
+  OperatingSystem,
+  ServerLocation,
+  ServerType,
+  Application,
+  Brd,
+  Calendar,
+  CalendarItem,
+  Contact,
+  Environment,
+  Fqdn,
+  Network,
+  Rfc,
+  Server,
+  Ticket,
+  SslCertificate,
+  ContactGroup,
+  PhysicalServer,
+} from './entities';
 import { createRouter, createService } from './utils';
 import { calendarRouter } from './calendar/calendar.router';
-import { PhysicalServer } from './entities/physicalServer.entity';
-import { ContactGroup } from './entities/contactGroup.entity';
-import { SslCertificate } from './entities/sslCertificate.entity';
 import { backupDatabase, createSchedules } from './scheduler';
 export * from './entities';
 
@@ -42,6 +54,7 @@ export const DI = {} as {
   sslCertificateRepo: EntityRepository<SslCertificate>;
   environmentRepo: EntityRepository<Environment>;
   networkRepo: EntityRepository<Network>;
+  ticketRepo: EntityRepository<Ticket>;
 };
 
 (async () => {
@@ -63,6 +76,7 @@ export const DI = {} as {
   DI.sslCertificateRepo = DI.em.getRepository(SslCertificate);
   DI.environmentRepo = DI.em.getRepository(Environment);
   DI.networkRepo = DI.em.getRepository(Network);
+  DI.ticketRepo = DI.em.getRepository(Ticket);
 
   app.use((req, res, next) => RequestContext.create(DI.orm.em, next));
 
@@ -83,8 +97,9 @@ export const DI = {} as {
 
   app.use('/api/rfcs', createRouter<Rfc>(createService(DI.rfcRepo, ['application'])));
   app.use('/api/brds', createRouter<Brd>(createService(DI.brdRepo, ['application'])));
-  app.use('/api/contacts', createRouter<Contact>(createService(DI.contactRepo, ['contactGroups'])));
+  app.use('/api/contacts', createRouter<Contact>(createService(DI.contactRepo, ['contactGroups', 'tickets'])));
   app.use('/api/fqdns', createRouter<Fqdn>(createService(DI.fqdnRepo, ['applications', 'server'])));
+  app.use('/api/tickets', createRouter<Ticket>(createService(DI.ticketRepo, ['applications', 'servers', 'contacts'])));
   app.use(
     '/api/physicalServers',
     createRouter<PhysicalServer>(createService(DI.physicalServerRepo, ['location', 'servers', 'servers.location', 'servers.operatingSystem']))
@@ -92,7 +107,16 @@ export const DI = {} as {
   app.use(
     '/api/applications',
     createRouter<Application>(
-      createService(DI.applicationRepo, ['sslCertificates', 'fqdns', 'servers', 'servers.operatingSystem', 'servers.location', 'brds', 'rfcs'])
+      createService(DI.applicationRepo, [
+        'sslCertificates',
+        'fqdns',
+        'servers',
+        'servers.operatingSystem',
+        'servers.location',
+        'brds',
+        'rfcs',
+        'tickets',
+      ])
     )
   );
   app.use(
@@ -108,6 +132,7 @@ export const DI = {} as {
         'physicalServer',
         'network',
         'environment',
+        'tickets',
       ])
     )
   );

@@ -7,6 +7,7 @@ import { IPhysicalServer } from './physicalServer';
 import { ISslCertificate } from './sslCertificate';
 import { IEnvironment } from './environment';
 import { INetwork } from './network';
+import { ITicket } from './ticket';
 
 export interface IServer {
   id: number;
@@ -17,6 +18,7 @@ export interface IServer {
   applications: IApplication[];
   fqdns: IFqdn[];
   sslCertificates: ISslCertificate[];
+  tickets: ITicket[];
   types: IServerType[];
   location?: IServerLocation;
   physicalServer?: IPhysicalServer;

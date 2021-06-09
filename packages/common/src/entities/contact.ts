@@ -1,4 +1,5 @@
 import { IContactGroup } from './contactGroup';
+import { ITicket } from './ticket';
 
 export interface IContact {
   id: number;
@@ -10,6 +11,7 @@ export interface IContact {
   department?: string;
   notes?: string;
   contactGroups: IContactGroup[];
+  tickets: ITicket[];
   createdOn: Date;
   modifiedOn: Date;
 }

@@ -3,6 +3,7 @@ import { IFqdn } from './fqdn';
 import { IRfc } from './rfc';
 import { IServer } from './server';
 import { ISslCertificate } from './sslCertificate';
+import { ITicket } from './ticket';
 
 export interface IApplication {
   id: number;
@@ -13,6 +14,7 @@ export interface IApplication {
   servers: IServer[];
   brds: IBrd[];
   rfcs: IRfc[];
+  tickets: ITicket[];
   sslCertificates: ISslCertificate[];
   createdOn: Date;
   modifiedOn: Date;

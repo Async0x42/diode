@@ -14,3 +14,4 @@ export * from './contactGroup';
 export * from './sslCertificate';
 export * from './environment';
 export * from './network';
+export * from './ticket';
