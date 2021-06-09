@@ -1,0 +1,60 @@
+<script setup lang="ts">
+import { defineProps } from 'vue';
+import type { ITicket } from '@diode/common';
+import type { PropType } from 'vue';
+import { parseJSON, format } from 'date-fns';
+
+const props = defineProps({
+  ticket: { type: Object as PropType<ITicket>, required: true },
+});
+const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 'yyyy-MM-dd');
+</script>
+
+<template>
+  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+    <div class="py-5 px-4 sm:px-6">
+      <h3 class="font-medium text-lg text-gray-900 leading-6">Ticket Information</h3>
+      <p class="mt-1 text-sm max-w-2xl text-gray-500">{{ props.ticket.name }}</p>
+      <p class="text-sm max-w-2xl text-gray-500 whitespace-nowrap">
+        {{ formatDate(props.ticket.startDate) }} - {{ formatDate(props.ticket.endDate) }}
+      </p>
+    </div>
+    <div class="border-t border-gray-200 py-5 px-4 sm:px-6">
+      <dl class="grid gap-x-4 gap-y-8 grid-cols-1 sm:grid-cols-2">
+        <div class="sm:col-span-1">
+          <dt class="font-medium text-sm text-gray-500">Created</dt>
+          <dd class="mt-1 text-sm text-gray-900">{{ formatDate(props.ticket.createdOn) }}</dd>
+        </div>
+        <div class="sm:col-span-1">
+          <dt class="font-medium text-sm text-gray-500">Modified</dt>
+          <dd class="mt-1 text-sm text-gray-900">{{ formatDate(props.ticket.modifiedOn) }}</dd>
+        </div>
+        <div class="sm:col-span-2">
+          <dt class="font-medium text-sm text-gray-500">Details</dt>
+          <dd class="mt-1 text-sm text-gray-900" v-html="props.ticket.details" />
+        </div>
+        <div class="sm:col-span-1">
+          <dt class="font-medium text-sm text-gray-500">Applications</dt>
+          <dd v-for="application in props.ticket.applications" :key="application.id" class="mt-1 text-sm text-gray-900">
+            <template v-if="application.shortName"> [{{ application?.shortName }}] </template>
+            {{ application?.name }}
+          </dd>
+        </div>
+        <div class="sm:col-span-1">
+          <dt class="font-medium text-sm text-gray-500">Servers</dt>
+          <template v-for="server in props.ticket.servers" :key="server.id">
+            <dd class="text-sm text-gray-900">{{ server.name }}</dd>
+            <dd class="mt-1 text-sm text-gray-500">{{ server.ip }}</dd>
+            <dd class="mt-1 text-sm text-gray-500">{{ server.operatingSystem?.name }}</dd>
+          </template>
+        </div>
+        <div class="sm:col-span-1">
+          <dt class="font-medium text-sm text-gray-500">Owners</dt>
+          <dd v-for="owner in props.ticket.owners" :key="owner.id" class="mt-1 text-sm text-gray-900">
+            {{ owner.name }}
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</template>

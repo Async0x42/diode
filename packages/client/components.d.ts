@@ -107,6 +107,10 @@ declare module 'vue' {
     TableHeaderCell: typeof import('./src/components/Table/TableHeaderCell.vue')['default']
     TableView: typeof import('./src/components/Table/TableView.vue')['default']
     TableWrapper: typeof import('./src/components/Table/TableWrapper.vue')['default']
+    TicketCreateEdit: typeof import('./src/components/Ticket/TicketCreateEdit.vue')['default']
+    TicketList: typeof import('./src/components/Ticket/TicketList.vue')['default']
+    TicketListItem: typeof import('./src/components/Ticket/TicketListItem.vue')['default']
+    TicketView: typeof import('./src/components/Ticket/TicketView.vue')['default']
   }
 }
 

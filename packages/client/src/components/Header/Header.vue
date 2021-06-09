@@ -16,6 +16,7 @@ const routesForCreate = [
   'sslCertificates',
   'environments',
   'networks',
+  'tickets',
 ];
 
 const routesForSearch = [
@@ -34,6 +35,7 @@ const routesForSearch = [
   'sslCertificates',
   'environments',
   'networks',
+  'tickets',
 ];
 
 const routesForEdit = [
@@ -52,6 +54,7 @@ const routesForEdit = [
   'sslCertificate-view',
   'environment-view',
   'network-view',
+  'ticket-view',
 ];
 </script>
 

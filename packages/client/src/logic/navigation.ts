@@ -4,6 +4,7 @@ import { ref } from 'vue';
 export const navigation = ref([
   { name: 'Dashboard', to: { name: 'home' }, icon: HomeIcon },
   { name: 'Calendar', to: { name: 'calendar' }, icon: CalendarIcon },
+  { name: 'Tickets', to: { name: 'tickets' }, icon: DocumentTextIcon },
   { name: 'Contacts', to: { name: 'contacts' }, icon: PhoneIcon },
   { name: 'BRDs', to: { name: 'brds' }, icon: DocumentTextIcon },
   { name: 'RFCs', to: { name: 'rfcs' }, icon: ClockIcon },
