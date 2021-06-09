@@ -16,7 +16,7 @@ const props = defineProps({
     <label :for="props.name" class="font-medium text-sm text-gray-700 block"> {{ props.label }} </label>
     <div class="mt-1">
       <client-only>
-        <date-picker v-model="props.field.value" class="h-full inline-block" :masks="{ input: 'YYYY-MM-DD' }" :update-on-input="false">
+        <date-picker v-model="props.field.value" :masks="{ input: 'YYYY-MM-DD' }" :update-on-input="false">
           <template #default="{ inputValue, inputEvents }">
             <input
               :id="props.name"
