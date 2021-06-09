@@ -15,9 +15,8 @@ export default defineConfig({
       // Build your palette here
       transparent: 'transparent',
       current: 'currentColor',
-      // waiting on windicss 3.0
-      // light: colors.light,
-      // dark: colors.dark,
+      light: colors.light,
+      dark: colors.dark,
       amber: colors.amber,
       black: colors.black,
       blue: colors.blue,
