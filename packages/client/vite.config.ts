@@ -7,7 +7,6 @@ import ViteIcons, { ViteIconsResolver } from 'vite-plugin-icons';
 import ViteComponents, { HeadlessUiResolver, VueUseComponentsResolver } from 'vite-plugin-components';
 import Markdown from 'vite-plugin-md';
 import WindiCSS from 'vite-plugin-windicss';
-import { VitePWA } from 'vite-plugin-pwa';
 import VueI18n from '@intlify/vite-plugin-vue-i18n';
 import Prism from 'markdown-it-prism';
 
@@ -74,34 +73,6 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-windicss
     WindiCSS({
       safelist: 'prose prose-sm m-auto text-left',
-    }),
-
-    // https://github.com/antfu/vite-plugin-pwa
-    VitePWA({
-      registerType: 'autoUpdate',
-      manifest: {
-        name: 'DIODE',
-        short_name: 'DIODE',
-        theme_color: '#ffffff',
-        icons: [
-          {
-            src: '/pwa-192x192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: '/pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-          {
-            src: '/pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'any maskable',
-          },
-        ],
-      },
     }),
 
     // https://github.com/intlify/vite-plugin-vue-i18n
