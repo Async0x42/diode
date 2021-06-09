@@ -38,15 +38,25 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
         <div class="sm:col-span-1">
           <dt class="font-medium text-sm text-gray-500">Applications</dt>
           <dd v-for="application in props.server.applications" :key="application.id" class="mt-1 text-sm text-gray-900">
-            <template v-if="application.shortName"> [{{ application?.shortName }}] </template>
-            {{ application?.name }}
+            <template v-if="application.shortName"> [{{ application.shortName }}] </template>
+            {{ application.name }}
           </dd>
         </div>
         <div class="sm:col-span-1">
           <dt class="font-medium text-sm text-gray-500">SSL Certificates</dt>
           <dd v-for="sslCert in props.server.sslCertificates" :key="sslCert.id" class="mt-1 text-sm text-gray-900">
-            <template v-if="sslCert.expiry"> [{{ formatDate(sslCert?.expiry) }}] </template>
-            {{ sslCert?.sans }}
+            <template v-if="sslCert.expiry"> [{{ formatDate(sslCert.expiry) }}] </template>
+            {{ sslCert.sans }}
+          </dd>
+        </div>
+        <div class="sm:col-span-2">
+          <dt class="font-medium text-sm text-gray-500">Tickets</dt>
+          <dd v-for="ticket in props.server.tickets" :key="ticket.id" class="mt-1 text-sm text-gray-900">
+            <div>
+              <template> [{{ formatDate(ticket.startDate) }} - {{ formatDate(ticket.endDate) }}] </template>
+              {{ ticket.name }}
+            </div>
+            <div class="mt-1">{{ ticket.details }}</div>
           </dd>
         </div>
         <div class="sm:col-span-1">
