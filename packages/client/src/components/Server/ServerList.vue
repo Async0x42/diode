@@ -17,9 +17,11 @@ const { results } = useRouteSearchWithData(props.servers, [
   'operatingSystem.name',
   'types.name',
   'location.name',
-  'physicalServer',
-  'environment',
-  'network',
+  'physicalServer.name',
+  'environment.name',
+  'environment.shortName',
+  'network.name',
+  'network.shortName',
 ]);
 </script>
 
