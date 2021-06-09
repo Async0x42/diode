@@ -2,6 +2,7 @@
 import { defineProps } from 'vue';
 import type { IServer } from '@diode/common';
 import type { PropType } from 'vue';
+import FormEnvironmentSelect from '../Form/FormEnvironmentSelect.vue';
 import { useFormActions } from '~/logic';
 
 const props = defineProps({
@@ -23,6 +24,8 @@ const operatingSystem = useField('operatingSystem');
 const applications = useField('applications');
 const physicalServer = useField('physicalServer');
 const sslCertificates = useField('sslCertificates');
+const environment = useField('environment');
+const network = useField('network');
 </script>
 
 <template>
@@ -38,6 +41,8 @@ const sslCertificates = useField('sslCertificates');
           <div class="mt-6 grid gap-y-6 gap-x-4 grid-cols-1 sm:grid-cols-6">
             <FormInput label="Name" :field="name" name="name" class="sm:col-span-3" />
             <FormInput label="IP" :field="ip" name="ip" class="sm:col-span-3" />
+            <FormEnvironmentSelect label="Environment" :field="environment" name="environment" class="sm:col-span-3" />
+            <FormNetworkSelect label="Network" :field="network" name="network" class="sm:col-span-3" />
             <FormFqdnMultiSelect label="FQDNs" :field="fqdns" name="fqdns" class="sm:col-span-3" />
             <FormServerTypeMultiSelect label="Server Types" :field="types" name="types" class="sm:col-span-3" />
             <FormServerLocationSelect label="Location" :field="location" name="location" class="sm:col-span-3" />

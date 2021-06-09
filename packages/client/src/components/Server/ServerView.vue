@@ -22,6 +22,14 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
     <div class="border-t border-gray-200 py-5 px-4 sm:px-6">
       <dl class="grid gap-x-4 gap-y-8 grid-cols-1 sm:grid-cols-2">
         <div class="sm:col-span-1">
+          <dt class="font-medium text-sm text-gray-500">Environment</dt>
+          <dd class="mt-1 text-sm text-gray-900" v-html="props.server.environment" />
+        </div>
+        <div class="sm:col-span-1">
+          <dt class="font-medium text-sm text-gray-500">Network</dt>
+          <dd class="mt-1 text-sm text-gray-900" v-html="props.server.network" />
+        </div>
+        <div class="sm:col-span-1">
           <dt class="font-medium text-sm text-gray-500">FQDN</dt>
           <dd v-for="fqdn in props.server.fqdns" :key="fqdn.id" class="mt-1 text-sm text-gray-900">
             {{ fqdn.name }}
