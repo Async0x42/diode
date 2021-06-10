@@ -1,5 +1,5 @@
 export interface IEnvironment {
-  id: number;
+  id: string;
   name: string;
   shortName?: string;
   createdOn: Date;

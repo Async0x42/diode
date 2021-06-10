@@ -10,7 +10,7 @@ import { INetwork } from './network';
 import { ITicket } from './ticket';
 
 export interface IServer {
-  id: number;
+  id: string;
   name: string;
   ip?: string;
   notes?: string;

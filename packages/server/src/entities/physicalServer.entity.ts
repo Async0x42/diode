@@ -1,5 +1,6 @@
 import { IPhysicalServer } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, OneToMany, Collection, ManyToOne } from '@mikro-orm/core';
+import { BaseEntity, Entity, Property, PrimaryKey, OneToMany, Collection, ManyToOne, SerializedPrimaryKey } from '@mikro-orm/core';
+import { ObjectId } from '@mikro-orm/mongodb';
 import { Server } from './server.entity';
 import { ServerLocation } from './serverLocation.entity';
 
@@ -11,7 +12,10 @@ export interface IBackendPhysicalServer extends Omit<IPhysicalServer, 'servers'>
 @Entity()
 export class PhysicalServer extends BaseEntity<PhysicalServer, 'id'> implements IBackendPhysicalServer {
   @PrimaryKey()
-  id!: number;
+  _id!: ObjectId;
+
+  @SerializedPrimaryKey()
+  id!: string; // won't be saved in the database
 
   @Property()
   name!: string;

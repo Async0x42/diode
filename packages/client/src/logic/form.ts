@@ -2,7 +2,7 @@ import { useRouter } from 'vue-router';
 import { useAxios } from '@vueuse/integrations';
 import { useForm } from 'vue-hooks-form';
 
-export const useFormActions = <T extends { id: number }>(apiPath: string, nextRouteName: string, dataObject?: T) => {
+export const useFormActions = <T extends { id: string }>(apiPath: string, nextRouteName: string, dataObject?: T) => {
   const router = useRouter();
 
   const { useField, handleSubmit } = dataObject

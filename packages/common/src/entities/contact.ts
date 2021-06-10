@@ -2,7 +2,7 @@ import { IContactGroup } from './contactGroup';
 import { ITicket } from './ticket';
 
 export interface IContact {
-  id: number;
+  id: string;
   name: string;
   phone?: string;
   email?: string;

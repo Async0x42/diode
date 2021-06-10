@@ -1,5 +1,6 @@
 import { IServer } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, OneToMany, ManyToMany, Collection, ManyToOne } from '@mikro-orm/core';
+import { BaseEntity, Entity, Property, PrimaryKey, OneToMany, ManyToMany, Collection, ManyToOne, SerializedPrimaryKey } from '@mikro-orm/core';
+import { ObjectId } from '@mikro-orm/mongodb';
 import { Application } from './application.entity';
 import { Environment } from './environment.entity';
 import { Fqdn } from './fqdn.entity';
@@ -24,7 +25,10 @@ export interface IBackendServer extends Omit<IServer, 'applications' | 'fqdns' |
 @Entity()
 export class Server extends BaseEntity<Server, 'id'> implements IBackendServer {
   @PrimaryKey()
-  id!: number;
+  _id!: ObjectId;
+
+  @SerializedPrimaryKey()
+  id!: string; // won't be saved in the database
 
   @Property()
   name!: string;

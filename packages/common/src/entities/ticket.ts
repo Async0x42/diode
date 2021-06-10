@@ -5,7 +5,7 @@ import { IServer } from './server';
 export type TicketStatus = 'New' | 'In progress' | 'Waiting on others' | 'Backlog' | 'Done' | 'Cancelled';
 
 export interface ITicket {
-  id: number;
+  id: string;
   name: string;
   details?: string;
   applications: IApplication[];

@@ -1,5 +1,5 @@
 export interface IServerLocation {
-  id: number;
+  id: string;
   name: string;
   shortName?: string;
   createdOn: Date;

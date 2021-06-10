@@ -4,13 +4,13 @@ import type { PropType } from 'vue';
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from '@headlessui/vue';
 
 const props = defineProps({
-  options: { type: Array as PropType<{ id: number; name: string }[]>, required: true },
-  modelValue: { type: Array as PropType<number[] | { id: number }[]>, default: () => [] },
+  options: { type: Array as PropType<{ id: string; name: string }[]>, required: true },
+  modelValue: { type: Array as PropType<string[] | { id: string }[]>, default: () => [] },
   label: { type: String },
 });
 
 // using form defaults from vue-hooks-form it returns the object array, so we check and map it to integer ids if needed
-const selected = ref<number[]>(
+const selected = ref<string[]>(
   Array.isArray(props.modelValue)
     ? props.modelValue.length > 0
       ? Number.isInteger(props.modelValue[0])

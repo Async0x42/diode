@@ -14,7 +14,7 @@ export type RfcStatus =
   | 'Approved Conditionally';
 
 export interface IRfc {
-  id: number;
+  id: string;
   rfcNumber?: number;
   title: string;
   application?: IApplication;

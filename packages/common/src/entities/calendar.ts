@@ -1,5 +1,5 @@
 export interface ICalendar {
-  id: number;
+  id: string;
   name: string;
   createdOn: Date;
   modifiedOn: Date;

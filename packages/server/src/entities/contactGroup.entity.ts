@@ -1,5 +1,6 @@
 import { IContactGroup } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, Collection, ManyToMany } from '@mikro-orm/core';
+import { BaseEntity, Entity, Property, PrimaryKey, Collection, ManyToMany, SerializedPrimaryKey } from '@mikro-orm/core';
+import { ObjectId } from '@mikro-orm/mongodb';
 import { Contact } from './contact.entity';
 
 // Quick fix to make @mikro-orm collection compat with the common interface
@@ -10,7 +11,10 @@ export interface IBackendContactGroup extends Omit<IContactGroup, 'contacts'> {
 @Entity()
 export class ContactGroup extends BaseEntity<ContactGroup, 'id'> implements IBackendContactGroup {
   @PrimaryKey()
-  id!: number;
+  _id!: ObjectId;
+
+  @SerializedPrimaryKey()
+  id!: string; // won't be saved in the database
 
   @Property()
   name!: string;

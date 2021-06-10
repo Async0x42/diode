@@ -1,7 +1,7 @@
 import { IContact } from './contact';
 
 export interface IContactGroup {
-  id: number;
+  id: string;
   name: string;
   phone?: string;
   email?: string;

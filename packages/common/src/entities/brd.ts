@@ -3,7 +3,7 @@ import { IApplication } from './application';
 export type BrdStatus = 'Draft' | 'Assessment' | 'Design' | 'WIF' | 'SA' | 'Implementation' | 'Done';
 
 export interface IBrd {
-  id: number;
+  id: string;
   title: string;
   description?: string;
   relatedRequests?: string;

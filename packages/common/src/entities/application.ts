@@ -6,7 +6,7 @@ import { ISslCertificate } from './sslCertificate';
 import { ITicket } from './ticket';
 
 export interface IApplication {
-  id: number;
+  id: string;
   name: string;
   shortName?: string;
   description?: string;

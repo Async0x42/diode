@@ -2,7 +2,7 @@ import { IServer } from './server';
 import { IServerLocation } from './serverLocation';
 
 export interface IPhysicalServer {
-  id: number;
+  id: string;
   name: string;
   baseOperatingSystem?: string;
   hypervisor?: string;

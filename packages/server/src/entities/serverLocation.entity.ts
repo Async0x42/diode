@@ -1,11 +1,15 @@
 import { IServerLocation } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, OneToMany, Collection } from '@mikro-orm/core';
+import { BaseEntity, Entity, Property, PrimaryKey, OneToMany, Collection, SerializedPrimaryKey } from '@mikro-orm/core';
+import { ObjectId } from '@mikro-orm/mongodb';
 import { Server } from './server.entity';
 
 @Entity()
 export class ServerLocation extends BaseEntity<ServerLocation, 'id'> implements IServerLocation {
   @PrimaryKey()
-  id!: number;
+  _id!: ObjectId;
+
+  @SerializedPrimaryKey()
+  id!: string; // won't be saved in the database
 
   @Property()
   name!: string;

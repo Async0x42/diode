@@ -128,9 +128,9 @@ importers:
       '@diode/common': workspace:*
       '@mikro-orm/cli': ^4.5.6
       '@mikro-orm/core': ^4.5.6
-      '@mikro-orm/mariadb': ^4.5.6
+      '@mikro-orm/mongo-highlighter': ^1.0.0
+      '@mikro-orm/mongodb': ^4.5.6
       '@mikro-orm/reflection': ^4.5.6
-      '@mikro-orm/sql-highlighter': ^1.0.1
       '@types/cors': ^2.8.10
       '@types/express': ^4.17.12
       '@types/node': ^15.12.2
@@ -146,6 +146,7 @@ importers:
       express: ^4.17.1
       helmet: ^4.6.0
       mariadb: ^2.5.3
+      mongodb: ^3.6.9
       mysqldump: ^3.2.0
       node-cron: ^3.0.0
       npm-run-all: ^4.1.5
@@ -155,16 +156,17 @@ importers:
       typescript: ^4.4.0-dev.20210609
     dependencies:
       '@diode/common': link:../common
-      '@mikro-orm/cli': 4.5.6_@mikro-orm+mariadb@4.5.6
-      '@mikro-orm/core': 4.5.6_@mikro-orm+mariadb@4.5.6
-      '@mikro-orm/mariadb': 4.5.6_@mikro-orm+core@4.5.6
+      '@mikro-orm/cli': 4.5.6_@mikro-orm+mongodb@4.5.6
+      '@mikro-orm/core': 4.5.6_@mikro-orm+mongodb@4.5.6
+      '@mikro-orm/mongo-highlighter': 1.0.0
+      '@mikro-orm/mongodb': 4.5.6_@mikro-orm+core@4.5.6
       '@mikro-orm/reflection': 4.5.6_@mikro-orm+core@4.5.6
-      '@mikro-orm/sql-highlighter': 1.0.1
       cors: 2.8.5
       dotenv-extended: 2.9.0
       express: 4.17.1
       helmet: 4.6.0
       mariadb: 2.5.3
+      mongodb: 3.6.9
       mysqldump: 3.2.0
       node-cron: 3.0.0
       ts-node: 10.0.0_24527c3086d570471cfc6607b8953f20
@@ -645,7 +647,7 @@ packages:
       '@intlify/runtime': 9.1.6
       '@intlify/shared': 9.1.6
 
-  /@mikro-orm/cli/4.5.6_@mikro-orm+mariadb@4.5.6:
+  /@mikro-orm/cli/4.5.6_@mikro-orm+mongodb@4.5.6:
     resolution: {integrity: sha512-/VKOaxxg+4XktZDICVIYto62uG7KV+UHSG0FWZJqgGN0zrKIjwN/k0HqWpgefGt58ESmamon3vFN2ioW7UAVQg==}
     engines: {node: '>= 10.13.0'}
     hasBin: true
@@ -667,11 +669,11 @@ packages:
       '@mikro-orm/sqlite':
         optional: true
     dependencies:
-      '@mikro-orm/core': 4.5.6_51102fc16792e5f59ac94b4f6e4d4766
+      '@mikro-orm/core': 4.5.6_ccdf8c1701ca034c4d692ffaa58dc77e
       '@mikro-orm/entity-generator': 4.5.6_bfa82f382eef6621de908434284d0f8f
       '@mikro-orm/knex': 4.5.6_2c65588bab6a1dcd18f042962dbe3eea
-      '@mikro-orm/mariadb': 4.5.6_@mikro-orm+core@4.5.6
       '@mikro-orm/migrations': 4.5.6_d8a8d61c4ae2ece7524cb45b6fb59f94
+      '@mikro-orm/mongodb': 4.5.6_@mikro-orm+core@4.5.6
       ansi-colors: 4.1.1
       cli-table3: 0.6.0
       fs-extra: 9.1.0
@@ -687,7 +689,45 @@ packages:
       - supports-color
     dev: false
 
-  /@mikro-orm/core/4.5.6_51102fc16792e5f59ac94b4f6e4d4766:
+  /@mikro-orm/core/4.5.6_@mikro-orm+mongodb@4.5.6:
+    resolution: {integrity: sha512-+wAF49m9zGnBdSv6lwS1leyqZ57ajYkp8n+CIxn7p1lCDrYGD2x3a50ubFstGEYKdITztzy2SBTlSPVMfyulMg==}
+    engines: {node: '>= 10.13.0'}
+    peerDependencies:
+      '@mikro-orm/entity-generator': ^4.0.0
+      '@mikro-orm/mariadb': ^4.0.0
+      '@mikro-orm/migrations': ^4.0.0
+      '@mikro-orm/mongodb': ^4.0.0
+      '@mikro-orm/mysql': ^4.0.0
+      '@mikro-orm/postgresql': ^4.0.0
+      '@mikro-orm/sqlite': ^4.0.0
+    peerDependenciesMeta:
+      '@mikro-orm/entity-generator':
+        optional: true
+      '@mikro-orm/mariadb':
+        optional: true
+      '@mikro-orm/migrations':
+        optional: true
+      '@mikro-orm/mongodb':
+        optional: true
+      '@mikro-orm/mysql':
+        optional: true
+      '@mikro-orm/postgresql':
+        optional: true
+      '@mikro-orm/sqlite':
+        optional: true
+    dependencies:
+      '@mikro-orm/mongodb': 4.5.6_@mikro-orm+core@4.5.6
+      ansi-colors: 4.1.1
+      clone: 2.1.2
+      dotenv: 8.2.0
+      escaya: 0.0.61
+      fs-extra: 9.1.0
+      globby: 11.0.3
+      reflect-metadata: 0.1.13
+      strip-json-comments: 3.1.1
+    dev: false
+
+  /@mikro-orm/core/4.5.6_ccdf8c1701ca034c4d692ffaa58dc77e:
     resolution: {integrity: sha512-+wAF49m9zGnBdSv6lwS1leyqZ57ajYkp8n+CIxn7p1lCDrYGD2x3a50ubFstGEYKdITztzy2SBTlSPVMfyulMg==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -715,46 +755,8 @@ packages:
         optional: true
     dependencies:
       '@mikro-orm/entity-generator': 4.5.6_bfa82f382eef6621de908434284d0f8f
-      '@mikro-orm/mariadb': 4.5.6_@mikro-orm+core@4.5.6
       '@mikro-orm/migrations': 4.5.6_d8a8d61c4ae2ece7524cb45b6fb59f94
-      ansi-colors: 4.1.1
-      clone: 2.1.2
-      dotenv: 8.2.0
-      escaya: 0.0.61
-      fs-extra: 9.1.0
-      globby: 11.0.3
-      reflect-metadata: 0.1.13
-      strip-json-comments: 3.1.1
-    dev: false
-
-  /@mikro-orm/core/4.5.6_@mikro-orm+mariadb@4.5.6:
-    resolution: {integrity: sha512-+wAF49m9zGnBdSv6lwS1leyqZ57ajYkp8n+CIxn7p1lCDrYGD2x3a50ubFstGEYKdITztzy2SBTlSPVMfyulMg==}
-    engines: {node: '>= 10.13.0'}
-    peerDependencies:
-      '@mikro-orm/entity-generator': ^4.0.0
-      '@mikro-orm/mariadb': ^4.0.0
-      '@mikro-orm/migrations': ^4.0.0
-      '@mikro-orm/mongodb': ^4.0.0
-      '@mikro-orm/mysql': ^4.0.0
-      '@mikro-orm/postgresql': ^4.0.0
-      '@mikro-orm/sqlite': ^4.0.0
-    peerDependenciesMeta:
-      '@mikro-orm/entity-generator':
-        optional: true
-      '@mikro-orm/mariadb':
-        optional: true
-      '@mikro-orm/migrations':
-        optional: true
-      '@mikro-orm/mongodb':
-        optional: true
-      '@mikro-orm/mysql':
-        optional: true
-      '@mikro-orm/postgresql':
-        optional: true
-      '@mikro-orm/sqlite':
-        optional: true
-    dependencies:
-      '@mikro-orm/mariadb': 4.5.6_@mikro-orm+core@4.5.6
+      '@mikro-orm/mongodb': 4.5.6_@mikro-orm+core@4.5.6
       ansi-colors: 4.1.1
       clone: 2.1.2
       dotenv: 8.2.0
@@ -771,7 +773,7 @@ packages:
     peerDependencies:
       '@mikro-orm/core': ^4.0.0
     dependencies:
-      '@mikro-orm/core': 4.5.6_51102fc16792e5f59ac94b4f6e4d4766
+      '@mikro-orm/core': 4.5.6_ccdf8c1701ca034c4d692ffaa58dc77e
       '@mikro-orm/knex': 4.5.6_2c65588bab6a1dcd18f042962dbe3eea
       fs-extra: 9.1.0
     transitivePeerDependencies:
@@ -812,7 +814,7 @@ packages:
       sqlite3:
         optional: true
     dependencies:
-      '@mikro-orm/core': 4.5.6_51102fc16792e5f59ac94b4f6e4d4766
+      '@mikro-orm/core': 4.5.6_ccdf8c1701ca034c4d692ffaa58dc77e
       '@mikro-orm/entity-generator': 4.5.6_bfa82f382eef6621de908434284d0f8f
       '@mikro-orm/migrations': 4.5.6_d8a8d61c4ae2ece7524cb45b6fb59f94
       fs-extra: 9.1.0
@@ -822,69 +824,13 @@ packages:
       - supports-color
     dev: false
 
-  /@mikro-orm/knex/4.5.6_@mikro-orm+core@4.5.6:
-    resolution: {integrity: sha512-oEUGssEigRve8Asw6KDE+EyrOfDOTjdB24QJGmGRToZFJ9VZTSpEd2BOo0O0F8pqcFsUbYa+/0XliqVXiEhxrw==}
-    engines: {node: '>= 10.13.0'}
-    peerDependencies:
-      '@mikro-orm/core': ^4.0.0
-      '@mikro-orm/entity-generator': ^4.0.0
-      '@mikro-orm/migrations': ^4.0.0
-      mssql: ^7.0.0
-      mysql: ^2.18.1
-      mysql2: ^2.1.0
-      pg: ^8.0.3
-      sqlite3: ^5.0.0
-    peerDependenciesMeta:
-      '@mikro-orm/entity-generator':
-        optional: true
-      '@mikro-orm/migrations':
-        optional: true
-      mssql:
-        optional: true
-      mysql:
-        optional: true
-      mysql2:
-        optional: true
-      pg:
-        optional: true
-      sqlite3:
-        optional: true
-    dependencies:
-      '@mikro-orm/core': 4.5.6_@mikro-orm+mariadb@4.5.6
-      fs-extra: 9.1.0
-      knex: 0.21.19
-      sqlstring: 2.3.2
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@mikro-orm/mariadb/4.5.6_@mikro-orm+core@4.5.6:
-    resolution: {integrity: sha512-Kl61+artHQRVMRkF+hy5sWd2sC8DrKQDIjfp0zrkl2ngA51F2br/CJT3p8j9netU3LTf14uIQUDdEuRFMJzWEw==}
-    engines: {node: '>= 10.13.0'}
-    peerDependencies:
-      '@mikro-orm/core': ^4.0.0
-    dependencies:
-      '@mikro-orm/core': 4.5.6_@mikro-orm+mariadb@4.5.6
-      '@mikro-orm/mysql-base': 4.5.6_@mikro-orm+core@4.5.6
-      mariadb: 2.5.3
-    transitivePeerDependencies:
-      - '@mikro-orm/entity-generator'
-      - '@mikro-orm/migrations'
-      - mssql
-      - mysql
-      - mysql2
-      - pg
-      - sqlite3
-      - supports-color
-    dev: false
-
   /@mikro-orm/migrations/4.5.6_d8a8d61c4ae2ece7524cb45b6fb59f94:
     resolution: {integrity: sha512-PEyvUMkQLClZKFw3c27RE7ZkL5LsgUHrbonUi8kaGdKP8HrwrP0niC3pnbYM7YTMY6raSZ8vuc9Bz8mGGRXrqw==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
       '@mikro-orm/core': ^4.0.0
     dependencies:
-      '@mikro-orm/core': 4.5.6_51102fc16792e5f59ac94b4f6e4d4766
+      '@mikro-orm/core': 4.5.6_ccdf8c1701ca034c4d692ffaa58dc77e
       '@mikro-orm/knex': 4.5.6_2c65588bab6a1dcd18f042962dbe3eea
       '@types/umzug': 2.3.0
       fs-extra: 9.1.0
@@ -900,26 +846,29 @@ packages:
       - supports-color
     dev: false
 
-  /@mikro-orm/mysql-base/4.5.6_@mikro-orm+core@4.5.6:
-    resolution: {integrity: sha512-OdHsalrVkJP84R6pP4FaiamVwpNLBPZYu5mFHKp5qroDlS7D+SjCl6WlaQtC0BaFL7tEC/Nkq9Bev2HoLqfMlQ==}
+  /@mikro-orm/mongo-highlighter/1.0.0:
+    resolution: {integrity: sha512-pPb/f1TKDBbJ8fH6Bbc5qMr/52edtA+vQrEKmuF3T7z9/feMrS6laW6FIpJXJJeP5sn0w4udjc/BIc4ntm4QHg==}
+    engines: {node: '>= 10.13.0'}
+    dependencies:
+      ansi-colors: 4.1.1
+    dev: false
+
+  /@mikro-orm/mongodb/4.5.6_@mikro-orm+core@4.5.6:
+    resolution: {integrity: sha512-o7lFW8fAyjvpokFuAX+Byd87oGmyXAupUMDDFn7GjJgzbH3XJufXnqD24/7ls89npT5RohIrh/fPpTHjuAqLdg==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
       '@mikro-orm/core': ^4.0.0
-      mysql2: ^2.1.0
-    peerDependenciesMeta:
-      mysql2:
-        optional: true
     dependencies:
-      '@mikro-orm/core': 4.5.6_@mikro-orm+mariadb@4.5.6
-      '@mikro-orm/knex': 4.5.6_@mikro-orm+core@4.5.6
+      '@mikro-orm/core': 4.5.6_@mikro-orm+mongodb@4.5.6
+      '@types/mongodb': 3.6.12
+      mongodb: 3.6.6
     transitivePeerDependencies:
-      - '@mikro-orm/entity-generator'
-      - '@mikro-orm/migrations'
-      - mssql
-      - mysql
-      - pg
-      - sqlite3
-      - supports-color
+      - aws4
+      - bson-ext
+      - kerberos
+      - mongodb-client-encryption
+      - mongodb-extjson
+      - snappy
     dev: false
 
   /@mikro-orm/reflection/4.5.6_@mikro-orm+core@4.5.6:
@@ -928,16 +877,9 @@ packages:
     peerDependencies:
       '@mikro-orm/core': ^4.0.0
     dependencies:
-      '@mikro-orm/core': 4.5.6_@mikro-orm+mariadb@4.5.6
+      '@mikro-orm/core': 4.5.6_@mikro-orm+mongodb@4.5.6
       globby: 11.0.3
       ts-morph: 10.0.2
-    dev: false
-
-  /@mikro-orm/sql-highlighter/1.0.1:
-    resolution: {integrity: sha512-iO+FwRNuqNDVlIo5zfgOu2mMGVicX/FqzP+F/A0xpJLHyqvWyXzVwntgAMimBjQaxiX9Rpmc0u3Jq6/A6V6JQA==}
-    engines: {node: '>= 10.13.0'}
-    dependencies:
-      ansi-colors: 4.1.1
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:
@@ -1197,6 +1139,13 @@ packages:
   /@types/mime/1.3.2:
     resolution: {integrity: sha512-YATxVxgRqNH6nHEIsvg6k2Boc1JHI9ZbH5iWFFv/MTkchz3b1ieGDa5T0a9RznNdI0KhVbdbWSN+KWWrQZRxTw==}
     dev: true
+
+  /@types/mongodb/3.6.12:
+    resolution: {integrity: sha512-49aEzQD5VdHPxyd5dRyQdqEveAg9LanwrH8RQipnMuulwzKmODXIZRp0umtxi1eBUfEusRkoy8AVOMr+kVuFog==}
+    dependencies:
+      '@types/bson': 4.0.3
+      '@types/node': 15.12.2
+    dev: false
 
   /@types/mongodb/3.6.17:
     resolution: {integrity: sha512-9hhgvYPdC5iHyyksPcKCu45gfaAIPQHKHGdvNXu4582DmOZX3wrUJIJPT40o4G1oTKPgpMMFqZglOTjhnYoF+A==}
@@ -1948,6 +1897,13 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /bl/2.2.1:
+    resolution: {integrity: sha512-6Pesp1w0DEX1N550i/uGV/TqucVL4AM/pgThFSN/Qq9si1/DF9aIHs1BxD8V/QU0HoeHO6cQRTAuYnLPKq1e4g==}
+    dependencies:
+      readable-stream: 2.3.7
+      safe-buffer: 5.2.1
+    dev: false
+
   /bluebird/3.7.2:
     resolution: {integrity: sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==}
 
@@ -2023,6 +1979,11 @@ packages:
       escalade: 3.1.1
       node-releases: 1.1.73
     dev: true
+
+  /bson/1.1.6:
+    resolution: {integrity: sha512-EvVNVeGo4tHxwi8L6bPj3y3itEvStdwvvlojVxxbyYfoaxJ6keLgrTuKdyfEAszFK+H3olzBuafE0yoh0D1gdg==}
+    engines: {node: '>=0.6.19'}
+    dev: false
 
   /buffer-alloc-unsafe/1.1.0:
     resolution: {integrity: sha512-TEM2iMIEQdJ2yjPJoSIsldnleVaAk1oW3DBVUykyOLsEsFmEc9kn+SFFPz+gl54KQNxlDnAwCXosOS9Okx2xAg==}
@@ -2464,7 +2425,6 @@ packages:
 
   /core-util-is/1.0.2:
     resolution: {integrity: sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=}
-    dev: true
 
   /cors/2.8.5:
     resolution: {integrity: sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==}
@@ -5143,6 +5103,11 @@ packages:
     resolution: {integrity: sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=}
     engines: {node: '>= 0.6'}
 
+  /memory-pager/1.5.0:
+    resolution: {integrity: sha512-ZS4Bp4r/Zoeq6+NLJpP+0Zzm0pR8whtGPf1XExKLJBAczGMnSi3It14OiNCStjQjM6NU1okjQGSxgEZN8eBYKg==}
+    dev: false
+    optional: true
+
   /memorystream/0.3.1:
     resolution: {integrity: sha1-htcJCzDORV1j+64S3aUaR93K+bI=}
     engines: {node: '>= 0.10.0'}
@@ -5283,6 +5248,72 @@ packages:
 
   /moment/2.29.1:
     resolution: {integrity: sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==}
+    dev: false
+
+  /mongodb/3.6.6:
+    resolution: {integrity: sha512-WlirMiuV1UPbej5JeCMqE93JRfZ/ZzqE7nJTwP85XzjAF4rRSeq2bGCb1cjfoHLOF06+HxADaPGqT0g3SbVT1w==}
+    engines: {node: '>=4'}
+    peerDependencies:
+      aws4: '*'
+      bson-ext: '*'
+      kerberos: '*'
+      mongodb-client-encryption: '*'
+      mongodb-extjson: '*'
+      snappy: '*'
+    peerDependenciesMeta:
+      aws4:
+        optional: true
+      bson-ext:
+        optional: true
+      kerberos:
+        optional: true
+      mongodb-client-encryption:
+        optional: true
+      mongodb-extjson:
+        optional: true
+      snappy:
+        optional: true
+    dependencies:
+      bl: 2.2.1
+      bson: 1.1.6
+      denque: 1.5.0
+      optional-require: 1.0.3
+      safe-buffer: 5.2.1
+    optionalDependencies:
+      saslprep: 1.0.3
+    dev: false
+
+  /mongodb/3.6.9:
+    resolution: {integrity: sha512-1nSCKgSunzn/CXwgOWgbPHUWOO5OfERcuOWISmqd610jn0s8BU9K4879iJVabqgpPPbA6hO7rG48eq+fGED3Mg==}
+    engines: {node: '>=4'}
+    peerDependencies:
+      aws4: '*'
+      bson-ext: '*'
+      kerberos: '*'
+      mongodb-client-encryption: '*'
+      mongodb-extjson: '*'
+      snappy: '*'
+    peerDependenciesMeta:
+      aws4:
+        optional: true
+      bson-ext:
+        optional: true
+      kerberos:
+        optional: true
+      mongodb-client-encryption:
+        optional: true
+      mongodb-extjson:
+        optional: true
+      snappy:
+        optional: true
+    dependencies:
+      bl: 2.2.1
+      bson: 1.1.6
+      denque: 1.5.0
+      optional-require: 1.0.3
+      safe-buffer: 5.2.1
+    optionalDependencies:
+      saslprep: 1.0.3
     dev: false
 
   /ms/2.0.0:
@@ -5566,6 +5597,11 @@ packages:
     dependencies:
       wrappy: 1.0.2
     dev: true
+
+  /optional-require/1.0.3:
+    resolution: {integrity: sha512-RV2Zp2MY2aeYK5G+B/Sps8lW5NHAzE5QClbFP15j+PWmP+T9PxlJXBOOLoSAdgwFvS4t0aMR4vpedMkbHfh0nA==}
+    engines: {node: '>=4'}
+    dev: false
 
   /optionator/0.8.3:
     resolution: {integrity: sha512-+IW9pACdk3XWmmTXG8m3upGUJst5XRGzxMRjXzAuJ1XnIFNvfhjjIuYkDvysnPQ7qzqVzLt78BCruntqRhWQbA==}
@@ -6000,7 +6036,6 @@ packages:
 
   /process-nextick-args/2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
-    dev: true
 
   /progress/2.0.3:
     resolution: {integrity: sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==}
@@ -6265,7 +6300,6 @@ packages:
       safe-buffer: 5.1.2
       string_decoder: 1.1.1
       util-deprecate: 1.0.2
-    dev: true
 
   /readable-stream/3.6.0:
     resolution: {integrity: sha512-BViHy7LKeTz4oNnkcLJ+lVSL6vpiFeX6/d3oSH8zCW7UxP2onchk+vTGB143xuFjHS3deTgkKoXXymXqymiIdA==}
@@ -6492,7 +6526,6 @@ packages:
 
   /safe-buffer/5.2.1:
     resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
-    dev: true
 
   /safe-regex/1.1.0:
     resolution: {integrity: sha1-QKNmnzsHfR6UPURinhV91IAjvy4=}
@@ -6508,6 +6541,14 @@ packages:
 
   /safer-buffer/2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
+
+  /saslprep/1.0.3:
+    resolution: {integrity: sha512-/MY/PEMbk2SuY5sScONwhUDsV2p77Znkb/q3nSVstq/yQzYJOH/Azh29p9oJLsl3LnQwSvZDKagDGBsBwSooag==}
+    engines: {node: '>=6'}
+    dependencies:
+      sparse-bitfield: 3.0.3
+    dev: false
+    optional: true
 
   /saxes/5.0.1:
     resolution: {integrity: sha512-5LBh1Tls8c9xgGjw3QrMwETmTMVk0oFgvrFSvWx62llR2hcEInrKNZ2GZCCuuy2lvWrdl5jhbpeqc5hRYKFOcw==}
@@ -6736,6 +6777,13 @@ packages:
     resolution: {integrity: sha512-q/JSVd1Lptzhf5bkYm4ob4iWPjx0KiRe3sRFBNrVqbJkFaBm5vbbowy1mymoPNLRa52+oadOhJ+K49wsSeSjTA==}
     dev: true
 
+  /sparse-bitfield/3.0.3:
+    resolution: {integrity: sha1-/0rm5oZWBWuks+eSqzM004JzyhE=}
+    dependencies:
+      memory-pager: 1.5.0
+    dev: false
+    optional: true
+
   /spdx-correct/3.1.1:
     resolution: {integrity: sha512-cOYcUWwhCuHCXi49RhFRCyJEK3iPj1Ziz9DpViV3tbZOwXD49QzIN3MpOLJNxh2qwq2lJJZaKMVw9qNi4jTC0w==}
     dependencies:
@@ -6886,7 +6934,6 @@ packages:
     resolution: {integrity: sha512-n/ShnvDi6FHbbVfviro+WojiFzv+s8MPMHBczVePfUpDJLwoLT0ht1l4YwBCbi8pJAveEEdnkHyPyTP/mzRfwg==}
     dependencies:
       safe-buffer: 5.1.2
-    dev: true
 
   /string_decoder/1.3.0:
     resolution: {integrity: sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==}
@@ -7540,7 +7587,6 @@ packages:
 
   /util-deprecate/1.0.2:
     resolution: {integrity: sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=}
-    dev: true
 
   /utils-merge/1.0.1:
     resolution: {integrity: sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=}

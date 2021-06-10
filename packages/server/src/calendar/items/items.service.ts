@@ -3,7 +3,7 @@ import { CalendarItem } from '../../entities';
 
 export const findAll = async (): Promise<CalendarItem[]> => (await DI.calendarItemRepo.find({})) || [];
 
-export const find = async (id: number): Promise<CalendarItem | null> => await DI.calendarItemRepo.findOneOrFail({ id });
+export const find = async (id: string): Promise<CalendarItem | null> => await DI.calendarItemRepo.findOneOrFail({ id });
 
 export const create = async (newCalendarItem: CalendarItem): Promise<CalendarItem> => {
   const createdCalendarItem = await DI.calendarItemRepo.create({
@@ -14,7 +14,7 @@ export const create = async (newCalendarItem: CalendarItem): Promise<CalendarIte
   return createdCalendarItem;
 };
 
-export const update = async (id: number, calendarItemUpdate: CalendarItem): Promise<CalendarItem | null> => {
+export const update = async (id: string, calendarItemUpdate: CalendarItem): Promise<CalendarItem | null> => {
   const foundCalendarItem = await DI.calendarItemRepo.findOneOrFail({ id });
 
   if (!foundCalendarItem) {
@@ -29,7 +29,7 @@ export const update = async (id: number, calendarItemUpdate: CalendarItem): Prom
   return updatedCalendarItem;
 };
 
-export const remove = async (id: number): Promise<null | void> => {
+export const remove = async (id: string): Promise<null | void> => {
   const foundCalendarItem = await DI.calendarItemRepo.findOneOrFail({ id });
 
   if (!foundCalendarItem) {

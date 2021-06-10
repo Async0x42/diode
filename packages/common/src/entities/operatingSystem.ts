@@ -1,5 +1,5 @@
 export interface IOperatingSystem {
-  id: number;
+  id: string;
   name: string;
   shortName?: string;
   createdOn: Date;

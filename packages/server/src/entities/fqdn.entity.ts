@@ -1,5 +1,6 @@
 import { IFqdn } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, ManyToOne, ManyToMany } from '@mikro-orm/core';
+import { BaseEntity, Entity, Property, PrimaryKey, ManyToOne, ManyToMany, SerializedPrimaryKey } from '@mikro-orm/core';
+import { ObjectId } from '@mikro-orm/mongodb';
 import { Application } from './application.entity';
 import { Server } from './server.entity';
 
@@ -12,7 +13,10 @@ export interface IBackendFqdn extends Omit<IFqdn, 'server' | 'applications'> {
 @Entity()
 export class Fqdn extends BaseEntity<Fqdn, 'id'> implements IBackendFqdn {
   @PrimaryKey()
-  id!: number;
+  _id!: ObjectId;
+
+  @SerializedPrimaryKey()
+  id!: string; // won't be saved in the database
 
   @Property()
   name!: string;

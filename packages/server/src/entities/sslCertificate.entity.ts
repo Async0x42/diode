@@ -1,5 +1,6 @@
 import { ISslCertificate } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, Collection, ManyToMany } from '@mikro-orm/core';
+import { BaseEntity, Entity, Property, PrimaryKey, Collection, ManyToMany, SerializedPrimaryKey } from '@mikro-orm/core';
+import { ObjectId } from '@mikro-orm/mongodb';
 import { Application } from './application.entity';
 import { Server } from './server.entity';
 
@@ -12,7 +13,10 @@ export interface IBackendSslCertificate extends Omit<ISslCertificate, 'servers' 
 @Entity()
 export class SslCertificate extends BaseEntity<SslCertificate, 'id'> implements IBackendSslCertificate {
   @PrimaryKey()
-  id!: number;
+  _id!: ObjectId;
+
+  @SerializedPrimaryKey()
+  id!: string; // won't be saved in the database
 
   @Property()
   sans!: string;

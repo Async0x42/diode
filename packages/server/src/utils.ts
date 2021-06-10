@@ -3,16 +3,16 @@ import express, { Request, Response, Router } from 'express';
 
 interface IService<T> {
   findAll: () => Promise<T[]>;
-  find: (id: number) => Promise<T | null>;
+  find: (id: string) => Promise<T | null>;
   create: (newItem: T) => Promise<T>;
-  update: (id: number, itemUpdate: T) => Promise<T | null>;
-  remove: (id: number) => Promise<null | void>;
+  update: (id: string, itemUpdate: T) => Promise<T | null>;
+  remove: (id: string) => Promise<null | void>;
 }
 
 export const createService = <T>(dbRepo: EntityRepository<T>, columnsToPopulate: string[] = []): IService<T> => {
   const findAll = async (): Promise<T[]> => (await dbRepo.find({}, columnsToPopulate)) || [];
 
-  const find = async (id: number): Promise<T | null> => await dbRepo.findOneOrFail({ id } as any, columnsToPopulate);
+  const find = async (id: string): Promise<T | null> => await dbRepo.findOneOrFail({ id } as any, columnsToPopulate);
 
   const create = async (newItem: T): Promise<T> => {
     const createdItem = await dbRepo.create({
@@ -23,7 +23,7 @@ export const createService = <T>(dbRepo: EntityRepository<T>, columnsToPopulate:
     return createdItem;
   };
 
-  const update = async (id: number, itemUpdate: T): Promise<T | null> => {
+  const update = async (id: string, itemUpdate: T): Promise<T | null> => {
     const foundItem = await dbRepo.findOneOrFail({ id } as any);
 
     if (!foundItem) {
@@ -38,7 +38,7 @@ export const createService = <T>(dbRepo: EntityRepository<T>, columnsToPopulate:
     return updatedItem;
   };
 
-  const remove = async (id: number): Promise<null | void> => {
+  const remove = async (id: string): Promise<null | void> => {
     const foundItem = await dbRepo.findOneOrFail({ id } as any);
 
     if (!foundItem) {
@@ -74,7 +74,7 @@ export const createRouter = <T>(service: IService<T>) => {
   // GET items/:itemId
   router.get('/:itemId', async (req: Request, res: Response) => {
     try {
-      const itemId = parseInt(req.params.itemId);
+      const itemId = req.params.itemId;
       const item = await service.find(itemId);
 
       if (item) {
@@ -102,7 +102,7 @@ export const createRouter = <T>(service: IService<T>) => {
   // PUT items/:itemId
   router.put('/:itemId', async (req: Request, res: Response) => {
     try {
-      const itemId = parseInt(req.params.itemId);
+      const itemId = req.params.itemId;
       const itemUpdate: T = req.body;
       const existingItem = await service.find(itemId);
 
@@ -122,7 +122,7 @@ export const createRouter = <T>(service: IService<T>) => {
   // DELETE items/:itemId
   router.delete('/:itemId', async (req: Request, res: Response) => {
     try {
-      const itemId = parseInt(req.params.itemId);
+      const itemId = req.params.itemId;
       await service.remove(itemId);
 
       res.sendStatus(204);

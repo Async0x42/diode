@@ -18,7 +18,7 @@ itemsRouter.get('/', async (req: Request, res: Response) => {
 // GET items/:itemId
 itemsRouter.get('/:itemId', async (req: Request, res: Response) => {
   try {
-    const itemId = parseInt(req.params.itemId);
+    const itemId = req.params.itemId;
     const item = await ItemService.find(itemId);
 
     if (item) {
@@ -46,7 +46,7 @@ itemsRouter.post('/', async (req: Request, res: Response) => {
 // PUT items/:itemId
 itemsRouter.put('/:itemId', async (req: Request, res: Response) => {
   try {
-    const itemId = parseInt(req.params.itemId);
+    const itemId = req.params.itemId;
     const itemUpdate: CalendarItem = req.body;
     const existingItem = await ItemService.find(itemId);
 
@@ -66,7 +66,7 @@ itemsRouter.put('/:itemId', async (req: Request, res: Response) => {
 // DELETE items/:itemId
 itemsRouter.delete('/:itemId', async (req: Request, res: Response) => {
   try {
-    const itemId = parseInt(req.params.itemId);
+    const itemId = req.params.itemId;
     await ItemService.remove(itemId);
 
     res.sendStatus(204);

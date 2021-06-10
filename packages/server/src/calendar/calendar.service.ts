@@ -3,7 +3,7 @@ import { Calendar } from '../entities';
 
 export const get = async (): Promise<Calendar | null> => await DI.calendarRepo.findOneOrFail({ id: 1 });
 
-export const update = async (id: number, calendarUpdate: Calendar): Promise<Calendar | null> => {
+export const update = async (id: string, calendarUpdate: Calendar): Promise<Calendar | null> => {
   const foundCalendar = await DI.calendarRepo.findOneOrFail({ id });
 
   if (!foundCalendar) {

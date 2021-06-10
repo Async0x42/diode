@@ -80,15 +80,6 @@ export const DI = {} as {
 
   app.use((req, res, next) => RequestContext.create(DI.orm.em, next));
 
-  const migrator = DI.orm.getMigrator();
-  const pendingMigrations = await migrator.getPendingMigrations();
-
-  if (pendingMigrations.length > 0) {
-    await backupDatabase();
-    await migrator.up(); // runs migrations up to the latest
-  }
-  DI.em.flush();
-
   app.use(helmet());
   app.use(cors());
   app.use(express.json());
