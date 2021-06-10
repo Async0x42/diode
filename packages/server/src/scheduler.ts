@@ -11,12 +11,11 @@ async function createDirIfNotExist(dir: string) {
   }
 }
 
-export const backupDatabase = async () => {
-  const backupPath = '../../backups';
+export const backupDatabase = async (appendText?: string, backupPath = '../../backups'): Promise<{ filePath: string; fileName: string }> => {
   await createDirIfNotExist(backupPath);
 
-  const fileName = `${process.env.MIKRO_ORM_DB_NAME}_${format(new Date(), 'yyyy-MM-dd-HHmmss')}.sql`;
-  mysqldump({
+  const fileName = `${process.env.MIKRO_ORM_DB_NAME}_${format(new Date(), 'yyyy-MM-dd-HHmmss')}${appendText}.sql`;
+  await mysqldump({
     connection: {
       host: process.env.MIKRO_ORM_HOST || 'localhost',
       port: parseInt(process.env.MIKRO_ORM_PORT || '3306'),
@@ -33,6 +32,11 @@ export const backupDatabase = async () => {
     },
     dumpToFile: `${backupPath}/${fileName}`,
   });
+
+  return {
+    filePath: backupPath,
+    fileName,
+  };
 };
 
 export const createSchedules = () => {

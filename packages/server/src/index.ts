@@ -87,7 +87,7 @@ export const DI = {} as {
   const pendingMigrations = await migrator.getPendingMigrations();
 
   if (pendingMigrations.length > 0) {
-    await backupDatabase();
+    await backupDatabase('_migration');
     await migrator.up(); // runs migrations up to the latest
   }
   DI.em.flush();
