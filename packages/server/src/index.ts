@@ -29,6 +29,7 @@ import { createRouter, createService } from './utils';
 import { calendarRouter } from './calendar/calendar.router';
 import { backupDatabase, createSchedules } from './scheduler';
 import { Zone } from './entities/zone.entity';
+import { sqlRouter } from './custom/sql.router';
 export * from './entities';
 
 dotEnvExtended.load();
@@ -95,6 +96,8 @@ export const DI = {} as {
   app.use(helmet() as any);
   app.use(cors());
   app.use(express.json() as any);
+
+  app.use('/api/getSql', sqlRouter);
 
   app.use('/api/calendar', calendarRouter);
 
