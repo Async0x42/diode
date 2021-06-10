@@ -1,6 +1,7 @@
-import express from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
+import fastify from 'fastify';
+import fastifyExpress from 'fastify-express';
+// import cors from 'fastify-cors';
+import helmet from 'fastify-helmet';
 import dotEnvExtended from 'dotenv-extended';
 import { EntityManager, EntityRepository, MikroORM, RequestContext } from '@mikro-orm/core';
 import { errorHandler } from './middleware/error.middleware';
@@ -33,7 +34,10 @@ export * from './entities';
 dotEnvExtended.load();
 
 const port: number = parseInt(process.env.PORT as string, 10) || 3000;
-const app = express();
+const app = fastify({
+  logger: true,
+});
+app.register(fastifyExpress);
 
 export const DI = {} as {
   orm: MikroORM;
@@ -89,24 +93,28 @@ export const DI = {} as {
   }
   DI.em.flush();
 
-  app.use(helmet() as any);
-  app.use(cors());
-  app.use(express.json() as any);
+  app.register(
+    helmet,
+    // enable csp nonces generation with default content-security-policy option
+    { enableCSPNonces: true }
+  );
+  // TODO: maybe not needed
+  // app.register(cors);
 
   app.use('/api/calendar', calendarRouter);
 
-  app.use('/api/rfcs', createRouter<Rfc>(createService(DI.rfcRepo, ['application'])));
-  app.use('/api/brds', createRouter<Brd>(createService(DI.brdRepo, ['application'])));
-  app.use('/api/contacts', createRouter<Contact>(createService(DI.contactRepo, ['contactGroups', 'tickets'])));
-  app.use('/api/fqdns', createRouter<Fqdn>(createService(DI.fqdnRepo, ['applications', 'server'])));
-  app.use('/api/tickets', createRouter<Ticket>(createService(DI.ticketRepo, ['applications', 'servers', 'owners'])));
-  app.use(
-    '/api/physicalServers',
-    createRouter<PhysicalServer>(createService(DI.physicalServerRepo, ['location', 'servers', 'servers.location', 'servers.operatingSystem']))
+  app.register(createRouter<Rfc>(app, createService(DI.rfcRepo, ['application'])), { prefix: '/api/rfcs' });
+  app.register(createRouter<Brd>(app, createService(DI.brdRepo, ['application'])), { prefix: '/api/brds' });
+  app.register(createRouter<Contact>(app, createService(DI.contactRepo, ['contactGroups', 'tickets'])), { prefix: '/api/contacts' });
+  app.register(createRouter<Fqdn>(app, createService(DI.fqdnRepo, ['applications', 'server'])), { prefix: '/api/fqdns' });
+  app.register(createRouter<Ticket>(app, createService(DI.ticketRepo, ['applications', 'servers', 'owners'])), { prefix: '/api/tickets' });
+  app.register(
+    createRouter<PhysicalServer>(app, createService(DI.physicalServerRepo, ['location', 'servers', 'servers.location', 'servers.operatingSystem'])),
+    { prefix: '/api/physicalServers' }
   );
-  app.use(
-    '/api/applications',
+  app.register(
     createRouter<Application>(
+      app,
       createService(DI.applicationRepo, [
         'sslCertificates',
         'fqdns',
@@ -117,11 +125,12 @@ export const DI = {} as {
         'rfcs',
         'tickets',
       ])
-    )
+    ),
+    { prefix: '/api/applications' }
   );
-  app.use(
-    '/api/servers',
+  app.register(
     createRouter<Server>(
+      app,
       createService(DI.serverRepo, [
         'sslCertificates',
         'fqdns',
@@ -134,15 +143,18 @@ export const DI = {} as {
         'environment',
         'tickets',
       ])
-    )
+    ),
+    { prefix: '/api/servers' }
   );
-  app.use('/api/operatingsystems', createRouter<OperatingSystem>(createService(DI.operatingSystemRepo)));
-  app.use('/api/serverlocations', createRouter<ServerLocation>(createService(DI.serverLocationRepo)));
-  app.use('/api/servertypes', createRouter<ServerType>(createService(DI.serverTypeRepo)));
-  app.use('/api/environments', createRouter<Environment>(createService(DI.environmentRepo)));
-  app.use('/api/networks', createRouter<Network>(createService(DI.networkRepo)));
-  app.use('/api/contactGroups', createRouter<ContactGroup>(createService(DI.contactGroupRepo, ['contacts'])));
-  app.use('/api/sslCertificates', createRouter<SslCertificate>(createService(DI.sslCertificateRepo, ['applications', 'servers'])));
+  app.register(createRouter<OperatingSystem>(app, createService(DI.operatingSystemRepo)), { prefix: '/api/operatingsystems' });
+  app.register(createRouter<ServerLocation>(app, createService(DI.serverLocationRepo)), { prefix: '/api/serverlocations' });
+  app.register(createRouter<ServerType>(app, createService(DI.serverTypeRepo)), { prefix: '/api/servertypes' });
+  app.register(createRouter<Environment>(app, createService(DI.environmentRepo)), { prefix: '/api/environments' });
+  app.register(createRouter<Network>(app, createService(DI.networkRepo)), { prefix: '/api/networks' });
+  app.register(createRouter<ContactGroup>(app, createService(DI.contactGroupRepo, ['contacts'])), { prefix: '/api/contactGroups' });
+  app.register(createRouter<SslCertificate>(app, createService(DI.sslCertificateRepo, ['applications', 'servers'])), {
+    prefix: '/api/sslCertificates',
+  });
   app.use(errorHandler);
   app.use(notFoundHandler);
 

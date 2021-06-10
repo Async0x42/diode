@@ -1,5 +1,5 @@
 import { EntityRepository } from '@mikro-orm/core';
-import express, { Request, Response, Router } from 'express';
+import { FastifyInstance, FastifyPluginCallback, FastifyReply, FastifyRequest } from 'fastify';
 
 interface IService<T> {
   findAll: () => Promise<T[]>;
@@ -57,79 +57,77 @@ export const createService = <T>(dbRepo: EntityRepository<T>, columnsToPopulate:
   };
 };
 
-export const createRouter = <T>(service: IService<T>) => {
-  const router: Router = express.Router({ mergeParams: true });
+export const createRouter = <T>(fastify: FastifyInstance, service: IService<T>): FastifyPluginCallback => {
+  return (fastify: FastifyInstance) => {
+    // GET items
+    fastify.get('/', async function get(request: FastifyRequest, reply: FastifyReply) {
+      try {
+        const item: T[] = await service.findAll();
 
-  // GET items
-  router.get('/', async (req: Request, res: Response) => {
-    try {
-      const item: T[] = await service.findAll();
-
-      res.status(200).send(item);
-    } catch (e: any) {
-      res.status(500).send(e.message);
-    }
-  });
-
-  // GET items/:itemId
-  router.get('/:itemId', async (req: Request, res: Response) => {
-    try {
-      const itemId = parseInt(req.params.itemId);
-      const item = await service.find(itemId);
-
-      if (item) {
-        return res.status(200).send(item);
+        reply.status(200).send(item);
+      } catch (e: any) {
+        reply.status(500).send(e.message);
       }
+    });
 
-      res.status(404).send('item not found');
-    } catch (e: any) {
-      res.status(500).send(e.message);
-    }
-  });
+    // GET items/:itemId
+    fastify.get('/:itemId', async function getItem(request: FastifyRequest, reply: FastifyReply) {
+      try {
+        const itemId = parseInt((request.params as any).itemId);
+        const item = await service.find(itemId);
 
-  // POST items
-  router.post('/', async (req: Request, res: Response) => {
-    try {
-      const item: T = req.body;
-      const newItem = await service.create(item);
+        if (item) {
+          return reply.status(200).send(item);
+        }
 
-      res.status(201).json(newItem);
-    } catch (e: any) {
-      res.status(500).send(e.message);
-    }
-  });
-
-  // PUT items/:itemId
-  router.put('/:itemId', async (req: Request, res: Response) => {
-    try {
-      const itemId = parseInt(req.params.itemId);
-      const itemUpdate: T = req.body;
-      const existingItem = await service.find(itemId);
-
-      if (existingItem) {
-        const updatedItem = await service.update(itemId, itemUpdate);
-        return res.status(200).json(updatedItem);
+        reply.status(404).send('item not found');
+      } catch (e: any) {
+        reply.status(500).send(e.message);
       }
+    });
 
-      const newItem = await service.create(itemUpdate);
+    // POST items
+    fastify.post('/', async function createItem(request: FastifyRequest, reply: FastifyReply) {
+      try {
+        const item: T = request.body as T;
+        const newItem = await service.create(item);
 
-      res.status(201).json(newItem);
-    } catch (e: any) {
-      res.status(500).send(e.message);
-    }
-  });
+        reply.status(201).send(newItem);
+      } catch (e: any) {
+        reply.status(500).send(e.message);
+      }
+    });
 
-  // DELETE items/:itemId
-  router.delete('/:itemId', async (req: Request, res: Response) => {
-    try {
-      const itemId = parseInt(req.params.itemId);
-      await service.remove(itemId);
+    // PUT items/:itemId
+    fastify.put('/:itemId', async function updateItem(request: FastifyRequest, reply: FastifyReply) {
+      try {
+        const itemId = parseInt((request.params as any).itemId);
+        const itemUpdate: T = request.body as T;
+        const existingItem = await service.find(itemId);
 
-      res.sendStatus(204);
-    } catch (e: any) {
-      res.status(500).send(e.message);
-    }
-  });
+        if (existingItem) {
+          const updatedItem = await service.update(itemId, itemUpdate);
+          return reply.status(200).send(updatedItem);
+        }
 
-  return router;
+        const newItem = await service.create(itemUpdate);
+
+        reply.status(201).send(newItem);
+      } catch (e: any) {
+        reply.status(500).send(e.message);
+      }
+    });
+
+    // DELETE items/:itemId
+    fastify.delete('/:itemId', async function deleteItem(request: FastifyRequest, reply: FastifyReply) {
+      try {
+        const itemId = parseInt((request.params as any).itemId);
+        await service.remove(itemId);
+
+        reply.status(204).send();
+      } catch (e: any) {
+        reply.status(500).send(e.message);
+      }
+    });
+  };
 };
