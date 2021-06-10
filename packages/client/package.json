@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "vite --port 3333 --open",
-    "build": "cross-env NODE_ENV=production vite-ssg build",
+    "build": "cross-env NODE_ENV=production vite build",
     "lint": "run-s lint:all:*",
     "lint:all:eslint": "pnpm run lint:eslint",
     "lint:all:prettier": "pnpm run lint:prettier",
