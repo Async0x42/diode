@@ -28,6 +28,7 @@ import {
 import { createRouter, createService } from './utils';
 import { calendarRouter } from './calendar/calendar.router';
 import { backupDatabase, createSchedules } from './scheduler';
+import { Zone } from './entities/zone.entity';
 export * from './entities';
 
 dotEnvExtended.load();
@@ -55,6 +56,7 @@ export const DI = {} as {
   environmentRepo: EntityRepository<Environment>;
   networkRepo: EntityRepository<Network>;
   ticketRepo: EntityRepository<Ticket>;
+  zoneRepo: EntityRepository<Zone>;
 };
 
 (async () => {
@@ -77,6 +79,7 @@ export const DI = {} as {
   DI.environmentRepo = DI.em.getRepository(Environment);
   DI.networkRepo = DI.em.getRepository(Network);
   DI.ticketRepo = DI.em.getRepository(Ticket);
+  DI.zoneRepo = DI.em.getRepository(Zone);
 
   app.use((req, res, next) => RequestContext.create(DI.orm.em, next));
 
@@ -133,6 +136,7 @@ export const DI = {} as {
         'network',
         'environment',
         'tickets',
+        'zone',
       ])
     )
   );
@@ -140,6 +144,7 @@ export const DI = {} as {
   app.use('/api/serverlocations', createRouter<ServerLocation>(createService(DI.serverLocationRepo)));
   app.use('/api/servertypes', createRouter<ServerType>(createService(DI.serverTypeRepo)));
   app.use('/api/environments', createRouter<Environment>(createService(DI.environmentRepo)));
+  app.use('/api/zones', createRouter<Zone>(createService(DI.zoneRepo)));
   app.use('/api/networks', createRouter<Network>(createService(DI.networkRepo)));
   app.use('/api/contactGroups', createRouter<ContactGroup>(createService(DI.contactGroupRepo, ['contacts'])));
   app.use('/api/sslCertificates', createRouter<SslCertificate>(createService(DI.sslCertificateRepo, ['applications', 'servers'])));

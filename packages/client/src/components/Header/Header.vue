@@ -17,6 +17,7 @@ const routesForCreate = [
   'environments',
   'networks',
   'tickets',
+  'zones',
 ];
 
 const routesForSearch = [
@@ -36,6 +37,7 @@ const routesForSearch = [
   'environments',
   'networks',
   'tickets',
+  'zones',
 ];
 
 const routesForEdit = [
@@ -55,6 +57,7 @@ const routesForEdit = [
   'environment-view',
   'network-view',
   'ticket-view',
+  'zone-view',
 ];
 </script>
 

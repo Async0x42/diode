@@ -52,6 +52,7 @@ declare module 'vue' {
     FormServerTypeMultiSelect: typeof import('./src/components/Form/FormServerTypeMultiSelect.vue')['default']
     FormSslCertificateMultiSelect: typeof import('./src/components/Form/FormSslCertificateMultiSelect.vue')['default']
     FormTextArea: typeof import('./src/components/Form/FormTextArea.vue')['default']
+    FormZoneSelect: typeof import('./src/components/Form/FormZoneSelect.vue')['default']
     FqdnCreateEdit: typeof import('./src/components/Fqdn/FqdnCreateEdit.vue')['default']
     FqdnList: typeof import('./src/components/Fqdn/FqdnList.vue')['default']
     FqdnListItem: typeof import('./src/components/Fqdn/FqdnListItem.vue')['default']
@@ -111,6 +112,10 @@ declare module 'vue' {
     TicketList: typeof import('./src/components/Ticket/TicketList.vue')['default']
     TicketListItem: typeof import('./src/components/Ticket/TicketListItem.vue')['default']
     TicketView: typeof import('./src/components/Ticket/TicketView.vue')['default']
+    ZoneCreateEdit: typeof import('./src/components/Zone/ZoneCreateEdit.vue')['default']
+    ZoneList: typeof import('./src/components/Zone/ZoneList.vue')['default']
+    ZoneListItem: typeof import('./src/components/Zone/ZoneListItem.vue')['default']
+    ZoneView: typeof import('./src/components/Zone/ZoneView.vue')['default']
   }
 }
 

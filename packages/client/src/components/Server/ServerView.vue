@@ -26,6 +26,10 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
           <dd class="mt-1 text-sm text-gray-900" v-html="props.server.environment?.name" />
         </div>
         <div class="sm:col-span-1">
+          <dt class="font-medium text-sm text-gray-500">Zone</dt>
+          <dd class="mt-1 text-sm text-gray-900" v-html="props.server.zone" />
+        </div>
+        <div class="sm:col-span-1">
           <dt class="font-medium text-sm text-gray-500">Network</dt>
           <dd class="mt-1 text-sm text-gray-900" v-html="props.server.network?.name" />
         </div>

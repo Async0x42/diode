@@ -8,6 +8,7 @@ import { ISslCertificate } from './sslCertificate';
 import { IEnvironment } from './environment';
 import { INetwork } from './network';
 import { ITicket } from './ticket';
+import { IZone } from './zone';
 
 export interface IServer {
   id: number;
@@ -20,6 +21,7 @@ export interface IServer {
   sslCertificates: ISslCertificate[];
   tickets: ITicket[];
   types: IServerType[];
+  zone?: IZone;
   location?: IServerLocation;
   physicalServer?: IPhysicalServer;
   environment?: IEnvironment;

@@ -10,6 +10,7 @@ import { ServerLocation } from './serverLocation.entity';
 import { ServerType } from './serverType.entity';
 import { SslCertificate } from './sslCertificate.entity';
 import { Ticket } from './ticket.entity';
+import { Zone } from './zone.entity';
 
 // Quick fix to make @mikro-orm collection compat with the IServer []
 export interface IBackendServer extends Omit<IServer, 'applications' | 'fqdns' | 'types' | 'physicalServer' | 'sslCertificates' | 'tickets'> {
@@ -37,6 +38,9 @@ export class Server extends BaseEntity<Server, 'id'> implements IBackendServer {
 
   @ManyToOne()
   network?: Network;
+
+  @ManyToOne()
+  zone?: Zone;
 
   @ManyToOne()
   operatingSystem?: OperatingSystem;

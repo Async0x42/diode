@@ -22,6 +22,8 @@ const { results } = useRouteSearchWithData(props.servers, [
   'environment.shortName',
   'network.name',
   'network.shortName',
+  'zone.name',
+  'zone.shortName',
 ]);
 </script>
 

@@ -25,6 +25,7 @@ const physicalServer = useField('physicalServer');
 const sslCertificates = useField('sslCertificates');
 const environment = useField('environment');
 const network = useField('network');
+const zone = useField('zone');
 </script>
 
 <template>
@@ -41,6 +42,7 @@ const network = useField('network');
             <FormInput label="Name" :field="name" name="name" class="sm:col-span-3" />
             <FormInput label="IP" :field="ip" name="ip" class="sm:col-span-3" />
             <FormEnvironmentSelect label="Environment" :field="environment" name="environment" class="sm:col-span-3" />
+            <FormZoneSelect label="Zone" :field="zone" name="zone" class="sm:col-span-3" />
             <FormNetworkSelect label="Network" :field="network" name="network" class="sm:col-span-3" />
             <FormFqdnMultiSelect label="FQDNs" :field="fqdns" name="fqdns" class="sm:col-span-3" />
             <FormServerTypeMultiSelect label="Server Types" :field="types" name="types" class="sm:col-span-3" />
