@@ -124,6 +124,7 @@ importers:
       vuetify: ^2.4.0
       vuetify-loader: ^1.7.0
       vuex: ^3.4.0
+      vuex-class-modules: ^1.3.0
     dependencies:
       core-js: 3.14.0
       vue: 2.6.14
@@ -132,6 +133,7 @@ importers:
       vue-router: 3.5.1
       vuetify: 2.5.3_vue@2.6.14
       vuex: 3.6.2_vue@2.6.14
+      vuex-class-modules: 1.3.0
     devDependencies:
       '@typescript-eslint/eslint-plugin': 4.26.1_d9234535ce978faec7f143463b937dd6
       '@typescript-eslint/parser': 4.26.1_eslint@7.28.0+typescript@4.1.5
@@ -12453,6 +12455,10 @@ packages:
       vue: ^2.6.4
     dependencies:
       vue: 2.6.14
+    dev: false
+
+  /vuex-class-modules/1.3.0:
+    resolution: {integrity: sha512-WH+BwOgJHN0g2pzHdy7pDOLItdEAxm5z8VNEUYDBD3L7UPWoL7NptATczUiP66mBY8rIM25eN7lNCzz66Cg2QQ==}
     dev: false
 
   /vuex/3.6.2_vue@2.6.14:
