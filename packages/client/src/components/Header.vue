@@ -1,5 +1,16 @@
+<script lang="ts">
+import { Vue, Component, Prop } from 'vue-property-decorator';
+import { configModule } from '@/store/configModule';
+
+@Component
+export default class DefaultLayout extends Vue {
+  configModule = configModule;
+}
+</script>
+
 <template>
   <v-app-bar app color="primary" dark>
+    <v-app-bar-nav-icon @click="configModule.isSidebarOpen = !configModule.isSidebarOpen"></v-app-bar-nav-icon>
     <div class="d-flex align-center">
       <v-img
         alt="Vuetify Logo"
