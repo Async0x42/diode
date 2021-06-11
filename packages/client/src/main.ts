@@ -1,28 +1,14 @@
-import { createApp } from 'vue';
-import { createRouter, createWebHistory } from 'vue-router';
-import generatedRoutes from 'virtual:generated-pages';
-import { setupLayouts } from 'virtual:generated-layouts';
-import { createHead } from '@vueuse/head';
+import Vue from 'vue';
 import App from './App.vue';
-import 'virtual:windi.css';
-import 'virtual:windi-devtools';
-import './styles/main.css';
+import router from './router';
+import store from './store';
+import vuetify from './plugins/vuetify';
 
-const routes = setupLayouts(generatedRoutes);
+Vue.config.productionTip = false;
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes,
-});
-
-// https://github.com/antfu/vite-ssg
-export const app = createApp(App);
-const head = createHead();
-app.use(router);
-app.use(head);
-
-// install all modules under `modules/`
-Object.values(import.meta.globEager('./modules/*.ts')).map((i) => i.install?.({ app, router, isClient: true }));
-Object.values(import.meta.globEager('./directives/*.ts')).map((i) => i.install?.({ app, router, isClient: true }));
-
-app.mount('#app');
+new Vue({
+  router,
+  store,
+  vuetify,
+  render: (h) => h(App),
+}).$mount('#app');
