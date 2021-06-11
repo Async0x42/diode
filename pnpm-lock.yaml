@@ -26,12 +26,12 @@ importers:
       sass: ~1.32.13
       sass-loader: ^12.1.0
       typescript: ~4.1.5
-      vue: 2.6.14
+      vue: ^2.6.14
       vue-class-component: ^7.2.6
       vue-cli-plugin-vuetify: ~2.4.1
       vue-property-decorator: ^9.1.2
       vue-router: ^3.5.1
-      vue-template-compiler: 2.6.14
+      vue-template-compiler: ^2.6.14
       vuetify: ^2.5.3
       vuetify-loader: ^1.7.2
       vuex: ^3.6.2
@@ -1868,7 +1868,7 @@ packages:
     resolution: {integrity: sha512-O/ql2+rrCUe2W2rs7wMR+GqPRcgB6UiqN5RhrR5xruFlY7l9YLMn0ZkDzjoHLeiFkR8MCQZVudUuuvQ2BLC9Qw==}
     dependencies:
       '@types/eslint': 7.2.13
-      '@types/estree': 0.0.48
+      '@types/estree': 0.0.47
     dev: true
 
   /@types/eslint/7.2.13:
