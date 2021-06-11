@@ -1,6 +1,11 @@
+<script lang="ts"></script>
+
 <template>
-  <div>
-    <router-view />
-    <p>This is a default layout</p>
-  </div>
+  <v-app>
+    <Header />
+
+    <v-main>
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
