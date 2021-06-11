@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { VuexModule, Module, Mutation, Action } from 'vuex-class-modules';
 import store from './index';
 
