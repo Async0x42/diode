@@ -30,6 +30,7 @@ importers:
       typescript: ~4.1.5
       vue: ^2.6.14
       vue-class-component: ^7.2.6
+      vue-cli-plugin-import-components: ~1.0.2
       vue-cli-plugin-vuetify: ~2.4.1
       vue-property-decorator: ^9.1.2
       vue-router: ^3.5.1
@@ -68,6 +69,7 @@ importers:
       sass: 1.32.13
       sass-loader: 12.1.0_sass@1.32.13
       typescript: 4.1.5
+      vue-cli-plugin-import-components: 1.0.2_@vue+cli-service@5.0.0-beta.2
       vue-cli-plugin-vuetify: 2.4.1_8c2f598490eedae3260d3e7f8028a4df
       vue-template-compiler: 2.6.14
       vuetify-loader: 1.7.2_7c698fb8c99ee32ac6e2dd750d836e3a
@@ -9858,6 +9860,14 @@ packages:
     dependencies:
       vue: 2.6.14
     dev: false
+
+  /vue-cli-plugin-import-components/1.0.2_@vue+cli-service@5.0.0-beta.2:
+    resolution: {integrity: sha512-3sAV//b5oCBocDD5F6AW35drabX2WNmzd1wau/nI48OVchomUgoSLrGXOY4qbdEICmGQ3HQ+9f3f7OJxSZ+bQg==}
+    peerDependencies:
+      '@vue/cli-service': ^3.0.0 || ^4.0.0-0
+    dependencies:
+      '@vue/cli-service': 5.0.0-beta.2_34e2d430882d7121b2ecb1477ca2514c
+    dev: true
 
   /vue-cli-plugin-vuetify/2.4.1_8c2f598490eedae3260d3e7f8028a4df:
     resolution: {integrity: sha512-ZfhvQ13X41atsCSKdSGiHnSJlhAccv4QIFOZmd8kyq6NktpeeWlvQz/dEKBf6u1AWKmKdwiCDuxS2VNT9fxhOA==}
