@@ -15,4 +15,9 @@
     "*.css": "postcss",
   },
   "windicss.sortOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "vue"
+  ],
 }
