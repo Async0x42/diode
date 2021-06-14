@@ -142,6 +142,9 @@ declare module 'vue' {
     HeroiconsSolidMail: typeof import('virtual:vite-icons/heroicons-solid/mail')['default']
     HeroiconsSolidPhone: typeof import('virtual:vite-icons/heroicons-solid/phone')['default']
     CarbonWarning: typeof import('virtual:vite-icons/carbon/warning')['default']
+    HeroiconsSolidEye: typeof import('virtual:vite-icons/heroicons-solid/eye')['default']
+    HeroiconsSolidSelector: typeof import('virtual:vite-icons/heroicons-solid/selector')['default']
+    HeroiconsSolidCheck: typeof import('virtual:vite-icons/heroicons-solid/check')['default']
   }
 }
 
