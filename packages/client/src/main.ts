@@ -6,6 +6,8 @@ import { createHead } from '@vueuse/head';
 import App from './App.vue';
 import 'virtual:windi.css';
 import 'virtual:windi-devtools';
+import 'vfonts/Lato.css';
+import 'vfonts/FiraCode.css';
 import './styles/main.css';
 
 const routes = setupLayouts(generatedRoutes);
