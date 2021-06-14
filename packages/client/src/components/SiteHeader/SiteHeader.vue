@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useRouter } from 'vue-router';
 import { isMobile } from '~/logic';
 const routesForCreate = [
   'calendar',
@@ -63,11 +62,7 @@ const style = computed(() => {
       <span>DIODE</span>
     </n-text>
     <div style="display: flex; align-items: center">
-      <SiteHeaderSearch
-        v-if="$route.name != null && routesForSearch.includes($route.name.toString())"
-        :key="$route.path"
-        style="width: 216px; margin-left: 24px"
-      />
+      <SiteHeaderSearch v-if="$route.name != null && routesForSearch.includes($route.name.toString())" :key="$route.path" class="mx-6 w-full" />
     </div>
     <div class="nav-end">
       <router-link
@@ -87,14 +82,6 @@ const style = computed(() => {
         <n-button @click="navigate"> Edit </n-button>
       </router-link>
     </div>
-    <!--
-    <div class="flex flex-1 px-4 justify-between">
-      
-      <div v-else class="flex flex-1"></div>
-
-      <div class="flex ml-4 items-center lg:ml-6">
-      </div>
-    </div> -->
   </n-layout-header>
 </template>
 
