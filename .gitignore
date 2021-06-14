@@ -11,3 +11,4 @@ packages/server/temp
 packages/server/.env
 backups
 packages/server/tmp_downloads
+packages/client/components.d.ts
