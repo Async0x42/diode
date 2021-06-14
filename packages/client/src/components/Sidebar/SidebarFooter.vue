@@ -22,9 +22,9 @@ const toggleLocales = () => {
       <carbon-sun v-else />
     </a>
 
-    <a class="mx-2 icon-btn" :title="t('button.toggle_langs')" @click="toggleLocales">
+    <button class="mx-2 icon-btn !outline-none" :title="t('button.toggle_langs')" @click="toggleLocales">
       <carbon-language />
-    </a>
+    </button>
 
     <router-link class="mx-2 icon-btn" to="/about" :title="t('button.about')">
       <carbon-dicom-overlay />

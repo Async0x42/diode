@@ -20,9 +20,9 @@ importers:
       '@vitejs/plugin-vue': ^1.2.3
       '@vue/compiler-sfc': ^3.0.11
       '@vue/eslint-config-prettier': ^6.0.0
-      '@vueuse/core': ^5.0.2
+      '@vueuse/core': ^5.0.3
       '@vueuse/head': ^0.6.0
-      '@vueuse/integrations': ^5.0.2
+      '@vueuse/integrations': ^5.0.3
       axios: ^0.21.1
       cross-env: ^7.0.3
       date-fns: ^2.22.1
@@ -30,6 +30,7 @@ importers:
       eslint-plugin-prettier: ^3.4.0
       fuse.js: ^6.4.6
       https-localhost: ^4.6.5
+      markdown-it-link-attributes: ^3.0.0
       markdown-it-prism: ^2.1.6
       npm-run-all: ^4.1.5
       nprogress: ^0.2.0
@@ -54,9 +55,9 @@ importers:
       '@headlessui/vue': 1.2.0_vue@3.0.11
       '@heroicons/vue': 1.0.1_vue@3.0.11
       '@popperjs/core': 2.9.2
-      '@vueuse/core': 5.0.2_vue@3.0.11
-      '@vueuse/head': 0.6.0_vue@3.0.11
-      '@vueuse/integrations': 5.0.2_vue@3.0.11
+      '@vueuse/core': 5.0.3_vue@3.1.1
+      '@vueuse/head': 0.6.0_vue@3.1.1
+      '@vueuse/integrations': 5.0.3_vue@3.1.1
       axios: 0.21.1
       date-fns: 2.22.1
       fuse.js: 6.4.6
@@ -81,6 +82,7 @@ importers:
       eslint: 7.28.0
       eslint-plugin-prettier: 3.4.0_eslint@7.28.0+prettier@2.3.1
       https-localhost: 4.6.5
+      markdown-it-link-attributes: 3.0.0
       markdown-it-prism: 2.1.6
       npm-run-all: 4.1.5
       prettier: 2.3.1
@@ -195,7 +197,7 @@ packages:
       eslint-plugin-eslint-comments: 3.2.0_eslint@7.28.0
       eslint-plugin-html: 6.1.2
       eslint-plugin-import: 2.23.4_eslint@7.28.0
-      eslint-plugin-jsonc: 1.2.1_eslint@7.28.0
+      eslint-plugin-jsonc: 1.3.1_eslint@7.28.0
       eslint-plugin-node: 11.1.0_eslint@7.28.0
       eslint-plugin-promise: 4.3.1
       eslint-plugin-unicorn: 28.0.2_eslint@7.28.0
@@ -1191,8 +1193,8 @@ packages:
     resolution: {integrity: sha512-YATxVxgRqNH6nHEIsvg6k2Boc1JHI9ZbH5iWFFv/MTkchz3b1ieGDa5T0a9RznNdI0KhVbdbWSN+KWWrQZRxTw==}
     dev: true
 
-  /@types/mongodb/3.6.17:
-    resolution: {integrity: sha512-9hhgvYPdC5iHyyksPcKCu45gfaAIPQHKHGdvNXu4582DmOZX3wrUJIJPT40o4G1oTKPgpMMFqZglOTjhnYoF+A==}
+  /@types/mongodb/3.6.18:
+    resolution: {integrity: sha512-JSVFt9p0rTfZ4EgzXmVHUB3ue00xe3CRbQho8nXfImzEDDM4O7I3po1bwbWl/EIbLENxUreZxqLOc8lvcnLVPA==}
     dependencies:
       '@types/bson': 4.0.3
       '@types/node': 15.12.2
@@ -1262,7 +1264,7 @@ packages:
   /@types/umzug/2.3.0:
     resolution: {integrity: sha512-DUwMKFa+QmApO7I5zhqpc12n9+Mqm006+PTPKrqoZ4F38rk2+iWl8K5IjVvWemERajtkfkiBkHtH/YkOPcBQjA==}
     dependencies:
-      '@types/mongodb': 3.6.17
+      '@types/mongodb': 3.6.18
       '@types/sequelize': 4.28.9
     dev: false
 
@@ -1713,11 +1715,11 @@ packages:
     resolution: {integrity: sha512-g+4pzAw7PYSjARtLBoDq6DmcblX8i9KJHSCnyM5VDDFFifUaUT9iHbFpOF/KOizQ9f7QAqU2JH3Y6aXjzUMhVA==}
     dev: true
 
-  /@vueuse/core/5.0.2_vue@3.0.11:
-    resolution: {integrity: sha512-Sp9+7AL4Cg3Tx6I55WoH7zICGRlp6ZUF9NW3EU8SZTkryHm0afAjFfASMwlfV030JFeh45BdqafDOrenVmM9Cw==}
+  /@vueuse/core/5.0.3_vue@3.1.1:
+    resolution: {integrity: sha512-TMCL11EVMaj2Y5qdYosvuwA+i1aKrerFXs7fhNZiQiLCWxF8XsrNdxzoiaI2n12UcmSOXvd1xdyWs7Nss+p/Hg==}
     dependencies:
-      '@vueuse/shared': 5.0.2_vue@3.0.11
-      vue-demi: 0.9.1_vue@3.0.11
+      '@vueuse/shared': 5.0.3_vue@3.1.1
+      vue-demi: 0.9.1_vue@3.1.1
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -1731,11 +1733,11 @@ packages:
       vue: 3.0.11
     dev: false
 
-  /@vueuse/integrations/5.0.2_vue@3.0.11:
-    resolution: {integrity: sha512-jh9Ywz8zu2YmsSd1xeyXkuoA8fhNRkoUkzX4y/hSm2IQC2ydkD8Rk/aOvPAew5RiwndtWhXQYu5XrSMQRsYDYQ==}
+  /@vueuse/integrations/5.0.3_vue@3.1.1:
+    resolution: {integrity: sha512-c7dy7u4XTJeSfq/NnFotoUPrbkPJv/DbWwEYVW9YXXMdDvz1IxDdXUFrOu8ElM0qzGn4CuYg6Yr37uYR13MgXg==}
     dependencies:
-      '@vueuse/shared': 5.0.2_vue@3.0.11
-      vue-demi: 0.9.1_vue@3.0.11
+      '@vueuse/shared': 5.0.3_vue@3.1.1
+      vue-demi: 0.9.1_vue@3.1.1
     optionalDependencies:
       axios: 0.21.1
       focus-trap: 6.4.0
@@ -1749,8 +1751,8 @@ packages:
       - vue
     dev: false
 
-  /@vueuse/shared/5.0.2_vue@3.0.11:
-    resolution: {integrity: sha512-S1hRRmEdipjTD4DbXgPdw4ZZYebU/nDi75vNP3Ibpa1irW3NUNUKOT/TWnwRHLQvXquUtdvalhI8D9Db+czZJg==}
+  /@vueuse/shared/5.0.3_vue@3.1.1:
+    resolution: {integrity: sha512-aY93WPygr8H/4RB8YuOmAD83Y+faq7zwW10Kd9i0kD9zf5ysVP+32j09rF/mZVtGCa0CSM8ambPZMsEhCkRbwQ==}
     dependencies:
       vue-demi: 0.9.1_vue@3.0.11
     transitivePeerDependencies:
@@ -3106,8 +3108,8 @@ packages:
       tsconfig-paths: 3.9.0
     dev: true
 
-  /eslint-plugin-jsonc/1.2.1_eslint@7.28.0:
-    resolution: {integrity: sha512-m7o4gaNKojSwRJDNP0/7HK1vGfGgynX6DeTHTXhYGxWn2DB8E2RU5jeK95CYw1/mwej4ku2Xd9Tevn6WOlI6Dg==}
+  /eslint-plugin-jsonc/1.3.1_eslint@7.28.0:
+    resolution: {integrity: sha512-AtmLgwDiSyYxnXPsXCaXhZnQhzK/1+tEnZ3cMmsnAjE+163XolOkezcu1/2WAXZALel15c+MpSZlbjQU4t0PMw==}
     peerDependencies:
       eslint: ^5.0.0 || >=6.0.0
     dependencies:
@@ -4998,6 +5000,10 @@ packages:
       moment-timezone: 0.5.33
       please-upgrade-node: 3.2.0
     dev: false
+
+  /markdown-it-link-attributes/3.0.0:
+    resolution: {integrity: sha512-B34ySxVeo6MuEGSPCWyIYryuXINOvngNZL87Mp7YYfKIf6DcD837+lXA8mo6EBbauKsnGz22ZH0zsbOiQRWTNg==}
+    dev: true
 
   /markdown-it-prism/2.1.6:
     resolution: {integrity: sha512-fuo5lq36A6kzb882vCsvdyh4HUzpwdfNkAl92cr+MjUO0Q9foz/7MZ/RpKRBlZSwt86LmPlW7ubaEwf4C+0b3g==}
@@ -7767,9 +7773,25 @@ packages:
   /vue/3.0.11:
     resolution: {integrity: sha512-3/eUi4InQz8MPzruHYSTQPxtM3LdZ1/S/BvaU021zBnZi0laRUyH6pfuE4wtUeLvI8wmUNwj5wrZFvbHUXL9dw==}
     dependencies:
-      '@vue/compiler-dom': 3.0.11
-      '@vue/runtime-dom': 3.0.11
-      '@vue/shared': 3.0.11
+      '@vue/compiler-dom': 3.1.1
+      '@vue/runtime-dom': 3.1.1
+      '@vue/shared': 3.1.1
+
+  /vueuc/0.4.8_5d368cdb4e257fc7b689c2a0b2a33446:
+    resolution: {integrity: sha512-IXkShYfeKpYdcNl4hyviyrvovMgc7q452MuY+yQDI+1Hp05YfNz6tK+zpZ7FSXuTuyihMvileLUY3Ya6u8Hydw==}
+    peerDependencies:
+      '@css-render/vue3-ssr': ^0.15.3
+      vue: ^3.0.11
+    dependencies:
+      '@css-render/vue3-ssr': 0.15.4_vue@3.1.1
+      css-render: 0.15.4
+      evtd: 0.2.2
+      resize-observer-polyfill: 1.5.1
+      seemly: 0.3.1
+      vdirs: 0.1.4_vue@3.1.1
+      vooks: 0.2.6_vue@3.1.1
+      vue: 3.1.1
+    dev: false
 
   /wbuf/1.7.3:
     resolution: {integrity: sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==}
