@@ -144,6 +144,8 @@ declare module 'vue' {
     NInput: typeof import('naive-ui')['NInput']
     HeroiconsSolidSearch: typeof import('virtual:vite-icons/heroicons-solid/search')['default']
     NLayoutSider: typeof import('naive-ui')['NLayoutSider']
+    HeroiconsSolidMail: typeof import('virtual:vite-icons/heroicons-solid/mail')['default']
+    HeroiconsSolidPhone: typeof import('virtual:vite-icons/heroicons-solid/phone')['default']
   }
 }
 
