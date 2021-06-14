@@ -1,16 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { isMobile } from '~/logic';
+</script>
 
 <template>
-  <div class="bg-white flex h-screen overflow-hidden">
-    <SidebarMobile />
-    <SidebarDesktop />
-
-    <div class="flex flex-col flex-1 w-0 overflow-hidden">
-      <Header />
-
-      <main class="flex-1 relative overflow-y-auto focus:outline-none">
-        <router-view />
-      </main>
-    </div>
-  </div>
+  <n-layout :position="isMobile ? 'static' : 'absolute'" class="root-layout">
+    <!-- <SidebarMobile />
+    <SidebarDesktop /> -->
+    <SiteHeader />
+    <router-view />
+  </n-layout>
 </template>

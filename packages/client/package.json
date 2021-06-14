@@ -1,5 +1,6 @@
 {
   "name": "@diode/client",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "vite --port 3333 --open",
@@ -23,11 +24,12 @@
     "axios": "^0.21.1",
     "date-fns": "^2.22.1",
     "fuse.js": "^6.4.6",
+    "highlight.js": "^11.0.1",
     "naive-ui": "^2.11.8",
-    "nprogress": "^0.2.0",
     "prism-theme-vars": "^0.2.2",
     "v-calendar": "^3.0.0-alpha.4",
     "vfonts": "^0.1.0",
+    "vooks": "^0.2.6",
     "vue": "^3.1.1",
     "vue-hooks-form": "^0.2.2",
     "vue-i18n": "^9.1.6",
