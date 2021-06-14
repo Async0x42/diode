@@ -31,9 +31,9 @@ const iaDueDate = computed(() => props.rfc.impactAssessmentDueDate && format(par
         </router-link>
       </div>
     </td>
-    <TableCell>{{ props.rfc.status }}</TableCell>
-    <TableCell class="whitespace-nowrap">{{ iaDueDate }}</TableCell>
-    <TableCell>{{ props.rfc.description }}</TableCell>
+    <n-td>{{ props.rfc.status }}</n-td>
+    <n-td class="whitespace-nowrap">{{ iaDueDate }}</n-td>
+    <n-td>{{ props.rfc.description }}</n-td>
     <td class="flex font-medium text-right text-sm py-4 px-6 whitespace-nowrap items-center">
       <button
         v-if="props.rfc.rfcNumber"

@@ -26,10 +26,10 @@ const props = defineProps({
         </router-link>
       </div>
     </td>
-    <TableCell>{{ props.brd.priority }}</TableCell>
-    <TableCell>{{ props.brd.status }}</TableCell>
-    <TableCell>{{ n(props.brd.initialCost || 0, 'currency') }}</TableCell>
-    <TableCell>{{ n(props.brd.upkeepCost || 0, 'currency') }}</TableCell>
+    <n-td>{{ props.brd.priority }}</n-td>
+    <n-td>{{ props.brd.status }}</n-td>
+    <n-td>{{ n(props.brd.initialCost || 0, 'currency') }}</n-td>
+    <n-td>{{ n(props.brd.upkeepCost || 0, 'currency') }}</n-td>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
       <TableButtonEdit :to="{ name: 'brd-edit', params: { brdId: brd.id } }" />
     </td>

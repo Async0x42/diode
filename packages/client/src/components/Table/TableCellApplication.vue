@@ -9,12 +9,12 @@ const props = defineProps({
 </script>
 
 <template>
-  <TableCell>
+  <n-td>
     <router-link v-if="props.application" :to="{ name: 'application-view', params: { applicationId: props.application.id } }">
       <div class="text-sm text-gray-900 hover:bg-gray-200">
         <span v-if="props.application?.shortName" class="whitespace-nowrap"> [{{ props.application?.shortName }}] </span>
         {{ props.application?.name }}
       </div>
     </router-link>
-  </TableCell>
+  </n-td>
 </template>

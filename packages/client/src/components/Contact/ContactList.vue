@@ -21,9 +21,7 @@ const { results } = useRouteSearchWithData(props.contacts, [
 </script>
 
 <template>
-  <TableWrapper>
-    <TableView :headers="['Name', 'Title', 'Phone', 'Notes', '']">
-      <ContactListItem v-for="contact in results" :key="contact.id" :contact="contact" />
-    </TableView>
-  </TableWrapper>
+  <TableView :headers="['Name', 'Title', 'Phone', 'Notes', '']">
+    <ContactListItem v-for="contact in results" :key="contact.id" :contact="contact" />
+  </TableView>
 </template>

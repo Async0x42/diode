@@ -25,12 +25,10 @@ const totalInitialCost = computed(() => results.value.map((r) => r.initialCost |
 </script>
 
 <template>
-  <TableWrapper>
-    <TableView
-      :headers="['Title', 'Priority', 'Status', 'Init Cost', 'Upkeep', '']"
-      :footers="['', '', '', `${n(totalInitialCost, 'currency')}`, `${n(totalUpkeep, 'currency')}`, '']"
-    >
-      <BrdListItem v-for="brd in results" :key="brd.id" :brd="brd" />
-    </TableView>
-  </TableWrapper>
+  <TableView
+    :headers="['Title', 'Priority', 'Status', 'Init Cost', 'Upkeep', '']"
+    :footers="['', '', '', `${n(totalInitialCost, 'currency')}`, `${n(totalUpkeep, 'currency')}`, '']"
+  >
+    <BrdListItem v-for="brd in results" :key="brd.id" :brd="brd" />
+  </TableView>
 </template>

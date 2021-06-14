@@ -12,9 +12,7 @@ const { results } = useRouteSearchWithData(props.zones, ['name']);
 </script>
 
 <template>
-  <TableWrapper>
-    <TableView :headers="['Name', '']">
-      <ZoneListItem v-for="zone in results" :key="zone.id" :zone="zone" />
-    </TableView>
-  </TableWrapper>
+  <TableView :headers="['Name', '']">
+    <ZoneListItem v-for="zone in results" :key="zone.id" :zone="zone" />
+  </TableView>
 </template>

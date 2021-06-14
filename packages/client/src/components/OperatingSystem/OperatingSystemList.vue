@@ -12,9 +12,7 @@ const { results } = useRouteSearchWithData(props.operatingSystems, ['name']);
 </script>
 
 <template>
-  <TableWrapper>
-    <TableView :headers="['Name', '']">
-      <OperatingSystemListItem v-for="os in results" :key="os.id" :operating-system="os" />
-    </TableView>
-  </TableWrapper>
+  <TableView :headers="['Name', '']">
+    <OperatingSystemListItem v-for="os in results" :key="os.id" :operating-system="os" />
+  </TableView>
 </template>

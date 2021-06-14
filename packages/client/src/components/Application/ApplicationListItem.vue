@@ -22,7 +22,7 @@ const props = defineProps({
       </div>
     </td>
     <TableCellServers :servers="props.application.servers" />
-    <TableCell>{{ props.application.description }}</TableCell>
+    <n-td>{{ props.application.description }}</n-td>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
       <TableButtonEdit :to="{ name: 'application-edit', params: { applicationId: application.id } }" />
     </td>

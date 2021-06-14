@@ -33,13 +33,13 @@ const onPhoneContact = () => {
         </router-link>
       </div>
     </td>
-    <TableCell>
+    <n-td>
       <div class="text-gray-900 whitespace-nowrap">{{ props.contactGroup.title }}</div>
       <div class="text-gray-500">{{ props.contactGroup.department }}</div>
       <div class="text-gray-300">{{ props.contactGroup.organization }}</div>
-    </TableCell>
-    <TableCell class="whitespace-nowrap">{{ props.contactGroup.phone }}</TableCell>
-    <TableCell>{{ props.contactGroup.notes }}</TableCell>
+    </n-td>
+    <n-td class="whitespace-nowrap">{{ props.contactGroup.phone }}</n-td>
+    <n-td>{{ props.contactGroup.notes }}</n-td>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
       <button
         v-if="props.contactGroup.email"

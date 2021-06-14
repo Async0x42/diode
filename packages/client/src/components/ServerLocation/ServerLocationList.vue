@@ -12,9 +12,7 @@ const { results } = useRouteSearchWithData(props.serverLocations, ['name']);
 </script>
 
 <template>
-  <TableWrapper>
-    <TableView :headers="['Name', '']">
-      <ServerLocationListItem v-for="location in results" :key="location.id" :server-location="location" />
-    </TableView>
-  </TableWrapper>
+  <TableView :headers="['Name', '']">
+    <ServerLocationListItem v-for="location in results" :key="location.id" :server-location="location" />
+  </TableView>
 </template>

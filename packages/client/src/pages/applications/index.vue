@@ -2,12 +2,19 @@
 import { useAxios } from '@vueuse/integrations';
 import type { IApplication } from '@diode/common';
 const { data, error, isFinished } = useAxios<IApplication[]>('/api/applications');
+
+const { data } = axios.get 
 </script>
 
 <template>
-  <ApplicationList v-if="data && isFinished && data" :applications="data" />
-  <LoadingError v-else-if="error" :error="error" />
-  <LoadingList v-else />
+  <n-data-table
+    ref="table"
+    :loading="!isFinished"
+    :columns="columns"
+    :data="data"
+    :pagination="pagination"
+    max-height="100vh"
+  />
 </template>
 
 <route lang="yaml">

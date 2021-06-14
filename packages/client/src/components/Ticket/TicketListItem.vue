@@ -25,11 +25,11 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
         </router-link>
       </div>
     </td>
-    <TableCell>{{ props.ticket.status }}</TableCell>
-    <TableCell>{{ props.ticket.details }}</TableCell>
+    <n-td>{{ props.ticket.status }}</n-td>
+    <n-td>{{ props.ticket.details }}</n-td>
     <TableCellApplications :applications="props.ticket.applications" />
     <TableCellServers :servers="props.ticket.servers" />
-    <TableCell class="whitespace-nowrap">{{ formatDate(props.ticket.createdOn) }}</TableCell>
+    <n-td class="whitespace-nowrap">{{ formatDate(props.ticket.createdOn) }}</n-td>
     <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
       <TableButtonEdit :to="{ name: 'ticket-edit', params: { ticketId: ticket.id } }" />
     </td>

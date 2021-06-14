@@ -29,9 +29,7 @@ const { results } = useRouteSearchWithData(props.rfcs, [
 </script>
 
 <template>
-  <TableWrapper>
-    <TableView :headers="['Application', 'Title', 'Status', 'IA Due Date', 'Description', '']">
-      <RfcListItem v-for="rfc in results" :key="rfc.id" :rfc="rfc" />
-    </TableView>
-  </TableWrapper>
+  <TableView :headers="['Application', 'Title', 'Status', 'IA Due Date', 'Description', '']">
+    <RfcListItem v-for="rfc in results" :key="rfc.id" :rfc="rfc" />
+  </TableView>
 </template>
