@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite-plugin-windicss';
-import defaultTheme from 'windicss/defaultTheme';
 import colors from 'windicss/colors';
 import forms from 'windicss/plugin/forms';
 import typography from 'windicss/plugin/typography';
@@ -46,65 +45,5 @@ export default defineConfig({
       sans: ['"Inter var"', ...defaultTheme.fontFamily.sans],
     },
   },
-  purge: {
-    options: {
-      safelist: [
-        // backgrounds for selection
-        /^bg-light/,
-        /^bg-dark/,
-        /^bg-amber/,
-        /^bg-black/,
-        /^bg-blue/,
-        /^bg-blue-gray/,
-        /^bg-cool-gray/,
-        /^bg-cyan/,
-        /^bg-emerald/,
-        /^bg-fuchsia/,
-        /^bg-gray/,
-        /^bg-green/,
-        /^bg-indigo/,
-        /^bg-light-blue/,
-        /^bg-lime/,
-        /^bg-orange/,
-        /^bg-pink/,
-        /^bg-purple/,
-        /^bg-red/,
-        /^bg-rose/,
-        /^bg-teal/,
-        /^bg-true-gray/,
-        /^bg-violet/,
-        /^bg-warm-gray/,
-        /^bg-white/,
-        /^bg-yellow/,
-
-        // borders for selection
-        /^border-light/,
-        /^border-dark/,
-        /^border-amber/,
-        /^border-black/,
-        /^border-blue/,
-        /^border-blue-gray/,
-        /^border-cool-gray/,
-        /^border-cyan/,
-        /^border-emerald/,
-        /^border-fuchsia/,
-        /^border-gray/,
-        /^border-green/,
-        /^border-indigo/,
-        /^border-light-blue/,
-        /^border-lime/,
-        /^border-orange/,
-        /^border-pink/,
-        /^border-purple/,
-        /^border-red/,
-        /^border-rose/,
-        /^border-teal/,
-        /^border-true-gray/,
-        /^border-violet/,
-        /^border-warm-gray/,
-        /^border-white/,
-        /^border-yellow/,
-      ],
-    },
   },
 });

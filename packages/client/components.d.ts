@@ -140,6 +140,10 @@ declare module 'vue' {
     IonMenuOutline: typeof import('virtual:vite-icons/ion/menu-outline')['default']
     HeroiconsSolidSelector: typeof import('virtual:vite-icons/heroicons-solid/selector')['default']
     HeroiconsSolidCheck: typeof import('virtual:vite-icons/heroicons-solid/check')['default']
+    NAutoComplete: typeof import('naive-ui')['NAutoComplete']
+    NInput: typeof import('naive-ui')['NInput']
+    HeroiconsSolidSearch: typeof import('virtual:vite-icons/heroicons-solid/search')['default']
+    NLayoutSider: typeof import('naive-ui')['NLayoutSider']
   }
 }
 

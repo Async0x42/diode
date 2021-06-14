@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
-import { isMobile, headerNavigation } from '~/logic';
+import { isMobile } from '~/logic';
 const routesForCreate = [
   'calendar',
   'brds',
@@ -21,7 +21,7 @@ const routesForCreate = [
   'tickets',
   'zones',
 ];
-// const routesForSearch = [...routesForCreate];
+const routesForSearch = [...routesForCreate];
 
 const routesForEdit = [
   'calendar-item-view',
@@ -54,9 +54,6 @@ const style = computed(() => {
         'grid-template-columns': 'calc(272px - var(--side-padding)) 1fr auto',
       };
 });
-
-const router = useRouter();
-const onMenuUpdate = (key: any) => router.push({ name: key });
 </script>
 
 <template>
@@ -66,9 +63,11 @@ const onMenuUpdate = (key: any) => router.push({ name: key });
       <span>DIODE</span>
     </n-text>
     <div style="display: flex; align-items: center">
-      <div class="nav-menu">
-        <n-menu mode="horizontal" :options="headerNavigation" @update:value="onMenuUpdate" />
-      </div>
+      <SiteHeaderSearch
+        v-if="$route.name != null && routesForSearch.includes($route.name.toString())"
+        :key="$route.path"
+        style="width: 216px; margin-left: 24px"
+      />
     </div>
     <div class="nav-end">
       <router-link
@@ -88,16 +87,9 @@ const onMenuUpdate = (key: any) => router.push({ name: key });
         <n-button @click="navigate"> Edit </n-button>
       </router-link>
     </div>
-    <!-- <button
-      type="button"
-      class="border-r border-gray-200 px-4 text-gray-500 lg:hidden focus:outline-none focus:ring-inset focus:ring-2 focus:ring-gray-900"
-      @click="toggleSidebar()"
-    >
-      <span class="sr-only">Open sidebar</span>
-      <heroicons-outline-menu-alt-2 class="h-6 w-6" aria-hidden="true" />
-    </button>
+    <!--
     <div class="flex flex-1 px-4 justify-between">
-      <SiteHeaderSearch v-if="$route.name != null && routesForSearch.includes($route.name.toString())" :key="$route.path" class="flex flex-1" />
+      
       <div v-else class="flex flex-1"></div>
 
       <div class="flex ml-4 items-center lg:ml-6">
