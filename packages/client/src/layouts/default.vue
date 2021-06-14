@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useMemo } from 'vooks';
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { navigation, isMobile, isTablet } from '~/logic';
@@ -6,21 +7,22 @@ import { navigation, isMobile, isTablet } from '~/logic';
 const route = useRoute();
 const router = useRouter();
 const activeRouteNameOrPath = computed(() => (route.name?.valueOf() as string) || route.path);
+const showSider = useMemo(() => true);
 
 const handleMenuUpdateValue = (key: any) => router.push({ name: key });
 </script>
 
 <template>
-  <n-layout :position="isMobile || isTablet ? 'static' : 'absolute'" class="root-layout">
+  <n-layout position="absolute" class="root-layout">
     <SiteHeader />
     <!-- <SidebarMobile />
     <SidebarDesktop /> -->
     <n-layout
       id="doc-layout"
       :has-sider="true"
-      :position="isMobile || isTablet ? 'static' : 'absolute'"
+      position="absolute"
       :style="{
-        top: isMobile || isTablet ? '' : 'var(--header-height)',
+        top: 'var(--header-height)',
       }"
     >
       <n-layout-sider
@@ -35,7 +37,7 @@ const handleMenuUpdateValue = (key: any) => router.push({ name: key });
       </n-layout-sider>
       <n-layout
         :native-scrollbar="false"
-        position="static"
+        :position="isMobile || showSider ? 'static' : 'absolute'"
         content-style="min-height: calc(100vh - var(--header-height)); display: flex; flex-direction: column;"
       >
         <router-view />
