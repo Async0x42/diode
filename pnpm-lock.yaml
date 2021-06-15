@@ -33,7 +33,7 @@ importers:
       https-localhost: ^4.6.5
       markdown-it-link-attributes: ^3.0.0
       markdown-it-prism: ^2.1.6
-      naive-ui: ^2.11.9
+      naive-ui: ^2.11.11
       npm-run-all: ^4.1.5
       prettier: ^2.3.1
       prism-theme-vars: ^0.2.2
@@ -46,7 +46,7 @@ importers:
       vite-plugin-md: ^0.6.7
       vite-plugin-pages: ^0.13.1
       vite-plugin-vue-layouts: ^0.3.1
-      vite-plugin-windicss: ^1.0.3
+      vite-plugin-windicss: ^1.0.4
       vooks: ^0.2.6
       vue: ^3.1.1
       vue-hooks-form: ^0.2.2
@@ -65,7 +65,7 @@ importers:
       date-fns: 2.22.1
       fuse.js: 6.4.6
       highlight.js: 11.0.1
-      naive-ui: 2.11.9
+      naive-ui: 2.11.11_vue-router@4.0.8+vue@3.1.1
       prism-theme-vars: 0.2.2
       v-calendar: 3.0.0-alpha.4_@popperjs+core@2.9.2+vue@3.1.1
       vfonts: 0.1.0
@@ -99,7 +99,7 @@ importers:
       vite-plugin-md: 0.6.7_vite@2.3.7
       vite-plugin-pages: 0.13.1_vite@2.3.7+vue@3.1.1
       vite-plugin-vue-layouts: 0.3.1_vite@2.3.7
-      vite-plugin-windicss: 1.0.3_vite@2.3.7
+      vite-plugin-windicss: 1.0.4_vite@2.3.7
       vue-tsc: 0.1.7_vue@3.1.1
 
   packages/common:
@@ -1696,8 +1696,8 @@ packages:
       - vue
     dev: false
 
-  /@windicss/plugin-utils/1.0.3:
-    resolution: {integrity: sha512-SBYjmWBO+dOqxJgyyOAETOuMdcugvVgZYQc3rb7KtcTW5u9UkFXtiuGdoq8cWyFpSkn46gmjCb4WNbY3kEIVnQ==}
+  /@windicss/plugin-utils/1.0.4:
+    resolution: {integrity: sha512-1Eqw+/lhk3vqW8vgttmLDbzE6YIFL047Kuy/v6jhQd3w7RG+fPbQE6YwnqJerPYvCcRwujQ9ABrLr0+cS+i0tQ==}
     dependencies:
       '@antfu/utils': 0.1.7
       debug: 4.3.2
@@ -2230,8 +2230,8 @@ packages:
       is-regex: 1.1.3
     dev: true
 
-  /chokidar/3.5.1:
-    resolution: {integrity: sha512-9+s+Od+W0VJJzawDma/gvBNQqkTiqYTWLuZoyAsivsI4AaWTCzHG06/TMjsf1cYe9Cb97UCEhjz7HvnPk2p/tw==}
+  /chokidar/3.5.2:
+    resolution: {integrity: sha512-ekGhOnNVPgT77r4K/U3GDhu+FQ2S8TnK/s2KbIGXi0SZWuwkZ2QNyfWdZW+TVfn84DpEP7rLeCt2UI6bJ8GwbQ==}
     engines: {node: '>= 8.10.0'}
     dependencies:
       anymatch: 3.1.2
@@ -2240,7 +2240,7 @@ packages:
       is-binary-path: 2.1.0
       is-glob: 4.0.1
       normalize-path: 3.0.0
-      readdirp: 3.5.0
+      readdirp: 3.6.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
@@ -5231,8 +5231,11 @@ packages:
       sqlstring: 2.3.2
     dev: false
 
-  /naive-ui/2.11.9:
-    resolution: {integrity: sha512-FJ+vMep1iEUtX1RoAAs26G7WoHM0c4u+as1TVdPfDsowzS0TtadVSxNt3+0QRnn2t96amyzHwZFgAZz+zgwgkg==}
+  /naive-ui/2.11.11_vue-router@4.0.8+vue@3.1.1:
+    resolution: {integrity: sha512-rXepBKkdsdM6UkEuNbTPkmup+EbWY5i3kZOb54PSkc97o+DmeCTXY9UOTZYXDHks2522sA6T5bgLA/RWmJSGpA==}
+    peerDependencies:
+      vue: ^3.0.0
+      vue-router: ^4.0.0
     dependencies:
       '@css-render/plugin-bem': 0.15.4
       '@css-render/vue3-ssr': 0.15.4_vue@3.1.1
@@ -6184,8 +6187,8 @@ packages:
       util-deprecate: 1.0.2
     dev: true
 
-  /readdirp/3.5.0:
-    resolution: {integrity: sha512-cMhu7c/8rdhkHXWsY+osBhfSy0JikwpHK/5+imo+LpeasTF8ouErHrlYkwT0++njiyuDvc7OFY5T3ukvZ8qmFQ==}
+  /readdirp/3.6.0:
+    resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.0
@@ -7050,7 +7053,7 @@ packages:
       node-notifier:
         optional: true
     dependencies:
-      chokidar: 3.5.1
+      chokidar: 3.5.2
       dateformat: 1.0.12
       dynamic-dedupe: 0.3.0
       minimist: 1.2.5
@@ -7544,7 +7547,7 @@ packages:
     peerDependencies:
       vite: ^2.0.0-beta.69
     dependencies:
-      chokidar: 3.5.1
+      chokidar: 3.5.2
       debug: 4.3.2
       fast-glob: 3.2.5
       magic-string: 0.25.7
@@ -7616,12 +7619,12 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-windicss/1.0.3_vite@2.3.7:
-    resolution: {integrity: sha512-y9pudcMajdI88PTs49qGftlfAvsLUUhK2Eig+xn5sgxPCbAc3Rj5phXJkRzGDqfmEzGwbpF6JwjmiGmZkm8V+g==}
+  /vite-plugin-windicss/1.0.4_vite@2.3.7:
+    resolution: {integrity: sha512-3foNePu1+DHBrCMZhKf84rNH7pgWUoN53h1cKrnLBI4UruCCBmVvZ8W2Kr5cNGgh/ME/nslON2RQPoHxE+F0gA==}
     peerDependencies:
       vite: ^2.0.1
     dependencies:
-      '@windicss/plugin-utils': 1.0.3
+      '@windicss/plugin-utils': 1.0.4
       chalk: 4.1.1
       debug: 4.3.2
       vite: 2.3.7
