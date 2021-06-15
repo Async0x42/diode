@@ -31,6 +31,7 @@ importers:
       fuse.js: ^6.4.6
       highlight.js: ^11.0.1
       https-localhost: ^4.6.5
+      lodash-es: ^4.17.21
       markdown-it-link-attributes: ^3.0.0
       markdown-it-prism: ^2.1.6
       naive-ui: ^2.11.11
@@ -65,6 +66,7 @@ importers:
       date-fns: 2.22.1
       fuse.js: 6.4.6
       highlight.js: 11.0.1
+      lodash-es: 4.17.21
       naive-ui: 2.11.11_vue-router@4.0.8+vue@3.1.1
       prism-theme-vars: 0.2.2
       v-calendar: 3.0.0-alpha.4_@popperjs+core@2.9.2+vue@3.1.1

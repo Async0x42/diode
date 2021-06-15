@@ -25,6 +25,7 @@
     "date-fns": "^2.22.1",
     "fuse.js": "^6.4.6",
     "highlight.js": "^11.0.1",
+    "lodash-es": "^4.17.21",
     "naive-ui": "^2.11.11",
     "prism-theme-vars": "^0.2.2",
     "v-calendar": "^3.0.0-alpha.4",
