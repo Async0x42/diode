@@ -11,14 +11,14 @@ const props = defineProps({
 <template>
   <n-tr>
     <n-td>
-      <router-link :to="{ name: 'application-view', params: { applicationId: application.id } }">
+      <router-link class="group" :to="{ name: 'application-view', params: { applicationId: application.id } }">
         <div>
-          <n-text depth="1">{{ props.application.name }}</n-text>
+          <n-text depth="1" class="group-hover:text-teal-300">{{ props.application.name }}</n-text>
           <br />
-          <n-text depth="2" class="whitespace-nowrap">{{ props.application.shortName }}</n-text>
+          <n-text depth="2" class="group-hover:text-teal-500 whitespace-nowrap">{{ props.application.shortName }}</n-text>
           <br />
           <template v-for="fqdn in props.application.fqdns" :key="fqdn.id">
-            <n-text depth="3" class="whitespace-nowrap">{{ fqdn.name }}</n-text>
+            <n-text depth="3" class="group-hover:text-teal-700 whitespace-nowrap">{{ fqdn.name }}</n-text>
             <br />
           </template>
         </div>
@@ -26,7 +26,7 @@ const props = defineProps({
     </n-td>
     <TableCellServers :servers="props.application.servers" />
     <n-td>{{ props.application.description }}</n-td>
-    <n-td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
+    <n-td>
       <TableButtonEdit :to="{ name: 'application-edit', params: { applicationId: application.id } }" />
     </n-td>
   </n-tr>
