@@ -45,3 +45,14 @@ export const navigation: INav[] = [
     ),
   },
 ];
+
+const renderItemIcons = (navItems: INav[]) => {
+  navItems.forEach((n) => {
+    n.icon && (n.icon = renderIcon(n.icon));
+    if (n.children && n.children.length > 0) {
+      renderItemIcons(n.children);
+    }
+  });
+};
+
+renderItemIcons(navigation);
