@@ -57,7 +57,11 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
           <dt class="font-medium text-sm text-gray-500">Tickets</dt>
           <dd v-for="ticket in props.server.tickets" :key="ticket.id" class="mt-1 text-sm text-gray-900">
             <div>
-              <template> [{{ formatDate(ticket.startDate) }} - {{ formatDate(ticket.endDate) }}] </template>
+              <template v-if="ticket.startDate || ticket.endDate">
+                [{{ formatDate(ticket.startDate) }}
+                <template v-if="ticket.startDate && ticket.endDate"> - </template>
+                {{ formatDate(ticket.endDate) }}]
+              </template>
               {{ ticket.name }}
             </div>
             <div class="mt-1">{{ ticket.details }}</div>
