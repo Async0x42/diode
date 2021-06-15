@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite-plugin-windicss';
+import defaultTheme from 'windicss/defaultTheme';
 import colors from 'windicss/colors';
 import forms from 'windicss/plugin/forms';
 import typography from 'windicss/plugin/typography';
@@ -44,6 +45,5 @@ export default defineConfig({
     fontFamily: {
       sans: ['"Inter var"', ...defaultTheme.fontFamily.sans],
     },
-  },
   },
 });
