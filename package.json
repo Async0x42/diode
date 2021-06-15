@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "pnpm recursive run dev",
     "build": "pnpm recursive run build",
-    "lint": "pnpm recursive run lint"
+    "lint": "pnpm recursive run lint",
+    "lint:all:eslint": "pnpm recursive run lint:eslint"
   }
 }
