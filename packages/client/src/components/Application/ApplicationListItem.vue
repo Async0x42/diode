@@ -13,14 +13,11 @@ const props = defineProps({
     <n-td>
       <router-link class="group" :to="{ name: 'application-view', params: { applicationId: application.id } }">
         <div>
-          <n-text depth="1" class="group-hover:text-teal-300">{{ props.application.name }}</n-text>
-          <br />
-          <n-text depth="2" class="group-hover:text-teal-500 whitespace-nowrap">{{ props.application.shortName }}</n-text>
-          <br />
-          <template v-for="fqdn in props.application.fqdns" :key="fqdn.id">
-            <n-text depth="3" class="group-hover:text-teal-700 whitespace-nowrap">{{ fqdn.name }}</n-text>
-            <br />
-          </template>
+          <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.application.name }}</n-text>
+          <n-text tag="div" depth="2" class="whitespace-nowrap group-hover:text-teal-500">{{ props.application.shortName }}</n-text>
+          <n-text v-for="fqdn in props.application.fqdns" :key="fqdn.id" tag="div" depth="3" class="whitespace-nowrap group-hover:text-teal-700">{{
+            fqdn.name
+          }}</n-text>
         </div>
       </router-link>
     </n-td>
