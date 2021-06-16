@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, ref } from 'vue';
 import type { IApplication } from '@diode/common';
 import type { PropType } from 'vue';
 import { useFormActions } from '~/logic';
@@ -8,19 +8,18 @@ const props = defineProps({
   application: { type: Object as PropType<IApplication> },
 });
 
-const { useField, onSubmit, onDelete } = useFormActions<IApplication>('/api/applications', 'applications', props.application);
+const { onSubmit, onDelete } = useFormActions<IApplication>('/api/applications', 'applications', props.application);
 
-const name = useField('name', {
-  rule: { required: true },
+const model = ref({
+  name: null as any,
+  shortName: null as any,
+  description: null as any,
+  fqdns: null as any,
+  servers: null as any,
+  brds: null as any,
+  rfcs: null as any,
+  sslCertificates: null as any,
 });
-
-const shortName = useField('shortName');
-const description = useField('description');
-const fqdns = useField('fqdns');
-const servers = useField('servers');
-const brds = useField('brds');
-const rfcs = useField('rfcs');
-const sslCertificates = useField('sslCertificates');
 </script>
 
 <template>
@@ -32,32 +31,32 @@ const sslCertificates = useField('sslCertificates');
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="Short Name" path="shortName">
-        <n-input v-model="shortName" placeholder="" />
+        <n-input v-model="model.shortName" placeholder="" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="Servers" path="servers">
-        <FormServerMultiSelect v-model="servers.value" />
+        <FormServerMultiSelect v-model="model.servers" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="FQDNs" path="fqdns">
-        <FormFqdnMultiSelect v-model="fqdns.value" />
+        <FormFqdnMultiSelect v-model="model.fqdns" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="BRDs" path="brds">
-        <FormBrdMultiSelect v-model="brds.value" />
+        <FormBrdMultiSelect v-model="model.brds" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="RFCs" path="rfcs">
-        <FormRfcMultiSelect v-model="rfcs.value" />
+        <FormRfcMultiSelect v-model="model.rfcs" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="SSL Certificates" path="sslCertificates">
-        <FormSslCertificateMultiSelect v-model="sslCertificates.value" />
+        <FormSslCertificateMultiSelect v-model="model.sslCertificates" />
       </n-form-item-gi>
 
-      <n-form-item-gi :span="24" label="Description">
+      <n-form-item-gi :span="24" label="Description" path="description">
         <n-input
-          v-model="description"
+          v-model="model.description"
           type="textarea"
           placeholder=""
           :autosize="{
