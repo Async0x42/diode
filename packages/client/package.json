@@ -28,11 +28,9 @@
     "lodash-es": "^4.17.21",
     "naive-ui": "^2.11.11",
     "prism-theme-vars": "^0.2.2",
-    "v-calendar": "^3.0.0-alpha.4",
     "vfonts": "^0.1.0",
     "vooks": "^0.2.6",
     "vue": "^3.1.1",
-    "vue-hooks-form": "^0.2.2",
     "vue-i18n": "^9.1.6",
     "vue-router": "^4.0.8"
   },
