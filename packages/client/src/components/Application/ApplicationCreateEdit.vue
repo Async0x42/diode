@@ -35,11 +35,25 @@ const sslCertificates = useField('sslCertificates');
         <n-input v-model="shortName" placeholder="" />
       </n-form-item-gi>
 
-      <FormServerMultiSelect label="Servers" :field="servers" name="server" :span="12" />
-      <FormFqdnMultiSelect label="FQDNs" :field="fqdns" name="fqdns" :span="12" />
-      <FormBrdMultiSelect label="BRDs" :field="brds" name="brds" :span="12" />
-      <FormRfcMultiSelect label="RFCs" :field="rfcs" name="rfc" :span="12" />
-      <FormSslCertificateMultiSelect label="SSL Certificates" :field="sslCertificates" name="sslCertificates" :span="12" />
+      <n-form-item-gi :span="12" label="Servers" path="servers">
+        <FormServerMultiSelect v-model="servers.value" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="FQDNs" path="fqdns">
+        <FormFqdnMultiSelect v-model="fqdns.value" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="BRDs" path="brds">
+        <FormBrdMultiSelect v-model="brds.value" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="RFCs" path="rfcs">
+        <FormRfcMultiSelect v-model="rfcs.value" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="SSL Certificates" path="sslCertificates">
+        <FormSslCertificateMultiSelect v-model="sslCertificates.value" />
+      </n-form-item-gi>
 
       <n-form-item-gi :span="24" label="Description">
         <n-input
