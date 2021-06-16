@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { defineProps, ref } from 'vue';
+import { defineProps, ref, onMounted } from 'vue';
 import type { IApplication } from '@diode/common';
 import type { PropType } from 'vue';
+import { useMessage } from 'naive-ui';
 import { useFormActions } from '~/logic';
+const message = useMessage();
 
 const props = defineProps({
   application: { type: Object as PropType<IApplication> },
@@ -10,7 +12,8 @@ const props = defineProps({
 
 const { onSubmit, onDelete } = useFormActions<IApplication>('/api/applications', 'applications', props.application);
 
-const model = ref({
+// TODO: maybe fqdns interface etc should be listed as number[], overridden on the backend interface
+const model: any = ref({
   name: null as any,
   shortName: null as any,
   description: null as any,
@@ -20,11 +23,45 @@ const model = ref({
   rfcs: null as any,
   sslCertificates: null as any,
 });
+
+const rules = ref({
+  name: [
+    {
+      required: true,
+      validator(value: string) {
+        if (!value || value === '') {
+          return new Error('Name is required');
+        }
+        return true;
+      },
+      trigger: ['input', 'blur'],
+    },
+  ],
+});
+
+onMounted(() => {
+  if (props.application != null) {
+    model.value = props.application;
+  }
+});
+
+const formRef = ref(null as any);
+const handleValidateClick = (e: Event) => {
+  e.preventDefault();
+  formRef.value.validate((errors: any) => {
+    if (!errors) {
+      message.success('Valid');
+    } else {
+      console.log(errors);
+      message.error('Invalid');
+    }
+  });
+};
 </script>
 
 <template>
   <n-page-header class="mx-8 mt-6" title="Application Information" />
-  <n-form class="mx-12" @submit="onSubmit">
+  <n-form ref="formRef" :rules="rules" :model="model" class="mx-12">
     <n-grid :span="12" :x-gap="12">
       <n-form-item-gi :span="12" label="Name" path="name">
         <n-input v-model="name" placeholder="" />
@@ -70,7 +107,7 @@ const model = ref({
         <FormButtonDelete v-if="props.application" class="mr-3" @click="onDelete()" />
         <div class="flex"></div>
         <FormButtonCancel @click="$router.back()" />
-        <FormButtonOk class="ml-3" />
+        <FormButtonOk class="ml-3" @click="handleValidateClick" />
       </div>
     </n-grid>
   </n-form>
