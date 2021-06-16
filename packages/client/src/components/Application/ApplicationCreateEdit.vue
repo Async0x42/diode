@@ -26,27 +26,39 @@ const sslCertificates = useField('sslCertificates');
 <template>
   <n-page-header class="mx-8 mt-6" title="Application Information" />
   <n-form class="mx-12" @submit="onSubmit">
-    <div class="divide-y space-y-8 divide-gray-200">
-      <div class="mt-6 grid gap-y-6 gap-x-4 grid-cols-1 sm:grid-cols-6">
-        <n-input label="Name" :field="name" name="name" class="sm:col-span-3" />
-        <n-input label="Short Name" :field="shortName" name="shortName" class="sm:col-span-3" />
+    <n-grid :span="12" :x-gap="12">
+      <n-form-item-gi :span="12" label="Name" path="name">
+        <n-input v-model="name" placeholder="" />
+      </n-form-item-gi>
 
-        <FormServerMultiSelect label="Servers" :field="servers" name="server" class="sm:col-span-3" />
-        <FormFqdnMultiSelect label="FQDNs" :field="fqdns" name="fqdns" class="sm:col-span-3" />
-        <FormBrdMultiSelect label="BRDs" :field="brds" name="brds" class="sm:col-span-3" />
-        <FormRfcMultiSelect label="RFCs" :field="rfcs" name="rfc" class="sm:col-span-3" />
-        <FormSslCertificateMultiSelect label="SSL Certificates" :field="sslCertificates" name="sslCertificates" class="sm:col-span-3" />
-        <FormTextArea label="Description" :field="description" name="description" class="sm:col-span-6" :rows="6" />
-      </div>
-    </div>
+      <n-form-item-gi :span="12" label="Short Name" path="shortName">
+        <n-input v-model="shortName" placeholder="" />
+      </n-form-item-gi>
 
-    <div class="pt-5">
-      <div class="flex justify-end">
+      <FormServerMultiSelect label="Servers" :field="servers" name="server" :span="12" />
+      <FormFqdnMultiSelect label="FQDNs" :field="fqdns" name="fqdns" :span="12" />
+      <FormBrdMultiSelect label="BRDs" :field="brds" name="brds" :span="12" />
+      <FormRfcMultiSelect label="RFCs" :field="rfcs" name="rfc" :span="12" />
+      <FormSslCertificateMultiSelect label="SSL Certificates" :field="sslCertificates" name="sslCertificates" :span="12" />
+
+      <n-form-item-gi :span="24" label="Description">
+        <n-input
+          v-model="description"
+          type="textarea"
+          placeholder=""
+          :autosize="{
+            minRows: 3,
+            maxRows: 5,
+          }"
+        />
+      </n-form-item-gi>
+
+      <div class="flex">
         <FormButtonDelete v-if="props.application" class="mr-3" @click="onDelete()" />
-        <div class="flex-1"></div>
+        <div class="flex"></div>
         <FormButtonCancel @click="$router.back()" />
         <FormButtonOk class="ml-3" />
       </div>
-    </div>
+    </n-grid>
   </n-form>
 </template>

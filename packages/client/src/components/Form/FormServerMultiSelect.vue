@@ -1,32 +1,21 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, defineEmit, ref, watch } from 'vue';
 import type { PropType } from 'vue';
 import { useAxios } from '@vueuse/integrations';
-import type { IFqdn } from '@diode/common';
-import type { FormField } from '~/types';
+import type { IServer } from '@diode/common';
 
 const props = defineProps({
   label: { type: String, required: true },
-  name: { type: String, required: true },
-  field: { type: Object as PropType<FormField>, required: true },
+  modelValue: { type: Array as PropType<number[]>, default: () => [] },
 });
 
-const { data, error, isFinished } = useAxios<IFqdn[]>('/api/servers');
+const { data, error } = useAxios<IServer[]>('/api/servers');
+const selected = ref<number[]>(props.modelValue);
+const emit = defineEmit(['update:modelValue']);
+watch(selected, (newVal) => emit('update:modelValue', selected.value));
 </script>
 
 <template>
-  <div>
-    <FormMultiSelect
-      v-if="data && isFinished"
-      :id="props.name"
-      :ref="props.field.ref"
-      v-model="props.field.value"
-      :label="props.label"
-      :options="data.map((d) => ({ id: d.id, name: d.name }))"
-      :name="props.name"
-    />
-    <LoadingError v-else-if="error" :error="error" />
-    <LoadingList v-else />
-    <slot name="note"></slot>
-  </div>
+  <LoadingError v-if="error" :error="error" />
+  <FormMultiSelect v-else v-model="selected" :label="props.label" :options="data?.map((d) => ({ label: d.name, value: d.id }))" />
 </template>

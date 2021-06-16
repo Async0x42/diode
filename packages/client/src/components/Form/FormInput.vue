@@ -5,27 +5,14 @@ import type { FormField } from '~/types';
 
 const props = defineProps({
   label: { type: String, required: true },
-  name: { type: String, required: true },
-  type: { type: String, default: 'text' },
-  autocomplete: { type: String },
   field: { type: Object as PropType<FormField>, required: true },
+  placeholder: { type: String, default: '' },
+  span: { type: Number },
 });
 </script>
 
 <template>
-  <div>
-    <label :for="props.name" class="font-medium text-sm text-gray-700 block"> {{ props.label }} </label>
-    <div class="mt-1">
-      <input
-        :id="props.name"
-        :ref="props.field.ref"
-        v-model="props.field.value"
-        :type="props.type"
-        :name="props.name"
-        :autocomplete="props.autocomplete"
-        class="rounded-md border-gray-300 shadow-sm w-full block sm:text-sm focus:border-indigo-500 focus:ring-indigo-500"
-      />
-    </div>
-    <slot name="note"></slot>
-  </div>
+  <n-form-item-gi :span="span" :label="props.label">
+    <n-input v-model="props.field.value" :placeholder="props.placeholder" />
+  </n-form-item-gi>
 </template>
