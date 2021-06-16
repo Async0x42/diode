@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { defineProps, ref, onMounted } from 'vue';
+import { defineProps, ref } from 'vue';
 import type { IApplication } from '@diode/common';
 import type { PropType } from 'vue';
 import { useMessage } from 'naive-ui';
 import { useFormActions } from '~/logic';
+import { assignDefaultsToForm, createFormModel } from '~/utils/forms';
 const message = useMessage();
 
 const props = defineProps({
@@ -13,37 +14,18 @@ const props = defineProps({
 const { onSubmit, onDelete } = useFormActions<IApplication>('/api/applications', 'applications', props.application);
 
 // TODO: maybe fqdns interface etc should be listed as number[], overridden on the backend interface
-const model: any = ref({
-  name: null as any,
-  shortName: null as any,
-  description: null as any,
-  fqdns: null as any,
-  servers: null as any,
-  brds: null as any,
-  rfcs: null as any,
-  sslCertificates: null as any,
-});
-
-const rules = ref({
+const model = createFormModel<IApplication>(['name', 'shortName', 'description', 'fqdns', 'servers', 'brds', 'rfcs', 'sslCertificates']);
+const rules = {
   name: [
     {
       required: true,
-      validator(value: string) {
-        if (!value || value === '') {
-          return new Error('Name is required');
-        }
-        return true;
-      },
+      message: 'Name is required',
       trigger: ['input', 'blur'],
     },
   ],
-});
+};
 
-onMounted(() => {
-  if (props.application != null) {
-    model.value = props.application;
-  }
-});
+assignDefaultsToForm(model, props.application);
 
 const formRef = ref(null as any);
 const handleValidateClick = (e: Event) => {
@@ -51,6 +33,7 @@ const handleValidateClick = (e: Event) => {
   formRef.value.validate((errors: any) => {
     if (!errors) {
       message.success('Valid');
+      onSubmit(model.value);
     } else {
       console.log(errors);
       message.error('Invalid');
@@ -64,36 +47,36 @@ const handleValidateClick = (e: Event) => {
   <n-form ref="formRef" :rules="rules" :model="model" class="mx-12">
     <n-grid :span="12" :x-gap="12">
       <n-form-item-gi :span="12" label="Name" path="name">
-        <n-input v-model="name" placeholder="" />
+        <n-input v-model:value="model.name" placeholder="" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="Short Name" path="shortName">
-        <n-input v-model="model.shortName" placeholder="" />
+        <n-input v-model:value="model.shortName" placeholder="" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="Servers" path="servers">
-        <FormServerMultiSelect v-model="model.servers" />
+        <FormServerMultiSelect v-model:value="model.servers" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="FQDNs" path="fqdns">
-        <FormFqdnMultiSelect v-model="model.fqdns" />
+        <FormFqdnMultiSelect v-model:value="model.fqdns" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="BRDs" path="brds">
-        <FormBrdMultiSelect v-model="model.brds" />
+        <FormBrdMultiSelect v-model:value="model.brds" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="RFCs" path="rfcs">
-        <FormRfcMultiSelect v-model="model.rfcs" />
+        <FormRfcMultiSelect v-model:value="model.rfcs" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="SSL Certificates" path="sslCertificates">
-        <FormSslCertificateMultiSelect v-model="model.sslCertificates" />
+        <FormSslCertificateMultiSelect v-model:value="model.sslCertificates" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="24" label="Description" path="description">
         <n-input
-          v-model="model.description"
+          v-model:value="model.description"
           type="textarea"
           placeholder=""
           :autosize="{

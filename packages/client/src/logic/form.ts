@@ -1,18 +1,11 @@
 import { useRouter } from 'vue-router';
 import { useAxios } from '@vueuse/integrations';
-import { useForm } from 'vue-hooks-form';
 
 export const useFormActions = <T extends { id: number }>(apiPath: string, nextRouteName: string, dataObject?: T) => {
   const router = useRouter();
 
-  const { useField, handleSubmit } = dataObject
-    ? useForm<T>({
-        defaultValues: dataObject,
-      })
-    : useForm<T>({});
-
   // TODO: remove async and display loading information and errors
-  const onSubmit = handleSubmit(async (formData) => {
+  const onSubmit = async (formData: Partial<T>) => {
     if (dataObject == null) {
       // create
       const { data, isFinished } = await useAxios(apiPath, { method: 'POST', data: formData });
@@ -22,9 +15,7 @@ export const useFormActions = <T extends { id: number }>(apiPath: string, nextRo
       const { data, isFinished } = await useAxios(`${apiPath}/${dataObject.id}`, { method: 'PUT', data: formData });
       router.push({ name: nextRouteName });
     }
-
-    // on success, display checkmark transition and then redirect to the new/edited application
-  });
+  };
 
   const onDelete = async () => {
     if (dataObject != null) {
@@ -33,5 +24,5 @@ export const useFormActions = <T extends { id: number }>(apiPath: string, nextRo
     }
   };
 
-  return { onSubmit, onDelete, useField, handleSubmit };
+  return { onSubmit, onDelete };
 };
