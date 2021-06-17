@@ -9,20 +9,18 @@ const props = defineProps({
 </script>
 
 <template>
-  <tr>
-    <td class="py-4 px-6 whitespace-nowrap">
-      <div class="flex items-center">
-        <router-link :to="{ name: 'physicalServer-view', params: { serverId: props.server.id } }">
-          <div>
-            <div class="font-medium text-sm text-gray-900">{{ props.server.name }}</div>
-            <div class="text-sm text-gray-500">{{ props.server.location?.shortName || props.server.location?.name }}</div>
-          </div>
-        </router-link>
-      </div>
-    </td>
+  <n-tr>
+    <n-td>
+      <router-link class="group" :to="{ name: 'physicalServer-view', params: { serverId: props.server.id } }">
+        <div>
+          <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.server.name }}</n-text>
+          <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.server.location?.shortName || props.server.location?.name }}</n-text>
+        </div>
+      </router-link>
+    </n-td>
     <TableCellServers :servers="props.server.servers" />
-    <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
+    <n-td>
       <TableButtonEdit :to="{ name: 'physicalServer-edit', params: { serverId: server.id } }" />
-    </td>
-  </tr>
+    </n-td>
+  </n-tr>
 </template>

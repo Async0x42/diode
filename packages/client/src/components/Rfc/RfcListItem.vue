@@ -16,34 +16,25 @@ const iaDueDate = computed(() => props.rfc.impactAssessmentDueDate && format(par
 </script>
 
 <template>
-  <tr>
+  <n-tr>
     <TableCellApplication :application="props.rfc.application" />
-    <td class="py-4 px-6">
-      <div class="flex items-center">
-        <router-link :to="{ name: 'rfc-view', params: { rfcId: rfc.id } }">
-          <div class="font-medium text-sm text-gray-900">
-            {{ props.rfc.title }}
-          </div>
-          <div class="text-sm text-gray-500 whitespace-nowrap">
-            {{ props.rfc.rfcNumber }}
-          </div>
-          <div class="text-xs text-gray-300 whitespace-nowrap">Class: {{ props.rfc.rfcClass }}</div>
-        </router-link>
-      </div>
-    </td>
+    <n-td>
+      <router-link class="group" :to="{ name: 'rfc-view', params: { rfcId: rfc.id } }">
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.rfc.title }}</n-text>
+        <n-text tag="div" depth="2" class="group-hover:text-teal-400">{{ props.rfc.rfcNumber }}</n-text>
+        <n-text tag="div" depth="3" class="group-hover:text-teal-500">Class: {{ props.rfc.rfcClass }}</n-text>
+      </router-link>
+    </n-td>
     <n-td>{{ props.rfc.status }}</n-td>
     <n-td class="whitespace-nowrap">{{ iaDueDate }}</n-td>
     <n-td>{{ props.rfc.description }}</n-td>
-    <td class="flex font-medium text-right text-sm py-4 px-6 whitespace-nowrap items-center">
-      <button
-        v-if="props.rfc.rfcNumber"
-        type="button"
-        class="border border-transparent rounded-full bg-indigo-600 shadow-sm text-white p-1 inline-flex items-center focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        @click="onBrowseRfc"
-      >
-        <heroicons-solid-eye class="h-5 w-5" aria-hidden="true" />
-      </button>
+    <n-td>
+      <TableButton v-if="props.rfc.rfcNumber" @click="onBrowseRfc">
+        <template #icon>
+          <heroicons-solid-eye />
+        </template>
+      </TableButton>
       <TableButtonEdit :to="{ name: 'rfc-edit', params: { rfcId: rfc.id } }" />
-    </td>
-  </tr>
+    </n-td>
+  </n-tr>
 </template>

@@ -7,8 +7,6 @@ const props = defineProps({
   modelValue: { type: Array as PropType<number[]>, default: () => [] },
   remote: { type: Boolean, default: false },
   loading: { type: Boolean, default: false },
-  span: { type: Number, default: 12 },
-  label: { type: String },
 });
 
 const selected = ref<number[]>(props.modelValue);
@@ -17,7 +15,5 @@ watch(selected, (newVal) => emit('update:modelValue', selected.value));
 </script>
 
 <template>
-  <n-form-item-gi :label="label" :span="span">
-    <n-select v-model="selected" :remote="props.remote" :loading="props.loading" :options="options" multiple />
-  </n-form-item-gi>
+  <n-select v-model="selected" :remote="props.remote" :loading="props.loading" :options="options" multiple />
 </template>

@@ -9,22 +9,16 @@ const props = defineProps({
 </script>
 
 <template>
-  <tr>
-    <td class="py-4 px-6 whitespace-nowrap">
-      <div class="flex items-center">
-        <router-link :to="{ name: 'fqdn-view', params: { fqdnId: fqdn.id } }">
-          <div>
-            <div class="font-medium text-sm text-gray-900">
-              {{ props.fqdn.name }}
-            </div>
-          </div>
-        </router-link>
-      </div>
-    </td>
+  <n-tr>
+    <n-td>
+      <router-link class="group" :to="{ name: 'fqdn-view', params: { fqdnId: fqdn.id } }">
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.fqdn.name }}</n-text>
+      </router-link>
+    </n-td>
     <TableCellServer :server="props.fqdn.server" />
     <TableCellApplications :applications="props.fqdn.applications" />
-    <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
+    <n-td>
       <TableButtonEdit :to="{ name: 'fqdn-edit', params: { fqdnId: fqdn.id } }" />
-    </td>
-  </tr>
+    </n-td>
+  </n-tr>
 </template>
