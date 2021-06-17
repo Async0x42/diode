@@ -32,7 +32,7 @@ const props = defineProps({
     <n-descriptions-item label="Notes" :span="3">
       <n-text tag="div" depth="1"> {{ props.contact.notes }}</n-text>
     </n-descriptions-item>
-    <n-descriptions-item label="BRDs">
+    <n-descriptions-item label="Contact Groups">
       <template v-for="contactGroup in props.contact.contactGroups" :key="contactGroup.id">
         <n-text tag="div" depth="1" class="mb-2 hover:text-teal-300">{{ contactGroup.name }}</n-text>
       </template>
