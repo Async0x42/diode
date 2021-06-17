@@ -5,7 +5,7 @@ import { useAxios } from '@vueuse/integrations';
 import type { INetwork } from '@diode/common';
 
 const props = defineProps({
-  value: { type: Object as PropType<INetwork>, required: true },
+  value: { type: Object as PropType<INetwork> },
 });
 
 const { data, error, isFinished } = useAxios<INetwork[]>('/api/networks');

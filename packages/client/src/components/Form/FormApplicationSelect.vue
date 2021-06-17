@@ -5,7 +5,7 @@ import { useAxios } from '@vueuse/integrations';
 import type { IApplication } from '@diode/common';
 
 const props = defineProps({
-  value: { type: Object as PropType<IApplication>, required: true },
+  value: { type: Object as PropType<IApplication> },
 });
 
 const { data, error, isFinished } = useAxios<IApplication[]>('/api/applications');

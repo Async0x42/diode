@@ -2,13 +2,14 @@
 import { defineProps, defineEmit, ref, watch } from 'vue';
 import { useAxios } from '@vueuse/integrations';
 import type { IEnvironment } from '@diode/common';
+import type { PropType } from 'vue';
 
 const props = defineProps({
-  modelValue: { type: Number, required: true },
+  value: { type: Object as PropType<IEnvironment> },
 });
 
 const { data, error, isFinished } = useAxios<IEnvironment[]>('/api/environments');
-const selected = ref<number>(props.modelValue);
+const selected = ref<IEnvironment | undefined>(props.value);
 const emit = defineEmit(['update:modelValue']);
 watch(selected, (newVal) => emit('update:modelValue', selected.value));
 </script>
