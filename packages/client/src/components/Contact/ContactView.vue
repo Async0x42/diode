@@ -9,50 +9,33 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-    <div class="py-5 px-4 sm:px-6">
-      <h3 class="font-medium text-lg text-gray-900 leading-6">Contact Information</h3>
-      <p class="mt-1 text-sm max-w-2xl text-gray-500">Personal details and notes.</p>
-    </div>
-    <div class="border-t border-gray-200 py-5 px-4 sm:px-6">
-      <dl class="grid gap-x-4 gap-y-8 grid-cols-1 sm:grid-cols-2">
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Full name</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.contact.name }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Title</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.contact.title }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Organization</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.contact.organization }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Department</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.contact.department }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Email address</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.contact.email }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Phone number</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.contact.phone }}</dd>
-        </div>
-        <div class="sm:col-span-2">
-          <dt class="font-medium text-sm text-gray-500">Notes</dt>
-          <dd class="mt-1 text-sm text-gray-900">
-            {{ props.contact.notes }}
-          </dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Contact Groups</dt>
-          <dd v-for="contactGroup in props.contact.contactGroups" :key="contactGroup.id" class="mt-1 text-sm text-gray-900">
-            {{ contactGroup.name }}
-          </dd>
-        </div>
-      </dl>
-    </div>
-  </div>
+  <n-page-header class="p-2" title="Contact Information" />
+  <n-descriptions bordered>
+    <n-descriptions-item label="Full name">
+      <n-text tag="div" depth="1">{{ props.contact.name }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Title">
+      <n-text tag="div" depth="1">{{ props.contact.title }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Organization">
+      <n-text tag="div" depth="1">{{ props.contact.organization }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Department">
+      <n-text tag="div" depth="1">{{ props.contact.department }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Email address">
+      <n-text tag="div" depth="1">{{ props.contact.email }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Phone number">
+      <n-text tag="div" depth="1">{{ props.contact.phone }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Notes" :span="3">
+      <n-text tag="div" depth="1"> {{ props.contact.notes }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="BRDs">
+      <template v-for="contactGroup in props.contact.contactGroups" :key="contactGroup.id">
+        <n-text tag="div" depth="1" class="mb-2 hover:text-teal-300">{{ contactGroup.name }}</n-text>
+      </template>
+    </n-descriptions-item>
+  </n-descriptions>
 </template>
