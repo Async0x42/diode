@@ -21,10 +21,8 @@ const onPhoneContact = () => {
   <n-tr>
     <n-td>
       <router-link class="group" :to="{ name: 'contact-view', params: { contactId: contact.id } }">
-        <div>
-          <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.contact.name }}</n-text>
-          <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.contact.email }}</n-text>
-        </div>
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.contact.name }}</n-text>
+        <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.contact.email }}</n-text>
       </router-link>
     </n-td>
     <n-td>
@@ -45,7 +43,7 @@ const onPhoneContact = () => {
           <heroicons-solid-phone />
         </template>
       </TableButton>
-      <TableButtonEdit class="ml-4" :to="{ name: 'contact-edit', params: { contactId: contact.id } }" />
+      <TableButtonEdit :to="{ name: 'contact-edit', params: { contactId: contact.id } }" />
     </n-td>
   </n-tr>
 </template>

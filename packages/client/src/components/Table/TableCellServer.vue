@@ -11,8 +11,8 @@ const props = defineProps({
 <template>
   <n-td class="whitespace-nowrap">
     <router-link v-if="props.server" class="group" :to="{ name: 'server-view', params: { serverId: props.server.id } }">
-      <div class="text-sm text-gray-900 group-hover:bg-gray-200">{{ props.server?.name }}</div>
-      <div class="text-sm text-gray-500 group-hover:bg-gray-200">{{ props.server?.ip }}</div>
+      <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.server?.name }}</n-text>
+      <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.server?.ip }}</n-text>
     </router-link>
   </n-td>
 </template>

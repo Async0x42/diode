@@ -13,14 +13,12 @@ const props = defineProps({
     <router-link
       v-for="application in props.applications"
       :key="application.id"
-      v-slot="{ navigate }"
       :to="{ name: 'application-view', params: { applicationId: application.id } }"
-      custom
     >
-      <div role="link" class="cursor-pointer text-sm text-gray-900 hover:bg-gray-200" @click="navigate" @keypress.enter="navigate">
+      <n-text tag="div" depth="1" class="cursor-pointer hover:text-teal-300">
         <span v-if="application?.shortName" class="whitespace-nowrap"> [{{ application?.shortName }}] </span>
         {{ application?.name }}
-      </div>
+      </n-text>
     </router-link>
   </n-td>
 </template>

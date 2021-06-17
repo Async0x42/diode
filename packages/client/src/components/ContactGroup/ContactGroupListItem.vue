@@ -21,10 +21,8 @@ const onPhoneContact = () => {
   <n-tr>
     <n-td>
       <router-link class="group" :to="{ name: 'contactGroup-view', params: { contactGroupId: contactGroup.id } }">
-        <div>
-          <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.contactGroup.name }}</n-text>
-          <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.contactGroup.email }}</n-text>
-        </div>
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.contactGroup.name }}</n-text>
+        <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.contactGroup.email }}</n-text>
       </router-link>
     </n-td>
     <n-td>

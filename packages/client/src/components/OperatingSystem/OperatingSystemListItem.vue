@@ -12,10 +12,8 @@ const props = defineProps({
   <n-tr>
     <n-td>
       <router-link class="group" :to="{ name: 'operatingSystem-view', params: { operatingSystemId: operatingSystem.id } }">
-        <div>
-          <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.operatingSystem.name }}</n-text>
-          <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.operatingSystem.shortName }}</n-text>
-        </div>
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.operatingSystem.name }}</n-text>
+        <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.operatingSystem.shortName }}</n-text>
       </router-link>
     </n-td>
     <n-td>

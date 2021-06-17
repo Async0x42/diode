@@ -12,15 +12,13 @@ const props = defineProps({
   <n-tr>
     <n-td>
       <router-link class="group" :to="{ name: 'server-view', params: { serverId: props.server.id } }">
-        <div>
-          <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.server.name }}</n-text>
-          <n-text tag="div" depth="2" class="group-hover:text-teal-400">{{ props.server.ip }}</n-text>
-          <n-text tag="div" depth="3" class="group-hover:text-teal-500">
-            <span v-if="props.server.environment" class="mr-1"> [{{ props.server.environment.shortName || props.server.environment.name }}] </span>
-            {{ props.server.location?.name }}
-          </n-text>
-          <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.server.operatingSystem?.name }}</n-text>
-        </div>
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.server.name }}</n-text>
+        <n-text tag="div" depth="2" class="group-hover:text-teal-400">{{ props.server.ip }}</n-text>
+        <n-text tag="div" depth="3" class="group-hover:text-teal-500">
+          <span v-if="props.server.environment" class="mr-1"> [{{ props.server.environment.shortName || props.server.environment.name }}] </span>
+          {{ props.server.location?.name }}
+        </n-text>
+        <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.server.operatingSystem?.name }}</n-text>
       </router-link>
     </n-td>
     <TableCellFqdns :fqdns="props.server.fqdns" />

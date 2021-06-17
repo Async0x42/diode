@@ -12,10 +12,8 @@ const props = defineProps({
   <n-tr>
     <n-td>
       <router-link class="group" :to="{ name: 'network-view', params: { networkId: network.id } }">
-        <div>
-          <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.network.name }}</n-text>
-          <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.network.shortName }}</n-text>
-        </div>
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.network.name }}</n-text>
+        <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.network.shortName }}</n-text>
       </router-link>
     </n-td>
     <n-td>

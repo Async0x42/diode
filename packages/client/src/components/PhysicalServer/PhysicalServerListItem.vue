@@ -12,10 +12,8 @@ const props = defineProps({
   <n-tr>
     <n-td>
       <router-link class="group" :to="{ name: 'physicalServer-view', params: { serverId: props.server.id } }">
-        <div>
-          <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.server.name }}</n-text>
-          <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.server.location?.shortName || props.server.location?.name }}</n-text>
-        </div>
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.server.name }}</n-text>
+        <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.server.location?.shortName || props.server.location?.name }}</n-text>
       </router-link>
     </n-td>
     <TableCellServers :servers="props.server.servers" />

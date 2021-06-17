@@ -15,10 +15,8 @@ const sslExpiry = computed(() => props.sslCertificate.expiry && format(parseJSON
   <n-tr>
     <n-td>
       <router-link class="group" :to="{ name: 'sslCertificate-view', params: { sslCertificateId: sslCertificate.id } }">
-        <div>
-          <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.sslCertificate.sans }}</n-text>
-          <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ sslExpiry }}</n-text>
-        </div>
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.sslCertificate.sans }}</n-text>
+        <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ sslExpiry }}</n-text>
       </router-link>
     </n-td>
     <n-td>

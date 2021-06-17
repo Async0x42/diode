@@ -15,12 +15,10 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
   <n-tr>
     <n-td>
       <router-link class="group" :to="{ name: 'ticket-view', params: { ticketId: props.ticket.id } }">
-        <div>
-          <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.ticket.name }}</n-text>
-          <n-text tag="div" depth="3" class="whitespace-nowrap group-hover:text-teal-500"
-            >{{ formatDate(props.ticket.startDate) }} - {{ formatDate(props.ticket.endDate) }}</n-text
-          >
-        </div>
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.ticket.name }}</n-text>
+        <n-text tag="div" depth="3" class="whitespace-nowrap group-hover:text-teal-500">
+          {{ formatDate(props.ticket.startDate) }} - {{ formatDate(props.ticket.endDate) }}
+        </n-text>
       </router-link>
     </n-td>
     <n-td>{{ props.ticket.status }}</n-td>
