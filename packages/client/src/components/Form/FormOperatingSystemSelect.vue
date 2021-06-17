@@ -2,15 +2,16 @@
 import { defineProps, defineEmit, ref, watch } from 'vue';
 import { useAxios } from '@vueuse/integrations';
 import type { IOperatingSystem } from '@diode/common';
+import type { PropType } from 'vue';
 
 const props = defineProps({
-  modelValue: { type: Number, required: true },
+  value: { type: Object as PropType<IOperatingSystem> },
 });
 
 const { data, error, isFinished } = useAxios<IOperatingSystem[]>('/api/operatingSystems');
-const selected = ref<number>(props.modelValue);
-const emit = defineEmit(['update:modelValue']);
-watch(selected, (newVal) => emit('update:modelValue', selected.value));
+const selected = ref<IOperatingSystem | undefined>(props.value);
+const emit = defineEmit(['update:value']);
+watch(selected, (newVal) => emit('update:value', selected.value));
 </script>
 
 <template>

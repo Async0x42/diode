@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { defineProps, defineEmit, ref, watch } from 'vue';
+import type { PropType } from 'vue';
 import { useAxios } from '@vueuse/integrations';
 import type { IPhysicalServer } from '@diode/common';
 
 const props = defineProps({
-  modelValue: { type: Number, required: true },
+  value: { type: Object as PropType<IPhysicalServer> },
 });
 
 const { data, error, isFinished } = useAxios<IPhysicalServer[]>('/api/physicalServers');
-const selected = ref<number>(props.modelValue);
-const emit = defineEmit(['update:modelValue']);
-watch(selected, (newVal) => emit('update:modelValue', selected.value));
+const selected = ref<IPhysicalServer | undefined>(props.value);
+const emit = defineEmit(['update:value']);
+watch(selected, (newVal) => emit('update:value', selected.value));
 </script>
 
 <template>

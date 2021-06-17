@@ -1,18 +1,19 @@
 <script setup lang="ts">
 import { defineProps, defineEmit, ref, watch } from 'vue';
+import type { PropType } from 'vue';
 import { useAxios } from '@vueuse/integrations';
 import type { IServer } from '@diode/common';
 
 const props = defineProps({
-  modelValue: { type: Number, required: true },
+  value: { type: Object as PropType<IServer> },
 });
 
 const { data, error, isFinished } = useAxios<IServer[]>('/api/servers');
-const selected = ref<number>(props.modelValue);
-const emit = defineEmit(['update:modelValue']);
-watch(selected, (newVal) => emit('update:modelValue', selected.value));
+const selected = ref<IServer | undefined>(props.value);
+const emit = defineEmit(['update:value']);
+watch(selected, (newVal) => emit('update:value', selected.value));
 </script>
 
 <template>
-  <n-select v-model="selected" remote :loading="!isFinished" :options="data?.map((d) => ({ label: `${d.name} - ${d.ip}`, value: d.id }))" multiple />
+  <n-select v-model="selected" remote :loading="!isFinished" :options="data?.map((d) => ({ label: `${d.name} - ${d.ip}`, value: d.id }))" />
 </template>
