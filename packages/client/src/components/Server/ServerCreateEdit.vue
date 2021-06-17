@@ -118,11 +118,10 @@ const handleValidateClick = (e: Event) => {
       </n-form-item-gi>
     </n-grid>
 
-    <div class="flex">
-      <FormButtonDelete v-if="props.server" class="mr-3" @click="onDelete()" />
-      <div class="flex"></div>
+    <n-space justify="end">
+      <FormButtonDelete v-if="props.server" @delete="onDelete()" />
       <FormButtonCancel @click="$router.back()" />
-      <FormButtonOk class="ml-3" @click="handleValidateClick" />
-    </div>
+      <FormButtonOk @click="handleValidateClick" />
+    </n-space>
   </n-form>
 </template>
