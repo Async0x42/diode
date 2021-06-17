@@ -9,69 +9,50 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-    <div class="py-5 px-4 sm:px-6">
-      <h3 class="font-medium text-lg text-gray-900 leading-6">Physical Server Information</h3>
-      <p class="mt-1 text-sm max-w-2xl text-gray-500">{{ props.server.name }}</p>
-      <p class="text-sm max-w-2xl text-gray-500">{{ props.server.location?.name }}</p>
-    </div>
-    <div class="border-t border-gray-200 py-5 px-4 sm:px-6">
-      <dl class="grid gap-x-4 gap-y-8 grid-cols-1 sm:grid-cols-2">
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Base OS</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.server.baseOperatingSystem }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Hypervisor</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.server.hypervisor }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Device Manufacturer</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.server.deviceManufacturer }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Device Model</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.server.deviceModel }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Processor Manufacturer</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.server.processorManufacturer }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Processor Model</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.server.processorModel }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Processor Frequency (GHz)</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.server.processorFrequency }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Number of Processors</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.server.numberOfProcessors }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Number of Cores</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.server.numberOfCores }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Number of Virtual Machines</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.server.numberOfVirtualMachines }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Cluster Name</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.server.clusterName }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Servers (Virtual Machines)</dt>
-          <dd v-for="server in props.server.servers" :key="server.id" class="mt-1 text-sm text-gray-900">
-            {{ server.name }}
-          </dd>
-        </div>
-        <div class="sm:col-span-2">
-          <dt class="font-medium text-sm text-gray-500">Notes</dt>
-          <dd class="mt-1 text-sm text-gray-900" v-html="props.server.notes" />
-        </div>
-      </dl>
-    </div>
-  </div>
+  <n-page-header class="p-2" title="Physical Server Information" />
+  <n-descriptions bordered>
+    <n-descriptions-item label="Name" :span="3">
+      <n-text tag="div" depth="1">{{ props.server.name }}</n-text>
+      <n-text tag="div" depth="3">{{ props.server.location?.name }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Base OS">
+      <n-text tag="div" depth="1">{{ props.server.baseOperatingSystem }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Hypervisor">
+      <n-text tag="div" depth="1">{{ props.server.hypervisor }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Device Manufacturer">
+      <n-text tag="div" depth="1">{{ props.server.deviceManufacturer }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Device Model">
+      <n-text tag="div" depth="1">{{ props.server.deviceModel }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Processor Manufacturer">
+      <n-text tag="div" depth="1">{{ props.server.processorManufacturer }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Processor Model">
+      <n-text tag="div" depth="1">{{ props.server.processorModel }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Processor Frequency (GHz)">
+      <n-text tag="div" depth="1">{{ props.server.processorFrequency }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Number of Processors">
+      <n-text tag="div" depth="1">{{ props.server.numberOfProcessors }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Number of Cores">
+      <n-text tag="div" depth="1">{{ props.server.numberOfCores }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Number of Virtual Machines">
+      <n-text tag="div" depth="1">{{ props.server.numberOfVirtualMachines }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Cluster Name">
+      <n-text tag="div" depth="1">{{ props.server.clusterName }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Servers (Virtual Machines)">
+      <n-text v-for="server in props.server.servers" :key="server.id" tag="div" depth="1" class="mb-2">{{ server.name }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Notes">
+      <n-text tag="div" depth="1">{{ props.server.notes }}</n-text>
+    </n-descriptions-item>
+  </n-descriptions>
 </template>

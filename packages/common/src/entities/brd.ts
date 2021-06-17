@@ -10,8 +10,8 @@ export interface IBrd {
   brdNumber?: number;
   priority?: number;
   status?: BrdStatus;
-  submissionDate?: Date;
-  dateEnteredIntoBits?: Date;
+  submissionDate?: number;
+  dateEnteredIntoBits?: number;
   initialCost?: number;
   upkeepCost?: number;
   application?: IApplication;

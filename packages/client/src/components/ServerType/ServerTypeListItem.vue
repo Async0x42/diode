@@ -9,23 +9,15 @@ const props = defineProps({
 </script>
 
 <template>
-  <tr>
-    <td class="py-4 px-6 whitespace-nowrap">
-      <div class="flex items-center">
-        <router-link :to="{ name: 'serverType-view', params: { serverTypeId: serverType.id } }">
-          <div>
-            <div class="font-medium text-sm text-gray-900">
-              {{ props.serverType.name }}
-            </div>
-            <div class="text-sm text-gray-700">
-              {{ props.serverType.shortName }}
-            </div>
-          </div>
-        </router-link>
-      </div>
-    </td>
-    <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
+  <n-tr>
+    <n-td>
+      <router-link class="group" :to="{ name: 'serverType-view', params: { serverTypeId: serverType.id } }">
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.serverType.name }}</n-text>
+        <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.serverType.shortName }}</n-text>
+      </router-link>
+    </n-td>
+    <n-td>
       <TableButtonEdit :to="{ name: 'serverType-edit', params: { serverTypeId: serverType.id } }" />
-    </td>
-  </tr>
+    </n-td>
+  </n-tr>
 </template>

@@ -9,23 +9,15 @@ const props = defineProps({
 </script>
 
 <template>
-  <tr>
-    <td class="py-4 px-6 whitespace-nowrap">
-      <div class="flex items-center">
-        <router-link :to="{ name: 'zone-view', params: { zoneId: zone.id } }">
-          <div>
-            <div class="font-medium text-sm text-gray-900">
-              {{ props.zone.name }}
-            </div>
-            <div class="text-sm text-gray-700">
-              {{ props.zone.shortName }}
-            </div>
-          </div>
-        </router-link>
-      </div>
-    </td>
-    <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
+  <n-tr>
+    <n-td>
+      <router-link class="group" :to="{ name: 'zone-view', params: { zoneId: zone.id } }">
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.zone.name }}</n-text>
+        <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.zone.shortName }}</n-text>
+      </router-link>
+    </n-td>
+    <n-td>
       <TableButtonEdit :to="{ name: 'zone-edit', params: { zoneId: zone.id } }" />
-    </td>
-  </tr>
+    </n-td>
+  </n-tr>
 </template>

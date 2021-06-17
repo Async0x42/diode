@@ -12,9 +12,7 @@ const { results } = useRouteSearchWithData(props.environments, ['name']);
 </script>
 
 <template>
-  <TableWrapper>
-    <TableView :headers="['Name', '']">
-      <EnvironmentListItem v-for="environment in results" :key="environment.id" :environment="environment" />
-    </TableView>
-  </TableWrapper>
+  <TableView :headers="['Name', '']">
+    <EnvironmentListItem v-for="environment in results" :key="environment.id" :environment="environment" />
+  </TableView>
 </template>

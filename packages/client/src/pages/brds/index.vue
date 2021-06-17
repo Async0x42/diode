@@ -5,7 +5,7 @@ const { data, error, isFinished } = useAxios<IBrd[]>('/api/brds');
 </script>
 
 <template>
-  <BrdList v-if="data && isFinished && data" :brds="data" />
+  <BrdList v-if="data && isFinished" :brds="data" />
   <LoadingError v-else-if="error" :error="error" />
   <LoadingList v-else />
 </template>

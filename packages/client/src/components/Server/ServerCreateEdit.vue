@@ -1,69 +1,127 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, ref } from 'vue';
 import type { IServer } from '@diode/common';
 import type { PropType } from 'vue';
+import { useMessage } from 'naive-ui';
 import { useFormActions } from '~/logic';
+import { assignDefaultsToForm, createFormModel } from '~/utils/forms';
+const message = useMessage();
 
 const props = defineProps({
   server: { type: Object as PropType<IServer> },
 });
 
-const { useField, onSubmit, onDelete } = useFormActions<IServer>('/api/servers', 'servers', props.server);
+const { onSubmit, onDelete } = useFormActions<IServer>('/api/servers', 'servers', props.server);
 
-const name = useField('name', {
-  rule: { required: true },
-});
+const model = createFormModel<IServer>([
+  'name',
+  'ip',
+  'notes',
+  'fqdns',
+  'types',
+  'location',
+  'operatingSystem',
+  'applications',
+  'physicalServer',
+  'sslCertificates',
+  'environment',
+  'network',
+  'zone',
+]);
+const rules = {
+  name: [
+    {
+      required: true,
+      message: 'Name is required',
+      trigger: ['input', 'blur'],
+    },
+  ],
+};
+assignDefaultsToForm(model, props.server);
 
-const ip = useField('ip');
-const notes = useField('notes');
-const fqdns = useField('fqdns');
-const types = useField('types');
-const location = useField('location');
-const operatingSystem = useField('operatingSystem');
-const applications = useField('applications');
-const physicalServer = useField('physicalServer');
-const sslCertificates = useField('sslCertificates');
-const environment = useField('environment');
-const network = useField('network');
-const zone = useField('zone');
+const formRef = ref(null as any);
+const handleValidateClick = (e: Event) => {
+  e.preventDefault();
+  formRef.value.validate((errors: any) => {
+    if (!errors) {
+      message.success('Valid');
+      onSubmit(model.value);
+    } else {
+      console.log(errors);
+      message.error('Invalid');
+    }
+  });
+};
 </script>
 
 <template>
-  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-    <form class="divide-y space-y-8 divide-gray-200 py-5 px-4 sm:px-6" @submit="onSubmit">
-      <div class="divide-y space-y-8 divide-gray-200">
-        <div>
-          <div>
-            <h3 class="font-medium text-lg text-gray-900 leading-6">Server Information</h3>
-            <p class="mt-1 text-sm text-gray-500">This information will be displayed publicly.</p>
-          </div>
+  <n-page-header class="mx-8 mt-6" title="Server Information" />
+  <n-form ref="formRef" :rules="rules" :model="model" class="mx-12">
+    <n-grid :span="12" :x-gap="12">
+      <n-form-item-gi :span="12" label="Name" path="name">
+        <n-input v-model:value="model.name" placeholder="" />
+      </n-form-item-gi>
+      <n-form-item-gi :span="12" label="IP" path="ip">
+        <n-input v-model:value="model.ip" placeholder="" />
+      </n-form-item-gi>
 
-          <div class="mt-6 grid gap-y-6 gap-x-4 grid-cols-1 sm:grid-cols-6">
-            <FormInput label="Name" :field="name" name="name" class="sm:col-span-3" />
-            <FormInput label="IP" :field="ip" name="ip" class="sm:col-span-3" />
-            <FormEnvironmentSelect label="Environment" :field="environment" name="environment" class="sm:col-span-3" />
-            <FormZoneSelect label="Zone" :field="zone" name="zone" class="sm:col-span-3" />
-            <FormNetworkSelect label="Network" :field="network" name="network" class="sm:col-span-3" />
-            <FormFqdnMultiSelect label="FQDNs" :field="fqdns" name="fqdns" class="sm:col-span-3" />
-            <FormServerTypeMultiSelect label="Server Types" :field="types" name="types" class="sm:col-span-3" />
-            <FormServerLocationSelect label="Location" :field="location" name="location" class="sm:col-span-3" />
-            <FormApplicationMultiSelect label="Applications" :field="applications" name="applications" class="sm:col-span-3" />
-            <FormSslCertificateMultiSelect label="SSL Certificates" :field="sslCertificates" name="sslCertificates" class="sm:col-span-3" />
-            <FormOperatingSystemSelect label="Operating System" :field="operatingSystem" name="operatingSystem" class="sm:col-span-3" />
-            <FormPhysicalServerSelect label="Physical Server" :field="physicalServer" name="physicalServer" class="sm:col-span-3" />
-            <FormTextArea label="Notes" :field="notes" name="notes" class="sm:col-span-6" />
-          </div>
-        </div>
-      </div>
+      <n-form-item-gi :span="12" label="Environment" path="environment">
+        <FormEnvironmentSelect v-model:value="model.environment" placeholder="" />
+      </n-form-item-gi>
 
-      <div class="pt-5">
-        <div class="flex justify-end">
-          <FormButtonDelete v-if="props.server" class="mr-3 inline-flex justify-center" @click="onDelete()" />
-          <div class="flex-1"></div>
-          <FormButtonCancel @click="$router.back()" />
-          <FormButtonOk class="ml-3 inline-flex justify-center" />
-        </div>
-      </div>
-    </form>
-  </div>
+      <n-form-item-gi :span="12" label="Zone" path="zone">
+        <FormZoneSelect v-model:value="model.zone" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Network" path="network">
+        <FormNetworkSelect v-model:value="model.network" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="FQDNs" path="fqdns">
+        <FormFqdnMultiSelect v-model:value="model.fqdns" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Server Types" path="types">
+        <FormServerTypeMultiSelect v-model:value="model.types" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Location" path="location">
+        <FormServerLocationSelect v-model:value="model.location" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Applications" path="applications">
+        <FormApplicationMultiSelect v-model:value="model.applications" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="SSL Certificates" path="sslCertificates">
+        <FormSslCertificateMultiSelect v-model:value="model.sslCertificates" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Operating System" path="operatingSystem">
+        <FormOperatingSystemSelect v-model:value="model.operatingSystem" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Physical Server" path="physicalServer">
+        <FormPhysicalServerSelect v-model:value="model.physicalServer" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Notes" path="notes">
+        <n-input
+          v-model:value="model.notes"
+          type="textarea"
+          placeholder=""
+          :autosize="{
+            minRows: 3,
+            maxRows: 5,
+          }"
+        />
+      </n-form-item-gi>
+    </n-grid>
+
+    <n-space justify="end">
+      <FormButtonDelete v-if="props.server" @delete="onDelete()" />
+      <FormButtonCancel @click="$router.back()" />
+      <FormButtonOk @click="handleValidateClick" />
+    </n-space>
+  </n-form>
 </template>

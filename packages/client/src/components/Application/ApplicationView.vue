@@ -9,61 +9,44 @@ const props = defineProps({
 });
 
 const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 'yyyy-MM-dd');
+const title = `${props.application.shortName && `[${props.application.shortName}] `}${props.application.name}`;
 </script>
 
 <template>
-  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-    <div class="py-5 px-4 sm:px-6">
-      <h3 class="font-medium text-lg text-gray-900 leading-6">Application Information</h3>
-      <p class="mt-1 text-sm max-w-2xl text-gray-500">Application details and notes.</p>
-    </div>
-    <div class="border-t border-gray-200 py-5 px-4 sm:px-6">
-      <dl class="grid gap-x-4 gap-y-8 grid-cols-1 sm:grid-cols-2">
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Name</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.application.name }}</dd>
-          <dd class="text-sm text-gray-500">{{ props.application.shortName }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Servers</dt>
-          <template v-for="server in props.application.servers" :key="server.id">
-            <dd class="text-sm text-gray-900">{{ server.name }}</dd>
-            <dd class="mt-1 text-sm text-gray-500">{{ server.ip }}</dd>
-            <dd class="mt-1 text-sm text-gray-500">{{ server.operatingSystem?.name }}</dd>
-          </template>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">FQDNs</dt>
-          <template v-for="fqdn in props.application.fqdns" :key="fqdn.id">
-            <dd class="text-sm text-gray-900">{{ fqdn.name }}</dd>
-          </template>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">BRDs</dt>
-          <template v-for="brd in props.application.brds" :key="brd.id">
-            <dd class="text-sm text-gray-900">[{{ brd.brdNumber }}] {{ brd.title }}</dd>
-          </template>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">RFCs</dt>
-          <template v-for="rfc in props.application.rfcs" :key="rfc.id">
-            <dd class="text-sm text-gray-900">[{{ rfc.rfcNumber }}] {{ rfc.title }}</dd>
-          </template>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">SSL Certificates</dt>
-          <dd v-for="sslCert in props.application.sslCertificates" :key="sslCert.id" class="mt-1 text-sm text-gray-900">
-            <template v-if="sslCert.expiry"> [{{ formatDate(sslCert?.expiry) }}] </template>
-            {{ sslCert?.sans }}
-          </dd>
-        </div>
-        <div class="sm:col-span-2">
-          <dt class="font-medium text-sm text-gray-500">Description</dt>
-          <dd class="mt-1 text-sm text-gray-900">
-            {{ props.application.description }}
-          </dd>
-        </div>
-      </dl>
-    </div>
-  </div>
+  <n-page-header class="p-2" :title="title" />
+  <n-descriptions bordered>
+    <n-descriptions-item label="Description" :span="3">
+      <n-text tag="div" depth="1">
+        {{ props.application.description }}
+      </n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Servers">
+      <div v-for="server in props.application.servers" :key="server.id" class="mb-2 group">
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ server.name }}</n-text>
+        <n-text tag="div" depth="2" class="group-hover:text-teal-300">{{ server.ip }}</n-text>
+        <n-text tag="div" depth="3" class="group-hover:text-teal-300">{{ server.operatingSystem?.name }}</n-text>
+      </div>
+    </n-descriptions-item>
+    <n-descriptions-item label="FQDNs">
+      <div v-for="fqdn in props.application.fqdns" :key="fqdn.id" class="mb-2 group">
+        <n-text tag="div" depth="1" class="whitespace-nowrap group-hover:text-teal-300">{{ fqdn.name }}</n-text>
+      </div>
+    </n-descriptions-item>
+    <n-descriptions-item label="SSL Certs">
+      <n-text v-for="sslCert in props.application.sslCertificates" :key="sslCert.id" tag="div" depth="1" class="mb-2 hover:text-teal-300">
+        <template v-if="sslCert.expiry"> [{{ formatDate(sslCert?.expiry) }}] </template>
+        {{ sslCert?.sans }}
+      </n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="BRDs">
+      <template v-for="brd in props.application.brds" :key="brd.id">
+        <n-text tag="div" depth="1" class="mb-2 hover:text-teal-300">[{{ brd.brdNumber }}] {{ brd.title }}</n-text>
+      </template>
+    </n-descriptions-item>
+    <n-descriptions-item label="RFCs">
+      <template v-for="rfc in props.application.rfcs" :key="rfc.id">
+        <n-text tag="div" depth="1" class="mb-2 hover:text-teal-300">[{{ rfc.rfcNumber }}] {{ rfc.title }}</n-text>
+      </template>
+    </n-descriptions-item>
+  </n-descriptions>
 </template>

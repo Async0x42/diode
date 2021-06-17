@@ -1,51 +1,70 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, ref } from 'vue';
 import type { ISslCertificate } from '@diode/common';
 import type { PropType } from 'vue';
+import { useMessage } from 'naive-ui';
 import { useFormActions } from '~/logic';
+import { assignDefaultsToForm, createFormModel } from '~/utils/forms';
+const message = useMessage();
 
 const props = defineProps({
   sslCertificate: { type: Object as PropType<ISslCertificate> },
 });
 
-const { useField, onSubmit, onDelete } = useFormActions<ISslCertificate>('/api/sslCertificates', 'sslCertificates', props.sslCertificate);
+const { onSubmit, onDelete } = useFormActions<ISslCertificate>('/api/sslCertificates', 'sslCertificates', props.sslCertificate);
 
-const sans = useField('sans', {
-  rule: { required: true },
-});
+const model = createFormModel<ISslCertificate>(['sans', 'expiry', 'applications', 'servers']);
+const rules = {
+  sans: [
+    {
+      required: true,
+      message: 'SANs is required',
+      trigger: ['input', 'blur'],
+    },
+  ],
+};
+assignDefaultsToForm(model, props.sslCertificate);
 
-const expiry = useField('expiry');
-const applications = useField('applications');
-const servers = useField('servers');
+const formRef = ref(null as any);
+const handleValidateClick = (e: Event) => {
+  e.preventDefault();
+  formRef.value.validate((errors: any) => {
+    if (!errors) {
+      message.success('Valid');
+      onSubmit(model.value);
+    } else {
+      console.log(errors);
+      message.error('Invalid');
+    }
+  });
+};
 </script>
 
 <template>
-  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-    <form class="divide-y space-y-8 divide-gray-200 py-5 px-4 sm:px-6" @submit="onSubmit">
-      <div class="divide-y space-y-8 divide-gray-200">
-        <div>
-          <div>
-            <h3 class="font-medium text-lg text-gray-900 leading-6">SSL Certificate Information</h3>
-            <p class="mt-1 text-sm text-gray-500">SSL Certificate details and notes.</p>
-          </div>
+  <n-page-header class="mx-8 mt-6" title="SSL Certificate Information" />
+  <n-form ref="formRef" :rules="rules" :model="model" class="mx-12">
+    <n-grid :span="12" :x-gap="12">
+      <n-form-item-gi :span="12" label="SANs" path="sans">
+        <n-input v-model:value="model.sans" placeholder="" />
+      </n-form-item-gi>
 
-          <div class="mt-6 grid gap-y-6 gap-x-4 grid-cols-1 sm:grid-cols-6">
-            <FormInput label="Subject Alternate Names" :field="sans" name="sans" class="sm:col-span-3" />
-            <FormDatePicker label="Expiry" :field="expiry" name="expiry" class="sm:col-span-3" />
-            <FormApplicationMultiSelect label="Applications" :field="applications" name="applications" class="sm:col-span-3" />
-            <FormServerMultiSelect label="Servers" :field="servers" name="server" class="sm:col-span-3" />
-          </div>
-        </div>
-      </div>
+      <n-form-item-gi :span="24" label="Expiry" path="expiry">
+        <n-date-picker v-model:value="model.expiry" type="date" clearable />
+      </n-form-item-gi>
 
-      <div class="pt-5">
-        <div class="flex justify-end">
-          <FormButtonDelete v-if="props.sslCertificate" class="mr-3 inline-flex justify-center" @click="onDelete()" />
-          <div class="flex-1"></div>
-          <FormButtonCancel @click="$router.back()" />
-          <FormButtonOk class="ml-3 inline-flex justify-center" />
-        </div>
-      </div>
-    </form>
-  </div>
+      <n-form-item-gi :span="12" label="Applications" path="applications">
+        <FormApplicationMultiSelect v-model:value="model.applications" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Servers" path="servers">
+        <FormServerMultiSelect v-model:value="model.servers" placeholder="" />
+      </n-form-item-gi>
+    </n-grid>
+
+    <n-space justify="end">
+      <FormButtonDelete v-if="props.sslCertificate" @delete="onDelete()" />
+      <FormButtonCancel @click="$router.back()" />
+      <FormButtonOk @click="handleValidateClick" />
+    </n-space>
+  </n-form>
 </template>

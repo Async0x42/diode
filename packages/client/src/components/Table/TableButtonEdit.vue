@@ -9,9 +9,12 @@ const props = defineProps({
 </script>
 
 <template>
-  <router-link :to="props.to">
-    <TableButtonRound class="bg-indigo-600 inline-flex items-center hover:bg-indigo-700 focus:ring-indigo-500" :attrs="$attrs">
-      <heroicons-solid-pencil class="h-5 w-5" aria-hidden="true" />
-    </TableButtonRound>
-  </router-link>
+  <n-button small @click="$router.push(props.to)">
+    <template #icon>
+      <n-icon>
+        <heroicons-solid-pencil />
+      </n-icon>
+    </template>
+    Edit
+  </n-button>
 </template>

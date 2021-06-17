@@ -14,9 +14,7 @@ const { results } = useRouteSearchWithData(props.fqdn, ['name', 'servers.name', 
 </script>
 
 <template>
-  <TableWrapper>
-    <TableView :headers="['Name', 'Server', 'Applications', '']">
-      <FqdnListItem v-for="entry in results" :key="entry.id" :fqdn="entry" />
-    </TableView>
-  </TableWrapper>
+  <TableView :headers="['Name', 'Server', 'Applications', '']">
+    <FqdnListItem v-for="entry in results" :key="entry.id" :fqdn="entry" />
+  </TableView>
 </template>

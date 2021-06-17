@@ -20,9 +20,7 @@ const { results } = useRouteSearchWithData(props.tickets, [
 </script>
 
 <template>
-  <TableWrapper>
-    <TableView :headers="['Name', 'Status', 'Details', 'Applications', 'Servers', 'Created']">
-      <TicketListItem v-for="ticket in results" :key="ticket.id" :ticket="ticket" />
-    </TableView>
-  </TableWrapper>
+  <TableView :headers="['Name', 'Status', 'Details', 'Applications', 'Servers', 'Created']">
+    <TicketListItem v-for="ticket in results" :key="ticket.id" :ticket="ticket" />
+  </TableView>
 </template>

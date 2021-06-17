@@ -4,7 +4,7 @@ import Vue from '@vitejs/plugin-vue';
 import Pages from 'vite-plugin-pages';
 import Layouts from 'vite-plugin-vue-layouts';
 import ViteIcons, { ViteIconsResolver } from 'vite-plugin-icons';
-import ViteComponents, { HeadlessUiResolver, VueUseComponentsResolver } from 'vite-plugin-components';
+import ViteComponents, { HeadlessUiResolver, VueUseComponentsResolver, NaiveUiResolver } from 'vite-plugin-components';
 import Markdown from 'vite-plugin-md';
 import WindiCSS from 'vite-plugin-windicss';
 import VueI18n from '@intlify/vite-plugin-vue-i18n';
@@ -64,6 +64,7 @@ export default defineConfig({
 
       // auto import icons
       customComponentResolvers: [
+        NaiveUiResolver(),
         HeadlessUiResolver(),
         VueUseComponentsResolver(),
 
@@ -90,18 +91,7 @@ export default defineConfig({
   ],
 
   optimizeDeps: {
-    include: [
-      'vue',
-      'vue-router',
-      '@vueuse/core',
-      '@vueuse/integrations',
-      'vue-hooks-form',
-      'fuse.js',
-      '@headlessui/vue',
-      '@heroicons/vue/outline',
-      'date-fns',
-      'v-calendar',
-    ],
+    include: ['vue', 'vue-router', '@vueuse/core', '@vueuse/integrations', 'fuse.js', '@headlessui/vue', '@heroicons/vue/outline', 'date-fns'],
     exclude: ['vue-demi'],
   },
 });

@@ -1,76 +1,114 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, ref } from 'vue';
 import type { IBrd } from '@diode/common';
 import type { PropType } from 'vue';
+import { useMessage } from 'naive-ui';
 import { useFormActions } from '~/logic';
+import { assignDefaultsToForm, createFormModel } from '~/utils/forms';
+const message = useMessage();
 
 const props = defineProps({
   brd: { type: Object as PropType<IBrd> },
 });
 
-const { useField, onSubmit, onDelete } = useFormActions<IBrd>('/api/brds', 'brds', props.brd);
+const { onSubmit, onDelete } = useFormActions<IBrd>('/api/brds', 'brds', props.brd);
 
-const title = useField('title', {
-  rule: { required: true },
-});
+const model = createFormModel<IBrd>([
+  'title',
+  'description',
+  'relatedRequests',
+  'brdNumber',
+  'priority',
+  'status',
+  'submissionDate',
+  'dateEnteredIntoBits',
+  'initialCost',
+  'upkeepCost',
+  'application',
+]);
+const rules = {
+  title: [
+    {
+      required: true,
+      message: 'Title is required',
+      trigger: ['input', 'blur'],
+    },
+  ],
+};
+assignDefaultsToForm(model, props.brd);
 
-const description = useField('description');
-const relatedRequests = useField('relatedRequests');
-const brdNumber = useField('brdNumber');
-const priority = useField('priority');
-const status = useField('status');
-const submissionDate = useField('submissionDate');
-const dateEnteredIntoBits = useField('dateEnteredIntoBits');
-const initialCost = useField('initialCost');
-const upkeepCost = useField('upkeepCost');
-const application = useField('application');
+const formRef = ref(null as any);
+const handleValidateClick = (e: Event) => {
+  e.preventDefault();
+  formRef.value.validate((errors: any) => {
+    if (!errors) {
+      message.success('Valid');
+      onSubmit(model.value);
+    } else {
+      console.log(errors);
+      message.error('Invalid');
+    }
+  });
+};
 </script>
 
 <template>
-  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-    <form class="divide-y space-y-8 divide-gray-200 py-5 px-4 sm:px-6" @submit="onSubmit">
-      <div class="divide-y space-y-8 divide-gray-200">
-        <div>
-          <div>
-            <h3 class="font-medium text-lg text-gray-900 leading-6">BRD Information</h3>
-            <p class="mt-1 text-sm text-gray-500">BRD details and notes.</p>
-          </div>
+  <n-page-header class="mx-8 mt-6" title="BRD Information" />
+  <n-form ref="formRef" :rules="rules" :model="model" class="mx-12">
+    <n-grid :span="12" :x-gap="12">
+      <n-form-item-gi :span="12" label="Title" path="title">
+        <n-input v-model:value="model.title" placeholder="" />
+      </n-form-item-gi>
 
-          <div class="mt-6 grid gap-y-6 gap-x-4 grid-cols-1 sm:grid-cols-6">
-            <FormInput label="Title" :field="title" name="title" class="sm:col-span-3" />
-            <FormInput label="BRD Number" :field="brdNumber" name="brdNumber" class="sm:col-span-3" />
+      <n-form-item-gi :span="12" label="Description" path="description">
+        <n-input
+          v-model:value="model.description"
+          type="textarea"
+          placeholder=""
+          :autosize="{
+            minRows: 3,
+            maxRows: 5,
+          }"
+        />
+      </n-form-item-gi>
 
-            <FormTextArea label="Description" :field="description" name="description" class="sm:col-span-6" />
+      <n-form-item-gi :span="12" label="Related Requests" path="relatedRequests">
+        <n-input v-model:value="model.relatedRequests" placeholder="" />
+      </n-form-item-gi>
 
-            <FormInput label="Related Requests" :field="relatedRequests" name="relatedRequests" class="sm:col-span-6" />
+      <n-form-item-gi :span="12" label="Brd Number" path="brdNumber">
+        <n-input-number v-model:value="model.brdNumber" :show-button="false" placeholder="" />
+      </n-form-item-gi>
 
-            <FormSelect label="Priority" :field="priority" name="priority" class="sm:col-span-3" :options="['1', '2', '3']" />
-            <FormSelect
-              label="Current Status"
-              :field="status"
-              name="status"
-              class="sm:col-span-3"
-              :options="['Draft', 'Assessment', 'Design', 'WIF', 'SA', 'Implementation', 'Done']"
-            />
+      <n-form-item-gi :span="12" label="Priority" path="priority">
+        <n-input-number v-model:value="model.priority" :min="1" :max="3" />
+      </n-form-item-gi>
 
-            <FormDatePicker label="Submission Date" :field="submissionDate" name="submissionDate" class="sm:col-span-3" />
-            <FormDatePicker label="Date Entered Into Bits" :field="dateEnteredIntoBits" name="dateEnteredIntoBits" class="sm:col-span-3" />
+      <n-form-item-gi :span="12" label="Current Status" path="status">
+        <FormSelect v-model:value="model.status" :options="['Draft', 'Assessment', 'Design', 'WIF', 'SA', 'Implementation', 'Done']" />
+      </n-form-item-gi>
 
-            <FormApplicationSelect label="Application" :field="application" name="application" class="sm:col-span-3" />
-            <FormInput label="Initial Cost" :field="initialCost" name="initialCost" class="sm:col-span-3" />
-            <FormInput label="Upkeep Cost" :field="upkeepCost" name="upkeepCost" class="sm:col-span-3" />
-          </div>
-        </div>
-      </div>
+      <n-form-item-gi :span="12" label="Submission Date" path="submissionDate">
+        <n-date-picker v-model:value="model.submissionDate" type="date" clearable />
+      </n-form-item-gi>
 
-      <div class="pt-5">
-        <div class="flex justify-end">
-          <FormButtonDelete v-if="props.brd" class="mr-3 inline-flex justify-center" @click="onDelete()" />
-          <div class="flex-1"></div>
-          <FormButtonCancel @click="$router.back()" />
-          <FormButtonOk class="ml-3 inline-flex justify-center" />
-        </div>
-      </div>
-    </form>
-  </div>
+      <n-form-item-gi :span="24" label="Date Entered Into Bits" path="dateEnteredIntoBits">
+        <n-date-picker v-model:value="model.dateEnteredIntoBits" type="date" clearable />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Initial Cost" path="initialCost">
+        <n-input-number v-model:value="model.initialCost" :show-button="false" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Upkeep Cost" path="upkeepCost">
+        <n-input-number v-model:value="model.upkeepCost" :show-button="false" placeholder="" />
+      </n-form-item-gi>
+    </n-grid>
+
+    <n-space justify="end">
+      <FormButtonDelete v-if="props.brd" @delete="onDelete()" />
+      <FormButtonCancel @click="$router.back()" />
+      <FormButtonOk @click="handleValidateClick" />
+    </n-space>
+  </n-form>
 </template>

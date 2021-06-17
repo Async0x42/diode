@@ -9,12 +9,12 @@ const props = defineProps({
 </script>
 
 <template>
-  <TableCell class="whitespace-nowrap">
-    <router-link v-for="rfc in props.rfcs" :key="rfc.id" v-slot="{ navigate }" :to="{ name: 'rfc-view', params: { rfcId: rfc.id } }" custom>
-      <div role="link" class="cursor-pointer text-sm text-gray-900 hover:bg-gray-200" @click="navigate" @keypress.enter="navigate">
+  <n-td class="whitespace-nowrap">
+    <router-link v-for="rfc in props.rfcs" :key="rfc.id" :to="{ name: 'rfc-view', params: { rfcId: rfc.id } }">
+      <n-text tag="div" depth="1" class="cursor-pointer hover:text-teal-300">
         <template v-if="rfc?.rfcNumber"> [{{ rfc?.rfcNumber }}] </template>
         {{ rfc.title }}
-      </div>
+      </n-text>
     </router-link>
-  </TableCell>
+  </n-td>
 </template>

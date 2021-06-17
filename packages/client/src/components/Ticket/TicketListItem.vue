@@ -12,26 +12,22 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
 </script>
 
 <template>
-  <tr>
-    <td class="py-4 px-6">
-      <div class="flex items-center">
-        <router-link :to="{ name: 'ticket-view', params: { ticketId: props.ticket.id } }">
-          <div>
-            <div class="font-medium text-sm text-gray-900">{{ props.ticket.name }}</div>
-            <div class="text-sm text-gray-700 whitespace-nowrap">
-              {{ formatDate(props.ticket.startDate) }} - {{ formatDate(props.ticket.endDate) }}
-            </div>
-          </div>
-        </router-link>
-      </div>
-    </td>
-    <TableCell>{{ props.ticket.status }}</TableCell>
-    <TableCell>{{ props.ticket.details }}</TableCell>
+  <n-tr>
+    <n-td>
+      <router-link class="group" :to="{ name: 'ticket-view', params: { ticketId: props.ticket.id } }">
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.ticket.name }}</n-text>
+        <n-text tag="div" depth="3" class="whitespace-nowrap group-hover:text-teal-500">
+          {{ formatDate(props.ticket.startDate) }} - {{ formatDate(props.ticket.endDate) }}
+        </n-text>
+      </router-link>
+    </n-td>
+    <n-td>{{ props.ticket.status }}</n-td>
+    <n-td>{{ props.ticket.details }}</n-td>
     <TableCellApplications :applications="props.ticket.applications" />
     <TableCellServers :servers="props.ticket.servers" />
-    <TableCell class="whitespace-nowrap">{{ formatDate(props.ticket.createdOn) }}</TableCell>
-    <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
+    <n-td class="whitespace-nowrap">{{ formatDate(props.ticket.createdOn) }}</n-td>
+    <n-td>
       <TableButtonEdit :to="{ name: 'ticket-edit', params: { ticketId: ticket.id } }" />
-    </td>
-  </tr>
+    </n-td>
+  </n-tr>
 </template>

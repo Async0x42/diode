@@ -9,22 +9,20 @@ const props = defineProps({
 </script>
 
 <template>
-  <tr>
-    <td class="py-4 px-6">
-      <div class="flex items-center">
-        <router-link :to="{ name: 'application-view', params: { applicationId: application.id } }">
-          <div>
-            <div class="font-medium text-sm text-gray-900">{{ props.application.name }}</div>
-            <div class="text-sm text-gray-500 whitespace-nowrap">{{ props.application.shortName }}</div>
-            <div v-for="fqdn in props.application.fqdns" :key="fqdn.id" class="text-sm text-gray-400 whitespace-nowrap">{{ fqdn.name }}</div>
-          </div>
-        </router-link>
-      </div>
-    </td>
+  <n-tr>
+    <n-td>
+      <router-link class="group" :to="{ name: 'application-view', params: { applicationId: application.id } }">
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.application.name }}</n-text>
+        <n-text tag="div" depth="2" class="whitespace-nowrap group-hover:text-teal-500">{{ props.application.shortName }}</n-text>
+        <n-text v-for="fqdn in props.application.fqdns" :key="fqdn.id" tag="div" depth="3" class="whitespace-nowrap group-hover:text-teal-700">
+          {{ fqdn.name }}
+        </n-text>
+      </router-link>
+    </n-td>
     <TableCellServers :servers="props.application.servers" />
-    <TableCell>{{ props.application.description }}</TableCell>
-    <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
+    <n-td>{{ props.application.description }}</n-td>
+    <n-td>
       <TableButtonEdit :to="{ name: 'application-edit', params: { applicationId: application.id } }" />
-    </td>
-  </tr>
+    </n-td>
+  </n-tr>
 </template>

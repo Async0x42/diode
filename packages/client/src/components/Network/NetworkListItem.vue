@@ -9,23 +9,15 @@ const props = defineProps({
 </script>
 
 <template>
-  <tr>
-    <td class="py-4 px-6 whitespace-nowrap">
-      <div class="flex items-center">
-        <router-link :to="{ name: 'network-view', params: { networkId: network.id } }">
-          <div>
-            <div class="font-medium text-sm text-gray-900">
-              {{ props.network.name }}
-            </div>
-            <div class="text-sm text-gray-700">
-              {{ props.network.shortName }}
-            </div>
-          </div>
-        </router-link>
-      </div>
-    </td>
-    <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
+  <n-tr>
+    <n-td>
+      <router-link class="group" :to="{ name: 'network-view', params: { networkId: network.id } }">
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.network.name }}</n-text>
+        <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.network.shortName }}</n-text>
+      </router-link>
+    </n-td>
+    <n-td>
       <TableButtonEdit :to="{ name: 'network-edit', params: { networkId: network.id } }" />
-    </td>
-  </tr>
+    </n-td>
+  </n-tr>
 </template>

@@ -12,82 +12,58 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
 </script>
 
 <template>
-  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-    <div class="py-5 px-4 sm:px-6">
-      <h3 class="font-medium text-lg text-gray-900 leading-6">RFC Information</h3>
-      <p class="mt-1 text-sm max-w-2xl text-gray-500">RFC details and notes.</p>
-    </div>
-    <div class="border-t border-gray-200 py-5 px-4 sm:px-6">
-      <dl class="grid gap-x-4 gap-y-8 grid-cols-1 sm:grid-cols-2">
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Title</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.rfc.title }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Application</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.rfc.application }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Class</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.rfc.rfcClass }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Purpose</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.rfc.purpose }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Status</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.rfc.status }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">IA Due Date</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ formatDate(props.rfc.impactAssessmentDueDate) }}</dd>
-        </div>
-        <div class="sm:col-span-2">
-          <dt class="font-medium text-sm text-gray-500">Description</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.rfc.description }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Parent System</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.rfc.parentSystem }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Business Case</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.rfc.businessCase }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Security Implications</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.rfc.securityImplications }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Affected Infrastructure</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.rfc.affectedInfrastructure }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Affected Information System</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.rfc.affectedInformationSystem }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Affected Configuration Items</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.rfc.affectedConfigurationItems }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Concept Of Operation</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.rfc.conceptOfOperation }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Concept Of Testing</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.rfc.conceptOfTesting }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Concept Of Implementation</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.rfc.conceptOfImplementation }}</dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Backout Plan</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.rfc.backoutPlan }}</dd>
-        </div>
-      </dl>
-    </div>
-  </div>
+  <n-page-header class="p-2" title="RFC Information" />
+  <n-descriptions bordered>
+    <n-descriptions-item label="Title" :span="3">
+      <n-text tag="div" depth="1">{{ props.rfc.title }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Application">
+      <n-text tag="div" depth="1">{{ props.rfc.application }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Class">
+      <n-text tag="div" depth="1">{{ props.rfc.rfcClass }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Purpose">
+      <n-text tag="div" depth="1">{{ props.rfc.purpose }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Status">
+      <n-text tag="div" depth="1">{{ props.rfc.status }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="IA Due Date">
+      <n-text tag="div" depth="1">{{ formatDate(props.rfc.impactAssessmentDueDate) }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Description">
+      <n-text tag="div" depth="1">{{ props.rfc.description }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Parent System">
+      <n-text tag="div" depth="1">{{ props.rfc.parentSystem }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Business Case">
+      <n-text tag="div" depth="1">{{ props.rfc.businessCase }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Security Implications">
+      <n-text tag="div" depth="1">{{ props.rfc.securityImplications }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Affected Infrastructure">
+      <n-text tag="div" depth="1">{{ props.rfc.affectedInfrastructure }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Affected Information System">
+      <n-text tag="div" depth="1">{{ props.rfc.affectedInformationSystem }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Affected Configuration Items">
+      <n-text tag="div" depth="1">{{ props.rfc.affectedConfigurationItems }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Concept Of Operation">
+      <n-text tag="div" depth="1">{{ props.rfc.conceptOfOperation }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Concept Of Testing">
+      <n-text tag="div" depth="1">{{ props.rfc.conceptOfTesting }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Concept Of Implementation">
+      <n-text tag="div" depth="1">{{ props.rfc.conceptOfImplementation }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Backout Plan">
+      <n-text tag="div" depth="1">{{ props.rfc.backoutPlan }}</n-text>
+    </n-descriptions-item>
+  </n-descriptions>
 </template>

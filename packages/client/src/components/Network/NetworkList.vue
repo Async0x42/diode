@@ -12,9 +12,7 @@ const { results } = useRouteSearchWithData(props.networks, ['name']);
 </script>
 
 <template>
-  <TableWrapper>
-    <TableView :headers="['Name', '']">
-      <NetworkListItem v-for="network in results" :key="network.id" :network="network" />
-    </TableView>
-  </TableWrapper>
+  <TableView :headers="['Name', '']">
+    <NetworkListItem v-for="network in results" :key="network.id" :network="network" />
+  </TableView>
 </template>

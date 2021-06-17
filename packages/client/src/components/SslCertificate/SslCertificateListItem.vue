@@ -12,23 +12,15 @@ const sslExpiry = computed(() => props.sslCertificate.expiry && format(parseJSON
 </script>
 
 <template>
-  <tr>
-    <td class="py-4 px-6 whitespace-nowrap">
-      <div class="flex items-center">
-        <router-link :to="{ name: 'sslCertificate-view', params: { sslCertificateId: sslCertificate.id } }">
-          <div>
-            <div class="font-medium text-sm text-gray-900">
-              {{ props.sslCertificate.sans }}
-            </div>
-            <div class="text-sm text-gray-700">
-              {{ sslExpiry }}
-            </div>
-          </div>
-        </router-link>
-      </div>
-    </td>
-    <td class="font-medium text-right text-sm py-4 px-6 whitespace-nowrap">
+  <n-tr>
+    <n-td>
+      <router-link class="group" :to="{ name: 'sslCertificate-view', params: { sslCertificateId: sslCertificate.id } }">
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.sslCertificate.sans }}</n-text>
+        <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ sslExpiry }}</n-text>
+      </router-link>
+    </n-td>
+    <n-td>
       <TableButtonEdit :to="{ name: 'sslCertificate-edit', params: { sslCertificateId: sslCertificate.id } }" />
-    </td>
-  </tr>
+    </n-td>
+  </n-tr>
 </template>

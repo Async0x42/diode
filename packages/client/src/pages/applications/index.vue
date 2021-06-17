@@ -5,7 +5,7 @@ const { data, error, isFinished } = useAxios<IApplication[]>('/api/applications'
 </script>
 
 <template>
-  <ApplicationList v-if="data && isFinished && data" :applications="data" />
+  <ApplicationList v-if="data && isFinished" :applications="data" />
   <LoadingError v-else-if="error" :error="error" />
   <LoadingList v-else />
 </template>

@@ -12,9 +12,7 @@ const { results } = useRouteSearchWithData(props.sslCertificates, ['sans', 'expi
 </script>
 
 <template>
-  <TableWrapper>
-    <TableView :headers="['Subject Alternate Names', 'Expiry']">
-      <SslCertificateListItem v-for="sslCert in results" :key="sslCert.id" :ssl-certificate="sslCert" />
-    </TableView>
-  </TableWrapper>
+  <TableView :headers="['Subject Alternate Names', 'Expiry']">
+    <SslCertificateListItem v-for="sslCert in results" :key="sslCert.id" :ssl-certificate="sslCert" />
+  </TableView>
 </template>

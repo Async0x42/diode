@@ -8,36 +8,52 @@ body,
   padding: 0;
 }
 
-html.dark {
-  background: #121212;
+body {
+  overflow: hidden;
+  --header-height: 64px;
 }
 
-#nprogress {
-  pointer-events: none;
+@media only screen and (max-width: 639px) {
+  body {
+    overflow: visible;
+  }
+  .md-table-wrapper {
+    overflow: auto;
+    margin: 0 -16px;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .md-table-wrapper::before,
+  .md-table-wrapper::after {
+    content: '';
+    width: 16px;
+    flex-shrink: 0;
+  }
 }
 
-#nprogress .bar {
-  @apply bg-teal-600 opacity-75;
-
-  position: fixed;
-  z-index: 1031;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 2px;
+.doc .n-p,
+.n-blockquote {
+  max-width: 680px;
 }
 
-.btn {
-  @apply px-4 py-1 rounded inline-block
-    bg-teal-600 text-white cursor-pointer
-    hover:bg-teal-700
-    disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50;
+.md-table-wrapper {
+  margin-bottom: 16px;
 }
 
-.icon-btn {
-  @apply inline-block cursor-pointer select-none
-    opacity-75 transition duration-200 ease-in-out
-    hover:opacity-100 hover:text-teal-600;
-  font-size: 0.9em;
+.md-table-wrapper:last-child,
+.md-card:last-child {
+  margin-bottom: 0;
+}
+
+.md-table td:first-child {
+  font-size: 0.93em !important;
+  font-family: v-mono, monospace;
+}
+
+.md-table .n-text.n-text--code {
+  font-size: 0.93em !important;
+}
+
+.md-card {
+  margin-bottom: 16px;
 }

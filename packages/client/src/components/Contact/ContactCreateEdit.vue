@@ -1,69 +1,99 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, ref } from 'vue';
 import type { IContact } from '@diode/common';
 import type { PropType } from 'vue';
+import { useMessage } from 'naive-ui';
 import { useFormActions } from '~/logic';
+import { assignDefaultsToForm, createFormModel } from '~/utils/forms';
+const message = useMessage();
 
 const props = defineProps({
   contact: { type: Object as PropType<IContact> },
 });
 
-const { useField, onSubmit, onDelete } = useFormActions<IContact>('/api/contacts', 'contacts', props.contact);
+const { onSubmit, onDelete } = useFormActions<IContact>('/api/contacts', 'contacts', props.contact);
 
-const name = useField('name', {
-  rule: { required: true },
-});
+const model = createFormModel<IContact>(['name', 'email', 'phone', 'title', 'organization', 'department', 'notes', 'contactGroups']);
+const rules = {
+  name: [
+    {
+      required: true,
+      message: 'Name is required',
+      trigger: ['input', 'blur'],
+    },
+  ],
+};
+assignDefaultsToForm(model, props.contact);
 
-const email = useField('email');
-const phone = useField('phone');
-const title = useField('title');
-const organization = useField('organization');
-const department = useField('department');
-const notes = useField('notes');
-const contactGroups = useField('contactGroups');
+const formRef = ref(null as any);
+const handleValidateClick = (e: Event) => {
+  e.preventDefault();
+  formRef.value.validate((errors: any) => {
+    if (!errors) {
+      message.success('Valid');
+      onSubmit(model.value);
+    } else {
+      console.log(errors);
+      message.error('Invalid');
+    }
+  });
+};
 </script>
 
 <template>
-  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-    <form class="divide-y space-y-8 divide-gray-200 py-5 px-4 sm:px-6" @submit="onSubmit">
-      <div class="divide-y space-y-8 divide-gray-200">
-        <div>
-          <div>
-            <h3 class="font-medium text-lg text-gray-900 leading-6">Contact Information</h3>
-            <p class="mt-1 text-sm text-gray-500">This information will be displayed publicly.</p>
-          </div>
+  <n-page-header class="mx-8 mt-6" title="Contact Information" />
+  <n-form ref="formRef" :rules="rules" :model="model" class="mx-12">
+    <n-grid :span="12" :x-gap="12">
+      <n-form-item-gi :span="12" label="Name" path="name">
+        <n-input v-model:value="model.name" placeholder="" />
+      </n-form-item-gi>
 
-          <div class="mt-6 grid gap-y-6 gap-x-4 grid-cols-1 sm:grid-cols-6">
-            <FormInput label="Name" :field="name" name="name" class="sm:col-span-3" />
-            <FormInput label="Title" :field="title" name="title" class="sm:col-span-3" />
+      <n-form-item-gi :span="12" label="Title" path="title">
+        <n-input v-model:value="model.title" placeholder="" />
+      </n-form-item-gi>
 
-            <FormInput label="Organization" :field="organization" name="organization" class="sm:col-span-3" />
-            <FormInput label="Department" :field="department" name="department" class="sm:col-span-3" />
+      <n-form-item-gi :span="12" label="Organization" path="organization">
+        <n-input v-model:value="model.organization" placeholder="" />
+      </n-form-item-gi>
 
-            <FormInput label="Email address" :field="email" name="email" type="email" class="sm:col-span-3" />
-            <FormInput label="Phone number" :field="phone" name="phone" type="tel" class="sm:col-span-3" />
+      <n-form-item-gi :span="12" label="Department" path="department">
+        <n-input v-model:value="model.department" placeholder="" />
+      </n-form-item-gi>
 
-            <FormContactGroupMultiSelect label="Contact Groups" :field="contactGroups" name="contactGroups" class="sm:col-span-3" />
+      <n-form-item-gi :span="12" label="Email address" path="email">
+        <n-input v-model:value="model.email" placeholder="" />
+      </n-form-item-gi>
 
-            <FormTextArea label="Description" :field="notes" name="notes" class="sm:col-span-6">
-              <template #note>
-                <p class="mt-2 text-sm text-gray-500">
-                  Write a few sentences detailing the role of this contact, and for what reasons they would be contacted.
-                </p>
-              </template>
-            </FormTextArea>
-          </div>
-        </div>
-      </div>
+      <n-form-item-gi :span="12" label="Phone number" path="phone">
+        <n-input v-model:value="model.phone" placeholder="" />
+      </n-form-item-gi>
 
-      <div class="pt-5">
-        <div class="flex justify-end">
-          <FormButtonDelete v-if="props.contact" class="mr-3 inline-flex justify-center" @click="onDelete()" />
-          <div class="flex-1"></div>
-          <FormButtonCancel @click="$router.back()" />
-          <FormButtonOk class="ml-3 inline-flex justify-center" />
-        </div>
-      </div>
-    </form>
-  </div>
+      <n-form-item-gi :span="12" label="Contact groups" path="contactGroups">
+        <FormContactGroupMultiSelect v-model:value="model.contactGroups" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Notes" path="notes">
+        <n-input
+          v-model:value="model.notes"
+          type="textarea"
+          placeholder=""
+          :autosize="{
+            minRows: 3,
+            maxRows: 5,
+          }"
+        />
+        <template #note>
+          <p class="mt-2 text-sm text-gray-500">
+            Write a few sentences detailing the role of this contact, and for what reasons they would be contacted.
+          </p>
+        </template>
+      </n-form-item-gi>
+    </n-grid>
+
+    <n-space justify="end">
+      <FormButtonDelete v-if="props.contact" @delete="onDelete()" />
+      <FormButtonCancel @click="$router.back()" />
+      <FormButtonOk @click="handleValidateClick" />
+    </n-space>
+  </n-form>
 </template>

@@ -12,9 +12,7 @@ const { results } = useRouteSearchWithData(props.serverTypes, ['name']);
 </script>
 
 <template>
-  <TableWrapper>
-    <TableView :headers="['Name', '']">
-      <ServerTypeListItem v-for="type in results" :key="type.id" :server-type="type" />
-    </TableView>
-  </TableWrapper>
+  <TableView :headers="['Name', '']">
+    <ServerTypeListItem v-for="type in results" :key="type.id" :server-type="type" />
+  </TableView>
 </template>

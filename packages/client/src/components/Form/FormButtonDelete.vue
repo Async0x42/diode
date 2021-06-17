@@ -1,3 +1,8 @@
 <template>
-  <FormButton class="bg-red-600 hover:bg-red-700 focus:ring-red-500">Delete</FormButton>
+  <n-popconfirm @positive-click="$emit('delete')">
+    <template #trigger>
+      <n-button :attrs="$attrs" type="error">Delete</n-button>
+    </template>
+    Are you sure you want to DELETE?
+  </n-popconfirm>
 </template>

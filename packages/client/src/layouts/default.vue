@@ -1,16 +1,42 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { navigation } from '~/logic';
+
+const route = useRoute();
+const router = useRouter();
+const activeRouteNameOrPath = computed(() => (route.name?.valueOf() as string) || route.path);
+
+const handleMenuUpdateValue = (key: any) => router.push({ name: key });
+</script>
 
 <template>
-  <div class="bg-white flex h-screen overflow-hidden">
-    <SidebarMobile />
-    <SidebarDesktop />
-
-    <div class="flex flex-col flex-1 w-0 overflow-hidden">
-      <Header />
-
-      <main class="flex-1 relative overflow-y-auto focus:outline-none">
+  <n-layout position="absolute" class="root-layout">
+    <SiteHeader />
+    <n-layout
+      :has-sider="true"
+      position="absolute"
+      :style="{
+        top: 'var(--header-height)',
+      }"
+    >
+      <n-layout-sider
+        :native-scrollbar="false"
+        :collapsed-width="0"
+        collapse-mode="transform"
+        bordered
+        show-trigger="bar"
+        trigger-style="top: calc(50% - var(--header-height));"
+      >
+        <n-menu :value="activeRouteNameOrPath" :options="navigation" @update:value="handleMenuUpdateValue" />
+      </n-layout-sider>
+      <n-layout
+        :native-scrollbar="false"
+        position="static"
+        content-style="min-height: calc(100vh - var(--header-height)); display: flex; flex-direction: column;"
+      >
         <router-view />
-      </main>
-    </div>
-  </div>
+      </n-layout>
+    </n-layout>
+  </n-layout>
 </template>

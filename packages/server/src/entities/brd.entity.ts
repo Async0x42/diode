@@ -3,8 +3,10 @@ import { BaseEntity, Entity, Property, PrimaryKey, ManyToOne } from '@mikro-orm/
 import { Application } from './application.entity';
 
 // Quick fix to make @mikro-orm collection compat with the common interface
-export interface IBackendBrd extends Omit<IBrd, 'application'> {
+export interface IBackendBrd extends Omit<IBrd, 'application' | 'submissionDate' | 'dateEnteredIntoBits'> {
   application?: Application;
+  submissionDate?: Date;
+  dateEnteredIntoBits?: Date;
 }
 
 @Entity()

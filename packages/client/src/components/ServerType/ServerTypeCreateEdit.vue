@@ -1,47 +1,62 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, ref } from 'vue';
 import type { IServerType } from '@diode/common';
 import type { PropType } from 'vue';
+import { useMessage } from 'naive-ui';
 import { useFormActions } from '~/logic';
+import { assignDefaultsToForm, createFormModel } from '~/utils/forms';
+const message = useMessage();
 
 const props = defineProps({
   serverType: { type: Object as PropType<IServerType> },
 });
 
-const { useField, onSubmit, onDelete } = useFormActions<IServerType>('/api/serverTypes', 'serverTypes', props.serverType);
+const { onSubmit, onDelete } = useFormActions<IServerType>('/api/serverTypes', 'serverTypes', props.serverType);
 
-const name = useField('name', {
-  rule: { required: true },
-});
+const model = createFormModel<IServerType>(['name', 'shortName']);
+const rules = {
+  name: [
+    {
+      required: true,
+      message: 'Name is required',
+      trigger: ['input', 'blur'],
+    },
+  ],
+};
+assignDefaultsToForm(model, props.serverType);
 
-const shortName = useField('shortName');
+const formRef = ref(null as any);
+const handleValidateClick = (e: Event) => {
+  e.preventDefault();
+  formRef.value.validate((errors: any) => {
+    if (!errors) {
+      message.success('Valid');
+      onSubmit(model.value);
+    } else {
+      console.log(errors);
+      message.error('Invalid');
+    }
+  });
+};
 </script>
 
 <template>
-  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-    <form class="divide-y space-y-8 divide-gray-200 py-5 px-4 sm:px-6" @submit="onSubmit">
-      <div class="divide-y space-y-8 divide-gray-200">
-        <div>
-          <div>
-            <h3 class="font-medium text-lg text-gray-900 leading-6">Server Type Information</h3>
-            <p class="mt-1 text-sm text-gray-500">Server type details and notes.</p>
-          </div>
+  <n-page-header class="mx-8 mt-6" title="Server Type Information" />
+  <n-form ref="formRef" :rules="rules" :model="model" class="mx-12">
+    <n-grid :span="12" :x-gap="12">
+      <n-form-item-gi :span="12" label="Name" path="name">
+        <n-input v-model:value="model.name" placeholder="" />
+      </n-form-item-gi>
 
-          <div class="mt-6 grid gap-y-6 gap-x-4 grid-cols-1 sm:grid-cols-6">
-            <FormInput label="Name" :field="name" name="name" class="sm:col-span-3" />
-            <FormInput label="Short Name" :field="shortName" name="shortName" class="sm:col-span-3" />
-          </div>
-        </div>
-      </div>
+      <n-form-item-gi :span="12" label="Short Name" path="shortName">
+        <n-input v-model:value="model.shortName" placeholder="" />
+      </n-form-item-gi>
+    </n-grid>
 
-      <div class="pt-5">
-        <div class="flex justify-end">
-          <FormButtonDelete v-if="props.serverType" class="mr-3 inline-flex justify-center" @click="onDelete()" />
-          <div class="flex-1"></div>
-          <FormButtonCancel @click="$router.back()" />
-          <FormButtonOk class="ml-3 inline-flex justify-center" />
-        </div>
-      </div>
-    </form>
-  </div>
+    <n-space justify="end">
+      <FormButtonDelete v-if="props.serverType" @delete="onDelete()" />
+      <FormButtonCancel @click="$router.back()" />
+      <FormButtonOk @click="handleValidateClick" />
+    </n-space>
+  </n-form>
 </template>
