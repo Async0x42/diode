@@ -1,57 +1,91 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, ref } from 'vue';
 import type { ITicket } from '@diode/common';
 import type { PropType } from 'vue';
+import { useMessage } from 'naive-ui';
 import { useFormActions } from '~/logic';
+import { assignDefaultsToForm, createFormModel } from '~/utils/forms';
+const message = useMessage();
 
 const props = defineProps({
   ticket: { type: Object as PropType<ITicket> },
 });
 
-const { useField, onSubmit, onDelete } = useFormActions<ITicket>('/api/tickets', 'tickets', props.ticket);
+const { onSubmit, onDelete } = useFormActions<ITicket>('/api/tickets', 'tickets', props.ticket);
 
-const name = useField('name', {
-  rule: { required: true },
-});
+const model = createFormModel<ITicket>(['name', 'startDate', 'endDate', 'details', 'applications', 'servers', 'owners']);
+const rules = {
+  name: [
+    {
+      required: true,
+      message: 'Name is required',
+      trigger: ['input', 'blur'],
+    },
+  ],
+};
+assignDefaultsToForm(model, props.ticket);
 
-const startDate = useField('startDate');
-const endDate = useField('endDate');
-const details = useField('details');
-const applications = useField('applications');
-const servers = useField('servers');
-const owners = useField('owners');
+const formRef = ref(null as any);
+const handleValidateClick = (e: Event) => {
+  e.preventDefault();
+  formRef.value.validate((errors: any) => {
+    if (!errors) {
+      message.success('Valid');
+      onSubmit(model.value);
+    } else {
+      console.log(errors);
+      message.error('Invalid');
+    }
+  });
+};
 </script>
 
 <template>
-  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-    <form class="divide-y space-y-8 divide-gray-200 py-5 px-4 sm:px-6" @submit="onSubmit">
-      <div class="divide-y space-y-8 divide-gray-200">
-        <div>
-          <div>
-            <h3 class="font-medium text-lg text-gray-900 leading-6">Ticket Information</h3>
-            <p class="mt-1 text-sm text-gray-500">This information will be displayed publicly.</p>
-          </div>
+  <n-page-header class="mx-8 mt-6" title="Ticket Information" />
+  <n-form ref="formRef" :rules="rules" :model="model" class="mx-12">
+    <n-grid :span="12" :x-gap="12">
+      <n-form-item-gi :span="12" label="Name" path="name">
+        <n-input v-model:value="model.name" placeholder="" />
+      </n-form-item-gi>
 
-          <div class="mt-6 grid gap-y-6 gap-x-4 grid-cols-1 sm:grid-cols-6">
-            <FormInput label="Name" :field="name" name="name" class="sm:col-span-3" />
-            <FormDatePicker label="Start Date" :field="startDate" name="startDate" class="sm:col-span-3" />
-            <FormDatePicker label="End Date" :field="endDate" name="endDate" class="sm:col-span-3" />
-            <FormApplicationMultiSelect label="Applications" :field="applications" name="applications" class="sm:col-span-3" />
-            <FormServerMultiSelect label="Servers" :field="servers" name="servers" class="sm:col-span-3" />
-            <FormContactMultiSelect label="Owners" :field="owners" name="owners" class="sm:col-span-3" />
-            <FormTextArea label="Details" :field="details" name="details" class="sm:col-span-6" />
-          </div>
-        </div>
-      </div>
+      <n-form-item-gi :span="12" label="Start Date" path="startDate">
+        <n-date-picker v-model:value="model.startDate" type="date" clearable />
+      </n-form-item-gi>
 
-      <div class="pt-5">
-        <div class="flex justify-end">
-          <FormButtonDelete v-if="props.ticket" class="mr-3 inline-flex justify-center" @click="onDelete()" />
-          <div class="flex-1"></div>
-          <FormButtonCancel @click="$router.back()" />
-          <FormButtonOk class="ml-3 inline-flex justify-center" />
-        </div>
-      </div>
-    </form>
-  </div>
+      <n-form-item-gi :span="12" label="End Date" path="endDate">
+        <n-date-picker v-model:value="model.endDate" type="date" clearable />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Applications" path="applications">
+        <FormApplicationMultiSelect v-model:value="model.applications" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Servers" path="servers">
+        <FormServerMultiSelect v-model:value="model.servers" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Owners" path="owners">
+        <FormContactMultiSelect v-model:value="model.owners" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Details" path="details">
+        <n-input
+          v-model:value="model.details"
+          type="textarea"
+          placeholder=""
+          :autosize="{
+            minRows: 3,
+            maxRows: 5,
+          }"
+        />
+      </n-form-item-gi>
+    </n-grid>
+
+    <div class="flex">
+      <FormButtonDelete v-if="props.ticket" class="mr-3" @click="onDelete()" />
+      <div class="flex"></div>
+      <FormButtonCancel @click="$router.back()" />
+      <FormButtonOk class="ml-3" @click="handleValidateClick" />
+    </div>
+  </n-form>
 </template>
