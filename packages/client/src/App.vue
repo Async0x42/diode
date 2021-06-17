@@ -3,7 +3,6 @@ import { useHead } from '@vueuse/head';
 import { darkTheme, enUS, dateEnUS, NConfigProvider } from 'naive-ui';
 import { computed } from 'vue';
 import { isDark } from './logic';
-import hljs from '~/utils/highlightjs';
 
 // https://github.com/vueuse/head
 // you can use this to manipulate the document head in any components,
@@ -17,7 +16,7 @@ const theme = computed(() => (isDark ? darkTheme : null));
 </script>
 
 <template>
-  <component :is="NConfigProvider" namespace="diode" :theme="theme" :locale="enUS" :date-locale="dateEnUS" :hljs="hljs">
+  <component :is="NConfigProvider" namespace="diode" :theme="theme" :locale="enUS" :date-locale="dateEnUS">
     <n-loading-bar-provider>
       <n-message-provider>
         <n-notification-provider>

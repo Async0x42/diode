@@ -10,6 +10,7 @@ import WindiCSS from 'vite-plugin-windicss';
 import VueI18n from '@intlify/vite-plugin-vue-i18n';
 import Prism from 'markdown-it-prism';
 import LinkAttributes from 'markdown-it-link-attributes';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 export default defineConfig({
   resolve: {
@@ -20,6 +21,11 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': 'http://localhost:7000/',
+    },
+  },
+  build: {
+    rollupOptions: {
+      plugins: [visualizer() as any],
     },
   },
   plugins: [
