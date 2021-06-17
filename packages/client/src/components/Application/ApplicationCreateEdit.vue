@@ -85,13 +85,13 @@ const handleValidateClick = (e: Event) => {
           }"
         />
       </n-form-item-gi>
-
-      <div class="flex">
-        <FormButtonDelete v-if="props.application" class="mr-3" @click="onDelete()" />
-        <div class="flex"></div>
-        <FormButtonCancel @click="$router.back()" />
-        <FormButtonOk class="ml-3" @click="handleValidateClick" />
-      </div>
     </n-grid>
+
+    <div class="flex">
+      <FormButtonDelete v-if="props.application" class="mr-3" @click="onDelete()" />
+      <div class="flex"></div>
+      <FormButtonCancel @click="$router.back()" />
+      <FormButtonOk class="ml-3" @click="handleValidateClick" />
+    </div>
   </n-form>
 </template>

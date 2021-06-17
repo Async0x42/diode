@@ -42,8 +42,5 @@ export default defineConfig({
       white: colors.white,
       yellow: colors.yellow,
     },
-    fontFamily: {
-      sans: ['"Inter var"', ...defaultTheme.fontFamily.sans],
-    },
   },
 });
