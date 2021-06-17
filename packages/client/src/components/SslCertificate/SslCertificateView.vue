@@ -12,34 +12,28 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
 </script>
 
 <template>
-  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-    <div class="py-5 px-4 sm:px-6">
-      <h3 class="font-medium text-lg text-gray-900 leading-6">SSL Certificate Information</h3>
-      <p class="mt-1 text-sm max-w-2xl text-gray-500">SSL Certificate details and notes.</p>
-    </div>
-    <div class="border-t border-gray-200 py-5 px-4 sm:px-6">
-      <dl class="grid gap-x-4 gap-y-8 grid-cols-1 sm:grid-cols-2">
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Subject Alternate Names</dt>
-          <dd class="mt-1 text-sm text-gray-900">{{ props.sslCertificate.sans }}</dd>
-          <dd class="mt-1 text-sm text-gray-700">{{ formatDate(props.sslCertificate.expiry) }}</dd>
+  <n-page-header class="p-2" title="SSL Certificate Information" />
+  <n-descriptions bordered>
+    <n-descriptions-item label="Subject Alternate Names" :span="3">
+      <n-text tag="div" depth="1">{{ props.sslCertificate.sans }}</n-text>
+      <n-text tag="div" depth="3">{{ formatDate(props.sslCertificate.expiry) }}</n-text>
+    </n-descriptions-item>
+    <n-descriptions-item label="Applications">
+      <template v-for="application in props.sslCertificate.applications" :key="application.id">
+        <n-text tag="div" depth="1" class="mb-2 hover:text-teal-300">
+          <template v-if="application.shortName"> [{{ application?.shortName }}] </template>
+          {{ application?.name }}
+        </n-text>
+      </template>
+    </n-descriptions-item>
+    <n-descriptions-item label="Servers">
+      <template v-for="server in props.sslCertificate.servers" :key="server.id">
+        <div class="group">
+          <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ server.name }}</n-text>
+          <n-text tag="div" depth="2" class="group-hover:text-teal-400">{{ server.ip }}</n-text>
+          <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ server.operatingSystem?.name }}</n-text>
         </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Applications</dt>
-          <dd v-for="application in props.sslCertificate.applications" :key="application.id" class="mt-1 text-sm text-gray-900">
-            <template v-if="application.shortName"> [{{ application?.shortName }}] </template>
-            {{ application?.name }}
-          </dd>
-        </div>
-        <div class="sm:col-span-1">
-          <dt class="font-medium text-sm text-gray-500">Servers</dt>
-          <template v-for="server in props.sslCertificate.servers" :key="server.id">
-            <dd class="text-sm text-gray-900">{{ server.name }}</dd>
-            <dd class="mt-1 text-sm text-gray-500">{{ server.ip }}</dd>
-            <dd class="mt-1 text-sm text-gray-500">{{ server.operatingSystem?.name }}</dd>
-          </template>
-        </div>
-      </dl>
-    </div>
-  </div>
+      </template>
+    </n-descriptions-item>
+  </n-descriptions>
 </template>
