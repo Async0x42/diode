@@ -91,7 +91,7 @@ const handleValidateClick = (e: Event) => {
     </n-grid>
 
     <div class="flex">
-      <FormButtonDelete v-if="props.brd" class="mr-3" @click="onDelete()" />
+      <FormButtonDelete v-if="props.contact" class="mr-3" @click="onDelete()" />
       <div class="flex"></div>
       <FormButtonCancel @click="$router.back()" />
       <FormButtonOk class="ml-3" @click="handleValidateClick" />
