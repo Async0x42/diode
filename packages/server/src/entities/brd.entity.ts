@@ -1,5 +1,6 @@
 import { BrdStatus, IBrd } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, ManyToOne } from '@mikro-orm/core';
+import { Entity, Property, ManyToOne } from '@mikro-orm/core';
+import { DiodeEntity } from './diode.entity';
 import { Application } from './application.entity';
 
 // Quick fix to make @mikro-orm collection compat with the common interface
@@ -10,10 +11,7 @@ export interface IBackendBrd extends Omit<IBrd, 'application' | 'submissionDate'
 }
 
 @Entity()
-export class Brd extends BaseEntity<Brd, 'id'> implements IBackendBrd {
-  @PrimaryKey()
-  id!: number;
-
+export class Brd extends DiodeEntity<Brd> implements IBackendBrd {
   @Property()
   title!: string;
 
@@ -46,10 +44,4 @@ export class Brd extends BaseEntity<Brd, 'id'> implements IBackendBrd {
 
   @ManyToOne()
   application?: Application;
-
-  @Property({ onCreate: () => new Date() })
-  createdOn = new Date();
-
-  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn = new Date();
 }

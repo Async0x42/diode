@@ -1,5 +1,6 @@
 import { IContact } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, Collection, ManyToMany } from '@mikro-orm/core';
+import { Entity, Property, Collection, ManyToMany } from '@mikro-orm/core';
+import { DiodeEntity } from './diode.entity';
 import { ContactGroup } from './contactGroup.entity';
 import { Ticket } from './ticket.entity';
 
@@ -10,10 +11,7 @@ export interface IBackendContact extends Omit<IContact, 'contactGroups' | 'ticke
 }
 
 @Entity()
-export class Contact extends BaseEntity<Contact, 'id'> implements IBackendContact {
-  @PrimaryKey()
-  id!: number;
-
+export class Contact extends DiodeEntity<Contact> implements IBackendContact {
   @Property()
   name!: string;
 
@@ -40,10 +38,4 @@ export class Contact extends BaseEntity<Contact, 'id'> implements IBackendContac
 
   @ManyToMany(() => Ticket, (ticket) => ticket.owners)
   tickets = new Collection<Ticket>(this);
-
-  @Property({ onCreate: () => new Date() })
-  createdOn = new Date();
-
-  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn = new Date();
 }

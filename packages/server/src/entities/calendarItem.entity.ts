@@ -1,11 +1,9 @@
 import { ICalendarItem } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey } from '@mikro-orm/core';
+import { Entity, Property } from '@mikro-orm/core';
+import { DiodeEntity } from './diode.entity';
 
 @Entity()
-export class CalendarItem extends BaseEntity<CalendarItem, 'id'> implements ICalendarItem {
-  @PrimaryKey()
-  id!: number;
-
+export class CalendarItem extends DiodeEntity<CalendarItem> implements ICalendarItem {
   @Property()
   title!: string;
 
@@ -26,10 +24,4 @@ export class CalendarItem extends BaseEntity<CalendarItem, 'id'> implements ICal
 
   @Property()
   allDay = false;
-
-  @Property({ onCreate: () => new Date() })
-  createdOn = new Date();
-
-  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn = new Date();
 }

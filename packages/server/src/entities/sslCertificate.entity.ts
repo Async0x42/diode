@@ -1,5 +1,6 @@
 import { ISslCertificate } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, Collection, ManyToMany } from '@mikro-orm/core';
+import { Entity, Property, Collection, ManyToMany } from '@mikro-orm/core';
+import { DiodeEntity } from './diode.entity';
 import { Application } from './application.entity';
 import { Server } from './server.entity';
 
@@ -10,10 +11,7 @@ export interface IBackendSslCertificate extends Omit<ISslCertificate, 'servers' 
 }
 
 @Entity()
-export class SslCertificate extends BaseEntity<SslCertificate, 'id'> implements IBackendSslCertificate {
-  @PrimaryKey()
-  id!: number;
-
+export class SslCertificate extends DiodeEntity<SslCertificate> implements IBackendSslCertificate {
   @Property()
   sans!: string;
 
@@ -25,10 +23,4 @@ export class SslCertificate extends BaseEntity<SslCertificate, 'id'> implements 
 
   @ManyToMany(() => Application, (application) => application.sslCertificates)
   applications = new Collection<Application>(this);
-
-  @Property({ onCreate: () => new Date() })
-  createdOn = new Date();
-
-  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn = new Date();
 }

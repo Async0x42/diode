@@ -1,5 +1,6 @@
 import { IServer } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, OneToMany, ManyToMany, Collection, ManyToOne } from '@mikro-orm/core';
+import { Entity, Property, OneToMany, ManyToMany, Collection, ManyToOne } from '@mikro-orm/core';
+import { DiodeEntity } from './diode.entity';
 import { Application } from './application.entity';
 import { Environment } from './environment.entity';
 import { Fqdn } from './fqdn.entity';
@@ -23,10 +24,7 @@ export interface IBackendServer extends Omit<IServer, 'applications' | 'fqdns' |
 }
 
 @Entity()
-export class Server extends BaseEntity<Server, 'id'> implements IBackendServer {
-  @PrimaryKey()
-  id!: number;
-
+export class Server extends DiodeEntity<Server> implements IBackendServer {
   @Property()
   name!: string;
 
@@ -68,10 +66,4 @@ export class Server extends BaseEntity<Server, 'id'> implements IBackendServer {
 
   @Property({ columnType: 'text' })
   notes?: string;
-
-  @Property({ onCreate: () => new Date() })
-  createdOn = new Date();
-
-  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn = new Date();
 }

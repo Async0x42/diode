@@ -1,12 +1,10 @@
 import { IOperatingSystem } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, OneToMany, Collection } from '@mikro-orm/core';
+import { Entity, Property, OneToMany, Collection } from '@mikro-orm/core';
+import { DiodeEntity } from './diode.entity';
 import { Server } from './server.entity';
 
 @Entity()
-export class OperatingSystem extends BaseEntity<OperatingSystem, 'id'> implements IOperatingSystem {
-  @PrimaryKey()
-  id!: number;
-
+export class OperatingSystem extends DiodeEntity<OperatingSystem> implements IOperatingSystem {
   @Property()
   name!: string;
 
@@ -15,10 +13,4 @@ export class OperatingSystem extends BaseEntity<OperatingSystem, 'id'> implement
 
   @OneToMany(() => Server, (server) => server.operatingSystem)
   servers = new Collection<Server>(this);
-
-  @Property({ onCreate: () => new Date() })
-  createdOn = new Date();
-
-  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn = new Date();
 }

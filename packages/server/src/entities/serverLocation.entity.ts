@@ -1,12 +1,10 @@
 import { IServerLocation } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, OneToMany, Collection } from '@mikro-orm/core';
+import { Entity, Property, OneToMany, Collection } from '@mikro-orm/core';
+import { DiodeEntity } from './diode.entity';
 import { Server } from './server.entity';
 
 @Entity()
-export class ServerLocation extends BaseEntity<ServerLocation, 'id'> implements IServerLocation {
-  @PrimaryKey()
-  id!: number;
-
+export class ServerLocation extends DiodeEntity<ServerLocation> implements IServerLocation {
   @Property()
   name!: string;
 
@@ -15,10 +13,4 @@ export class ServerLocation extends BaseEntity<ServerLocation, 'id'> implements 
 
   @OneToMany(() => Server, (server) => server.location)
   servers = new Collection<Server>(this);
-
-  @Property({ onCreate: () => new Date() })
-  createdOn = new Date();
-
-  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn = new Date();
 }

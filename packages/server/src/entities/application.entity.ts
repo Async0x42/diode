@@ -1,5 +1,6 @@
 import { IApplication } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, ManyToMany, Collection, OneToMany } from '@mikro-orm/core';
+import { Entity, Property, ManyToMany, Collection, OneToMany } from '@mikro-orm/core';
+import { DiodeEntity } from './diode.entity';
 import { Brd } from './brd.entity';
 import { Fqdn } from './fqdn.entity';
 import { Rfc } from './rfc.entity';
@@ -18,10 +19,7 @@ export interface IBackendApplication extends Omit<IApplication, 'fqdns' | 'serve
 }
 
 @Entity()
-export class Application extends BaseEntity<Application, 'id'> implements IBackendApplication {
-  @PrimaryKey()
-  id!: number;
-
+export class Application extends DiodeEntity<Application> implements IBackendApplication {
   @Property()
   name!: string;
 
@@ -48,10 +46,4 @@ export class Application extends BaseEntity<Application, 'id'> implements IBacke
 
   @OneToMany(() => Rfc, (rfc) => rfc.application)
   rfcs = new Collection<Rfc>(this);
-
-  @Property({ onCreate: () => new Date() })
-  createdOn = new Date();
-
-  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn = new Date();
 }

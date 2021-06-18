@@ -1,20 +1,12 @@
 import { INetwork } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey } from '@mikro-orm/core';
+import { Entity, Property } from '@mikro-orm/core';
+import { DiodeEntity } from './diode.entity';
 
 @Entity()
-export class Network extends BaseEntity<Network, 'id'> implements INetwork {
-  @PrimaryKey()
-  id!: number;
-
+export class Network extends DiodeEntity<Network> implements INetwork {
   @Property()
   name!: string;
 
   @Property()
   shortName?: string;
-
-  @Property({ onCreate: () => new Date() })
-  createdOn = new Date();
-
-  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn = new Date();
 }

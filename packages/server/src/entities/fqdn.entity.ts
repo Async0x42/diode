@@ -1,5 +1,6 @@
 import { IFqdn } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, ManyToOne, ManyToMany } from '@mikro-orm/core';
+import { Entity, Property, ManyToOne, ManyToMany } from '@mikro-orm/core';
+import { DiodeEntity } from './diode.entity';
 import { Application } from './application.entity';
 import { Server } from './server.entity';
 
@@ -10,10 +11,7 @@ export interface IBackendFqdn extends Omit<IFqdn, 'server' | 'applications'> {
 }
 
 @Entity()
-export class Fqdn extends BaseEntity<Fqdn, 'id'> implements IBackendFqdn {
-  @PrimaryKey()
-  id!: number;
-
+export class Fqdn extends DiodeEntity<Fqdn> implements IBackendFqdn {
   @Property()
   name!: string;
 
@@ -22,10 +20,4 @@ export class Fqdn extends BaseEntity<Fqdn, 'id'> implements IBackendFqdn {
 
   @ManyToMany(() => Application, (application) => application.fqdns)
   applications?: Application;
-
-  @Property({ onCreate: () => new Date() })
-  createdOn = new Date();
-
-  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn = new Date();
 }

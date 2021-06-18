@@ -1,5 +1,6 @@
 import { IPhysicalServer } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, OneToMany, Collection, ManyToOne } from '@mikro-orm/core';
+import { Entity, Property, OneToMany, Collection, ManyToOne } from '@mikro-orm/core';
+import { DiodeEntity } from './diode.entity';
 import { Server } from './server.entity';
 import { ServerLocation } from './serverLocation.entity';
 
@@ -9,10 +10,7 @@ export interface IBackendPhysicalServer extends Omit<IPhysicalServer, 'servers'>
 }
 
 @Entity()
-export class PhysicalServer extends BaseEntity<PhysicalServer, 'id'> implements IBackendPhysicalServer {
-  @PrimaryKey()
-  id!: number;
-
+export class PhysicalServer extends DiodeEntity<PhysicalServer> implements IBackendPhysicalServer {
   @Property()
   name!: string;
 
@@ -57,10 +55,4 @@ export class PhysicalServer extends BaseEntity<PhysicalServer, 'id'> implements 
 
   @Property({ columnType: 'text' })
   notes?: string;
-
-  @Property({ onCreate: () => new Date() })
-  createdOn = new Date();
-
-  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn = new Date();
 }

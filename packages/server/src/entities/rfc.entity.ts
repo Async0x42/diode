@@ -1,5 +1,6 @@
 import { IRfc, RfcClass, RfcPurpose, RfcStatus } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, ManyToOne } from '@mikro-orm/core';
+import { Entity, Property, ManyToOne } from '@mikro-orm/core';
+import { DiodeEntity } from './diode.entity';
 import { Application } from './application.entity';
 
 // Quick fix to make @mikro-orm collection compat with the common interface
@@ -8,10 +9,7 @@ export interface IBackendRfc extends Omit<IRfc, 'application'> {
 }
 
 @Entity()
-export class Rfc extends BaseEntity<Rfc, 'id'> implements IBackendRfc {
-  @PrimaryKey()
-  id!: number;
-
+export class Rfc extends DiodeEntity<Rfc> implements IBackendRfc {
   @Property()
   rfcNumber?: number;
 
@@ -65,10 +63,4 @@ export class Rfc extends BaseEntity<Rfc, 'id'> implements IBackendRfc {
 
   @Property()
   impactAssessmentDueDate?: Date;
-
-  @Property({ onCreate: () => new Date() })
-  createdOn = new Date();
-
-  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn = new Date();
 }

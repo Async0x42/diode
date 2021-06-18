@@ -1,20 +1,12 @@
 import { IZone } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey } from '@mikro-orm/core';
+import { Entity, Property } from '@mikro-orm/core';
+import { DiodeEntity } from './diode.entity';
 
 @Entity()
-export class Zone extends BaseEntity<Zone, 'id'> implements IZone {
-  @PrimaryKey()
-  id!: number;
-
+export class Zone extends DiodeEntity<Zone> implements IZone {
   @Property()
   name!: string;
 
   @Property()
   shortName?: string;
-
-  @Property({ onCreate: () => new Date() })
-  createdOn = new Date();
-
-  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn = new Date();
 }

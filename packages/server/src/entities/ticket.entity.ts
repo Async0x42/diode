@@ -1,5 +1,6 @@
 import { ITicket, TicketStatus } from '@diode/common';
-import { BaseEntity, Entity, Property, PrimaryKey, ManyToMany, Collection } from '@mikro-orm/core';
+import { Entity, Property, ManyToMany, Collection } from '@mikro-orm/core';
+import { DiodeEntity } from './diode.entity';
 import { Application } from './application.entity';
 import { Contact } from './contact.entity';
 import { Server } from './server.entity';
@@ -12,10 +13,7 @@ export interface IBackendTicket extends Omit<ITicket, 'applications' | 'servers'
 }
 
 @Entity()
-export class Ticket extends BaseEntity<Ticket, 'id'> implements IBackendTicket {
-  @PrimaryKey()
-  id!: number;
-
+export class Ticket extends DiodeEntity<Ticket> implements IBackendTicket {
   @Property()
   name!: string;
 
@@ -39,10 +37,4 @@ export class Ticket extends BaseEntity<Ticket, 'id'> implements IBackendTicket {
 
   @Property()
   status?: TicketStatus;
-
-  @Property({ onCreate: () => new Date() })
-  createdOn = new Date();
-
-  @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  modifiedOn = new Date();
 }
