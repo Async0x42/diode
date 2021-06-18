@@ -15,7 +15,7 @@ const props = defineProps({
         <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.server.name }}</n-text>
         <n-text tag="div" depth="2" class="group-hover:text-teal-400">{{ props.server.ip }}</n-text>
         <n-text tag="div" depth="3" class="group-hover:text-teal-500">
-          <span v-if="props.server.environment" class="mr-1"> [{{ props.server.environment.shortName || props.server.environment.name }}] </span>
+          <span v-if="props.server.environment">[{{ props.server.environment.shortName || props.server.environment.name }}]</span>
           {{ props.server.location?.name }}
         </n-text>
         <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.server.operatingSystem?.name }}</n-text>
