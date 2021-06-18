@@ -21,8 +21,6 @@ const props = defineProps({
     </n-td>
     <TableCellServers :servers="props.application.servers" />
     <n-td>{{ props.application.description }}</n-td>
-    <n-td>
-      <TableButtonEdit :to="{ name: 'application-edit', params: { applicationId: application.id } }" />
-    </n-td>
+    <TableCellQuickActions @edit="$router.push({ name: 'application-edit', params: { applicationId: application.id } })" />
   </n-tr>
 </template>

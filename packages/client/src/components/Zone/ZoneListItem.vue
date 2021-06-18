@@ -16,8 +16,6 @@ const props = defineProps({
         <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.zone.shortName }}</n-text>
       </router-link>
     </n-td>
-    <n-td>
-      <TableButtonEdit :to="{ name: 'zone-edit', params: { zoneId: zone.id } }" />
-    </n-td>
+    <TableCellQuickActions @edit="$router.push({ name: 'zone-edit', params: { zoneId: zone.id } })" />
   </n-tr>
 </template>

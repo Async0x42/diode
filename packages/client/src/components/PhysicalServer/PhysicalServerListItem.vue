@@ -17,8 +17,6 @@ const props = defineProps({
       </router-link>
     </n-td>
     <TableCellServers :servers="props.server.servers" />
-    <n-td>
-      <TableButtonEdit :to="{ name: 'physicalServer-edit', params: { serverId: server.id } }" />
-    </n-td>
+    <TableCellQuickActions @edit="$router.push({ name: 'physicalServer-edit', params: { serverId: server.id } })" />
   </n-tr>
 </template>

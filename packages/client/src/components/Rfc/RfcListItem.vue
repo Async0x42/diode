@@ -8,10 +8,7 @@ const props = defineProps({
   rfc: { type: Object as PropType<IRfc>, required: true },
 });
 
-const onBrowseRfc = () => {
-  window.location.href = `http://rfc.mil.ca/viewrfc_e.asp?id=${props.rfc.rfcNumber}`;
-};
-
+const browseUrl = computed(() => (props.rfc.rfcNumber ? `http://rfc.mil.ca/viewrfc_e.asp?id=${props.rfc.rfcNumber}` : ''));
 const iaDueDate = computed(() => props.rfc.impactAssessmentDueDate && format(parseJSON(props.rfc.impactAssessmentDueDate), 'yyyy-MM-dd'));
 </script>
 
@@ -28,13 +25,6 @@ const iaDueDate = computed(() => props.rfc.impactAssessmentDueDate && format(par
     <n-td>{{ props.rfc.status }}</n-td>
     <n-td class="whitespace-nowrap">{{ iaDueDate }}</n-td>
     <n-td>{{ props.rfc.description }}</n-td>
-    <n-td>
-      <TableButton v-if="props.rfc.rfcNumber" @click="onBrowseRfc">
-        <template #icon>
-          <heroicons-solid-eye />
-        </template>
-      </TableButton>
-      <TableButtonEdit :to="{ name: 'rfc-edit', params: { rfcId: rfc.id } }" />
-    </n-td>
+    <TableCellQuickActions :browse="browseUrl" @edit="$router.push({ name: 'rfc-edit', params: { rfcId: rfc.id } })" />
   </n-tr>
 </template>

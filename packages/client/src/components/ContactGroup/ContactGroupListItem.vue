@@ -32,18 +32,12 @@ const onPhoneContact = () => {
     </n-td>
     <n-td class="whitespace-nowrap">{{ props.contactGroup.phone }}</n-td>
     <n-td>{{ props.contactGroup.notes }}</n-td>
-    <n-td>
-      <TableButton v-if="props.contactGroup.email" @click="onEmailContact">
-        <template #icon>
-          <heroicons-solid-mail />
-        </template>
-      </TableButton>
-      <TableButton v-if="props.contactGroup.phone" @click="onPhoneContact">
-        <template #icon>
-          <heroicons-solid-phone />
-        </template>
-      </TableButton>
-      <TableButtonEdit class="ml-4" :to="{ name: 'contactGroup-edit', params: { contactGroupId: contactGroup.id } }" />
-    </n-td>
+    <TableCellQuickActions
+      :email="props.contactGroup.email"
+      :phone="props.contactGroup.phone"
+      @edit="$router.push({ name: 'contactGroup-edit', params: { contactGroupId: contactGroup.id } })"
+      @phone="onPhoneContact"
+      @email="onEmailContact"
+    />
   </n-tr>
 </template>

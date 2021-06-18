@@ -16,8 +16,6 @@ const props = defineProps({
         <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.operatingSystem.shortName }}</n-text>
       </router-link>
     </n-td>
-    <n-td>
-      <TableButtonEdit :to="{ name: 'operatingSystem-edit', params: { operatingSystemId: operatingSystem.id } }" />
-    </n-td>
+    <TableCellQuickActions @edit="$router.push({ name: 'operatingSystem-edit', params: { operatingSystemId: operatingSystem.id } })" />
   </n-tr>
 </template>

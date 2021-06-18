@@ -23,8 +23,6 @@ const props = defineProps({
     </n-td>
     <TableCellFqdns :fqdns="props.server.fqdns" />
     <TableCellApplications :applications="props.server.applications" />
-    <n-td>
-      <TableButtonEdit :to="{ name: 'server-edit', params: { serverId: server.id } }" />
-    </n-td>
+    <TableCellQuickActions @edit="$router.push({ name: 'server-edit', params: { serverId: server.id } })" />
   </n-tr>
 </template>

@@ -22,8 +22,6 @@ const props = defineProps({
     <n-td>{{ props.brd.status }}</n-td>
     <n-td>{{ n(props.brd.initialCost || 0, 'currency') }}</n-td>
     <n-td>{{ n(props.brd.upkeepCost || 0, 'currency') }}</n-td>
-    <n-td>
-      <TableButtonEdit :to="{ name: 'brd-edit', params: { brdId: brd.id } }" />
-    </n-td>
+    <TableCellQuickActions @edit="$router.push({ name: 'brd-edit', params: { brdId: brd.id } })" />
   </n-tr>
 </template>

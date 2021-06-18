@@ -8,7 +8,7 @@ const props = defineProps({
 });
 
 const onEmailContact = () => {
-  window.location.href = `mailto:${props.contact.email}`;
+  window.open(`mailto:${props.contact.email}`);
 };
 
 const onPhoneContact = () => {
@@ -32,18 +32,12 @@ const onPhoneContact = () => {
     </n-td>
     <n-td class="whitespace-nowrap">{{ props.contact.phone }}</n-td>
     <n-td>{{ props.contact.notes }}</n-td>
-    <n-td>
-      <TableButton v-if="props.contact.email" @click="onEmailContact">
-        <template #icon>
-          <heroicons-solid-mail />
-        </template>
-      </TableButton>
-      <TableButton v-if="props.contact.phone" @click="onPhoneContact">
-        <template #icon>
-          <heroicons-solid-phone />
-        </template>
-      </TableButton>
-      <TableButtonEdit :to="{ name: 'contact-edit', params: { contactId: contact.id } }" />
-    </n-td>
+    <TableCellQuickActions
+      :email="props.contact.email"
+      :phone="props.contact.phone"
+      @edit="$router.push({ name: 'contact-edit', params: { contactId: contact.id } })"
+      @phone="onPhoneContact"
+      @email="onEmailContact"
+    />
   </n-tr>
 </template>

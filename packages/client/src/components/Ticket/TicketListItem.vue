@@ -26,8 +26,6 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
     <TableCellApplications :applications="props.ticket.applications" />
     <TableCellServers :servers="props.ticket.servers" />
     <n-td class="whitespace-nowrap">{{ formatDate(props.ticket.createdOn) }}</n-td>
-    <n-td>
-      <TableButtonEdit :to="{ name: 'ticket-edit', params: { ticketId: ticket.id } }" />
-    </n-td>
+    <TableCellQuickActions @edit="$router.push({ name: 'ticket-edit', params: { ticketId: ticket.id } })" />
   </n-tr>
 </template>

@@ -16,8 +16,6 @@ const props = defineProps({
         <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.environment.shortName }}</n-text>
       </router-link>
     </n-td>
-    <n-td>
-      <TableButtonEdit :to="{ name: 'environment-edit', params: { environmentId: environment.id } }" />
-    </n-td>
+    <TableCellQuickActions @edit="$router.push({ name: 'environment-edit', params: { environmentId: environment.id } })" />
   </n-tr>
 </template>
