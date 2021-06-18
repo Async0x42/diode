@@ -9,11 +9,11 @@ const props = defineProps({
 });
 
 const { data, error, isFinished } = useAxios<IEnvironment[]>('/api/environments');
-const selected = ref<IEnvironment | undefined>(props.value);
-const emit = defineEmit(['update:modelValue']);
-watch(selected, (newVal) => emit('update:modelValue', selected.value));
+const selected = ref<number | undefined>(props.value?.id);
+const emit = defineEmit(['update:value']);
+watch(selected, (newVal) => emit('update:value', selected.value));
 </script>
 
 <template>
-  <n-select v-model="selected" remote :loading="!isFinished" :options="data?.map((d) => ({ label: d.name, value: d.id }))" />
+  <n-select v-model:value="selected" remote :loading="!isFinished" :options="data?.map((d) => ({ label: d.name, value: d.id }))" />
 </template>
