@@ -27,6 +27,9 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
     <n-descriptions-item label="Network">
       <n-text tag="div" depth="1">{{ props.server.network?.name }}</n-text>
     </n-descriptions-item>
+    <n-descriptions-item label="Location">
+      <n-text tag="div" depth="1">{{ props.server.location?.name }}</n-text>
+    </n-descriptions-item>
     <n-descriptions-item label="FQDNs">
       <n-text v-for="fqdn in props.server.fqdns" :key="fqdn.id" tag="div" class="mb-2" depth="1">{{ fqdn.name }}</n-text>
     </n-descriptions-item>
