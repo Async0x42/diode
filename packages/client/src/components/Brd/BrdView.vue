@@ -17,8 +17,9 @@ const formatDate = (jsonDate?: Date | number) => jsonDate && format(parseJSON(js
   <n-page-header class="p-2" title="BRD Information" />
   <n-descriptions bordered>
     <n-descriptions-item label="Title" :span="3">
-      <n-text tag="div" depth="1">{{ props.brd.description }}</n-text>
-      <n-text tag="div" depth="3">{{ props.brd.brdNumber }}</n-text>
+      <n-text tag="div" depth="1">{{ props.brd.title }}</n-text>
+      <n-text tag="div" depth="2">{{ props.brd.brdNumber }}</n-text>
+      <n-text tag="div" depth="3">{{ props.brd.description }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Application">
       <n-text tag="div" depth="1">{{ props.brd.application?.name }}</n-text>

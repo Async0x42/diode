@@ -15,15 +15,14 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
   <n-descriptions bordered>
     <n-descriptions-item label="Name" :span="3">
       <n-text tag="div" depth="1">{{ props.server.name }}</n-text>
-      <n-text tag="div" depth="3">{{ props.server.name }}</n-text>
-      <n-text tag="div" depth="3">{{ props.server.ip }}</n-text>
+      <n-text tag="div" depth="2">{{ props.server.ip }}</n-text>
       <n-text tag="div" depth="3">{{ props.server.operatingSystem?.name }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Environment">
       <n-text tag="div" depth="1">{{ props.server.environment?.name }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Zone">
-      <n-text tag="div" depth="1">{{ props.server.zone }}</n-text>
+      <n-text tag="div" depth="1">{{ props.server.zone?.name }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Network">
       <n-text tag="div" depth="1">{{ props.server.network?.name }}</n-text>
