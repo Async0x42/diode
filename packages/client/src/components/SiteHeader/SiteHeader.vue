@@ -57,10 +57,17 @@ const style = computed(() => {
 
 <template>
   <n-layout-header bordered class="nav" :style="style">
-    <n-text tag="div" class="ui-logo" :depth="1" @click="$router.push({ name: 'home' })">
-      <n-icon size="20" style="margin-left: 12px"><heroicons-solid-light-bulb /></n-icon>
-      <span>DIODE</span>
-    </n-text>
+    <div class="cursor-pointer grid grid-cols-4 group" @click="$router.push({ name: 'home' })">
+      <div class="flex flex-wrap row-span-2 content-center">
+        <n-icon class="mx-auto group-hover:text-yellow-300" size="35"><heroicons-solid-light-bulb /></n-icon>
+      </div>
+      <div class="col-span-3">
+        <div class="grid">
+          <n-text tag="div" class="font-bold text-lg group-hover:text-teal-300" :depth="1">DIODE</n-text>
+          <n-text tag="div" class="group-hover:text-teal-500" :depth="3">keeping the lights on</n-text>
+        </div>
+      </div>
+    </div>
     <div style="display: flex; align-items: center">
       <SiteHeaderSearch v-if="$route.name != null && routesForSearch.includes($route.name.toString())" :key="$route.path" class="mx-6 w-full" />
     </div>
@@ -91,17 +98,6 @@ const style = computed(() => {
   grid-template-rows: calc(var(--header-height) - 1px);
   align-items: center;
   padding: 0 var(--side-padding);
-}
-.ui-logo {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  font-size: 18px;
-}
-.ui-logo > img {
-  margin-right: 12px;
-  height: 32px;
-  width: 32px;
 }
 .nav-menu {
   padding-left: 36px;
