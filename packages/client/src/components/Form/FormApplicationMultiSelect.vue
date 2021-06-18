@@ -17,7 +17,7 @@ watch(selected, (newVal) => emit('update:modelValue', selected.value));
 <template>
   <n-select
     v-model="selected"
-    remote
+    filterable
     :loading="!isFinished"
     :options="data?.map((d) => ({ label: `${d.shortName ? `[${d.shortName}] ` : ''}${d.name}`, value: d.id }))"
     multiple

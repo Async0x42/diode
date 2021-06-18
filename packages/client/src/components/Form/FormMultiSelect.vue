@@ -5,7 +5,6 @@ import type { PropType } from 'vue';
 const props = defineProps({
   options: { type: Array as PropType<{ value: number; label: string }[]>, default: [] },
   modelValue: { type: Array as PropType<number[]>, default: () => [] },
-  remote: { type: Boolean, default: false },
   loading: { type: Boolean, default: false },
 });
 
@@ -15,5 +14,5 @@ watch(selected, (newVal) => emit('update:modelValue', selected.value));
 </script>
 
 <template>
-  <n-select v-model="selected" :remote="props.remote" :loading="props.loading" :options="options" multiple />
+  <n-select v-model="selected" filterable :loading="props.loading" :options="options" multiple />
 </template>

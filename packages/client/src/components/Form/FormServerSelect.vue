@@ -15,5 +15,5 @@ watch(selected, (newVal) => emit('update:value', selected.value));
 </script>
 
 <template>
-  <n-select v-model:value="selected" remote :loading="!isFinished" :options="data?.map((d) => ({ label: `${d.name} - ${d.ip}`, value: d.id }))" />
+  <n-select v-model:value="selected" filterable :loading="!isFinished" :options="data?.map((d) => ({ label: `${d.name} - ${d.ip}`, value: d.id }))" />
 </template>
