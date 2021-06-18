@@ -5,7 +5,7 @@ const searchBar = useRouteSearch();
 </script>
 
 <template>
-  <n-input v-model="searchBar" placeholder="Search">
+  <n-input v-model:value="searchBar" placeholder="Search">
     <template #affix>
       <n-icon><heroicons-solid-search /></n-icon>
     </template>
