@@ -13,5 +13,5 @@ watch(selected, (newVal) => emit('update:value', new Date(selected.value)));
 </script>
 
 <template>
-  <n-date-picker v-model:value="propsTimestampValue" type="date" clearable />
+  <n-date-picker v-model:value="selected" type="date" clearable />
 </template>
