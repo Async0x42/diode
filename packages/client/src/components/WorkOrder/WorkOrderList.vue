@@ -20,7 +20,7 @@ const { results } = useRouteSearchWithData(props.workOrders, [
 </script>
 
 <template>
-  <TableView :headers="['Name', 'Status', 'Details', 'Applications', 'Servers', 'Created']">
+  <TableView :headers="['Name', 'Status', 'Details', 'Applications', 'Servers', 'Created', '']">
     <WorkOrderListItem v-for="workOrder in results" :key="workOrder.id" :work-order="workOrder" />
   </TableView>
 </template>
