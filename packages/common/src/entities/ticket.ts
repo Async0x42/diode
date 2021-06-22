@@ -3,15 +3,16 @@ import { IDiodeEntity } from './diodeEntity';
 import { IContact } from './contact';
 import { IServer } from './server';
 
-export type WorkOrderStatus = 'New' | 'In progress' | 'Waiting on others' | 'Backlog' | 'Done' | 'Cancelled';
+export type TicketType = 'SSC' | 'EITSM Assyst' | 'Other';
+export type TicketStatus = 'Open' | 'Closed' | 'Other';
 
-export interface IWorkOrder extends IDiodeEntity {
+export interface ITicket extends IDiodeEntity {
   name: string;
   details?: string;
   applications: IApplication[];
   servers: IServer[];
-  startDate?: Date;
-  endDate?: Date;
-  status?: WorkOrderStatus;
+  dueDate?: Date;
+  type: TicketType;
+  status?: TicketStatus;
   owners: IContact[];
 }

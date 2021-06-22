@@ -1,6 +1,7 @@
 import { BaseEntity, Property, PrimaryKey, AnyEntity } from '@mikro-orm/core';
+import { IDiodeEntity } from '@diode/common';
 
-export abstract class DiodeEntity<T extends AnyEntity<T>> extends BaseEntity<DiodeEntity<T>, 'id'> {
+export abstract class DiodeEntity<T extends AnyEntity<T>> extends BaseEntity<DiodeEntity<T>, 'id'> implements IDiodeEntity {
   @PrimaryKey()
   id!: number;
 

@@ -1,4 +1,5 @@
 import { IApplication } from './application';
+import { IDiodeEntity } from './diodeEntity';
 
 export type RfcPurpose = 'Sustain' | 'Evolve' | 'Transform';
 export type RfcClass = 'Class 1' | 'Class 2' | 'Class 3' | 'Draft';
@@ -13,8 +14,7 @@ export type RfcStatus =
   | 'Returned for Modification'
   | 'Approved Conditionally';
 
-export interface IRfc {
-  id: number;
+export interface IRfc extends IDiodeEntity {
   rfcNumber?: number;
   title: string;
   application?: IApplication;
@@ -33,6 +33,4 @@ export interface IRfc {
   conceptOfImplementation?: string;
   backoutPlan?: string;
   impactAssessmentDueDate?: Date;
-  createdOn: Date;
-  modifiedOn: Date;
 }

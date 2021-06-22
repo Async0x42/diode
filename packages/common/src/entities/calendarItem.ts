@@ -1,5 +1,6 @@
-export interface ICalendarItem {
-  id: number;
+import { IDiodeEntity } from './diodeEntity';
+
+export interface ICalendarItem extends IDiodeEntity {
   title: string;
   category?: string;
   description?: string;
@@ -7,6 +8,4 @@ export interface ICalendarItem {
   start: Date;
   end: Date;
   allDay?: boolean;
-  createdOn: Date;
-  modifiedOn: Date;
 }

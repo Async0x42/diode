@@ -1,7 +1,6 @@
-export interface IServerType {
-  id: number;
+import { IDiodeEntity } from './diodeEntity';
+
+export interface IServerType extends IDiodeEntity {
   name: string;
   shortName?: string;
-  createdOn: Date;
-  modifiedOn: Date;
 }

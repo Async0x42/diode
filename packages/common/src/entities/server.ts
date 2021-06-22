@@ -9,9 +9,9 @@ import { IEnvironment } from './environment';
 import { INetwork } from './network';
 import { IWorkOrder } from './workOrder';
 import { IZone } from './zone';
+import { IDiodeEntity } from './diodeEntity';
 
-export interface IServer {
-  id: number;
+export interface IServer extends IDiodeEntity {
   name: string;
   ip?: string;
   notes?: string;
@@ -26,6 +26,4 @@ export interface IServer {
   physicalServer?: IPhysicalServer;
   environment?: IEnvironment;
   network?: INetwork;
-  createdOn: Date;
-  modifiedOn: Date;
 }

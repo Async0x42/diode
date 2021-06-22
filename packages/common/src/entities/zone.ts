@@ -1,7 +1,6 @@
-export interface IZone {
-  id: number;
+import { IDiodeEntity } from './diodeEntity';
+
+export interface IZone extends IDiodeEntity {
   name: string;
   shortName?: string;
-  createdOn: Date;
-  modifiedOn: Date;
 }

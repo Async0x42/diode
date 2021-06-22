@@ -1,6 +1,5 @@
-export interface ICalendar {
-  id: number;
+import { IDiodeEntity } from './diodeEntity';
+
+export interface ICalendar extends IDiodeEntity {
   name: string;
-  createdOn: Date;
-  modifiedOn: Date;
 }

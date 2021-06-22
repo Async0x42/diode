@@ -1,8 +1,8 @@
+import { IDiodeEntity } from './diodeEntity';
 import { IContactGroup } from './contactGroup';
 import { IWorkOrder } from './workOrder';
 
-export interface IContact {
-  id: number;
+export interface IContact extends IDiodeEntity {
   name: string;
   phone?: string;
   email?: string;
@@ -12,6 +12,4 @@ export interface IContact {
   notes?: string;
   contactGroups: IContactGroup[];
   workOrders: IWorkOrder[];
-  createdOn: Date;
-  modifiedOn: Date;
 }

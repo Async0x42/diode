@@ -1,8 +1,8 @@
+import { IDiodeEntity } from './diodeEntity';
 import { IServer } from './server';
 import { IServerLocation } from './serverLocation';
 
-export interface IPhysicalServer {
-  id: number;
+export interface IPhysicalServer extends IDiodeEntity {
   name: string;
   baseOperatingSystem?: string;
   hypervisor?: string;
@@ -18,6 +18,4 @@ export interface IPhysicalServer {
   notes?: string;
   servers: IServer[];
   location?: IServerLocation;
-  createdOn: Date;
-  modifiedOn: Date;
 }

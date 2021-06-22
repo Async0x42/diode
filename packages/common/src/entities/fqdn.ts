@@ -1,11 +1,9 @@
 import { IApplication } from './application';
+import { IDiodeEntity } from './diodeEntity';
 import { IServer } from './server';
 
-export interface IFqdn {
-  id: number;
+export interface IFqdn extends IDiodeEntity {
   name: string;
   server?: IServer;
   applications: IApplication[];
-  createdOn: Date;
-  modifiedOn: Date;
 }

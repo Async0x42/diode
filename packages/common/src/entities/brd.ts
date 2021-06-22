@@ -1,9 +1,9 @@
 import { IApplication } from './application';
+import { IDiodeEntity } from './diodeEntity';
 
 export type BrdStatus = 'Draft' | 'Assessment' | 'Design' | 'WIF' | 'SA' | 'Implementation' | 'Done';
 
-export interface IBrd {
-  id: number;
+export interface IBrd extends IDiodeEntity {
   title: string;
   description?: string;
   relatedRequests?: string;
@@ -15,6 +15,4 @@ export interface IBrd {
   initialCost?: number;
   upkeepCost?: number;
   application?: IApplication;
-  createdOn: Date;
-  modifiedOn: Date;
 }
