@@ -97,7 +97,7 @@ export default defineConfig({
   ],
 
   optimizeDeps: {
-    include: ['vue', 'vue-router', '@vueuse/core', '@vueuse/integrations', 'fuse.js', '@headlessui/vue', '@heroicons/vue/outline', 'date-fns'],
+    include: ['vue', 'vue-router', '@vueuse/core', '@vueuse/integrations', 'fuse.js', '@heroicons/vue/outline', 'date-fns'],
     exclude: ['vue-demi'],
   },
 });
