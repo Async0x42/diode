@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@diode/common": "workspace:*",
-    "@headlessui/vue": "^1.3.0",
     "@heroicons/vue": "^1.0.1",
     "@popperjs/core": "^2.9.2",
     "@vueuse/core": "^5.0.3",
