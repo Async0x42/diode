@@ -14,5 +14,5 @@ watch(selected, (newVal) => emit('update:value', selected.value));
 </script>
 
 <template>
-  <n-select v-model="selected" filterable :loading="props.loading" :options="props.options?.map((d) => ({ label: d, value: d }))" />
+  <n-select v-model:value="selected" filterable :loading="props.loading" :options="props.options.map((d) => ({ label: d, value: d }))" />
 </template>
