@@ -5,18 +5,18 @@ import { useAxios } from '@vueuse/integrations';
 import type { IApplication } from '@diode/common';
 
 const props = defineProps({
-  modelValue: { type: Array as PropType<number[]>, default: () => [] },
+  value: { type: Array as PropType<number[]>, default: () => [] },
 });
 
 const { data, error, isFinished } = useAxios<IApplication[]>('/api/applications');
-const selected = ref<number[]>(props.modelValue);
-const emit = defineEmit(['update:modelValue']);
-watch(selected, (newVal) => emit('update:modelValue', selected.value));
+const selected = ref<number[]>(props.value);
+const emit = defineEmit(['update:value']);
+watch(selected, (newVal) => emit('update:value', selected.value));
 </script>
 
 <template>
   <n-select
-    v-model="selected"
+    v-model:value="selected"
     filterable
     :loading="!isFinished"
     :options="data?.map((d) => ({ label: `${d.shortName ? `[${d.shortName}] ` : ''}${d.name}`, value: d.id }))"

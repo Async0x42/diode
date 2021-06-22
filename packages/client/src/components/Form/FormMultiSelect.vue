@@ -4,15 +4,15 @@ import type { PropType } from 'vue';
 
 const props = defineProps({
   options: { type: Array as PropType<{ value: number; label: string }[]>, default: [] },
-  modelValue: { type: Array as PropType<number[]>, default: () => [] },
+  value: { type: Array as PropType<number[]>, default: () => [] },
   loading: { type: Boolean, default: false },
 });
 
-const selected = ref<number[]>(props.modelValue);
-const emit = defineEmit(['update:modelValue']);
-watch(selected, (newVal) => emit('update:modelValue', selected.value));
+const selected = ref<number[]>(props.value);
+const emit = defineEmit(['update:value']);
+watch(selected, (newVal) => emit('update:value', selected.value));
 </script>
 
 <template>
-  <n-select v-model="selected" filterable :loading="props.loading" :options="options" multiple />
+  <n-select v-model:value="selected" filterable :loading="props.loading" :options="options" multiple />
 </template>
