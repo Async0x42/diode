@@ -2,12 +2,11 @@
 import { defineProps } from 'vue';
 import type { ITicket } from '@diode/common';
 import type { PropType } from 'vue';
-import { parseJSON, format } from 'date-fns';
+import { formatTableDate } from '~/utils';
 
 const props = defineProps({
   ticket: { type: Object as PropType<ITicket>, required: true },
 });
-const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 'yyyy-MM-dd');
 </script>
 
 <template>
@@ -16,13 +15,13 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
     <n-descriptions-item label="Name" :span="3">
       <n-text tag="div" depth="1">[{{ props.ticket.ticketId }}] {{ props.ticket.name }}</n-text>
       <n-text tag="div" depth="2">{{ props.ticket.status }}</n-text>
-      <n-text tag="div" depth="3">Est. Due: {{ formatDate(props.ticket.estimatedDueDate) }}</n-text>
+      <n-text tag="div" depth="3">Est. Due: {{ formatTableDate(props.ticket.estimatedDueDate) }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Created">
-      <n-text tag="div" depth="1">{{ formatDate(props.ticket.createdOn) }}</n-text>
+      <n-text tag="div" depth="1">{{ formatTableDate(props.ticket.createdOn) }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Modified">
-      <n-text tag="div" depth="1">{{ formatDate(props.ticket.modifiedOn) }}</n-text>
+      <n-text tag="div" depth="1">{{ formatTableDate(props.ticket.modifiedOn) }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Details">
       <n-text tag="div" depth="1" v-html="props.ticket.details"></n-text>

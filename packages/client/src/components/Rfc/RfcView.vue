@@ -2,13 +2,11 @@
 import { defineProps } from 'vue';
 import type { IRfc } from '@diode/common';
 import type { PropType } from 'vue';
-import { parseJSON, format } from 'date-fns';
+import { formatTableDate } from '~/utils';
 
 const props = defineProps({
   rfc: { type: Object as PropType<IRfc>, required: true },
 });
-
-const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 'yyyy-MM-dd');
 </script>
 
 <template>
@@ -30,7 +28,7 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
       <n-text tag="div" depth="1">{{ props.rfc.status }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="IA Due Date">
-      <n-text tag="div" depth="1">{{ formatDate(props.rfc.impactAssessmentDueDate) }}</n-text>
+      <n-text tag="div" depth="1">{{ formatTableDate(props.rfc.impactAssessmentDueDate) }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Description">
       <n-text tag="div" depth="1">{{ props.rfc.description }}</n-text>

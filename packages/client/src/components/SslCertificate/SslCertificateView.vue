@@ -2,13 +2,11 @@
 import { defineProps } from 'vue';
 import type { ISslCertificate } from '@diode/common';
 import type { PropType } from 'vue';
-import { format, parseJSON } from 'date-fns';
+import { formatTableDate } from '~/utils';
 
 const props = defineProps({
   sslCertificate: { type: Object as PropType<ISslCertificate>, required: true },
 });
-
-const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 'yyyy-MM-dd');
 </script>
 
 <template>
@@ -16,7 +14,7 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
   <n-descriptions bordered>
     <n-descriptions-item label="Subject Alternate Names" :span="3">
       <n-text tag="div" depth="1">{{ props.sslCertificate.sans }}</n-text>
-      <n-text tag="div" depth="3">{{ formatDate(props.sslCertificate.expiry) }}</n-text>
+      <n-text tag="div" depth="3">{{ formatTableDate(props.sslCertificate.expiry) }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Applications">
       <template v-for="application in props.sslCertificate.applications" :key="application.id">

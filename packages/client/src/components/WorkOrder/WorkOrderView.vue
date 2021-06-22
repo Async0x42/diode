@@ -2,12 +2,11 @@
 import { defineProps } from 'vue';
 import type { IWorkOrder } from '@diode/common';
 import type { PropType } from 'vue';
-import { parseJSON, format } from 'date-fns';
+import { formatTableDate } from '~/utils';
 
 const props = defineProps({
   workOrder: { type: Object as PropType<IWorkOrder>, required: true },
 });
-const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 'yyyy-MM-dd');
 </script>
 
 <template>
@@ -15,13 +14,13 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
   <n-descriptions bordered>
     <n-descriptions-item label="Name" :span="3">
       <n-text tag="div" depth="1">{{ props.workOrder.name }}</n-text>
-      <n-text tag="div" depth="3">{{ formatDate(props.workOrder.startDate) }} - {{ formatDate(props.workOrder.endDate) }}</n-text>
+      <n-text tag="div" depth="3">{{ formatTableDate(props.workOrder.startDate) }} - {{ formatTableDate(props.workOrder.endDate) }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Created">
-      <n-text tag="div" depth="1">{{ formatDate(props.workOrder.createdOn) }}</n-text>
+      <n-text tag="div" depth="1">{{ formatTableDate(props.workOrder.createdOn) }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Modified">
-      <n-text tag="div" depth="1">{{ formatDate(props.workOrder.modifiedOn) }}</n-text>
+      <n-text tag="div" depth="1">{{ formatTableDate(props.workOrder.modifiedOn) }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Details">
       <n-text tag="div" depth="1" v-html="props.workOrder.details"></n-text>

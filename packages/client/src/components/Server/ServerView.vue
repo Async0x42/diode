@@ -2,12 +2,11 @@
 import { defineProps } from 'vue';
 import type { IServer } from '@diode/common';
 import type { PropType } from 'vue';
-import { parseJSON, format } from 'date-fns';
+import { formatTableDate } from '~/utils';
 
 const props = defineProps({
   server: { type: Object as PropType<IServer>, required: true },
 });
-const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 'yyyy-MM-dd');
 </script>
 
 <template>
@@ -44,7 +43,7 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
     <n-descriptions-item label="SSL Certificates">
       <template v-for="sslCert in props.server.sslCertificates" :key="sslCert.id">
         <n-text tag="div" depth="1" class="mb-2 hover:text-teal-300">
-          <template v-if="sslCert.expiry"> [{{ formatDate(sslCert.expiry) }}] </template>
+          <template v-if="sslCert.expiry"> [{{ formatTableDate(sslCert.expiry) }}] </template>
           {{ sslCert.sans }}
         </n-text>
       </template>
@@ -54,9 +53,9 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
         <n-text tag="div" depth="1" class="mb-2 hover:text-teal-300">
           <div>
             <template v-if="workOrder.startDate || workOrder.endDate">
-              [{{ formatDate(workOrder.startDate) }}
+              [{{ formatTableDate(workOrder.startDate) }}
               <template v-if="workOrder.startDate && workOrder.endDate"> - </template>
-              {{ formatDate(workOrder.endDate) }}]
+              {{ formatTableDate(workOrder.endDate) }}]
             </template>
             {{ workOrder.name }}
           </div>

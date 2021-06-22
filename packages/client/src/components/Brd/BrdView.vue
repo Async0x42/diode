@@ -3,14 +3,12 @@ import { defineProps } from 'vue';
 import type { IBrd } from '@diode/common';
 import type { PropType } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { parseJSON, format } from 'date-fns';
+import { formatTableDate } from '~/utils';
 const { n } = useI18n();
 
 const props = defineProps({
   brd: { type: Object as PropType<IBrd>, required: true },
 });
-
-const formatDate = (jsonDate?: Date | number) => jsonDate && format(parseJSON(jsonDate), 'yyyy-MM-dd');
 </script>
 
 <template>
@@ -38,10 +36,10 @@ const formatDate = (jsonDate?: Date | number) => jsonDate && format(parseJSON(js
       <n-text tag="div" depth="1">{{ props.brd.status }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Submission Date">
-      <n-text tag="div" depth="1">{{ formatDate(props.brd.submissionDate) }}</n-text>
+      <n-text tag="div" depth="1">{{ formatTableDate(props.brd.submissionDate) }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Date Entered Into Bits">
-      <n-text tag="div" depth="1">{{ formatDate(props.brd.dateEnteredIntoBits) }}</n-text>
+      <n-text tag="div" depth="1">{{ formatTableDate(props.brd.dateEnteredIntoBits) }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Initial Cost">
       <n-text tag="div" depth="1">{{ n(props.brd.initialCost || 0, 'currency') }}</n-text>

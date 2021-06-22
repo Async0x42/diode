@@ -2,13 +2,12 @@
 import { defineProps } from 'vue';
 import type { IApplication } from '@diode/common';
 import type { PropType } from 'vue';
-import { parseJSON, format } from 'date-fns';
+import { formatTableDate } from '~/utils';
 
 const props = defineProps({
   application: { type: Object as PropType<IApplication>, required: true },
 });
 
-const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 'yyyy-MM-dd');
 const title = `${props.application.shortName && `[${props.application.shortName}] `}${props.application.name}`;
 </script>
 
@@ -34,7 +33,7 @@ const title = `${props.application.shortName && `[${props.application.shortName}
     </n-descriptions-item>
     <n-descriptions-item label="SSL Certs">
       <n-text v-for="sslCert in props.application.sslCertificates" :key="sslCert.id" tag="div" depth="1" class="mb-2 hover:text-teal-300">
-        <template v-if="sslCert.expiry"> [{{ formatDate(sslCert?.expiry) }}] </template>
+        <template v-if="sslCert.expiry"> [{{ formatTableDate(sslCert?.expiry) }}] </template>
         {{ sslCert?.sans }}
       </n-text>
     </n-descriptions-item>

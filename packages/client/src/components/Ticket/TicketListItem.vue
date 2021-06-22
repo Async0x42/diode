@@ -2,13 +2,11 @@
 import { defineProps } from 'vue';
 import type { ITicket } from '@diode/common';
 import type { PropType } from 'vue';
-import { parseJSON, format } from 'date-fns';
+import { formatTableDate } from '~/utils';
 
 const props = defineProps({
   ticket: { type: Object as PropType<ITicket>, required: true },
 });
-
-const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 'yyyy-MM-dd');
 </script>
 
 <template>
@@ -22,8 +20,8 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
     </n-td>
     <TableCellApplications :applications="props.ticket.applications" />
     <TableCellServers :servers="props.ticket.servers" />
-    <n-td class="whitespace-nowrap">{{ formatDate(props.ticket.createdOn) }}</n-td>
-    <n-td class="whitespace-nowrap">{{ formatDate(props.ticket.estimatedDueDate) }}</n-td>
+    <n-td class="whitespace-nowrap">{{ formatTableDate(props.ticket.createdOn) }}</n-td>
+    <n-td class="whitespace-nowrap">{{ formatTableDate(props.ticket.estimatedDueDate) }}</n-td>
     <TableCellQuickActions @edit="$router.push({ name: 'ticket-edit', params: { ticketId: ticket.id } })" />
   </n-tr>
 </template>
