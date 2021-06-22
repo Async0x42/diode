@@ -6,8 +6,8 @@ const props = defineProps({
   loading: { type: Boolean, default: false },
 });
 
-const selected = ref<number>(new Date(props.value).getTime());
 const propsTimestampValue = computed(() => new Date(props.value).getTime());
+const selected = ref<number>(propsTimestampValue.value);
 const emit = defineEmit(['update:value']);
 watch(selected, (newVal) => emit('update:value', new Date(selected.value)));
 </script>
