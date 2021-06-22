@@ -1,5 +1,5 @@
 import { IContactGroup } from './contactGroup';
-import { ITicket } from './ticket';
+import { IWorkOrder } from './workOrder';
 
 export interface IContact {
   id: number;
@@ -11,7 +11,7 @@ export interface IContact {
   department?: string;
   notes?: string;
   contactGroups: IContactGroup[];
-  tickets: ITicket[];
+  workOrders: IWorkOrder[];
   createdOn: Date;
   modifiedOn: Date;
 }

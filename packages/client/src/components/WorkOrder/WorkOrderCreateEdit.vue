@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, ref } from 'vue';
-import type { ITicket } from '@diode/common';
+import type { IWorkOrder } from '@diode/common';
 import type { PropType } from 'vue';
 import { useMessage } from 'naive-ui';
 import { useFormActions } from '~/logic';
@@ -8,12 +8,12 @@ import { assignDefaultsToForm, createFormModel } from '~/utils/forms';
 const message = useMessage();
 
 const props = defineProps({
-  ticket: { type: Object as PropType<ITicket> },
+  workOrder: { type: Object as PropType<IWorkOrder> },
 });
 
-const { onSubmit, onDelete } = useFormActions<ITicket>('/api/tickets', 'tickets', props.ticket);
+const { onSubmit, onDelete } = useFormActions<IWorkOrder>('/api/workOrders', 'workOrders', props.workOrder);
 
-const model = createFormModel<ITicket>(['name', 'startDate', 'endDate', 'details', 'applications', 'servers', 'owners']);
+const model = createFormModel<IWorkOrder>(['name', 'startDate', 'endDate', 'details', 'applications', 'servers', 'owners']);
 const rules = {
   name: [
     {
@@ -23,7 +23,7 @@ const rules = {
     },
   ],
 };
-assignDefaultsToForm(model, props.ticket);
+assignDefaultsToForm(model, props.workOrder);
 
 const formRef = ref(null as any);
 const handleValidateClick = (e: Event) => {
@@ -41,7 +41,7 @@ const handleValidateClick = (e: Event) => {
 </script>
 
 <template>
-  <n-page-header class="mx-8 mt-6" title="Ticket Information" />
+  <n-page-header class="mx-8 mt-6" title="Work Order Information" />
   <n-form ref="formRef" :rules="rules" :model="model" class="mx-12">
     <n-grid :span="12" :x-gap="12">
       <n-form-item-gi :span="12" label="Name" path="name">
@@ -82,7 +82,7 @@ const handleValidateClick = (e: Event) => {
     </n-grid>
 
     <n-space justify="end">
-      <FormButtonDelete v-if="props.ticket" @delete="onDelete()" />
+      <FormButtonDelete v-if="props.workOrder" @delete="onDelete()" />
       <FormButtonCancel @click="$router.back()" />
       <FormButtonOk @click="handleValidateClick" />
     </n-space>

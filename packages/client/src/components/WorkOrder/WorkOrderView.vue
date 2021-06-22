@@ -1,33 +1,33 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import type { ITicket } from '@diode/common';
+import type { IWorkOrder } from '@diode/common';
 import type { PropType } from 'vue';
 import { parseJSON, format } from 'date-fns';
 
 const props = defineProps({
-  ticket: { type: Object as PropType<ITicket>, required: true },
+  workOrder: { type: Object as PropType<IWorkOrder>, required: true },
 });
 const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 'yyyy-MM-dd');
 </script>
 
 <template>
-  <n-page-header class="p-2" title="Ticket Information" />
+  <n-page-header class="p-2" title="Work Order Information" />
   <n-descriptions bordered>
     <n-descriptions-item label="Name" :span="3">
-      <n-text tag="div" depth="1">{{ props.ticket.name }}</n-text>
-      <n-text tag="div" depth="3">{{ formatDate(props.ticket.startDate) }} - {{ formatDate(props.ticket.endDate) }}</n-text>
+      <n-text tag="div" depth="1">{{ props.workOrder.name }}</n-text>
+      <n-text tag="div" depth="3">{{ formatDate(props.workOrder.startDate) }} - {{ formatDate(props.workOrder.endDate) }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Created">
-      <n-text tag="div" depth="1">{{ formatDate(props.ticket.createdOn) }}</n-text>
+      <n-text tag="div" depth="1">{{ formatDate(props.workOrder.createdOn) }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Modified">
-      <n-text tag="div" depth="1">{{ formatDate(props.ticket.modifiedOn) }}</n-text>
+      <n-text tag="div" depth="1">{{ formatDate(props.workOrder.modifiedOn) }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Details">
-      <n-text tag="div" depth="1" v-html="props.ticket.details"></n-text>
+      <n-text tag="div" depth="1" v-html="props.workOrder.details"></n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Applications">
-      <template v-for="application in props.ticket.applications" :key="application.id">
+      <template v-for="application in props.workOrder.applications" :key="application.id">
         <n-text tag="div" depth="1" class="mb-2 hover:text-teal-300">
           <template v-if="application.shortName"> [{{ application?.shortName }}] </template>
           {{ application?.name }}
@@ -35,7 +35,7 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
       </template>
     </n-descriptions-item>
     <n-descriptions-item label="Servers">
-      <template v-for="server in props.ticket.servers" :key="server.id">
+      <template v-for="server in props.workOrder.servers" :key="server.id">
         <div class="group">
           <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ server.name }}</n-text>
           <n-text tag="div" depth="2" class="group-hover:text-teal-400">{{ server.ip }}</n-text>
@@ -44,7 +44,7 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
       </template>
     </n-descriptions-item>
     <n-descriptions-item label="Owners">
-      <n-text v-for="owner in props.ticket.owners" :key="owner.id" tag="div" depth="1" class="mb-2 hover:text-teal-300">{{ owner.name }}</n-text>
+      <n-text v-for="owner in props.workOrder.owners" :key="owner.id" tag="div" depth="1" class="mb-2 hover:text-teal-300">{{ owner.name }}</n-text>
     </n-descriptions-item>
   </n-descriptions>
 </template>

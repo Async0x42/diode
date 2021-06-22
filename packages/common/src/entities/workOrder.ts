@@ -2,9 +2,9 @@ import { IApplication } from './application';
 import { IContact } from './contact';
 import { IServer } from './server';
 
-export type TicketStatus = 'New' | 'In progress' | 'Waiting on others' | 'Backlog' | 'Done' | 'Cancelled';
+export type WorkOrderStatus = 'New' | 'In progress' | 'Waiting on others' | 'Backlog' | 'Done' | 'Cancelled';
 
-export interface ITicket {
+export interface IWorkOrder {
   id: number;
   name: string;
   details?: string;
@@ -12,7 +12,7 @@ export interface ITicket {
   servers: IServer[];
   startDate?: Date;
   endDate?: Date;
-  status?: TicketStatus;
+  status?: WorkOrderStatus;
   owners: IContact[];
   createdOn: Date;
   modifiedOn: Date;

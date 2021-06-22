@@ -2,12 +2,12 @@ import { IContact } from '@diode/common';
 import { Entity, Property, Collection, ManyToMany } from '@mikro-orm/core';
 import { DiodeEntity } from './diode.entity';
 import { ContactGroup } from './contactGroup.entity';
-import { Ticket } from './ticket.entity';
+import { WorkOrder } from './workOrder.entity';
 
 // Quick fix to make @mikro-orm collection compat with the common interface
-export interface IBackendContact extends Omit<IContact, 'contactGroups' | 'tickets'> {
+export interface IBackendContact extends Omit<IContact, 'contactGroups' | 'workOrders'> {
   contactGroups: Collection<ContactGroup>;
-  tickets: Collection<Ticket>;
+  workOrders: Collection<WorkOrder>;
 }
 
 @Entity()
@@ -36,6 +36,6 @@ export class Contact extends DiodeEntity<Contact> implements IBackendContact {
   @ManyToMany(() => ContactGroup, (contactGroup) => contactGroup.contacts)
   contactGroups = new Collection<ContactGroup>(this);
 
-  @ManyToMany(() => Ticket, (ticket) => ticket.owners)
-  tickets = new Collection<Ticket>(this);
+  @ManyToMany(() => WorkOrder, (workOrder) => workOrder.owners)
+  workOrders = new Collection<WorkOrder>(this);
 }

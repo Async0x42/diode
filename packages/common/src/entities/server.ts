@@ -7,7 +7,7 @@ import { IPhysicalServer } from './physicalServer';
 import { ISslCertificate } from './sslCertificate';
 import { IEnvironment } from './environment';
 import { INetwork } from './network';
-import { ITicket } from './ticket';
+import { IWorkOrder } from './workOrder';
 import { IZone } from './zone';
 
 export interface IServer {
@@ -19,7 +19,7 @@ export interface IServer {
   applications: IApplication[];
   fqdns: IFqdn[];
   sslCertificates: ISslCertificate[];
-  tickets: ITicket[];
+  workOrders: IWorkOrder[];
   types: IServerType[];
   zone?: IZone;
   location?: IServerLocation;

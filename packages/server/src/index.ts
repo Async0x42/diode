@@ -20,7 +20,7 @@ import {
   Network,
   Rfc,
   Server,
-  Ticket,
+  WorkOrder,
   SslCertificate,
   ContactGroup,
   PhysicalServer,
@@ -56,7 +56,7 @@ export const DI = {} as {
   sslCertificateRepo: EntityRepository<SslCertificate>;
   environmentRepo: EntityRepository<Environment>;
   networkRepo: EntityRepository<Network>;
-  ticketRepo: EntityRepository<Ticket>;
+  workOrderRepo: EntityRepository<WorkOrder>;
   zoneRepo: EntityRepository<Zone>;
 };
 
@@ -79,7 +79,7 @@ export const DI = {} as {
   DI.sslCertificateRepo = DI.em.getRepository(SslCertificate);
   DI.environmentRepo = DI.em.getRepository(Environment);
   DI.networkRepo = DI.em.getRepository(Network);
-  DI.ticketRepo = DI.em.getRepository(Ticket);
+  DI.workOrderRepo = DI.em.getRepository(WorkOrder);
   DI.zoneRepo = DI.em.getRepository(Zone);
 
   app.use((req, res, next) => RequestContext.create(DI.orm.em, next));
@@ -103,9 +103,9 @@ export const DI = {} as {
 
   app.use('/api/rfcs', createRouter<Rfc>(createService(DI.rfcRepo, ['application'])));
   app.use('/api/brds', createRouter<Brd>(createService(DI.brdRepo, ['application'])));
-  app.use('/api/contacts', createRouter<Contact>(createService(DI.contactRepo, ['contactGroups', 'tickets'])));
+  app.use('/api/contacts', createRouter<Contact>(createService(DI.contactRepo, ['contactGroups', 'workOrders'])));
   app.use('/api/fqdns', createRouter<Fqdn>(createService(DI.fqdnRepo, ['applications', 'server'])));
-  app.use('/api/tickets', createRouter<Ticket>(createService(DI.ticketRepo, ['applications', 'servers', 'owners'])));
+  app.use('/api/workOrders', createRouter<WorkOrder>(createService(DI.workOrderRepo, ['applications', 'servers', 'owners'])));
   app.use(
     '/api/physicalServers',
     createRouter<PhysicalServer>(createService(DI.physicalServerRepo, ['location', 'servers', 'servers.location', 'servers.operatingSystem']))
@@ -121,7 +121,7 @@ export const DI = {} as {
         'servers.location',
         'brds',
         'rfcs',
-        'tickets',
+        'workOrders',
       ])
     )
   );
@@ -138,7 +138,7 @@ export const DI = {} as {
         'physicalServer',
         'network',
         'environment',
-        'tickets',
+        'workOrders',
         'zone',
       ])
     )

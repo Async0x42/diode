@@ -6,16 +6,16 @@ import { Fqdn } from './fqdn.entity';
 import { Rfc } from './rfc.entity';
 import { Server } from './server.entity';
 import { SslCertificate } from './sslCertificate.entity';
-import { Ticket } from './ticket.entity';
+import { WorkOrder } from './workOrder.entity';
 
 // Quick fix to make @mikro-orm collection compat with the IServer []
-export interface IBackendApplication extends Omit<IApplication, 'fqdns' | 'servers' | 'brds' | 'rfcs' | 'sslCertificates' | 'tickets'> {
+export interface IBackendApplication extends Omit<IApplication, 'fqdns' | 'servers' | 'brds' | 'rfcs' | 'sslCertificates' | 'workOrders'> {
   fqdns: Collection<Fqdn>;
   servers: Collection<Server>;
   brds: Collection<Brd>;
   rfcs: Collection<Rfc>;
   sslCertificates: Collection<SslCertificate>;
-  tickets: Collection<Ticket>;
+  workOrders: Collection<WorkOrder>;
 }
 
 @Entity()
@@ -38,8 +38,8 @@ export class Application extends DiodeEntity<Application> implements IBackendApp
   @ManyToMany(() => SslCertificate, (sslCert) => sslCert.applications, { owner: true })
   sslCertificates = new Collection<SslCertificate>(this);
 
-  @ManyToMany(() => Ticket, (ticket) => ticket.applications)
-  tickets = new Collection<Ticket>(this);
+  @ManyToMany(() => WorkOrder, (workOrder) => workOrder.applications)
+  workOrders = new Collection<WorkOrder>(this);
 
   @OneToMany(() => Brd, (brd) => brd.application)
   brds = new Collection<Brd>(this);

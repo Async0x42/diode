@@ -17,7 +17,7 @@ interface INav {
 }
 
 export const navigation: INav[] = [
-  { label: 'Tickets', key: 'tickets', to: { name: 'tickets' }, icon: DocumentTextIcon },
+  { label: 'Work Orders', key: 'workOrders', to: { name: 'workOrders' }, icon: DocumentTextIcon },
   { label: 'Calendar', key: 'calendar', to: { name: 'calendar' }, icon: CalendarIcon },
   { label: 'Applications', key: 'applications', to: { name: 'applications' }, icon: GlobeAltIcon },
   { label: 'Servers', key: 'servers', to: { name: 'servers' }, icon: ChipIcon },

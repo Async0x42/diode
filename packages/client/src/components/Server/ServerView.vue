@@ -49,18 +49,18 @@ const formatDate = (jsonDate?: Date) => jsonDate && format(parseJSON(jsonDate), 
         </n-text>
       </template>
     </n-descriptions-item>
-    <n-descriptions-item label="Tickets">
-      <template v-for="ticket in props.server.tickets" :key="ticket.id">
+    <n-descriptions-item label="WorkOrders">
+      <template v-for="workOrder in props.server.workOrders" :key="workOrder.id">
         <n-text tag="div" depth="1" class="mb-2 hover:text-teal-300">
           <div>
-            <template v-if="ticket.startDate || ticket.endDate">
-              [{{ formatDate(ticket.startDate) }}
-              <template v-if="ticket.startDate && ticket.endDate"> - </template>
-              {{ formatDate(ticket.endDate) }}]
+            <template v-if="workOrder.startDate || workOrder.endDate">
+              [{{ formatDate(workOrder.startDate) }}
+              <template v-if="workOrder.startDate && workOrder.endDate"> - </template>
+              {{ formatDate(workOrder.endDate) }}]
             </template>
-            {{ ticket.name }}
+            {{ workOrder.name }}
           </div>
-          <div class="mt-1">{{ ticket.details }}</div>
+          <div class="mt-1">{{ workOrder.details }}</div>
         </n-text>
       </template>
     </n-descriptions-item>

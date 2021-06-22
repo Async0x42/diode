@@ -10,17 +10,17 @@ import { PhysicalServer } from './physicalServer.entity';
 import { ServerLocation } from './serverLocation.entity';
 import { ServerType } from './serverType.entity';
 import { SslCertificate } from './sslCertificate.entity';
-import { Ticket } from './ticket.entity';
+import { WorkOrder } from './workOrder.entity';
 import { Zone } from './zone.entity';
 
 // Quick fix to make @mikro-orm collection compat with the IServer []
-export interface IBackendServer extends Omit<IServer, 'applications' | 'fqdns' | 'types' | 'physicalServer' | 'sslCertificates' | 'tickets'> {
+export interface IBackendServer extends Omit<IServer, 'applications' | 'fqdns' | 'types' | 'physicalServer' | 'sslCertificates' | 'workOrders'> {
   applications: Collection<Application>;
   fqdns: Collection<Fqdn>;
   types: Collection<ServerType>;
   physicalServer?: PhysicalServer;
   sslCertificates: Collection<SslCertificate>;
-  tickets: Collection<Ticket>;
+  workOrders: Collection<WorkOrder>;
 }
 
 @Entity()
@@ -55,8 +55,8 @@ export class Server extends DiodeEntity<Server> implements IBackendServer {
   @ManyToMany(() => SslCertificate, (sslCert) => sslCert.servers, { owner: true })
   sslCertificates = new Collection<SslCertificate>(this);
 
-  @ManyToMany(() => Ticket, (ticket) => ticket.servers)
-  tickets = new Collection<Ticket>(this);
+  @ManyToMany(() => WorkOrder, (workOrder) => workOrder.servers)
+  workOrders = new Collection<WorkOrder>(this);
 
   @OneToMany(() => Fqdn, (fqdn) => fqdn.server)
   fqdns = new Collection<Fqdn>(this);

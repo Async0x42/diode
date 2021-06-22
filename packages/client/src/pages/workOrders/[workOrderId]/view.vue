@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 import { useAxios } from '@vueuse/integrations';
-import type { ITicket } from '@diode/common';
+import type { IWorkOrder } from '@diode/common';
 
 const props = defineProps({
-  ticketId: { type: String, required: true },
+  workOrderId: { type: String, required: true },
 });
-const { data, error, isFinished } = useAxios<ITicket>(`/api/tickets/${props.ticketId}`);
+const { data, error, isFinished } = useAxios<IWorkOrder>(`/api/workOrders/${props.workOrderId}`);
 </script>
 
 <template>
-  <TicketCreateEdit v-if="isFinished && data" :ticket="data" />
+  <WorkOrderView v-if="isFinished && data" :work-order="data" />
   <LoadingError v-else-if="error" :error="error" />
   <LoadingList v-else />
 </template>
 
 <route lang="yaml">
-name: ticket-edit
+name: workOrder-view
 </route>

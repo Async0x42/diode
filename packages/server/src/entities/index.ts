@@ -12,6 +12,6 @@ export * from './serverType.entity';
 export * from './sslCertificate.entity';
 export * from './environment.entity';
 export * from './network.entity';
-export * from './ticket.entity';
+export * from './workOrder.entity';
 export * from './contactGroup.entity';
 export * from './physicalServer.entity';

@@ -1,5 +1,5 @@
 <script setup lang="ts"></script>
 
 <template>
-  <TicketCreateEdit />
+  <WorkOrderCreateEdit />
 </template>

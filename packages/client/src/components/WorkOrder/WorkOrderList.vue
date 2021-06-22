@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import type { ITicket } from '@diode/common';
+import type { IWorkOrder } from '@diode/common';
 import type { PropType } from 'vue';
 import { useRouteSearchWithData } from '~/logic';
 
 const props = defineProps({
-  tickets: { type: Array as PropType<ITicket[]>, required: true },
+  workOrders: { type: Array as PropType<IWorkOrder[]>, required: true },
 });
 
-const { results } = useRouteSearchWithData(props.tickets, [
+const { results } = useRouteSearchWithData(props.workOrders, [
   'name',
   'description',
   'applications.name',
@@ -21,6 +21,6 @@ const { results } = useRouteSearchWithData(props.tickets, [
 
 <template>
   <TableView :headers="['Name', 'Status', 'Details', 'Applications', 'Servers', 'Created']">
-    <TicketListItem v-for="ticket in results" :key="ticket.id" :ticket="ticket" />
+    <WorkOrderListItem v-for="workOrder in results" :key="workOrder.id" :work-order="workOrder" />
   </TableView>
 </template>
