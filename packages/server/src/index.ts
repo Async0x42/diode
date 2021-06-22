@@ -104,7 +104,7 @@ export const DI = {} as {
 
   app.use('/api/calendar', calendarRouter);
 
-  app.use('/api/tickets', createRouter<Ticket>(createService(DI.ticketRepo, ['application'])));
+  app.use('/api/tickets', createRouter<Ticket>(createService(DI.ticketRepo, ['applications', 'servers'])));
   app.use('/api/rfcs', createRouter<Rfc>(createService(DI.rfcRepo, ['application'])));
   app.use('/api/brds', createRouter<Brd>(createService(DI.brdRepo, ['application'])));
   app.use('/api/contacts', createRouter<Contact>(createService(DI.contactRepo, ['contactGroups', 'workOrders'])));
@@ -126,6 +126,7 @@ export const DI = {} as {
         'brds',
         'rfcs',
         'workOrders',
+        'tickets',
       ])
     )
   );
@@ -144,6 +145,7 @@ export const DI = {} as {
         'environment',
         'workOrders',
         'zone',
+        'tickets',
       ])
     )
   );
