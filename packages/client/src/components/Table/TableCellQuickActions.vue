@@ -31,7 +31,7 @@ const onBrowse = () => {
         <heroicons-solid-phone />
       </template>
     </TableButton>
-    <TableButton v-if="props.phone" @click="$emit('edit')">
+    <TableButton @click="$emit('edit')">
       <template #icon>
         <heroicons-solid-pencil />
       </template>
