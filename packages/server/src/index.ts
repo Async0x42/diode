@@ -24,6 +24,7 @@ import {
   SslCertificate,
   ContactGroup,
   PhysicalServer,
+  Ticket,
 } from './entities';
 import { createRouter, createService } from './utils';
 import { calendarRouter } from './calendar/calendar.router';
@@ -58,6 +59,7 @@ export const DI = {} as {
   networkRepo: EntityRepository<Network>;
   workOrderRepo: EntityRepository<WorkOrder>;
   zoneRepo: EntityRepository<Zone>;
+  ticketRepo: EntityRepository<Ticket>;
 };
 
 (async () => {
@@ -81,6 +83,7 @@ export const DI = {} as {
   DI.networkRepo = DI.em.getRepository(Network);
   DI.workOrderRepo = DI.em.getRepository(WorkOrder);
   DI.zoneRepo = DI.em.getRepository(Zone);
+  DI.ticketRepo = DI.em.getRepository(Ticket);
 
   app.use((req, res, next) => RequestContext.create(DI.orm.em, next));
 
@@ -101,6 +104,7 @@ export const DI = {} as {
 
   app.use('/api/calendar', calendarRouter);
 
+  app.use('/api/tickets', createRouter<Ticket>(createService(DI.ticketRepo, ['application'])));
   app.use('/api/rfcs', createRouter<Rfc>(createService(DI.rfcRepo, ['application'])));
   app.use('/api/brds', createRouter<Brd>(createService(DI.brdRepo, ['application'])));
   app.use('/api/contacts', createRouter<Contact>(createService(DI.contactRepo, ['contactGroups', 'workOrders'])));

@@ -12,15 +12,18 @@ import { ServerType } from './serverType.entity';
 import { SslCertificate } from './sslCertificate.entity';
 import { WorkOrder } from './workOrder.entity';
 import { Zone } from './zone.entity';
+import { Ticket } from './ticket.entity';
 
 // Quick fix to make @mikro-orm collection compat with the IServer []
-export interface IBackendServer extends Omit<IServer, 'applications' | 'fqdns' | 'types' | 'physicalServer' | 'sslCertificates' | 'workOrders'> {
+export interface IBackendServer
+  extends Omit<IServer, 'applications' | 'fqdns' | 'types' | 'physicalServer' | 'sslCertificates' | 'workOrders' | 'tickets'> {
   applications: Collection<Application>;
   fqdns: Collection<Fqdn>;
   types: Collection<ServerType>;
   physicalServer?: PhysicalServer;
   sslCertificates: Collection<SslCertificate>;
   workOrders: Collection<WorkOrder>;
+  tickets: Collection<Ticket>;
 }
 
 @Entity()
@@ -66,4 +69,7 @@ export class Server extends DiodeEntity<Server> implements IBackendServer {
 
   @Property({ columnType: 'text' })
   notes?: string;
+
+  @ManyToMany(() => Ticket, (ticket) => ticket.servers)
+  tickets = new Collection<Ticket>(this);
 }

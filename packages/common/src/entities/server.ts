@@ -10,6 +10,7 @@ import { INetwork } from './network';
 import { IWorkOrder } from './workOrder';
 import { IZone } from './zone';
 import { IDiodeEntity } from './diodeEntity';
+import { ITicket } from './ticket';
 
 export interface IServer extends IDiodeEntity {
   name: string;
@@ -26,4 +27,5 @@ export interface IServer extends IDiodeEntity {
   physicalServer?: IPhysicalServer;
   environment?: IEnvironment;
   network?: INetwork;
+  tickets?: ITicket[];
 }

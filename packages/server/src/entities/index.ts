@@ -15,3 +15,4 @@ export * from './network.entity';
 export * from './workOrder.entity';
 export * from './contactGroup.entity';
 export * from './physicalServer.entity';
+export * from './ticket.entity';
