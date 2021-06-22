@@ -71,7 +71,7 @@ const handleValidateClick = (e: Event) => {
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="Estimated Due Date" path="estimatedDueDate">
-        <n-date-picker v-model:value="model.estimatedDueDate" type="date" clearable />
+        <FormDatePicker v-model:value="model.estimatedDueDate" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="Applications" path="applications">

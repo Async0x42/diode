@@ -89,11 +89,11 @@ const handleValidateClick = (e: Event) => {
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="Submission Date" path="submissionDate">
-        <n-date-picker v-model:value="model.submissionDate" type="date" clearable />
+        <FormDatePicker v-model:value="model.submissionDate" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="24" label="Date Entered Into Bits" path="dateEnteredIntoBits">
-        <n-date-picker v-model:value="model.dateEnteredIntoBits" type="date" clearable />
+        <FormDatePicker v-model:value="model.dateEnteredIntoBits" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="Initial Cost" path="initialCost">

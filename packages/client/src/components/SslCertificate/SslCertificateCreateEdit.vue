@@ -49,7 +49,7 @@ const handleValidateClick = (e: Event) => {
       </n-form-item-gi>
 
       <n-form-item-gi :span="24" label="Expiry" path="expiry">
-        <n-date-picker v-model:value="model.expiry" type="date" clearable />
+        <FormDatePicker v-model:value="model.expiry" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="Applications" path="applications">
