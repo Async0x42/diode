@@ -1,4 +1,4 @@
-import { DocumentTextIcon, ClockIcon, CalendarIcon, PhoneIcon, GlobeAltIcon, ChipIcon, CogIcon } from '@heroicons/vue/outline';
+import { DocumentTextIcon, ClockIcon, CalendarIcon, PhoneIcon, GlobeAltIcon, ChipIcon, CogIcon, TicketIcon } from '@heroicons/vue/outline';
 import { h } from 'vue';
 import { NIcon } from 'naive-ui';
 import { sortBy } from 'lodash-es';
@@ -18,6 +18,7 @@ interface INav {
 
 export const navigation: INav[] = [
   { label: 'Work Orders', key: 'workOrders', to: { name: 'workOrders' }, icon: DocumentTextIcon },
+  { label: 'Tickets', key: 'tickets', to: { name: 'tickets' }, icon: TicketIcon },
   { label: 'Calendar', key: 'calendar', to: { name: 'calendar' }, icon: CalendarIcon },
   { label: 'Applications', key: 'applications', to: { name: 'applications' }, icon: GlobeAltIcon },
   { label: 'Servers', key: 'servers', to: { name: 'servers' }, icon: ChipIcon },

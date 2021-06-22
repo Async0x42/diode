@@ -19,6 +19,7 @@ const routesForCreate = [
   'networks',
   'workOrders',
   'zones',
+  'tickets',
 ];
 const routesForSearch = [...routesForCreate];
 
@@ -40,6 +41,7 @@ const routesForEdit = [
   'network-view',
   'workOrder-view',
   'zone-view',
+  'ticket-view',
 ];
 
 const style = computed(() => {
