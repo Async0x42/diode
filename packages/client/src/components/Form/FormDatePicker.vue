@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed, defineEmit, defineProps, ref, watch } from 'vue';
+import type { PropType } from 'vue';
 
 const props = defineProps({
-  value: { type: String, required: false },
+  value: { type: [String, Date] as PropType<string | Date>, required: false },
   loading: { type: Boolean, default: false },
 });
 
