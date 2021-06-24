@@ -1,5 +1,5 @@
 import { ITicket, TicketStatus } from '@diode/common';
-import { Entity, Property, ManyToMany, Collection, ManyToOne } from '@mikro-orm/core';
+import { Entity, Property, ManyToMany, Collection } from '@mikro-orm/core';
 import { DiodeEntity } from './diode.entity';
 import { Application } from './application.entity';
 import { Server } from './server.entity';
