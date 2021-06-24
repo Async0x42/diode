@@ -75,6 +75,6 @@ export class Server extends DiodeEntity<Server> implements IBackendServer {
   @ManyToMany(() => Ticket, (ticket) => ticket.servers)
   tickets = new Collection<Ticket>(this);
 
-  @ManyToMany(() => Dependency, (dependency) => dependency.applications)
+  @ManyToMany(() => Dependency, (dependency) => dependency.servers, { owner: true })
   dependencies = new Collection<Dependency>(this);
 }

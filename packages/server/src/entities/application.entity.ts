@@ -55,6 +55,6 @@ export class Application extends DiodeEntity<Application> implements IBackendApp
   @ManyToMany(() => Ticket, (ticket) => ticket.applications)
   tickets = new Collection<Ticket>(this);
 
-  @ManyToMany(() => Dependency, (dependency) => dependency.applications)
+  @ManyToMany(() => Dependency, (dependency) => dependency.applications, { owner: true })
   dependencies = new Collection<Dependency>(this);
 }
