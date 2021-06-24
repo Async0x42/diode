@@ -24,7 +24,7 @@
     "date-fns": "^2.22.1",
     "fuse.js": "^6.4.6",
     "lodash-es": "^4.17.21",
-    "naive-ui": "^2.13.0",
+    "naive-ui": "^2.14.0",
     "prism-theme-vars": "^0.2.2",
     "vfonts": "^0.1.0",
     "vooks": "^0.2.6",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.6.6",
-    "@iconify/json": "^1.1.359",
+    "@iconify/json": "^1.1.360",
     "@intlify/eslint-plugin-vue-i18n": "^0.11.1",
     "@intlify/vite-plugin-vue-i18n": "^2.2.1",
     "@types/markdown-it-link-attributes": "^3.0.1",
@@ -57,9 +57,9 @@
     "vite-plugin-components": "^0.11.2",
     "vite-plugin-icons": "^0.6.3",
     "vite-plugin-md": "^0.6.7",
-    "vite-plugin-pages": "^0.13.2",
+    "vite-plugin-pages": "^0.13.3",
     "vite-plugin-vue-layouts": "^0.3.1",
-    "vite-plugin-windicss": "^1.1.0",
+    "vite-plugin-windicss": "^1.1.1",
     "vue-tsc": "^0.2.0"
   }
 }
