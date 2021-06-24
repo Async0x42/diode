@@ -165,7 +165,10 @@ export const DI = {} as {
   app.use('/api/networks', createRouter<Network>(createService(DI.networkRepo)));
   app.use('/api/contactGroups', createRouter<ContactGroup>(createService(DI.contactGroupRepo, ['contacts'])));
   app.use('/api/sslCertificates', createRouter<SslCertificate>(createService(DI.sslCertificateRepo, ['applications', 'servers'])));
-  app.use('/api/dependencies', createRouter<Dependency>(createService(DI.dependencyRepo, ['applications', 'servers'])));
+  app.use(
+    '/api/dependencies',
+    createRouter<Dependency>(createService(DI.dependencyRepo, ['applications', 'servers', 'servers.location', 'servers.operatingSystem']))
+  );
   app.use(errorHandler);
   app.use(notFoundHandler);
 
