@@ -27,6 +27,7 @@ const model = createFormModel<IServer>([
   'environment',
   'network',
   'zone',
+  'dependencies',
 ]);
 const rules = {
   name: [
@@ -103,6 +104,10 @@ const handleValidateClick = (e: Event) => {
 
       <n-form-item-gi :span="12" label="Physical Server" path="physicalServer">
         <FormPhysicalServerSelect v-model:value="model.physicalServer" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Dependencies" path="dependencies">
+        <FormDependencyMultiSelect v-model:value="model.dependencies" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="Notes" path="notes">

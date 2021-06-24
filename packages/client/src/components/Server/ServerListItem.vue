@@ -2,6 +2,7 @@
 import { defineProps } from 'vue';
 import type { IServer } from '@diode/common';
 import type { PropType } from 'vue';
+import TableCellDependencies from '../Table/TableCellDependencies.vue';
 
 const props = defineProps({
   server: { type: Object as PropType<IServer>, required: true },
@@ -23,6 +24,7 @@ const props = defineProps({
     </n-td>
     <TableCellFqdns :fqdns="props.server.fqdns" />
     <TableCellApplications :applications="props.server.applications" />
+    <TableCellDependencies :dependencies="props.server.dependencies" />
     <TableCellQuickActions @edit="$router.push({ name: 'server-edit', params: { serverId: server.id } })" />
   </n-tr>
 </template>

@@ -17,11 +17,12 @@ const { results } = useRouteSearchWithData(props.applications, [
   'servers.ip',
   'brds.title',
   'rfcs.title',
+  'dependencies.name',
 ]);
 </script>
 
 <template>
-  <TableView :headers="['Name', 'Servers', 'Description', '']">
+  <TableView :headers="['Name', 'Servers', 'Dependencies', 'Description', '']">
     <ApplicationListItem v-for="application in results" :key="application.id" :application="application" />
   </TableView>
 </template>

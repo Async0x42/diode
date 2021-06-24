@@ -33,6 +33,7 @@ export const navigation: INav[] = [
       [
         { label: 'FQDN', key: 'fqdn', to: { name: 'fqdn' } },
         { label: 'Operating Systems', key: 'operatingSystems', to: { name: 'operatingSystems' } },
+        { label: 'Dependencies', key: 'dependencies', to: { name: 'dependencies' } },
         { label: 'Server Types', key: 'serverTypes', to: { name: 'serverTypes' } },
         { label: 'Server Locations', key: 'serverLocations', to: { name: 'serverLocations' } },
         { label: 'Physical Servers', key: 'physicalServers', to: { name: 'physicalServers' } },

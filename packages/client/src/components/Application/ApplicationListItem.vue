@@ -20,6 +20,7 @@ const props = defineProps({
       </router-link>
     </n-td>
     <TableCellServers :servers="props.application.servers" />
+    <TableCellDependencies :dependencies="props.application.dependencies" />
     <n-td>{{ props.application.description }}</n-td>
     <TableCellQuickActions @edit="$router.push({ name: 'application-edit', params: { applicationId: application.id } })" />
   </n-tr>

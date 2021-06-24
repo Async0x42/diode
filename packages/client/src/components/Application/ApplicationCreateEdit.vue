@@ -14,7 +14,17 @@ const props = defineProps({
 const { onSubmit, onDelete } = useFormActions<IApplication>('/api/applications', 'applications', props.application);
 
 // TODO: maybe fqdns interface etc should be listed as number[], overridden on the backend interface
-const model = createFormModel<IApplication>(['name', 'shortName', 'description', 'fqdns', 'servers', 'brds', 'rfcs', 'sslCertificates']);
+const model = createFormModel<IApplication>([
+  'name',
+  'shortName',
+  'description',
+  'fqdns',
+  'servers',
+  'brds',
+  'rfcs',
+  'sslCertificates',
+  'dependencies',
+]);
 const rules = {
   name: [
     {
@@ -72,6 +82,10 @@ const handleValidateClick = (e: Event) => {
 
       <n-form-item-gi :span="12" label="SSL Certificates" path="sslCertificates">
         <FormSslCertificateMultiSelect v-model:value="model.sslCertificates" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Dependencies" path="dependencies">
+        <FormDependencyMultiSelect v-model:value="model.dependencies" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="24" label="Description" path="description">

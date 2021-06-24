@@ -69,5 +69,14 @@ const props = defineProps({
     <n-descriptions-item label="Notes">
       <n-text tag="div" depth="1" v-html="props.server.notes"></n-text>
     </n-descriptions-item>
+    <n-descriptions-item label="Dependencies">
+      <div v-for="dependency in props.server.dependencies" :key="dependency.id" class="mb-2 group">
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">
+          <template v-if="dependency.endOfSupportDate"> [{{ formatTableDate(dependency.endOfSupportDate) }}] </template>
+          {{ dependency.name }}
+        </n-text>
+        <n-text tag="div" depth="2" class="group-hover:text-teal-400"> v{{ dependency.version }} </n-text>
+      </div>
+    </n-descriptions-item>
   </n-descriptions>
 </template>
