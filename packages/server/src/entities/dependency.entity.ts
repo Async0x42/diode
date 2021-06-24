@@ -16,7 +16,10 @@ export class Dependency extends DiodeEntity<Dependency> implements IBackendDepen
   name!: string;
 
   @Property()
-  version!: string;
+  packageName?: string;
+
+  @Property()
+  version?: string;
 
   @Property()
   endOfSupportDate?: Date;

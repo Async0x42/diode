@@ -15,6 +15,7 @@ const props = defineProps({
       <router-link class="group" :to="{ name: 'dependency-view', params: { dependencyId: dependency.id } }">
         <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.dependency.name }}</n-text>
         <n-text v-if="props.dependency.version" tag="div" depth="2" class="group-hover:text-teal-400">v{{ props.dependency.version }}</n-text>
+        <n-text v-if="props.dependency.packageName" tag="div" depth="3" class="group-hover:text-teal-500">{{ props.dependency.packageName }}</n-text>
       </router-link>
     </n-td>
     <n-td>

@@ -13,7 +13,7 @@ const props = defineProps({
 
 const { onSubmit, onDelete } = useFormActions<IDependency>('/api/dependencies', 'dependencies', props.dependency);
 
-const model = createFormModel<IDependency>(['name', 'version', 'endOfSupportDate', 'applications', 'servers']);
+const model = createFormModel<IDependency>(['name', 'packageName', 'version', 'endOfSupportDate', 'applications', 'servers']);
 const rules = {
   name: [
     {
@@ -47,6 +47,11 @@ const handleValidateClick = (e: Event) => {
       <n-form-item-gi :span="12" label="Name" path="name">
         <n-input v-model:value="model.name" placeholder="" />
       </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Package Name" path="packageName">
+        <n-input v-model:value="model.packageName" placeholder="" />
+      </n-form-item-gi>
+
       <n-form-item-gi :span="12" label="Version" path="version">
         <n-input v-model:value="model.version" placeholder="" />
       </n-form-item-gi>
