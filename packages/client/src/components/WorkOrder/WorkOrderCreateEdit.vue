@@ -13,12 +13,19 @@ const props = defineProps({
 
 const { onSubmit, onDelete } = useFormActions<IWorkOrder>('/api/workOrders', 'workOrders', props.workOrder);
 
-const model = createFormModel<IWorkOrder>(['name', 'startDate', 'endDate', 'details', 'applications', 'servers', 'owners']);
+const model = createFormModel<IWorkOrder>(['name', 'status', 'startDate', 'endDate', 'details', 'applications', 'servers', 'owners']);
 const rules = {
   name: [
     {
       required: true,
       message: 'Name is required',
+      trigger: ['input', 'blur'],
+    },
+  ],
+  status: [
+    {
+      required: true,
+      message: 'Status is required',
       trigger: ['input', 'blur'],
     },
   ],
@@ -54,6 +61,10 @@ const handleValidateClick = (e: Event) => {
 
       <n-form-item-gi :span="6" label="End Date" path="endDate">
         <FormDatePicker v-model:value="model.endDate" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Status" path="status">
+        <FormSelect v-model:value="model.status" :options="['New', 'In progress', 'Waiting on others', 'Backlog', 'Done', 'Cancelled']" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="Applications" path="applications">
