@@ -16,6 +16,9 @@ export class Dependency extends DiodeEntity<Dependency> implements IBackendDepen
   name!: string;
 
   @Property()
+  version!: string;
+
+  @Property()
   endOfSupportDate?: Date;
 
   @ManyToMany(() => Application, (application) => application.dependencies)
