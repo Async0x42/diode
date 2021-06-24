@@ -15,5 +15,8 @@ const props = defineProps({
       <n-text tag="div" depth="1">{{ props.operatingSystem.name }}</n-text>
       <n-text tag="div" depth="3">{{ props.operatingSystem.shortName }}</n-text>
     </n-descriptions-item>
+    <n-descriptions-item label="End of Support">
+      <n-text tag="div" depth="1">{{ props.operatingSystem.endOfSupportDate }}</n-text>
+    </n-descriptions-item>
   </n-descriptions>
 </template>

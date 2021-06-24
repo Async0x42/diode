@@ -13,7 +13,7 @@ const props = defineProps({
 
 const { onSubmit, onDelete } = useFormActions<IOperatingSystem>('/api/operatingSystems', 'operatingSystems', props.operatingSystem);
 
-const model = createFormModel<IOperatingSystem>(['name', 'shortName']);
+const model = createFormModel<IOperatingSystem>(['name', 'shortName', 'endOfSupportDate']);
 const rules = {
   name: [
     {
@@ -50,6 +50,10 @@ const handleValidateClick = (e: Event) => {
 
       <n-form-item-gi :span="12" label="Short Name" path="shortName">
         <n-input v-model:value="model.shortName" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="End of Support Date" path="endOfSupportDate">
+        <FormDatePicker v-model:value="model.endOfSupportDate" />
       </n-form-item-gi>
     </n-grid>
 
