@@ -18,3 +18,4 @@ export * from './workOrder';
 export * from './zone';
 export * from './ticket';
 export * from './diodeEntity';
+export * from './dependency';

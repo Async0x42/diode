@@ -25,6 +25,7 @@ import {
   ContactGroup,
   PhysicalServer,
   Ticket,
+  Dependency,
 } from './entities';
 import { createRouter, createService } from './utils';
 import { calendarRouter } from './calendar/calendar.router';
@@ -60,6 +61,7 @@ export const DI = {} as {
   workOrderRepo: EntityRepository<WorkOrder>;
   zoneRepo: EntityRepository<Zone>;
   ticketRepo: EntityRepository<Ticket>;
+  dependencyRepo: EntityRepository<Dependency>;
 };
 
 (async () => {
@@ -84,6 +86,7 @@ export const DI = {} as {
   DI.workOrderRepo = DI.em.getRepository(WorkOrder);
   DI.zoneRepo = DI.em.getRepository(Zone);
   DI.ticketRepo = DI.em.getRepository(Ticket);
+  DI.dependencyRepo = DI.em.getRepository(Dependency);
 
   app.use((req, res, next) => RequestContext.create(DI.orm.em, next));
 
@@ -130,6 +133,7 @@ export const DI = {} as {
         'rfcs',
         'workOrders',
         'tickets',
+        'dependencies',
       ])
     )
   );
@@ -149,6 +153,7 @@ export const DI = {} as {
         'workOrders',
         'zone',
         'tickets',
+        'dependencies',
       ])
     )
   );
@@ -160,6 +165,7 @@ export const DI = {} as {
   app.use('/api/networks', createRouter<Network>(createService(DI.networkRepo)));
   app.use('/api/contactGroups', createRouter<ContactGroup>(createService(DI.contactGroupRepo, ['contacts'])));
   app.use('/api/sslCertificates', createRouter<SslCertificate>(createService(DI.sslCertificateRepo, ['applications', 'servers'])));
+  app.use('/api/dependencies', createRouter<Dependency>(createService(DI.dependencyRepo, ['applications', 'servers'])));
   app.use(errorHandler);
   app.use(notFoundHandler);
 

@@ -16,3 +16,4 @@ export * from './workOrder.entity';
 export * from './contactGroup.entity';
 export * from './physicalServer.entity';
 export * from './ticket.entity';
+export * from './dependency.entity';

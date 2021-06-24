@@ -8,10 +8,11 @@ import { Server } from './server.entity';
 import { SslCertificate } from './sslCertificate.entity';
 import { WorkOrder } from './workOrder.entity';
 import { Ticket } from './ticket.entity';
+import { Dependency } from './dependency.entity';
 
 // Quick fix to make @mikro-orm collection compat with the IServer []
 export interface IBackendApplication
-  extends Omit<IApplication, 'fqdns' | 'servers' | 'brds' | 'rfcs' | 'sslCertificates' | 'workOrders' | 'tickets'> {
+  extends Omit<IApplication, 'fqdns' | 'servers' | 'brds' | 'rfcs' | 'sslCertificates' | 'workOrders' | 'tickets' | 'dependencies'> {
   fqdns: Collection<Fqdn>;
   servers: Collection<Server>;
   brds: Collection<Brd>;
@@ -19,6 +20,7 @@ export interface IBackendApplication
   sslCertificates: Collection<SslCertificate>;
   workOrders: Collection<WorkOrder>;
   tickets: Collection<Ticket>;
+  dependencies: Collection<Dependency>;
 }
 
 @Entity()
@@ -52,4 +54,7 @@ export class Application extends DiodeEntity<Application> implements IBackendApp
 
   @ManyToMany(() => Ticket, (ticket) => ticket.applications)
   tickets = new Collection<Ticket>(this);
+
+  @ManyToMany(() => Dependency, (dependency) => dependency.applications)
+  dependencies = new Collection<Dependency>(this);
 }
