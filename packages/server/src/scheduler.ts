@@ -14,7 +14,7 @@ async function createDirIfNotExist(dir: string) {
 export const backupDatabase = async (appendText?: string, backupPath = '../../backups'): Promise<{ filePath: string; fileName: string }> => {
   await createDirIfNotExist(backupPath);
 
-  const fileName = `${process.env.MIKRO_ORM_DB_NAME}_${format(new Date(), 'yyyy-MM-dd-HHmmss')}${appendText}.sql`;
+  const fileName = `${process.env.MIKRO_ORM_DB_NAME}_${format(new Date(), 'yyyy-MM-dd-HHmmss')}${appendText != null ? appendText : ''}.sql`;
   await mysqldump({
     connection: {
       host: process.env.MIKRO_ORM_HOST || 'localhost',
