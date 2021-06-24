@@ -11,6 +11,9 @@ export class OperatingSystem extends DiodeEntity<OperatingSystem> implements IOp
   @Property()
   shortName?: string;
 
+  @Property()
+  endOfSupportDate?: Date;
+
   @OneToMany(() => Server, (server) => server.operatingSystem)
   servers = new Collection<Server>(this);
 }
