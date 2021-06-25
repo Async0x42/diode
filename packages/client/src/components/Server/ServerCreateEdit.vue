@@ -23,6 +23,8 @@ const model = createFormModel<IServer>([
   'operatingSystem',
   'applications',
   'physicalServer',
+  'storageSpace',
+  'systemMemory',
   'sslCertificates',
   'environment',
   'network',
@@ -64,6 +66,14 @@ const handleValidateClick = (e: Event) => {
       </n-form-item-gi>
       <n-form-item-gi :span="12" label="IP" path="ip">
         <n-input v-model:value="model.ip" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="6" label="Storage Space" path="storageSpace">
+        <n-input-number v-model:value="model.storageSpace" class="w-full" :show-button="false" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="6" label="System Memory" path="systemMemory">
+        <n-input-number v-model:value="model.systemMemory" class="w-full" :show-button="false" placeholder="" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="Environment" path="environment">

@@ -17,6 +17,8 @@ export interface IServer extends IDiodeEntity {
   name: string;
   ip?: string;
   notes?: string;
+  storageSpace?: number;
+  systemMemory?: number;
   operatingSystem?: IOperatingSystem;
   applications: IApplication[];
   fqdns: IFqdn[];

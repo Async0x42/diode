@@ -29,7 +29,7 @@ const { results } = useRouteSearchWithData(props.servers, [
 </script>
 
 <template>
-  <TableView :headers="['Name', 'FQDN', 'Applications', 'Dependencies', '']">
+  <TableView :headers="['Name', 'Storage', 'RAM', 'FQDN', 'Applications', 'Dependencies', '']">
     <ServerListItem v-for="server in results" :key="server.id" :server="server" />
   </TableView>
 </template>

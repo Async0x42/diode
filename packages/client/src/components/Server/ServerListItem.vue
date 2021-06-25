@@ -22,6 +22,12 @@ const props = defineProps({
         <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ props.server.operatingSystem?.name }}</n-text>
       </router-link>
     </n-td>
+    <n-td>
+      <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.server.storageSpace }}</n-text>
+    </n-td>
+    <n-td>
+      <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.server.systemMemory }}</n-text>
+    </n-td>
     <TableCellFqdns :fqdns="props.server.fqdns" />
     <TableCellApplications :applications="props.server.applications" />
     <TableCellDependencies :dependencies="props.server.dependencies" />

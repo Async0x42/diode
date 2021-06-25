@@ -36,6 +36,12 @@ export class Server extends DiodeEntity<Server> implements IBackendServer {
   @Property()
   ip?: string;
 
+  @Property()
+  storageSpace?: number;
+
+  @Property()
+  systemMemory?: number;
+
   @ManyToOne()
   environment?: Environment;
 
