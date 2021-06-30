@@ -17,11 +17,20 @@
     "web-vitals": "^1.1.2"
   },
   "devDependencies": {
-    "@diode/common": "workspace:*"
+    "@diode/common": "workspace:*",
+    "@typescript-eslint/eslint-plugin": "^4.28.1",
+    "@typescript-eslint/parser": "^4.28.1",
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "prettier": "^2.3.2"
   },
   "scripts": {
+    "dev": "react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
