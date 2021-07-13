@@ -46,6 +46,12 @@ const rules = {
     {
       required: true,
       message: 'Application is required',
+    },
+  ],
+  status: [
+    {
+      required: true,
+      message: 'Status is required',
       trigger: ['input', 'blur'],
     },
   ],
