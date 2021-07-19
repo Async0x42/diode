@@ -427,23 +427,6 @@ const handleValidateClick = (e: Event) => {
         </n-text>
       </n-form-item-gi>
 
-      <n-form-item-gi :span="12" label="Concept of Testing" path="conceptOfTesting">
-        <n-input
-          v-model:value="model.conceptOfTesting"
-          type="textarea"
-          placeholder=""
-          :autosize="{
-            minRows: 3,
-            maxRows: 5,
-          }"
-        />
-        <n-text tag="div" depth="3">
-          This IM CCB mandatory field is used to demonstrate to the appropriate approval authority that necessary testing has been successfully
-          conducted and completed. Testing must be performed to ensure compatibility, interoperability and functionality of the Configuration Item.
-          Testing documentation (plan and/or results), it should be uploaded/attached to the RFC for review.
-        </n-text>
-      </n-form-item-gi>
-
       <n-form-item-gi :span="12" label="Concept of Implementation" path="conceptOfImplementation">
         <n-input
           v-model:value="model.conceptOfImplementation"
