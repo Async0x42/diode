@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineEmit, defineProps, ref, watch } from 'vue';
 import type { PropType } from 'vue';
 
 const props = defineProps({
@@ -9,7 +8,7 @@ const props = defineProps({
 });
 
 const selected = ref<string>(props.value);
-const emit = defineEmit(['update:value']);
+const emit = defineEmits(['update:value']);
 watch(selected, (newVal) => emit('update:value', selected.value));
 </script>
 

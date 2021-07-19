@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import { useAxios } from '@vueuse/integrations';
 import type { IBrd } from '@diode/common';
 

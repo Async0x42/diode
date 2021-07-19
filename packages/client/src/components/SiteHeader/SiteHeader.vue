@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { isMobile } from '~/logic';
 const routesForCreate = [
   'calendar',

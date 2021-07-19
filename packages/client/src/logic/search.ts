@@ -1,4 +1,3 @@
-import { ref, watchEffect, reactive } from 'vue';
 import { useRoute } from 'vue-router';
 import Fuse from 'fuse.js';
 import type { Ref } from 'vue';

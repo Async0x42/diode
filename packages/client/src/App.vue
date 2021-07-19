@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useHead } from '@vueuse/head';
 import { darkTheme, enUS, dateEnUS, NConfigProvider } from 'naive-ui';
-import { computed } from 'vue';
 import { isDark } from './logic';
 
 // https://github.com/vueuse/head

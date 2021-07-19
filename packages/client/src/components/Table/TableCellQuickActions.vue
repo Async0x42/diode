@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { defineEmit, defineProps } from 'vue';
-
-defineEmit(['email', 'phone', 'edit']);
+defineEmits(['email', 'phone', 'edit']);
 
 const props = defineProps({
   email: { type: String },

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, defineProps } from 'vue';
 import type { IRfc } from '@diode/common';
 import type { PropType } from 'vue';
 import { parseJSON, format } from 'date-fns';

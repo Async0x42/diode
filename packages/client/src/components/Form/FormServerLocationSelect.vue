@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps, defineEmit, ref, watch } from 'vue';
 import { useAxios } from '@vueuse/integrations';
 import type { PropType } from 'vue';
 import type { IServerLocation } from '@diode/common';
@@ -10,7 +9,7 @@ const props = defineProps({
 
 const { data, error, isFinished } = useAxios<IServerLocation[]>('/api/serverLocations');
 const selected = ref<number | undefined>(props.value?.id);
-const emit = defineEmit(['update:value']);
+const emit = defineEmits(['update:value']);
 watch(selected, (newVal) => emit('update:value', selected.value));
 </script>
 

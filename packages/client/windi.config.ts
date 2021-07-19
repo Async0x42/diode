@@ -1,5 +1,4 @@
-import { defineConfig } from 'vite-plugin-windicss';
-import defaultTheme from 'windicss/defaultTheme';
+import { defineConfig } from 'windicss/helpers';
 import colors from 'windicss/colors';
 import forms from 'windicss/plugin/forms';
 import typography from 'windicss/plugin/typography';
@@ -9,10 +8,10 @@ import aspectRatio from 'windicss/plugin/aspect-ratio';
 export default defineConfig({
   darkMode: 'class',
   plugins: [typography(), forms, lineClamp, aspectRatio],
+  // https://windicss.org/posts/v30.html#attributify-mode
   attributify: true,
   theme: {
     colors: {
-      // Build your palette here
       transparent: 'transparent',
       current: 'currentColor',
       light: colors.light,

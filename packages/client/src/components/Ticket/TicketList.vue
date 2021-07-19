@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import type { ITicket } from '@diode/common';
 import type { PropType } from 'vue';
 import { useRouteSearchWithData } from '~/logic';

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, defineProps } from 'vue';
 import type { ISslCertificate } from '@diode/common';
 import type { PropType } from 'vue';
 import { format, parseJSON } from 'date-fns';

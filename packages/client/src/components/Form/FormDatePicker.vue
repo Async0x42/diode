@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, defineEmit, defineProps, ref, watch } from 'vue';
 import type { PropType } from 'vue';
 
 const props = defineProps({
@@ -9,7 +8,7 @@ const props = defineProps({
 
 const propsTimestampValue = computed(() => (props.value ? new Date(props.value).getTime() : new Date().getTime()));
 const selected = ref<number>(propsTimestampValue.value);
-const emit = defineEmit(['update:value']);
+const emit = defineEmits(['update:value']);
 watch(selected, (newVal) => emit('update:value', new Date(selected.value)));
 </script>
 

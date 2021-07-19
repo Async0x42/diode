@@ -12,7 +12,7 @@ import Prism from 'markdown-it-prism';
 import LinkAttributes from 'markdown-it-link-attributes';
 import { visualizer } from 'rollup-plugin-visualizer';
 
-const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
+const markdownWrapperClasses = 'prose prose-sm m-auto text-left';
 
 export default defineConfig({
   resolve: {
@@ -21,6 +21,9 @@ export default defineConfig({
     },
   },
   server: {
+    fs: {
+      strict: true,
+    },
     proxy: {
       '/api': 'http://localhost:7000/',
     },

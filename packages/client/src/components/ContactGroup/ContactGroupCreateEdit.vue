@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps, ref } from 'vue';
 import type { IContactGroup } from '@diode/common';
 import { useMessage } from 'naive-ui';
 import type { PropType } from 'vue';

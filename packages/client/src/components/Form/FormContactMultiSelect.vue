@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps, defineEmit, ref, watch } from 'vue';
 import type { PropType } from 'vue';
 import { useAxios } from '@vueuse/integrations';
 import type { IContact } from '@diode/common';
@@ -10,7 +9,7 @@ const props = defineProps({
 
 const { data, error, isFinished } = useAxios<IContact[]>('/api/contacts');
 const selected = ref<number[]>(props.value);
-const emit = defineEmit(['update:value']);
+const emit = defineEmits(['update:value']);
 watch(selected, (newVal) => emit('update:value', selected.value));
 </script>
 

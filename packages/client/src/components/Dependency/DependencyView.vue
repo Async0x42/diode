@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import type { IDependency } from '@diode/common';
 import type { PropType } from 'vue';
 import { formatTableDate } from '~/utils/tables';

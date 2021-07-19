@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps, ref } from 'vue';
 import type { IDependency } from '@diode/common';
 import type { PropType } from 'vue';
 import { useMessage } from 'naive-ui';
