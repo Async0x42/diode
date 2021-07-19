@@ -12,6 +12,8 @@ import Prism from 'markdown-it-prism';
 import LinkAttributes from 'markdown-it-link-attributes';
 import { visualizer } from 'rollup-plugin-visualizer';
 
+const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
+
 export default defineConfig({
   resolve: {
     alias: {
@@ -43,7 +45,7 @@ export default defineConfig({
 
     // https://github.com/antfu/vite-plugin-md
     Markdown({
-      wrapperClasses: 'prose prose-sm m-auto text-left',
+      wrapperClasses: markdownWrapperClasses,
       headEnabled: true,
       markdownItSetup(md) {
         // https://prismjs.com/
@@ -87,11 +89,13 @@ export default defineConfig({
 
     // https://github.com/antfu/vite-plugin-windicss
     WindiCSS({
-      safelist: 'prose prose-sm m-auto text-left',
+      safelist: markdownWrapperClasses,
     }),
 
     // https://github.com/intlify/vite-plugin-vue-i18n
     VueI18n({
+      runtimeOnly: true,
+      compositionOnly: true,
       include: [path.resolve(__dirname, 'locales/**')],
     }),
   ],
