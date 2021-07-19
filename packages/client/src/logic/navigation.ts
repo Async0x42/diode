@@ -23,6 +23,7 @@ export const navigation: INav[] = [
   { label: 'Applications', key: 'applications', to: { name: 'applications' }, icon: GlobeAltIcon },
   { label: 'Servers', key: 'servers', to: { name: 'servers' }, icon: ChipIcon },
   { label: 'Contacts', key: 'contacts', to: { name: 'contacts' }, icon: PhoneIcon },
+  { label: 'Contact Groups', key: 'contactGroups', to: { name: 'contactGroups' }, icon: PhoneIcon },
   { label: 'BRDs', key: 'brds', to: { name: 'brds' }, icon: DocumentTextIcon },
   { label: 'RFCs', key: 'rfcs', to: { name: 'rfcs' }, icon: ClockIcon },
   {
@@ -37,7 +38,6 @@ export const navigation: INav[] = [
         { label: 'Server Types', key: 'serverTypes', to: { name: 'serverTypes' } },
         { label: 'Server Locations', key: 'serverLocations', to: { name: 'serverLocations' } },
         { label: 'Physical Servers', key: 'physicalServers', to: { name: 'physicalServers' } },
-        { label: 'Contact Groups', key: 'contactGroups', to: { name: 'contactGroups' } },
         { label: 'SSL Certificates', key: 'sslCertificates', to: { name: 'sslCertificates' } },
         { label: 'Networks', key: 'networks', to: { name: 'networks' } },
         { label: 'Environments', key: 'environments', to: { name: 'environments' } },
