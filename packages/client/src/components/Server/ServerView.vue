@@ -16,6 +16,9 @@ const props = defineProps({
       <n-text tag="div" depth="2">{{ props.server.ip }}</n-text>
       <n-text tag="div" depth="3">{{ props.server.operatingSystem?.name }}</n-text>
     </n-descriptions-item>
+    <n-descriptions-item label="Types">
+      <n-text v-for="type in props.server.types" :key="type.id" tag="div" class="mb-2" depth="1">{{ type.name }}</n-text>
+    </n-descriptions-item>
     <n-descriptions-item label="Storage Space">
       <n-text tag="div" depth="1">{{ props.server.storageSpace }}</n-text>
     </n-descriptions-item>
