@@ -14,5 +14,11 @@ watch(selected, (newVal) => emit('update:value', selected.value));
 </script>
 
 <template>
-  <n-select v-model:value="selected" filterable :loading="!isFinished" :options="data?.map((d) => ({ label: d.name, value: d.id }))" multiple />
+  <n-select
+    v-model:value="selected"
+    filterable
+    :loading="!isFinished"
+    :options="data?.map((d) => ({ label: `${d.environment ? `[${d.environment}] ` : ''} ${d.name}`, value: d.id }))"
+    multiple
+  />
 </template>
