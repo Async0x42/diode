@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { IWorkOrder } from '@diode/common';
 import type { PropType } from 'vue';
+import { groupBy } from 'lodash-es';
 import { useRouteSearchWithData } from '~/logic';
 
 const props = defineProps({
@@ -16,10 +17,16 @@ const { results } = useRouteSearchWithData(props.workOrders, [
   'owners.name',
   'status',
 ]);
+
+const groupedResults = computed(() => groupBy(results.value, 'status'));
 </script>
 
 <template>
-  <TableView :headers="['Name', 'Status', 'Details', 'Applications', 'Servers', 'Created', '']">
-    <WorkOrderListItem v-for="workOrder in results" :key="workOrder.id" :work-order="workOrder" />
-  </TableView>
+  <n-collapse default-expanded-names="New">
+    <n-collapse-item v-for="(groupKey, index) in Object.keys(groupedResults)" :key="index" :title="groupKey" :name="groupKey">
+      <TableView :headers="['Name', 'Details', 'Applications', 'Servers', 'Created', '']">
+        <WorkOrderListItem v-for="workOrder in groupedResults[groupKey]" :key="workOrder.id" :work-order="workOrder" />
+      </TableView>
+    </n-collapse-item>
+  </n-collapse>
 </template>

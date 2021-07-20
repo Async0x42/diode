@@ -19,7 +19,6 @@ const props = defineProps({
         </n-text>
       </router-link>
     </n-td>
-    <n-td>{{ props.workOrder.status }}</n-td>
     <n-td>{{ props.workOrder.details }}</n-td>
     <TableCellApplications :applications="props.workOrder.applications" />
     <TableCellServers :servers="props.workOrder.servers" />
