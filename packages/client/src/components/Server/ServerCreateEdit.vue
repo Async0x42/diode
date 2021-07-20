@@ -29,6 +29,7 @@ const model = createFormModel<IServer>([
   'network',
   'zone',
   'dependencies',
+  'supportGroups',
 ]);
 const rules = {
   name: [
@@ -117,6 +118,10 @@ const handleValidateClick = (e: Event) => {
 
       <n-form-item-gi :span="12" label="Dependencies" path="dependencies">
         <FormDependencyMultiSelect v-model:value="model.dependencies" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Support Groups" path="supportGroups">
+        <FormContactGroupMultiSelect v-model:value="model.supportGroups" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="Notes" path="notes">

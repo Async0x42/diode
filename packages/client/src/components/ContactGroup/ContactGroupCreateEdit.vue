@@ -12,7 +12,17 @@ const props = defineProps({
 
 const { onSubmit, onDelete } = useFormActions<IContactGroup>('/api/contactGroups', 'contactGroups', props.contactGroup);
 
-const model = createFormModel<IContactGroup>(['name', 'email', 'phone', 'title', 'organization', 'department', 'notes', 'contacts']);
+const model = createFormModel<IContactGroup>([
+  'name',
+  'email',
+  'phone',
+  'title',
+  'organization',
+  'department',
+  'notes',
+  'contacts',
+  'supportedServers',
+]);
 const rules = {
   name: [
     {
@@ -69,6 +79,10 @@ const handleValidateClick = (e: Event) => {
 
       <n-form-item-gi :span="12" label="Contacts" path="contacts">
         <FormContactGroupMultiSelect v-model:value="model.contacts" placeholder="" />
+      </n-form-item-gi>
+
+      <n-form-item-gi :span="12" label="Supported Servers" path="supportedServers">
+        <FormServerMultiSelect v-model:value="model.supportedServers" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="Notes" path="notes">

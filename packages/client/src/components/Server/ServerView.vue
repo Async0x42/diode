@@ -77,6 +77,11 @@ const props = defineProps({
     <n-descriptions-item label="Notes">
       <n-text tag="div" depth="1" v-html="props.server.notes"></n-text>
     </n-descriptions-item>
+    <n-descriptions-item label="Support Groups">
+      <template v-for="supportGroup in props.server.supportGroups" :key="supportGroup.id">
+        <n-text tag="div" depth="1" class="mb-2 hover:text-teal-300">{{ supportGroup.name }}</n-text>
+      </template>
+    </n-descriptions-item>
     <n-descriptions-item label="Dependencies">
       <div v-for="dependency in props.server.dependencies" :key="dependency.id" class="mb-2 group">
         <n-text tag="div" depth="1" class="group-hover:text-teal-300">
