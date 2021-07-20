@@ -157,6 +157,7 @@ export const DI = {} as {
         'zone',
         'tickets',
         'dependencies',
+        'supportGroups',
       ])
     )
   );
@@ -166,7 +167,7 @@ export const DI = {} as {
   app.use('/api/environments', createRouter<Environment>(createService(DI.environmentRepo)));
   app.use('/api/zones', createRouter<Zone>(createService(DI.zoneRepo)));
   app.use('/api/networks', createRouter<Network>(createService(DI.networkRepo)));
-  app.use('/api/contactGroups', createRouter<ContactGroup>(createService(DI.contactGroupRepo, ['contacts'])));
+  app.use('/api/contactGroups', createRouter<ContactGroup>(createService(DI.contactGroupRepo, ['contacts', 'supportedServers'])));
   app.use('/api/sslCertificates', createRouter<SslCertificate>(createService(DI.sslCertificateRepo, ['applications', 'servers'])));
   app.use(
     '/api/dependencies',

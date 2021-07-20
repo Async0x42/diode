@@ -14,10 +14,14 @@ import { WorkOrder } from './workOrder.entity';
 import { Zone } from './zone.entity';
 import { Ticket } from './ticket.entity';
 import { Dependency } from './dependency.entity';
+import { ContactGroup } from './contactGroup.entity';
 
 // Quick fix to make @mikro-orm collection compat with the IServer []
 export interface IBackendServer
-  extends Omit<IServer, 'applications' | 'fqdns' | 'types' | 'physicalServer' | 'sslCertificates' | 'workOrders' | 'tickets' | 'dependencies'> {
+  extends Omit<
+    IServer,
+    'applications' | 'fqdns' | 'types' | 'physicalServer' | 'sslCertificates' | 'workOrders' | 'tickets' | 'dependencies' | 'supportGroups'
+  > {
   applications: Collection<Application>;
   fqdns: Collection<Fqdn>;
   types: Collection<ServerType>;
@@ -26,6 +30,7 @@ export interface IBackendServer
   workOrders: Collection<WorkOrder>;
   tickets: Collection<Ticket>;
   dependencies: Collection<Dependency>;
+  supportGroups: Collection<ContactGroup>;
 }
 
 @Entity()
@@ -83,4 +88,7 @@ export class Server extends DiodeEntity<Server> implements IBackendServer {
 
   @ManyToMany(() => Dependency, (dependency) => dependency.servers, { owner: true })
   dependencies = new Collection<Dependency>(this);
+
+  @ManyToMany(() => ContactGroup, (contactGroup) => contactGroup.supportedServers, { owner: true })
+  supportGroups = new Collection<ContactGroup>(this);
 }

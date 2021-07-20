@@ -2,10 +2,12 @@ import { IContactGroup } from '@diode/common';
 import { Entity, Property, Collection, ManyToMany } from '@mikro-orm/core';
 import { DiodeEntity } from './diode.entity';
 import { Contact } from './contact.entity';
+import { Server } from './server.entity';
 
 // Quick fix to make @mikro-orm collection compat with the common interface
-export interface IBackendContactGroup extends Omit<IContactGroup, 'contacts'> {
+export interface IBackendContactGroup extends Omit<IContactGroup, 'contacts' | 'supportedServers'> {
   contacts: Collection<Contact>;
+  supportedServers: Collection<Server>;
 }
 
 @Entity()
@@ -33,4 +35,7 @@ export class ContactGroup extends DiodeEntity<ContactGroup> implements IBackendC
 
   @ManyToMany(() => Contact, (contact) => contact.contactGroups, { owner: true })
   contacts = new Collection<Contact>(this);
+
+  @ManyToMany(() => Server, (server) => server.supportGroups)
+  supportedServers = new Collection<Server>(this);
 }

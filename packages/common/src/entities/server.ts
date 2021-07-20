@@ -12,6 +12,7 @@ import { IZone } from './zone';
 import { IDiodeEntity } from './diodeEntity';
 import { ITicket } from './ticket';
 import { IDependency } from './dependency';
+import { IContactGroup } from './contactGroup';
 
 export interface IServer extends IDiodeEntity {
   name: string;
@@ -32,4 +33,5 @@ export interface IServer extends IDiodeEntity {
   network?: INetwork;
   tickets: ITicket[];
   dependencies: IDependency[];
+  supportGroups: IContactGroup[];
 }
