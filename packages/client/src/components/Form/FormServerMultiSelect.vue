@@ -18,7 +18,7 @@ watch(selected, (newVal) => emit('update:value', selected.value));
     v-model:value="selected"
     filterable
     :loading="!isFinished"
-    :options="data?.map((d) => ({ label: `${d.environment ? `[${d.environment}] ` : ''} ${d.name}`, value: d.id }))"
+    :options="data?.map((d) => ({ label: `${d.environment ? `[${d.environment.shortName || d.environment.name}] ` : ''} ${d.name}`, value: d.id }))"
     multiple
   />
 </template>

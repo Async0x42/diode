@@ -109,7 +109,9 @@ export const DI = {} as {
 
   app.use(
     '/api/tickets',
-    createRouter<Ticket>(createService(DI.ticketRepo, ['applications', 'servers', 'servers.location', 'servers.operatingSystem']))
+    createRouter<Ticket>(
+      createService(DI.ticketRepo, ['applications', 'servers', 'servers.environment', 'servers.location', 'servers.operatingSystem'])
+    )
   );
   app.use('/api/rfcs', createRouter<Rfc>(createService(DI.rfcRepo, ['application'])));
   app.use('/api/brds', createRouter<Brd>(createService(DI.brdRepo, ['application'])));
@@ -117,7 +119,9 @@ export const DI = {} as {
   app.use('/api/fqdns', createRouter<Fqdn>(createService(DI.fqdnRepo, ['applications', 'server'])));
   app.use(
     '/api/workOrders',
-    createRouter<WorkOrder>(createService(DI.workOrderRepo, ['applications', 'servers', 'servers.location', 'servers.operatingSystem', 'owners']))
+    createRouter<WorkOrder>(
+      createService(DI.workOrderRepo, ['applications', 'servers', 'servers.environment', 'servers.location', 'servers.operatingSystem', 'owners'])
+    )
   );
   app.use(
     '/api/physicalServers',
@@ -130,6 +134,7 @@ export const DI = {} as {
         'sslCertificates',
         'fqdns',
         'servers',
+        'servers.environment',
         'servers.operatingSystem',
         'servers.location',
         'brds',
@@ -171,7 +176,9 @@ export const DI = {} as {
   app.use('/api/sslCertificates', createRouter<SslCertificate>(createService(DI.sslCertificateRepo, ['applications', 'servers'])));
   app.use(
     '/api/dependencies',
-    createRouter<Dependency>(createService(DI.dependencyRepo, ['applications', 'servers', 'servers.location', 'servers.operatingSystem']))
+    createRouter<Dependency>(
+      createService(DI.dependencyRepo, ['applications', 'servers', 'servers.environment', 'servers.location', 'servers.operatingSystem'])
+    )
   );
   app.use(errorHandler);
   app.use(notFoundHandler);

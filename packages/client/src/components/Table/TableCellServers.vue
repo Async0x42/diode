@@ -18,7 +18,7 @@ const props = defineProps({
     >
       <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ server?.name }}</n-text>
       <n-text tag="div" depth="3" class="group-hover:text-teal-500">
-        <template v-if="server.environment">[{{ server.environment }}] </template>
+        <template v-if="server.environment">[{{ server.environment.shortName || server.environment.name }}] </template>
         <template v-if="server.location">[{{ server.location.shortName || server.location.name }}] </template>
         <template v-if="server.operatingSystem"> [{{ server.operatingSystem.shortName || server.operatingSystem.name }}]</template>
       </n-text>
