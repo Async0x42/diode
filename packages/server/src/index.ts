@@ -128,7 +128,9 @@ export const DI = {} as {
   );
   app.use(
     '/api/physicalServers',
-    createRouter<PhysicalServer>(createService(DI.physicalServerRepo, ['location', 'servers', 'servers.location', 'servers.operatingSystem']))
+    createRouter<PhysicalServer>(
+      createService(DI.physicalServerRepo, ['location', 'servers', 'servers.environment', 'servers.location', 'servers.operatingSystem'])
+    )
   );
   app.use(
     '/api/applications',
