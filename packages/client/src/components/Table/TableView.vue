@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <n-table>
+  <n-table size="small">
     <n-thead>
       <n-tr>
         <n-th v-for="(header, index) in props.headers" :key="index">
