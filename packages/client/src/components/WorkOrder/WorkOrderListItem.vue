@@ -12,12 +12,14 @@ const props = defineProps({
   <n-tr>
     <n-td>
       <router-link class="group" :to="{ name: 'workOrder-view', params: { workOrderId: props.workOrder.id } }">
-        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ props.workOrder.name }}</n-text>
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300"
+          ><n-text tag="span" depth="3" class="group-hover:text-teal-500">[WO-{{ props.workOrder.id.toString().padStart(4, '0') }}] </n-text
+          >{{ props.workOrder.name }}</n-text
+        >
         <n-text v-if="props.workOrder.startDate || props.workOrder.endDate" tag="span" depth="2" class="whitespace-nowrap group-hover:text-teal-400">
           [{{ formatTableDate(props.workOrder.startDate) }}<span v-if="props.workOrder.startDate && props.workOrder.endDate"> - </span
           >{{ formatTableDate(props.workOrder.endDate) }}]
         </n-text>
-        <n-text tag="span" depth="3" class="group-hover:text-teal-500">WO-{{ props.workOrder.id }}</n-text>
       </router-link>
     </n-td>
     <n-td>{{ props.workOrder.details }}</n-td>
