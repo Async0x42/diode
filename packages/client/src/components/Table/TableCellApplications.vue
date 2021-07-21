@@ -4,6 +4,7 @@ import type { PropType } from 'vue';
 
 const props = defineProps({
   applications: { type: Object as PropType<IApplication[]>, default: () => [] },
+  useShortName: { type: Boolean, default: false },
 });
 </script>
 
@@ -16,7 +17,7 @@ const props = defineProps({
     >
       <n-text tag="div" depth="1" class="cursor-pointer hover:text-teal-300">
         <span v-if="application?.shortName" class="whitespace-nowrap"> [{{ application?.shortName }}] </span>
-        {{ application?.name }}
+        <span v-if="!useShortName">{{ application?.name }}</span>
       </n-text>
     </router-link>
   </n-td>

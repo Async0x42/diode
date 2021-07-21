@@ -20,7 +20,7 @@ const props = defineProps({
       </router-link>
     </n-td>
     <n-td>{{ props.workOrder.details }}</n-td>
-    <TableCellApplications :applications="props.workOrder.applications" />
+    <TableCellApplications :applications="props.workOrder.applications" :use-short-name="true" />
     <TableCellServers :servers="props.workOrder.servers" />
     <n-td class="whitespace-nowrap">{{ formatTableDate(props.workOrder.createdOn) }}</n-td>
     <TableCellQuickActions @edit="$router.push({ name: 'workOrder-edit', params: { workOrderId: workOrder.id } })" />
