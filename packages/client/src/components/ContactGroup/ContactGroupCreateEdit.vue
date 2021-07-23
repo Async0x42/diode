@@ -78,7 +78,7 @@ const handleValidateClick = (e: Event) => {
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="Contacts" path="contacts">
-        <FormContactGroupMultiSelect v-model:value="model.contacts" placeholder="" />
+        <FormContactMultiSelect v-model:value="model.contacts" placeholder="" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="Supported Servers" path="supportedServers">
