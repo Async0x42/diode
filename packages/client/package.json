@@ -24,7 +24,7 @@
     "date-fns": "^2.22.1",
     "fuse.js": "^6.4.6",
     "lodash-es": "^4.17.21",
-    "naive-ui": "^2.15.5",
+    "naive-ui": "^2.15.6",
     "prism-theme-vars": "^0.2.2",
     "vfonts": "^0.1.0",
     "vooks": "^0.2.8",
