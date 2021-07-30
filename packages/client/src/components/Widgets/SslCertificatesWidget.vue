@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ISslCertificate } from '@diode/common';
+import type { ISslCertificate } from '@diode/common';
 import type { PropType } from 'vue';
 import { formatTableDate } from '~/utils';
 

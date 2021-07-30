@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IServer } from '@diode/common';
+import type { IServer } from '@diode/common';
 import type { PropType } from 'vue';
 
 const props = defineProps({

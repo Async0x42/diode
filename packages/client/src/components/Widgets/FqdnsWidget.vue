@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IFqdn } from '@diode/common';
+import type { IFqdn } from '@diode/common';
 import type { PropType } from 'vue';
 
 const props = defineProps({

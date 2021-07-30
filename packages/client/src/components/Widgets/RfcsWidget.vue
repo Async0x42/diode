@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IRfc } from '@diode/common';
+import type { IRfc } from '@diode/common';
 import type { PropType } from 'vue';
 
 const props = defineProps({

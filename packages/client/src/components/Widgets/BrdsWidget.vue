@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IBrd } from '@diode/common';
+import type { IBrd } from '@diode/common';
 import type { PropType } from 'vue';
 
 const props = defineProps({
