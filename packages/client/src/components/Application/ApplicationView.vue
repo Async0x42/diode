@@ -19,7 +19,7 @@ const title = `${props.application.shortName && `[${props.application.shortName}
       <ServersWidget :servers="props.application.servers" />
     </n-descriptions-item>
     <n-descriptions-item label="FQDNs">
-      <FqdsWidget :fqdns="props.application.fqdns" />
+      <FqdnsWidget :fqdns="props.application.fqdns" />
     </n-descriptions-item>
     <n-descriptions-item label="SSL Certs">
       <SslCertificatesWidget :ssl-certificates="props.application.sslCertificates" />
