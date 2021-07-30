@@ -110,7 +110,7 @@ export const DI = {} as {
   app.use(
     '/api/tickets',
     createRouter<Ticket>(
-      createService(DI.ticketRepo, ['applications', 'servers', 'servers.environment', 'servers.location', 'servers.operatingSystem'])
+      createService(DI.ticketRepo, ['applications', 'servers', 'servers.environment', 'servers.location', 'servers.operatingSystem', 'servers.types'])
     )
   );
   app.use('/api/rfcs', createRouter<Rfc>(createService(DI.rfcRepo, ['application'])));
@@ -118,18 +118,35 @@ export const DI = {} as {
   app.use('/api/contacts', createRouter<Contact>(createService(DI.contactRepo, ['contactGroups', 'workOrders'])));
   app.use(
     '/api/fqdns',
-    createRouter<Fqdn>(createService(DI.fqdnRepo, ['applications', 'server', 'server.environment', 'server.location', 'server.operatingSystem']))
+    createRouter<Fqdn>(
+      createService(DI.fqdnRepo, ['applications', 'server', 'server.environment', 'server.location', 'server.operatingSystem', 'servers.types'])
+    )
   );
   app.use(
     '/api/workOrders',
     createRouter<WorkOrder>(
-      createService(DI.workOrderRepo, ['applications', 'servers', 'servers.environment', 'servers.location', 'servers.operatingSystem', 'owners'])
+      createService(DI.workOrderRepo, [
+        'applications',
+        'servers',
+        'servers.environment',
+        'servers.location',
+        'servers.operatingSystem',
+        'servers.types',
+        'owners',
+      ])
     )
   );
   app.use(
     '/api/physicalServers',
     createRouter<PhysicalServer>(
-      createService(DI.physicalServerRepo, ['location', 'servers', 'servers.environment', 'servers.location', 'servers.operatingSystem'])
+      createService(DI.physicalServerRepo, [
+        'location',
+        'servers',
+        'servers.environment',
+        'servers.location',
+        'servers.operatingSystem',
+        'servers.types',
+      ])
     )
   );
   app.use(
@@ -142,6 +159,7 @@ export const DI = {} as {
         'servers.environment',
         'servers.operatingSystem',
         'servers.location',
+        'servers.types',
         'brds',
         'rfcs',
         'workOrders',
@@ -182,7 +200,14 @@ export const DI = {} as {
   app.use(
     '/api/dependencies',
     createRouter<Dependency>(
-      createService(DI.dependencyRepo, ['applications', 'servers', 'servers.environment', 'servers.location', 'servers.operatingSystem'])
+      createService(DI.dependencyRepo, [
+        'applications',
+        'servers',
+        'servers.environment',
+        'servers.location',
+        'servers.operatingSystem',
+        'servers.types',
+      ])
     )
   );
   app.use(errorHandler);

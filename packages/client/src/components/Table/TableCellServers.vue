@@ -20,7 +20,9 @@ const props = defineProps({
       <n-text tag="div" depth="3" class="group-hover:text-teal-500">
         <template v-if="server.environment">[{{ server.environment.shortName || server.environment.name }}] </template>
         <template v-if="server.location">[{{ server.location.shortName || server.location.name }}] </template>
-        <template v-if="server.operatingSystem"> [{{ server.operatingSystem.shortName || server.operatingSystem.name }}]</template>
+        <template v-if="server.types.length > 0">
+          <template v-for="serverType in server.types" :key="serverType.id"> [{{ serverType.shortName || serverType.name }}] </template>
+        </template>
       </n-text>
     </router-link>
   </n-td>
