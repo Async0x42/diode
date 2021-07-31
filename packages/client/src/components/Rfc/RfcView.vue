@@ -15,7 +15,7 @@ const props = defineProps({
       <n-text tag="div" depth="1">{{ props.rfc.title }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Application">
-      <ApplicationWidget :application="props.rfc.application" />
+      <ApplicationsWidget :applications="props.rfc.application" />
     </n-descriptions-item>
     <n-descriptions-item label="Class">
       <n-text tag="div" depth="1">{{ props.rfc.rfcClass }}</n-text>
