@@ -19,11 +19,10 @@ const props = defineProps({
       <n-text tag="div" depth="3">{{ props.brd.description }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Application">
-      <n-text tag="div" depth="1">{{ props.brd.application?.name }}</n-text>
-      <n-text tag="div" depth="3">{{ props.brd.application?.shortName }}</n-text>
+      <ApplicationWidget :application="props.brd.application" />
     </n-descriptions-item>
     <n-descriptions-item label="Description" :span="3">
-      <n-text tag="div" depth="1">{{ props.brd.description }}</n-text>
+      <DescriptionWidget :description="props.brd.description" />
     </n-descriptions-item>
     <n-descriptions-item label="Related Requests">
       <n-text tag="div" depth="1">{{ props.brd.relatedRequests }}</n-text>
