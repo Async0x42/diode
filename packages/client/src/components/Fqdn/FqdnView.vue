@@ -14,7 +14,7 @@ const props = defineProps({
       <n-text tag="div" depth="1">{{ props.fqdn.name }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Server">
-      <ServerWidget :server="props.fqdn.server" />
+      <ServersWidget :servers="props.fqdn.server" />
     </n-descriptions-item>
     <n-descriptions-item label="Applications" :span="3">
       <ApplicationsWidget :applications="props.fqdn.applications" />
