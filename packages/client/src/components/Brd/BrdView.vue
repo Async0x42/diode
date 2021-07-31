@@ -19,7 +19,7 @@ const props = defineProps({
       <n-text tag="div" depth="3">{{ props.brd.description }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Application">
-      <ApplicationWidget :application="props.brd.application" />
+      <ApplicationsWidget :applications="props.brd.application" />
     </n-descriptions-item>
     <n-descriptions-item label="Description" :span="3">
       <DescriptionWidget :description="props.brd.description" />
