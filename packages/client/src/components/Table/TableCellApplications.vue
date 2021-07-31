@@ -15,10 +15,12 @@ const props = defineProps({
       :key="application.id"
       :to="{ name: 'application-view', params: { applicationId: application.id } }"
     >
-      <n-text tag="div" depth="1" class="cursor-pointer hover:text-teal-300">
-        <span v-if="application?.shortName" class="whitespace-nowrap"> [{{ application?.shortName }}] </span>
-        <span v-if="!useShortName">{{ application?.name }}</span>
-      </n-text>
+      <ApplicationTooltip :application="application">
+        <n-text tag="div" depth="1" class="cursor-pointer hover:text-teal-300">
+          <span v-if="application?.shortName" class="whitespace-nowrap"> [{{ application?.shortName }}] </span>
+          <span v-if="!useShortName">{{ application?.name }}</span>
+        </n-text>
+      </ApplicationTooltip>
     </router-link>
   </n-td>
 </template>
