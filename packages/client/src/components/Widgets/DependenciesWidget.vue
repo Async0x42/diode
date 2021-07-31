@@ -14,6 +14,6 @@ const props = defineProps({
       <template v-if="dependency.endOfSupportDate"> [{{ formatTableDate(dependency.endOfSupportDate) }}] </template>
       {{ dependency.name }}
     </n-text>
-    <n-text tag="div" depth="2" class="group-hover:text-teal-400"> v{{ dependency.version }} </n-text>
+    <n-text v-if="dependency.version" tag="div" depth="2" class="group-hover:text-teal-400"> v{{ dependency.version }} </n-text>
   </div>
 </template>
