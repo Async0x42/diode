@@ -4,10 +4,12 @@ importers:
 
   .:
     specifiers:
+      '@mikro-orm/mariadb': ^4.5.7
       '@mikro-orm/migrations': ^4.5.7
       date-fns: ^2.23.0
       windicss: ^3.1.6
     devDependencies:
+      '@mikro-orm/mariadb': 4.5.7_@mikro-orm+migrations@4.5.7
       '@mikro-orm/migrations': 4.5.7
       date-fns: 2.23.0
       windicss: 3.1.6
@@ -965,6 +967,25 @@ packages:
       - supports-color
     dev: false
 
+  /@mikro-orm/mariadb/4.5.7_@mikro-orm+migrations@4.5.7:
+    resolution: {integrity: sha512-Ygr1w4dxJvdplugmnt9LH19evcmls+lCboH+csEyCBtpzGzQ7HFEKMZQozLht0HCI3I/ZHlmeNx569zPAu7OWQ==}
+    engines: {node: '>= 10.13.0'}
+    peerDependencies:
+      '@mikro-orm/core': ^4.0.0
+    dependencies:
+      '@mikro-orm/mysql-base': 4.5.7_@mikro-orm+migrations@4.5.7
+      mariadb: 2.5.3
+    transitivePeerDependencies:
+      - '@mikro-orm/entity-generator'
+      - '@mikro-orm/migrations'
+      - mssql
+      - mysql
+      - mysql2
+      - pg
+      - sqlite3
+      - supports-color
+    dev: true
+
   /@mikro-orm/mariadb/4.5.7_be454d5bed9cd9c12aa7df20bf90154e:
     resolution: {integrity: sha512-Ygr1w4dxJvdplugmnt9LH19evcmls+lCboH+csEyCBtpzGzQ7HFEKMZQozLht0HCI3I/ZHlmeNx569zPAu7OWQ==}
     engines: {node: '>= 10.13.0'}
@@ -1027,6 +1048,27 @@ packages:
       - sqlite3
       - supports-color
     dev: false
+
+  /@mikro-orm/mysql-base/4.5.7_@mikro-orm+migrations@4.5.7:
+    resolution: {integrity: sha512-OYIjHwfSGBDCUXApbNegyTvHhpTWvY8jV5unCoXLFNtsNebcPU5TDvQjQCXfIQZFR7CIxl2SLGVdI0KeXA+wyQ==}
+    engines: {node: '>= 10.13.0'}
+    peerDependencies:
+      '@mikro-orm/core': ^4.0.0
+      mysql2: ^2.1.0
+    peerDependenciesMeta:
+      mysql2:
+        optional: true
+    dependencies:
+      '@mikro-orm/knex': 4.5.7_@mikro-orm+migrations@4.5.7
+    transitivePeerDependencies:
+      - '@mikro-orm/entity-generator'
+      - '@mikro-orm/migrations'
+      - mssql
+      - mysql
+      - pg
+      - sqlite3
+      - supports-color
+    dev: true
 
   /@mikro-orm/mysql-base/4.5.7_be454d5bed9cd9c12aa7df20bf90154e:
     resolution: {integrity: sha512-OYIjHwfSGBDCUXApbNegyTvHhpTWvY8jV5unCoXLFNtsNebcPU5TDvQjQCXfIQZFR7CIxl2SLGVdI0KeXA+wyQ==}
@@ -1176,7 +1218,6 @@ packages:
 
   /@types/geojson/7946.0.8:
     resolution: {integrity: sha512-1rkryxURpr6aWP7R786/UQOkJ3PcpQiWkAXBmdWc7ryFWqN6a4xfK7BtjXvFBKO9LjQ+MWQSWxYeZX1OApnArA==}
-    dev: false
 
   /@types/highlight.js/9.12.4:
     resolution: {integrity: sha512-t2szdkwmg2JJyuCM20e8kR2X59WCE5Zkl4bzm1u1Oukjm79zpbiAv+QjnwLnuuV0WHEcX2NgUItu0pAMKuOPww==}
@@ -1266,7 +1307,6 @@ packages:
 
   /@types/node/14.17.6:
     resolution: {integrity: sha512-iBxsxU7eswQDGhlr3AiamBxOssaYxbM+NKXVil8jg9yFXvrfEFbDumLD/2dMTB+zYyg7w+Xjt8yuxfdbUHAtcQ==}
-    dev: false
 
   /@types/node/16.4.8:
     resolution: {integrity: sha512-VL7RZyCpfYEmbyd3/Eq5RNYhZt7yoL1JThZQ3KzimzhLya2Qa86U1ZZmioNWAAjiz99z1ED1xF9NUV2srvfVrA==}
@@ -3718,7 +3758,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       safer-buffer: 2.1.2
-    dev: false
 
   /icss-replace-symbols/1.1.0:
     resolution: {integrity: sha1-Bupvg2ead0njhs/h/oEq5dsiPe0=}
@@ -4342,7 +4381,6 @@ packages:
 
   /long/4.0.0:
     resolution: {integrity: sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==}
-    dev: false
 
   /loose-envify/1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
@@ -4410,7 +4448,6 @@ packages:
       long: 4.0.0
       moment-timezone: 0.5.33
       please-upgrade-node: 3.2.0
-    dev: false
 
   /mariadb/2.5.4:
     resolution: {integrity: sha512-4vQgMRyBIN9EwSQG0vzjR9D8bscPH0dGPJt67qVlOkHSiSm0xUatg1Pft4o1LzORgeOW4PheiY/HBE9bYYmNCA==}
@@ -4549,11 +4586,9 @@ packages:
     resolution: {integrity: sha512-PTc2vcT8K9J5/9rDEPe5czSIKgLoGsH8UNpA4qZTVw0Vd/Uz19geE9abbIOQKaAQFcnQ3v5YEXrbSc5BpshH+w==}
     dependencies:
       moment: 2.29.1
-    dev: false
 
   /moment/2.29.1:
     resolution: {integrity: sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==}
-    dev: false
 
   /mongodb-connection-string-url/1.1.0:
     resolution: {integrity: sha512-g0Qaj4AzIaktWKBkfjMjwzvBzZQN1mtb2DVOTbjdvlaqTa5lGLcnTeh0/9R9mPiIt2lvRGOrDgUdazeP5rD9oA==}
@@ -5049,7 +5084,6 @@ packages:
     resolution: {integrity: sha512-gQR3WpIgNIKwBMVLkpMUeR3e1/E1y42bqDQZfql+kDeXd8COYfM8PQA4X6y7a8u9Ua9FHmsrrmirW2vHs45hWg==}
     dependencies:
       semver-compare: 1.0.0
-    dev: false
 
   /pluralize/8.0.0:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
@@ -5609,7 +5643,6 @@ packages:
 
   /semver-compare/1.0.0:
     resolution: {integrity: sha1-De4hahyUGrN+nvsXiPavxf9VN/w=}
-    dev: false
 
   /semver/5.7.1:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}
