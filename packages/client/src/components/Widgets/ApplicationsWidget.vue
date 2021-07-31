@@ -8,8 +8,10 @@ const props = defineProps({
 </script>
 
 <template>
-  <n-text v-for="application in props.applications" :key="application.id" tag="div" depth="1" class="mb-2 hover:text-teal-300">
-    <template v-if="application.shortName"> [{{ application?.shortName }}] </template>
-    {{ application?.name }}
-  </n-text>
+  <div v-for="application in props.applications" :key="application.id" class="mb-2 group">
+    <n-text tag="div" depth="1" class="group-hover:text-teal-300">
+      <template v-if="application?.shortName"> [{{ application?.shortName }}] </template>
+      {{ application.name }}
+    </n-text>
+  </div>
 </template>

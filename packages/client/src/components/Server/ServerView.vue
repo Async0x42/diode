@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { IServer } from '@diode/common';
 import type { PropType } from 'vue';
-import { formatTableDate } from '~/utils';
 
 const props = defineProps({
   server: { type: Object as PropType<IServer>, required: true },
@@ -38,38 +37,16 @@ const props = defineProps({
       <n-text tag="div" depth="1">{{ props.server.location?.name }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="FQDNs">
-      <n-text v-for="fqdn in props.server.fqdns" :key="fqdn.id" tag="div" class="mb-2" depth="1">{{ fqdn.name }}</n-text>
+      <FqdnsWidget :fqdns="props.server.fqdns" />
     </n-descriptions-item>
     <n-descriptions-item label="Applications">
-      <template v-for="application in props.server.applications" :key="application.id">
-        <n-text tag="div" depth="1" class="mb-2 hover:text-teal-300">
-          <template v-if="application.shortName"> [{{ application?.shortName }}] </template>
-          {{ application?.name }}
-        </n-text>
-      </template>
+      <ApplicationsWidget :applications="props.server.applications" />
     </n-descriptions-item>
     <n-descriptions-item label="SSL Certificates">
-      <template v-for="sslCert in props.server.sslCertificates" :key="sslCert.id">
-        <n-text tag="div" depth="1" class="mb-2 hover:text-teal-300">
-          <template v-if="sslCert.expiry"> [{{ formatTableDate(sslCert.expiry) }}] </template>
-          {{ sslCert.sans }}
-        </n-text>
-      </template>
+      <SslCertificatesWidget :ssl-certificates="props.server.sslCertificates" />
     </n-descriptions-item>
-    <n-descriptions-item label="WorkOrders">
-      <template v-for="workOrder in props.server.workOrders" :key="workOrder.id">
-        <n-text tag="div" depth="1" class="mb-2 hover:text-teal-300">
-          <div>
-            <template v-if="workOrder.startDate || workOrder.endDate">
-              [{{ formatTableDate(workOrder.startDate) }}
-              <template v-if="workOrder.startDate && workOrder.endDate"> - </template>
-              {{ formatTableDate(workOrder.endDate) }}]
-            </template>
-            {{ workOrder.name }}
-          </div>
-          <div class="mt-1">{{ workOrder.details }}</div>
-        </n-text>
-      </template>
+    <n-descriptions-item label="Work Orders">
+      <WorkOrdersWidget :work-orders="props.server.workOrders" />
     </n-descriptions-item>
     <n-descriptions-item label="Physical Server">
       <n-text tag="div" depth="1">{{ props.server.physicalServer?.name }}</n-text>
@@ -78,18 +55,10 @@ const props = defineProps({
       <n-text tag="div" depth="1" v-html="props.server.notes"></n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Support Groups">
-      <template v-for="supportGroup in props.server.supportGroups" :key="supportGroup.id">
-        <n-text tag="div" depth="1" class="mb-2 hover:text-teal-300">{{ supportGroup.name }}</n-text>
-      </template>
+      <ContactGroupsWidget :contact-groups="props.server.supportGroups" />
     </n-descriptions-item>
     <n-descriptions-item label="Dependencies">
-      <div v-for="dependency in props.server.dependencies" :key="dependency.id" class="mb-2 group">
-        <n-text tag="div" depth="1" class="group-hover:text-teal-300">
-          <template v-if="dependency.endOfSupportDate"> [{{ formatTableDate(dependency.endOfSupportDate) }}] </template>
-          {{ dependency.name }}
-        </n-text>
-        <n-text tag="div" depth="2" class="group-hover:text-teal-400"> v{{ dependency.version }} </n-text>
-      </div>
+      <DependenciesWidget :dependencies="props.server.dependencies" />
     </n-descriptions-item>
   </n-descriptions>
 </template>

@@ -48,7 +48,7 @@ const props = defineProps({
       <n-text tag="div" depth="1">{{ props.server.clusterName }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Servers (Virtual Machines)">
-      <n-text v-for="server in props.server.servers" :key="server.id" tag="div" depth="1" class="mb-2">{{ server.name }}</n-text>
+      <ServersWidget :servers="props.server.servers" />
     </n-descriptions-item>
     <n-descriptions-item label="Notes">
       <n-text tag="div" depth="1">{{ props.server.notes }}</n-text>

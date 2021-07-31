@@ -25,24 +25,13 @@ const props = defineProps({
       <n-text tag="div" depth="1" v-html="props.workOrder.details"></n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Applications">
-      <template v-for="application in props.workOrder.applications" :key="application.id">
-        <n-text tag="div" depth="1" class="mb-2 hover:text-teal-300">
-          <template v-if="application.shortName"> [{{ application?.shortName }}] </template>
-          {{ application?.name }}
-        </n-text>
-      </template>
+      <ApplicationsWidget :applications="props.workOrder.applications" />
     </n-descriptions-item>
     <n-descriptions-item label="Servers">
-      <template v-for="server in props.workOrder.servers" :key="server.id">
-        <div class="group">
-          <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ server.name }}</n-text>
-          <n-text tag="div" depth="2" class="group-hover:text-teal-400">{{ server.ip }}</n-text>
-          <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ server.operatingSystem?.name }}</n-text>
-        </div>
-      </template>
+      <ServersWidget :servers="props.workOrder.servers" />
     </n-descriptions-item>
     <n-descriptions-item label="Owners">
-      <n-text v-for="owner in props.workOrder.owners" :key="owner.id" tag="div" depth="1" class="mb-2 hover:text-teal-300">{{ owner.name }}</n-text>
+      <ContactsWidget :contacts="props.workOrder.owners" />
     </n-descriptions-item>
   </n-descriptions>
 </template>
