@@ -84,7 +84,10 @@ const handleValidateClick = (e: Event) => {
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="Current Status" path="status">
-        <FormSelect v-model:value="model.status" :options="['Draft', 'Assessment', 'Design', 'WIF', 'SA', 'Implementation', 'Done']" />
+        <FormSelect
+          v-model:value="model.status"
+          :options="['Draft', 'Assessment', 'Design', 'WIF', 'SA', 'Implementation', 'Solution Setup', 'Done']"
+        />
       </n-form-item-gi>
 
       <n-form-item-gi :span="12" label="Submission Date" path="submissionDate">

@@ -24,6 +24,9 @@ const props = defineProps({
     <n-descriptions-item label="Description" :span="3">
       <DescriptionWidget :description="props.brd.description" />
     </n-descriptions-item>
+    <n-descriptions-item label="Description" :span="3">
+      <BrdStatusWidget :status="props.brd.status" />
+    </n-descriptions-item>
     <n-descriptions-item label="Related Requests">
       <n-text tag="div" depth="1">{{ props.brd.relatedRequests }}</n-text>
     </n-descriptions-item>
