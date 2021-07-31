@@ -10,9 +10,11 @@ const props = defineProps({
 <template>
   <n-td class="whitespace-nowrap">
     <router-link v-for="fqdn in props.fqdns" :key="fqdn.id" :to="{ name: 'fqdn-view', params: { fqdnId: fqdn.id } }">
-      <n-text tag="div" depth="1" class="hover:text-teal-300">
-        {{ fqdn.name }}
-      </n-text>
+      <FqdnTooltip :fqdn="fqdn">
+        <n-text tag="div" depth="1" class="hover:text-teal-300">
+          {{ fqdn.name }}
+        </n-text>
+      </FqdnTooltip>
     </router-link>
   </n-td>
 </template>

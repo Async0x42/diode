@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { IApplication } from '@diode/common';
+import type { IServer } from '@diode/common';
 import type { PropType } from 'vue';
 
 const props = defineProps({
-  application: { type: Object as PropType<IApplication>, required: true },
+  server: { type: Object as PropType<IServer>, required: true },
 });
 </script>
 
@@ -12,7 +12,7 @@ const props = defineProps({
     <template #trigger><slot></slot></template>
     <n-descriptions bordered>
       <n-descriptions-item>
-        <ApplicationsWidget :applications="props.application" />
+        <ServersWidget :servers="props.server" />
       </n-descriptions-item>
     </n-descriptions>
   </n-popover>

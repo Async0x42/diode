@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { IApplication } from '@diode/common';
+import type { IFqdn } from '@diode/common';
 import type { PropType } from 'vue';
 
 const props = defineProps({
-  application: { type: Object as PropType<IApplication>, required: true },
+  fqdn: { type: Object as PropType<IFqdn>, required: true },
 });
 </script>
 
@@ -12,7 +12,7 @@ const props = defineProps({
     <template #trigger><slot></slot></template>
     <n-descriptions bordered>
       <n-descriptions-item>
-        <ApplicationsWidget :applications="props.application" />
+        <FqdnsWidget :fqdns="props.fqdn" />
       </n-descriptions-item>
     </n-descriptions>
   </n-popover>
