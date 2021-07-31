@@ -29,16 +29,10 @@ const props = defineProps({
       <n-text tag="div" depth="1">{{ props.contactGroup.phone }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Contacts">
-      <template v-for="contact in props.contactGroup.contacts" :key="contact.id">
-        <n-text tag="div" depth="1" class="mb-2 hover:text-teal-300">{{ contact.name }}</n-text>
-      </template>
+      <ContactsWidget :contacts="props.contactGroup.contacts" />
     </n-descriptions-item>
     <n-descriptions-item label="Supported Servers">
-      <div v-for="server in props.contactGroup.supportedServers" :key="server.id" class="mb-2 group">
-        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ server.name }}</n-text>
-        <n-text tag="div" depth="2" class="group-hover:text-teal-300">{{ server.ip }}</n-text>
-        <n-text tag="div" depth="3" class="group-hover:text-teal-300">{{ server.operatingSystem?.name }}</n-text>
-      </div>
+      <ServersWidget :servers="props.contactGroup.supportedServers" />
     </n-descriptions-item>
     <n-descriptions-item label="Notes" :span="3">
       <n-text tag="div" depth="1"> {{ props.contactGroup.notes }}</n-text>
