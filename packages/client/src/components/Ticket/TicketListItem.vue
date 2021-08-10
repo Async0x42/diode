@@ -20,7 +20,7 @@ const props = defineProps({
     <TableCellApplications :applications="props.ticket.applications" />
     <TableCellServers :servers="props.ticket.servers" />
     <n-td class="whitespace-nowrap">{{ formatTableDate(props.ticket.createdOn) }}</n-td>
-    <n-td class="whitespace-nowrap">{{ formatTableDate(props.ticket.updatedOn) }}</n-td>
+    <n-td class="whitespace-nowrap">{{ formatTableDate(props.ticket.modifiedOn) }}</n-td>
     <n-td class="whitespace-nowrap">{{ formatTableDate(props.ticket.estimatedDueDate) }}</n-td>
     <TableCellQuickActions @edit="$router.push({ name: 'ticket-edit', params: { ticketId: ticket.id } })" />
   </n-tr>

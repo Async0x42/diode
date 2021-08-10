@@ -26,7 +26,7 @@ const props = defineProps({
     <TableCellApplications :applications="props.workOrder.applications" :use-short-name="true" />
     <TableCellServers :servers="props.workOrder.servers" />
     <n-td class="whitespace-nowrap">{{ formatTableDate(props.workOrder.createdOn) }}</n-td>
-    <n-td class="whitespace-nowrap">{{ formatTableDate(props.workOrder.updatedOn) }}</n-td>
+    <n-td class="whitespace-nowrap">{{ formatTableDate(props.workOrder.modifiedOn) }}</n-td>
     <TableCellQuickActions @edit="$router.push({ name: 'workOrder-edit', params: { workOrderId: workOrder.id } })" />
   </n-tr>
 </template>
