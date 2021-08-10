@@ -24,7 +24,7 @@ const groupedResults = computed(() => groupBy(results.value, 'status'));
 <template>
   <n-collapse :default-expanded-names="['New']" class="mt-3">
     <n-collapse-item v-for="(groupKey, index) in Object.keys(groupedResults)" :key="index" :title="groupKey" :name="groupKey">
-      <TableView :headers="['Name', 'Details', 'Applications', 'Servers', 'Created', '']">
+      <TableView :headers="['Name', 'Details', 'Applications', 'Servers', 'Created', 'Updated', '']">
         <WorkOrderListItem v-for="workOrder in groupedResults[groupKey]" :key="workOrder.id" :work-order="workOrder" />
       </TableView>
     </n-collapse-item>
