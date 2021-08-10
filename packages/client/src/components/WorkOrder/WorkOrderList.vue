@@ -3,6 +3,7 @@ import type { IWorkOrder } from '@diode/common';
 import type { PropType } from 'vue';
 import { groupBy } from 'lodash-es';
 import { useRouteSearchWithData } from '~/logic';
+import { sortByPriority } from '~/utils';
 
 const props = defineProps({
   workOrders: { type: Array as PropType<IWorkOrder[]>, required: true },
@@ -18,7 +19,9 @@ const { results } = useRouteSearchWithData(props.workOrders, [
   'status',
 ]);
 
-const groupedResults = computed(() => groupBy(results.value, 'status'));
+const sortPriorities = ['New', 'In progress', 'Waiting on others'];
+const sortedResults = computed(() => sortByPriority(sortPriorities, results.value, 'status'));
+const groupedResults = computed(() => groupBy(sortedResults.value, 'status'));
 </script>
 
 <template>
