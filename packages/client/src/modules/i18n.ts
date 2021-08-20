@@ -20,7 +20,7 @@ const numberFormats = {
   },
 };
 
-// import i18n resources
+// Import i18n resources
 // https://vitejs.dev/guide/features.html#glob-import
 const messages = Object.fromEntries(
   Object.entries(import.meta.globEager('../../locales/*.y(a)?ml')).map(([key, value]) => {

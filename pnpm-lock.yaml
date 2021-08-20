@@ -31,7 +31,6 @@ importers:
       '@popperjs/core': ^2.9.3
       '@types/markdown-it-link-attributes': ^3.0.1
       '@types/nprogress': ^0.2.0
-      '@typescript-eslint/eslint-plugin': ^4.29.2
       '@vitejs/plugin-vue': ^1.4.0
       '@vue/compiler-sfc': ^3.2.4
       '@vue/eslint-config-prettier': ^6.0.0
@@ -50,6 +49,7 @@ importers:
       markdown-it-prism: ^2.1.8
       naive-ui: ^2.16.5
       npm-run-all: ^4.1.5
+      pinia: ^2.0.0-0
       prettier: ^2.3.2
       prism-theme-vars: ^0.2.2
       rollup-plugin-visualizer: ^5.5.2
@@ -80,6 +80,7 @@ importers:
       fuse.js: 6.4.6
       lodash-es: 4.17.21
       naive-ui: 2.16.5_vue@3.2.4
+      pinia: 2.0.0-rc.6_typescript@4.3.5+vue@3.2.4
       prism-theme-vars: 0.2.2
       vfonts: 0.1.0
       vooks: 0.2.8_vue@3.2.4
@@ -93,7 +94,6 @@ importers:
       '@intlify/vite-plugin-vue-i18n': 2.4.0_4cef02acf2f8b9c8009dbbdef0b0dc6c
       '@types/markdown-it-link-attributes': 3.0.1
       '@types/nprogress': 0.2.0
-      '@typescript-eslint/eslint-plugin': 4.29.2_eslint@7.32.0+typescript@4.3.5
       '@vitejs/plugin-vue': 1.4.0_@vue+compiler-sfc@3.2.4
       '@vue/compiler-sfc': 3.2.4
       '@vue/eslint-config-prettier': 6.0.0_7e05424a276b9ab2c184d09e69e49b9d
@@ -4949,6 +4949,24 @@ packages:
     resolution: {integrity: sha1-5aSs0sEB/fPZpNB/DbxNtJ3SgXY=}
     engines: {node: '>=4'}
     dev: true
+
+  /pinia/2.0.0-rc.6_typescript@4.3.5+vue@3.2.4:
+    resolution: {integrity: sha512-IqArmLmWJB5wZzELZfFF42bMaulo6cjMvL1wgUjWfmzaGCt1HYOAXN86s6HrdAueeEWj9Ov6lNNOHB1DFQxthw==}
+    peerDependencies:
+      '@vue/composition-api': ^1.1.1
+      typescript: ^4.3.5
+      vue: ^2.6.14 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/devtools-api': 6.0.0-beta.15
+      typescript: 4.3.5
+      vue: 3.2.4
+      vue-demi: 0.11.3_vue@3.2.4
+    dev: false
 
   /pkg-dir/2.0.0:
     resolution: {integrity: sha1-9tXREJ4Z1j7fQo4L1X4Sd3YVM0s=}
