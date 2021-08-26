@@ -41,7 +41,7 @@ const columns: DataTableColumn[] = [
   applicationsColumn,
   serversColumn,
   createdColumn,
-  modifiedColumn,
+  { ...modifiedColumn, defaultSortOrder: 'descend' } as DataTableColumn,
   createQuickActionsColumn((row: any) => router.push({ name: 'workOrder-edit', params: { workOrderId: row.id } })),
 ];
 </script>
