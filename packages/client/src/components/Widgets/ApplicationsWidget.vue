@@ -4,12 +4,13 @@ import type { PropType } from 'vue';
 
 const props = defineProps({
   applications: { type: [Object, Array] as PropType<IApplication[] | IApplication>, default: '' },
+  showTitle: { type: Boolean, default: true },
 });
 </script>
 
 <template>
   <template v-if="!Array.isArray(props.applications)">
-    <n-text tag="div" depth="1">{{ props.applications?.name }}</n-text>
+    <n-text v-if="showTitle" tag="div" depth="1">{{ props.applications?.name }}</n-text>
     <n-text tag="div" depth="3">{{ props.applications?.shortName }}</n-text>
   </template>
   <template v-else>
