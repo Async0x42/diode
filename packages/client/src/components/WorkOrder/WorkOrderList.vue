@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { IWorkOrder } from '@diode/common';
 import type { PropType } from 'vue';
-import { groupBy } from 'lodash-es';
+import { groupBy, reverse } from 'lodash-es';
 import type { DataTableColumn } from 'naive-ui';
 import { useRouter } from 'vue-router';
 import { useRouteSearchWithData } from '~/logic';
@@ -32,8 +32,8 @@ const { results } = useRouteSearchWithData(props.workOrders, [
   'status',
 ]);
 
-const sortPriorities = ['New', 'In progress', 'Waiting on others'];
-const sortedResults = computed(() => sortByPriority(sortPriorities, results.value, 'status'));
+const sortPriorities = reverse(['New', 'In progress', 'Waiting on others']);
+const sortedResults = computed(() => reverse(sortByPriority(sortPriorities, results.value, 'status')));
 const groupedResults = computed(() => groupBy(sortedResults.value, 'status'));
 const columns: DataTableColumn[] = [
   workOrderColumn,
