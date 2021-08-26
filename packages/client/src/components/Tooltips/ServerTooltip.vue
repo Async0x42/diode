@@ -12,7 +12,10 @@ const props = defineProps({
     <template #trigger><slot></slot></template>
     <n-descriptions bordered>
       <n-descriptions-item>
-        <ServersWidget :servers="props.server" />
+        <template #label>
+          <n-text depth="1" class="font-bold text-lg">{{ props.server.name }}</n-text>
+        </template>
+        <ServersWidget :servers="props.server" :show-title="false" />
       </n-descriptions-item>
     </n-descriptions>
   </n-popover>
