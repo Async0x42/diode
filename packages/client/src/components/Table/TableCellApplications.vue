@@ -4,7 +4,7 @@ import type { PropType } from 'vue';
 
 const props = defineProps({
   applications: { type: Object as PropType<IApplication[]>, default: () => [] },
-  useShortName: { type: Boolean, default: false },
+  useShortName: { type: Boolean, default: () => true },
 });
 </script>
 
@@ -16,10 +16,10 @@ const props = defineProps({
       :to="{ name: 'application-view', params: { applicationId: application.id } }"
     >
       <ApplicationTooltip :application="application">
-        <n-text tag="div" depth="1" class="cursor-pointer hover:text-teal-300">
-          <span v-if="application?.shortName" class="whitespace-nowrap"> [{{ application?.shortName }}] </span>
-          <span v-if="!useShortName">{{ application?.name }}</span>
-        </n-text>
+        <n-tag v-if="useShortName && application?.shortName" type="info" class="cursor-pointer mr-1 whitespace-nowrap hover:text-teal-300">
+          {{ application?.shortName }}
+        </n-tag>
+        <n-tag v-else type="info" class="mr-1">{{ application?.name }}</n-tag>
       </ApplicationTooltip>
     </router-link>
   </n-td>
