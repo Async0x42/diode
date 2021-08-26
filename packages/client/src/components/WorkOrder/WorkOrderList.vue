@@ -49,7 +49,7 @@ const columns: DataTableColumn[] = [
 <template>
   <n-collapse :default-expanded-names="['New', 'In progress', 'Waiting on others']" class="mt-3">
     <n-collapse-item v-for="(groupKey, index) in Object.keys(groupedResults)" :key="index" :title="groupKey" :name="groupKey">
-      <n-data-table :columns="columns" :data="groupedResults[groupKey]" />
+      <n-data-table :columns="columns" :data="groupedResults[groupKey]" size="small" />
     </n-collapse-item>
   </n-collapse>
 </template>
