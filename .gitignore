@@ -5,7 +5,6 @@
 dist
 dist-ssr
 node_modules
-# intellij stuff
 .idea/
 .log
 packages/server/temp
@@ -14,3 +13,4 @@ backups
 packages/server/tmp_downloads
 packages/client/components.d.ts
 packages/client/stats.html
+packages/client/auto-imports.d.ts

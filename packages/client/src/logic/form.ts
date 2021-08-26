@@ -1,4 +1,3 @@
-import { useRouter } from 'vue-router';
 import { useAxios } from '@vueuse/integrations';
 
 export const useFormActions = <T extends { id: number }>(apiPath: string, nextRouteName: string, dataObject?: T) => {

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { IBrd } from '@diode/common';
 import type { PropType } from 'vue';
-import { useI18n } from 'vue-i18n';
 const { n } = useI18n();
 
 const props = defineProps({

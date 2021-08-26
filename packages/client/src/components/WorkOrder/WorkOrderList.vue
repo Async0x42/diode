@@ -3,7 +3,6 @@ import type { IWorkOrder } from '@diode/common';
 import type { PropType } from 'vue';
 import { groupBy, reverse } from 'lodash-es';
 import type { DataTableColumn } from 'naive-ui';
-import { useRouter } from 'vue-router';
 import { useRouteSearchWithData } from '~/logic';
 import {
   applicationsColumn,
