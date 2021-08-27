@@ -119,7 +119,7 @@ export const DI = {} as {
   app.use(
     '/api/fqdns',
     createRouter<Fqdn>(
-      createService(DI.fqdnRepo, ['applications', 'server', 'server.environment', 'server.location', 'server.operatingSystem', 'servers.types'])
+      createService(DI.fqdnRepo, ['applications', 'server', 'server.environment', 'server.location', 'server.operatingSystem', 'server.types'])
     )
   );
   app.use(
