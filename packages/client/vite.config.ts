@@ -7,7 +7,7 @@ import ViteIcons, { ViteIconsResolver } from 'vite-plugin-icons';
 import ViteComponents, { HeadlessUiResolver, VueUseComponentsResolver, NaiveUiResolver } from 'vite-plugin-components';
 import Markdown from 'vite-plugin-md';
 import WindiCSS from 'vite-plugin-windicss';
-import AutoImport from 'unplugin-auto-import/vite'
+import AutoImport from 'unplugin-auto-import/vite';
 import VueI18n from '@intlify/vite-plugin-vue-i18n';
 import Prism from 'markdown-it-prism';
 import LinkAttributes from 'markdown-it-link-attributes';
@@ -49,13 +49,7 @@ export default defineConfig({
 
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
-      imports: [
-        'vue',
-        'vue-router',
-        'vue-i18n',
-        '@vueuse/head',
-        '@vueuse/core',
-      ],
+      imports: ['vue', 'vue-router', 'vue-i18n', '@vueuse/head', '@vueuse/core'],
     }),
 
     // https://github.com/antfu/vite-plugin-md
