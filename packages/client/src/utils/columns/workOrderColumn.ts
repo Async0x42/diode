@@ -9,4 +9,7 @@ export const workOrderColumn: DataTableColumn = {
       workOrder: row,
     });
   },
+  sorter(rowA: any, rowB: any) {
+    return rowA.id - rowB.id;
+  },
 };
