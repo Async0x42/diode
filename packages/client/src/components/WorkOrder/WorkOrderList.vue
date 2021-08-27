@@ -4,16 +4,7 @@ import type { PropType } from 'vue';
 import { groupBy, reverse } from 'lodash-es';
 import type { DataTableColumn } from 'naive-ui';
 import { useRouteSearchWithData } from '~/logic';
-import {
-  applicationsColumn,
-  createQuickActionsColumn,
-  createdColumn,
-  detailsColumn,
-  modifiedColumn,
-  serversColumn,
-  sortByPriority,
-  workOrderColumn,
-} from '~/utils';
+import { applicationsColumn, createQuickActionsColumn, detailsColumn, modifiedColumn, serversColumn, sortByPriority, workOrderColumn } from '~/utils';
 
 const router = useRouter();
 
@@ -39,7 +30,6 @@ const columns: DataTableColumn[] = [
   detailsColumn,
   applicationsColumn,
   serversColumn,
-  createdColumn,
   { ...modifiedColumn, defaultSortOrder: 'descend' } as DataTableColumn,
   createQuickActionsColumn((row: any) => router.push({ name: 'workOrder-edit', params: { workOrderId: row.id } })),
 ];
