@@ -3,7 +3,8 @@ import { defineConfig } from 'vite';
 import Vue from '@vitejs/plugin-vue';
 import Pages from 'vite-plugin-pages';
 import Layouts from 'vite-plugin-vue-layouts';
-import ViteIcons, { ViteIconsResolver } from 'vite-plugin-icons';
+import Icons from 'unplugin-icons/vite';
+import IconsResolver from 'unplugin-icons/resolver';
 import ViteComponents, { HeadlessUiResolver, VueUseComponentsResolver, NaiveUiResolver } from 'vite-plugin-components';
 import Markdown from 'vite-plugin-md';
 import WindiCSS from 'vite-plugin-windicss';
@@ -85,16 +86,18 @@ export default defineConfig({
         HeadlessUiResolver(),
         VueUseComponentsResolver(),
 
-        // https://github.com/antfu/vite-plugin-icons
-        ViteIconsResolver({
+        // https://github.com/antfu/unplugin-icons
+        IconsResolver({
           componentPrefix: '',
           // enabledCollections: ['carbon']
         }),
       ],
     }),
 
-    // https://github.com/antfu/vite-plugin-icons
-    ViteIcons(),
+    // https://github.com/antfu/unplugin-icons
+    Icons({
+      /* options */
+    }),
 
     // https://github.com/antfu/vite-plugin-windicss
     WindiCSS({
@@ -110,7 +113,7 @@ export default defineConfig({
   ],
 
   optimizeDeps: {
-    include: ['vue', 'vue-router', '@vueuse/core', '@vueuse/integrations', 'fuse.js', '@heroicons/vue/outline', 'date-fns'],
+    include: ['vue', 'vue-router', '@vueuse/core', '@vueuse/integrations', 'fuse.js', 'date-fns'],
     exclude: ['vue-demi'],
   },
 });

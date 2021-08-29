@@ -1,7 +1,14 @@
-import { DocumentTextIcon, ClockIcon, CalendarIcon, PhoneIcon, GlobeAltIcon, ChipIcon, CogIcon, TicketIcon } from '@heroicons/vue/outline';
 import { h } from 'vue';
 import { NIcon } from 'naive-ui';
 import { sortBy } from 'lodash-es';
+import Clock from '~icons/heroicons-outline/clock';
+import Calendar from '~icons/heroicons-outline/calendar';
+import DocumentText from '~icons/heroicons-outline/document-text';
+import Phone from '~icons/heroicons-outline/phone';
+import GlobeAlt from '~icons/heroicons-outline/globe-alt';
+import Chip from '~icons/heroicons-outline/chip';
+import Cog from '~icons/heroicons-outline/cog';
+import Ticket from '~icons/heroicons-outline/ticket';
 
 const renderIcon = (icon: any) => {
   return () => h(NIcon, null, { default: () => h(icon) });
@@ -17,19 +24,19 @@ interface INav {
 }
 
 export const navigation: INav[] = [
-  { label: 'Work Orders', key: 'workOrders', to: { name: 'workOrders' }, icon: DocumentTextIcon },
-  { label: 'Tickets', key: 'tickets', to: { name: 'tickets' }, icon: TicketIcon },
-  { label: 'Calendar', key: 'calendar', to: { name: 'calendar' }, icon: CalendarIcon },
-  { label: 'Applications', key: 'applications', to: { name: 'applications' }, icon: GlobeAltIcon },
-  { label: 'Servers', key: 'servers', to: { name: 'servers' }, icon: ChipIcon },
-  { label: 'Contacts', key: 'contacts', to: { name: 'contacts' }, icon: PhoneIcon },
-  { label: 'Contact Groups', key: 'contactGroups', to: { name: 'contactGroups' }, icon: PhoneIcon },
-  { label: 'BRDs', key: 'brds', to: { name: 'brds' }, icon: DocumentTextIcon },
-  { label: 'RFCs', key: 'rfcs', to: { name: 'rfcs' }, icon: ClockIcon },
+  { label: 'Work Orders', key: 'workOrders', to: { name: 'workOrders' }, icon: DocumentText },
+  { label: 'Tickets', key: 'tickets', to: { name: 'tickets' }, icon: Ticket },
+  { label: 'Calendar', key: 'calendar', to: { name: 'calendar' }, icon: Calendar },
+  { label: 'Applications', key: 'applications', to: { name: 'applications' }, icon: GlobeAlt },
+  { label: 'Servers', key: 'servers', to: { name: 'servers' }, icon: Chip },
+  { label: 'Contacts', key: 'contacts', to: { name: 'contacts' }, icon: Phone },
+  { label: 'Contact Groups', key: 'contactGroups', to: { name: 'contactGroups' }, icon: Phone },
+  { label: 'BRDs', key: 'brds', to: { name: 'brds' }, icon: DocumentText },
+  { label: 'RFCs', key: 'rfcs', to: { name: 'rfcs' }, icon: Clock },
   {
     label: 'Settings',
     key: 'settings',
-    icon: CogIcon,
+    icon: Cog,
     children: sortBy(
       [
         { label: 'FQDN', key: 'fqdn', to: { name: 'fqdn' } },

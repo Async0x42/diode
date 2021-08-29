@@ -11,5 +11,5 @@ declare module '*.md' {
   export default component;
 }
 
-// fix for heroicons not supporting typescript
-declare module '@heroicons/*';
+// fix for icon plugin not supporting typescript
+declare module '~icons/*';
