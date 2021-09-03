@@ -5,10 +5,11 @@ import Pages from 'vite-plugin-pages';
 import Layouts from 'vite-plugin-vue-layouts';
 import Icons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
-import ViteComponents, { HeadlessUiResolver, VueUseComponentsResolver, NaiveUiResolver } from 'vite-plugin-components';
+import Components from 'unplugin-vue-components/vite';
+import { HeadlessUiResolver, VueUseComponentsResolver, NaiveUiResolver } from 'unplugin-vue-components/resolvers';
+import AutoImport from 'unplugin-auto-import/vite';
 import Markdown from 'vite-plugin-md';
 import WindiCSS from 'vite-plugin-windicss';
-import AutoImport from 'unplugin-auto-import/vite';
 import VueI18n from '@intlify/vite-plugin-vue-i18n';
 import Prism from 'markdown-it-prism';
 import LinkAttributes from 'markdown-it-link-attributes';
@@ -51,6 +52,7 @@ export default defineConfig({
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
       imports: ['vue', 'vue-router', 'vue-i18n', '@vueuse/head', '@vueuse/core'],
+      dts: true,
     }),
 
     // https://github.com/antfu/vite-plugin-md
@@ -70,18 +72,18 @@ export default defineConfig({
       },
     }),
 
-    // https://github.com/antfu/vite-plugin-components
-    ViteComponents({
+    // https://github.com/antfu/unplugin-vue-components
+    Components({
       // allow auto load markdown components under `./src/components/`
       extensions: ['vue', 'md'],
 
-      // allow auto import and register components used in markdown
-      customLoaderMatcher: (id) => id.endsWith('.md'),
+      dts: true,
 
-      globalComponentsDeclaration: true,
+      // allow auto import and register components used in markdown
+      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
 
       // auto import icons
-      customComponentResolvers: [
+      resolvers: [
         NaiveUiResolver(),
         HeadlessUiResolver(),
         VueUseComponentsResolver(),

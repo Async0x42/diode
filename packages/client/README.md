@@ -29,7 +29,7 @@ Mocking up web app with <b>Vitesse</b><sup><em>(speed)</em></sup><br>
 
 - 🎨 [Windi CSS](https://github.com/windicss/windicss) - next generation utility-first CSS framework
 
-- 😃 [Use icons from any icon sets, with no compromise](./src/components)
+- 😃 [Use icons from any icon sets, with no compromise](https://github.com/antfu/unplugin-icons)
 
 - 🌍 [I18n ready](./locales)
 
@@ -55,7 +55,7 @@ Mocking up web app with <b>Vitesse</b><sup><em>(speed)</em></sup><br>
 ### Icons
 
 - [Iconify](https://iconify.design) - use icons from any icon sets [🔍Icônes](https://icones.netlify.app/)
-- [`vite-plugin-icons`](https://github.com/antfu/vite-plugin-icons) - icons as Vue components
+- [`unplugin-icons`](https://github.com/antfu/unplugin-icons) - icons as Vue components
 
 ### Plugins
 
