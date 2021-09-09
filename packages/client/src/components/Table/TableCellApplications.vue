@@ -16,10 +16,10 @@ const props = defineProps({
       :to="{ name: 'application-view', params: { applicationId: application.id } }"
     >
       <ApplicationTooltip :application="application">
-        <n-tag v-if="useShortName && application?.shortName" type="info" class="cursor-pointer mr-1 whitespace-nowrap hover:text-teal-300">
+        <n-tag v-if="useShortName && application?.shortName" type="info" class="mr-1 whitespace-nowrap hover:cursor-pointer hover:text-teal-300">
           {{ application?.shortName }}
         </n-tag>
-        <n-tag v-else type="info" class="mr-1">{{ application?.name }}</n-tag>
+        <n-tag v-else type="info" class="mr-1 hover:cursor-pointer">{{ application?.name }}</n-tag>
       </ApplicationTooltip>
     </router-link>
   </n-td>
