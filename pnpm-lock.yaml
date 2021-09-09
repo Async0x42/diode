@@ -1480,11 +1480,28 @@ packages:
       estree-walker: 2.0.2
       source-map: 0.6.1
 
+  /@vue/compiler-core/3.2.11:
+    resolution: {integrity: sha512-bcbsLx5XyQg8WDDEGwmpX0BfEfv82wIs9fWFelpyVhNRGMaABvUTalYINyfhVT+jOqNaD4JBhJiVKd/8TmsHWg==}
+    dependencies:
+      '@babel/parser': 7.15.5
+      '@babel/types': 7.15.4
+      '@vue/shared': 3.2.11
+      estree-walker: 2.0.2
+      source-map: 0.6.1
+    dev: true
+
   /@vue/compiler-dom/3.2.10:
     resolution: {integrity: sha512-WFOWBj9dvIz5ktReYwvw2GMQ8YHtY//cOGTyCw5XSQw58sKm4JCQGe1HXfuEVDmRRI1s4L/gOFR2NgbRfGCtMw==}
     dependencies:
       '@vue/compiler-core': 3.2.10
       '@vue/shared': 3.2.10
+
+  /@vue/compiler-dom/3.2.11:
+    resolution: {integrity: sha512-DNvhUHI/1Hn0/+ZYDYGAuDGasUm+XHKC3FE4GqkNCTO/fcLaJMRg/7eT1m1lkc7jPffUwwfh1rZru5mwzOjrNw==}
+    dependencies:
+      '@vue/compiler-core': 3.2.11
+      '@vue/shared': 3.2.11
+    dev: true
 
   /@vue/compiler-sfc/3.2.10:
     resolution: {integrity: sha512-XEb84jC3roda2Cw6Kx/w0UGigX+qKu8ylIVoh3xl+6n93xzszk8+FEkoBF2Njm2rN9HFfa2kU8lmol8CHlfwBQ==}
@@ -1537,6 +1554,12 @@ packages:
     dependencies:
       '@vue/shared': 3.2.10
 
+  /@vue/reactivity/3.2.11:
+    resolution: {integrity: sha512-hEQstxPQbgGZq5qApzrvbDmRdK1KP96O/j4XrwT8fVkT1ytkFs4fH2xNEh9QKwXfybbQkLs77W7OfXCv5o6qbA==}
+    dependencies:
+      '@vue/shared': 3.2.11
+    dev: true
+
   /@vue/ref-transform/3.2.10:
     resolution: {integrity: sha512-28JheKL6ih5UOpsepkN7NkIuMhU+kl0KM5687um1LP+7KzVFRQwrXPuk4XpGxjg6rZGFI14Beu0Z6V5T9hPAZA==}
     dependencies:
@@ -1562,6 +1585,10 @@ packages:
 
   /@vue/shared/3.2.10:
     resolution: {integrity: sha512-Z5hbCx5jqAK0kscWcsVBpEeS0LfuSjgnkCBewQfsdBRyvHdJWKRUnCAJ7GqJO/iJtjSZHBFJYNoYyP7a/goh2A==}
+
+  /@vue/shared/3.2.11:
+    resolution: {integrity: sha512-ovfXAsSsCvV9JVceWjkqC/7OF5HbgLOtCWjCIosmPGG8lxbPuavhIxRH1dTx4Dg9xLgRTNLvI3pVxG4ItQZekg==}
+    dev: true
 
   /@vueuse/core/6.2.1_vue@3.2.10:
     resolution: {integrity: sha512-XQei1kz5zOnu+qyq8ZH+aFG2TK3RWLnACzBlepgzCkO7hRvNlzqblfd2cE7cfMh1SwkDbmvSaAuZ4Lptz8xbjQ==}
@@ -6773,8 +6800,8 @@ packages:
       vscode-languageserver: 8.0.0-next.2
     dev: true
 
-  /vscode-typescript-languageservice/0.27.14:
-    resolution: {integrity: sha512-lVNd4h44SSKW7cU11mOMqxEdqb2PCIG2E6kU7j1/x1H7p5NiEmvbjV1nesIoPSg5/jB1LUslijo13beUcz7rPw==}
+  /vscode-typescript-languageservice/0.27.17:
+    resolution: {integrity: sha512-JNDp2ABrVFazOy1g9ZBny6XON9bKB1udXvyY6BgBtvJP4ym9ku8aEe37mx3BrjFsbrZbThmaPqlbEGTMpt0jVg==}
     dependencies:
       '@volar/shared': 0.27.14
       upath: 2.0.1
@@ -6790,8 +6817,8 @@ packages:
     resolution: {integrity: sha512-jkjy6pjU1fxUvI51P+gCsxg1u2n8LSt0W6KrCNQceaziKzff74GoWmjVG46KieVzybO1sttPQmYfrwSHey7GUA==}
     dev: true
 
-  /vscode-vue-languageservice/0.27.16:
-    resolution: {integrity: sha512-ubTcaGPt1W0EsSre/aDP2FjyRiiPPJLxfpmYM3bo4lofGwGxg/rGM7LMgKgz9Gap/CjbNU4BddouoExbLE4rLg==}
+  /vscode-vue-languageservice/0.27.17:
+    resolution: {integrity: sha512-rnfk0ZKshEslkYhFps3dW8o9LJ3LVTUI1WI4iRMCWv0Pybv0qIsIJuR1qsLlFfgIdipmkY/7SnZbhN5vfAsegA==}
     dependencies:
       '@volar/code-gen': 0.27.14
       '@volar/html2pug': 0.27.13
@@ -6799,9 +6826,9 @@ packages:
       '@volar/source-map': 0.27.14
       '@volar/transforms': 0.27.14
       '@vscode/emmet-helper': 2.7.0
-      '@vue/compiler-dom': 3.2.10
-      '@vue/reactivity': 3.2.10
-      '@vue/shared': 3.2.10
+      '@vue/compiler-dom': 3.2.11
+      '@vue/reactivity': 3.2.11
+      '@vue/shared': 3.2.11
       request-light: 0.5.4
       upath: 2.0.1
       vscode-css-languageservice: 5.1.4
@@ -6810,7 +6837,7 @@ packages:
       vscode-languageserver: 8.0.0-next.2
       vscode-languageserver-textdocument: 1.0.1
       vscode-pug-languageservice: 0.27.14
-      vscode-typescript-languageservice: 0.27.14
+      vscode-typescript-languageservice: 0.27.17
     dev: true
 
   /vue-demi/0.11.4_vue@3.2.10:
@@ -6874,7 +6901,7 @@ packages:
       typescript: '*'
     dependencies:
       typescript: 4.4.2
-      vscode-vue-languageservice: 0.27.16
+      vscode-vue-languageservice: 0.27.17
     dev: true
 
   /vue/3.2.10:
