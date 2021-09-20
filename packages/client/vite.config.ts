@@ -11,6 +11,7 @@ import AutoImport from 'unplugin-auto-import/vite';
 import Markdown from 'vite-plugin-md';
 import WindiCSS from 'vite-plugin-windicss';
 import VueI18n from '@intlify/vite-plugin-vue-i18n';
+import Inspect from 'vite-plugin-inspect';
 import Prism from 'markdown-it-prism';
 import LinkAttributes from 'markdown-it-link-attributes';
 import { visualizer } from 'rollup-plugin-visualizer';
@@ -55,23 +56,6 @@ export default defineConfig({
       dts: true,
     }),
 
-    // https://github.com/antfu/vite-plugin-md
-    Markdown({
-      wrapperClasses: markdownWrapperClasses,
-      headEnabled: true,
-      markdownItSetup(md) {
-        // https://prismjs.com/
-        md.use(Prism);
-        md.use(LinkAttributes, {
-          pattern: /^https?:\/\//,
-          attrs: {
-            target: '_blank',
-            rel: 'noopener',
-          },
-        });
-      },
-    }),
-
     // https://github.com/antfu/unplugin-vue-components
     Components({
       // allow auto load markdown components under `./src/components/`
@@ -106,11 +90,34 @@ export default defineConfig({
       safelist: markdownWrapperClasses,
     }),
 
+    // https://github.com/antfu/vite-plugin-md
+    Markdown({
+      wrapperClasses: markdownWrapperClasses,
+      headEnabled: true,
+      markdownItSetup(md) {
+        // https://prismjs.com/
+        md.use(Prism);
+        md.use(LinkAttributes, {
+          pattern: /^https?:\/\//,
+          attrs: {
+            target: '_blank',
+            rel: 'noopener',
+          },
+        });
+      },
+    }),
+
     // https://github.com/intlify/vite-plugin-vue-i18n
     VueI18n({
       runtimeOnly: true,
       compositionOnly: true,
       include: [path.resolve(__dirname, 'locales/**')],
+    }),
+
+    // https://github.com/antfu/vite-plugin-inspect
+    Inspect({
+      // change this to enable inspect for debugging
+      enabled: false,
     }),
   ],
 
