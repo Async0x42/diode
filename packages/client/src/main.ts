@@ -12,8 +12,6 @@ import 'virtual:windi-utilities.css';
 // windicss devtools support (dev only)
 import 'virtual:windi-devtools';
 
-import 'vfonts/Lato.css';
-import 'vfonts/FiraCode.css';
 import './styles/main.css';
 import { router } from './router';
 

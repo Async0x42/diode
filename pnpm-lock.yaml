@@ -50,13 +50,13 @@ importers:
       npm-run-all: ^4.1.5
       pinia: ^2.0.0-rc.9
       prettier: ^2.4.1
+      primevue: 3.7.1
       prism-theme-vars: ^0.2.2
       rollup-plugin-visualizer: ^5.5.2
       typescript: ^4.4.3
       unplugin-auto-import: ^0.4.6
       unplugin-icons: ^0.11.3
       unplugin-vue-components: ^0.15.2
-      vfonts: ^0.1.0
       vite: ^2.5.10
       vite-plugin-inspect: ^0.3.6
       vite-plugin-md: ^0.11.1
@@ -80,8 +80,8 @@ importers:
       lodash-es: 4.17.21
       naive-ui: 2.19.0_vue@3.2.12
       pinia: 2.0.0-rc.9_typescript@4.4.3+vue@3.2.12
+      primevue: 3.7.1
       prism-theme-vars: 0.2.2
-      vfonts: 0.1.0
       vooks: 0.2.8_vue@3.2.12
       vue: 3.2.12
       vue-i18n: 9.1.7_vue@3.2.12
@@ -5378,6 +5378,10 @@ packages:
       ansi-regex: 5.0.1
       ansi-styles: 4.3.0
       react-is: 17.0.2
+    dev: false
+
+  /primevue/3.7.1:
+    resolution: {integrity: sha512-wL6TGE5zQfVySVblM9bq6VwFqPmQwd2uDGxn8FCDI2MPXEZ7JlOrT3BBeLCM/RJrIy1jAYq1gNTdVGe+6Zljgg==}
     dev: false
 
   /prism-theme-vars/0.2.2:
