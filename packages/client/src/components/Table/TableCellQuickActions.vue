@@ -14,25 +14,11 @@ const onBrowse = () => {
 
 <template>
   <n-td class="text-right">
-    <TableButton v-if="props.browse" @click="onBrowse">
-      <template #icon>
-        <heroicons-solid-eye />
-      </template>
-    </TableButton>
-    <TableButton v-if="props.email" @click="$emit('email')">
-      <template #icon>
-        <heroicons-solid-mail />
-      </template>
-    </TableButton>
-    <TableButton v-if="props.phone" @click="$emit('phone')">
-      <template #icon>
-        <heroicons-solid-phone />
-      </template>
-    </TableButton>
-    <TableButton @click="$emit('edit')">
-      <template #icon>
-        <heroicons-solid-pencil />
-      </template>
-    </TableButton>
+    <span class="p-buttonset">
+      <TableButton v-if="props.browse" @click="onBrowse" icon="heroicons-solid-eye" />
+      <TableButton v-if="props.email" @click="$emit('email')" icon="heroicons-solid-mail" />
+      <TableButton v-if="props.phone" @click="$emit('phone')" icon="heroicons-solid-phone" />
+      <TableButton @click="$emit('edit')"><heroicons-solid-pencil/></TableButton>
+    </span>
   </n-td>
 </template>

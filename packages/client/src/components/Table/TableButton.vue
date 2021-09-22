@@ -1,12 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
 
+const props = defineProps({
+  label: { type: String },
+});
+</script>
 <template>
-  <n-button small>
-    <template #icon>
-      <n-icon>
-        <slot name="icon"></slot>
-      </n-icon>
-    </template>
+  <Button :label="props.label" class="p-button-rounded">
     <slot></slot>
-  </n-button>
+  </Button>
 </template>
