@@ -29,7 +29,7 @@ export default defineConfig({
       strict: true,
     },
     proxy: {
-      '/api': 'http://localhost:7000/',
+      '/api': 'http://localhost:7777/',
     },
   },
   build: {
@@ -52,7 +52,21 @@ export default defineConfig({
 
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
-      imports: ['vue', 'vue-router', 'vue-i18n', '@vueuse/head', '@vueuse/core'],
+      imports: [
+        'vue',
+        'vue-router',
+        'vue-i18n',
+        '@vueuse/head',
+        '@vueuse/core',
+        // custom
+        // {
+        //   primevue: [
+        //     // '[import-names]',
+        //     // alias
+        //     ['useconfirm', 'useConfirm'],
+        //   ],
+        // },
+      ],
       dts: true,
     }),
 
