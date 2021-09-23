@@ -9,18 +9,21 @@ const props = defineProps({
 </script>
 
 <template>
-  <n-td>
+  <td>
     <router-link
       v-for="application in props.applications"
       :key="application.id"
       :to="{ name: 'application-view', params: { applicationId: application.id } }"
     >
       <ApplicationTooltip :application="application">
-        <n-tag v-if="useShortName && application?.shortName" type="info" class="mr-1 whitespace-nowrap hover:cursor-pointer hover:text-teal-300">
-          {{ application?.shortName }}
-        </n-tag>
-        <n-tag v-else type="info" class="mr-1 hover:cursor-pointer">{{ application?.name }}</n-tag>
+        <Tag
+          v-if="useShortName && application?.shortName"
+          severity="info"
+          class="mr-1 text-grey-300 whitespace-nowrap hover:cursor-pointer hover:text-teal-300"
+          :value="application?.shortName"
+        />
+        <Tag v-else severity="info" class="mr-1 hover:cursor-pointer" :value="application?.name" />
       </ApplicationTooltip>
     </router-link>
-  </n-td>
+  </td>
 </template>

@@ -1,3 +1,3 @@
 <template>
-  <n-button type="info">Cancel</n-button>
+  <Button label="Cancel" class="p-button-info" />
 </template>

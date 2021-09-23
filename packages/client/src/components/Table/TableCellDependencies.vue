@@ -4,18 +4,18 @@ import type { PropType } from 'vue';
 import { formatTableDate } from '~/utils';
 
 const props = defineProps({
-  dependencies: { type: Object as PropType<IDependency[]>, default: () => [] },
+  dependencies: { type: Array as PropType<IDependency[]>, default: () => [] },
 });
 </script>
 
 <template>
-  <n-td>
+  <td>
     <div v-for="dependency in props.dependencies" :key="dependency.id" class="mb-1 group">
-      <n-text tag="span" depth="1" class="group-hover:text-teal-300">
+      <span class="text-grey-300 group-hover:text-teal-300">
         <template v-if="dependency.endOfSupportDate"> [{{ formatTableDate(dependency.endOfSupportDate) }}] </template>
         {{ dependency.name }}
-      </n-text>
-      <n-text v-if="dependency.version" tag="span" depth="2" class="group-hover:text-teal-400"> v{{ dependency.version }} </n-text>
+      </span>
+      <span v-if="dependency.version" class="text-grey-400 group-hover:text-teal-400"> v{{ dependency.version }} </span>
     </div>
-  </n-td>
+  </td>
 </template>

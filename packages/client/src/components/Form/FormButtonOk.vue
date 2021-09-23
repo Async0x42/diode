@@ -1,3 +1,3 @@
 <template>
-  <n-button type="primary">OK</n-button>
+  <Button label="OK" />
 </template>

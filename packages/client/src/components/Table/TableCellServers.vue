@@ -3,12 +3,12 @@ import type { IServer } from '@diode/common';
 import type { PropType } from 'vue';
 
 const props = defineProps({
-  servers: { type: Object as PropType<IServer[]>, default: () => [] },
+  servers: { type: Array as PropType<IServer[]>, default: () => [] },
 });
 </script>
 
 <template>
-  <n-td class="whitespace-nowrap">
+  <td class="whitespace-nowrap">
     <router-link
       v-for="server in props.servers"
       :key="server.id"
@@ -18,15 +18,15 @@ const props = defineProps({
     >
       <ServerTooltip :server="server">
         <div>
-          <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ server?.name }}</n-text>
-          <n-text tag="div" depth="3" class="group-hover:text-teal-500">
+          <div class="text-grey-500 group-hover:text-teal-300">{{ server?.name }}</div>
+          <div class="text-grey-500 group-hover:text-teal-500">
             <template v-if="server.environment">[{{ server.environment.shortName || server.environment.name }}] </template>
             <template v-if="server.types.length > 0">
               <template v-for="serverType in server.types" :key="serverType.id"> [{{ serverType.shortName || serverType.name }}] </template>
             </template>
-          </n-text>
+          </div>
         </div>
       </ServerTooltip>
     </router-link>
-  </n-td>
+  </td>
 </template>

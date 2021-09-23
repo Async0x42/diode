@@ -13,12 +13,12 @@ const onBrowse = () => {
 </script>
 
 <template>
-  <n-td class="text-right">
+  <td class="text-right">
     <span class="p-buttonset">
-      <TableButton v-if="props.browse" @click="onBrowse" icon="heroicons-solid-eye" />
-      <TableButton v-if="props.email" @click="$emit('email')" icon="heroicons-solid-mail" />
-      <TableButton v-if="props.phone" @click="$emit('phone')" icon="heroicons-solid-phone" />
-      <TableButton @click="$emit('edit')"><heroicons-solid-pencil/></TableButton>
+      <TableButton v-if="props.browse" icon="heroicons-solid-eye" @click="onBrowse" />
+      <TableButton v-if="props.email" icon="heroicons-solid-mail" @click="$emit('email')" />
+      <TableButton v-if="props.phone" icon="heroicons-solid-phone" @click="$emit('phone')" />
+      <TableButton @click="$emit('edit')"><heroicons-solid-pencil /></TableButton>
     </span>
-  </n-td>
+  </td>
 </template>

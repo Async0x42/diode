@@ -8,5 +8,5 @@ const props = defineProps({
 </script>
 
 <template>
-  <n-td class="whitespace-nowrap">{{ formatTableDate(props.date) }}</n-td>
+  <td class="whitespace-nowrap">{{ formatTableDate(props.date) }}</td>
 </template>
