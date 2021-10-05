@@ -4,7 +4,8 @@
     "dev": "pnpm recursive run dev",
     "build": "pnpm recursive run build",
     "lint": "pnpm recursive run lint",
-    "lint:all:eslint": "pnpm recursive run lint:eslint"
+    "lint:all:eslint": "pnpm recursive run lint:eslint",
+    "update-tsc": "pnpm recursive up --latest vue-tsc"
   },
   "devDependencies": {
     "@mikro-orm/cli": "^4.5.9",

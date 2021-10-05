@@ -137,7 +137,7 @@ export default defineConfig({
   ],
 
   optimizeDeps: {
-    include: ['vue', 'vue-router', '@vueuse/core', '@vueuse/head', '@vueuse/integrations', 'fuse.js', 'date-fns'],
+    include: ['vue', 'vue-router', '@vueuse/core', '@vueuse/head', '@vueuse/integrations', 'fuse.js', 'date-fns', 'primevue/useconfirm'],
     exclude: ['vue-demi'],
   },
 });
