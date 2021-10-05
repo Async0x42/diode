@@ -11,7 +11,21 @@ const { results } = useRouteSearchWithData(props.zones, ['name']);
 </script>
 
 <template>
-  <TableView :headers="['Name', '']">
-    <ZoneListItem v-for="zone in results" :key="zone.id" :zone="zone" />
-  </TableView>
+  <DataTable :value="results" responsive-layout="scroll">
+    <Column field="name" header="Name">
+      <template #body="slotProps">
+        <n-td>
+          <router-link class="group" :to="{ name: 'zone-view', params: { zoneId: slotProps.data.id } }">
+            <div class="text-gray-300 group-hover:text-teal-300">{{ slotProps.data.name }}</div>
+            <div class="text-gray-500 group-hover:text-teal-500">{{ slotProps.data.shortName }}</div>
+          </router-link>
+        </n-td>
+      </template>
+    </Column>
+    <Column>
+      <template #body="slotProps">
+        <TableCellQuickActions @edit="$router.push({ name: 'zone-edit', params: { zoneId: slotProps.data.id } })" />
+      </template>
+    </Column>
+  </DataTable>
 </template>
