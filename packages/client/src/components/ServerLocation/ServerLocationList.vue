@@ -11,7 +11,19 @@ const { results } = useRouteSearchWithData(props.serverLocations, ['name']);
 </script>
 
 <template>
-  <TableView :headers="['Name', '']">
-    <ServerLocationListItem v-for="location in results" :key="location.id" :server-location="location" />
-  </TableView>
+  <DataTable :value="results" responsive-layout="scroll">
+    <Column field="name" header="Name">
+      <template #body="slotProps">
+        <router-link class="group" :to="{ name: 'serverLocation-view', params: { serverLocationId: slotProps.data.id } }">
+          <div class="text-gray-300 group-hover:text-teal-300">{{ slotProps.data.name }}</div>
+          <div class="text-gray-300 group-hover:text-teal-500">{{ slotProps.data.shortName }}</div>
+        </router-link>
+      </template>
+    </Column>
+    <Column>
+      <template #body="slotProps">
+        <TableCellQuickActions @edit="$router.push({ name: 'serverLocation-edit', params: { serverLocation: slotProps.data.id } })" />
+      </template>
+    </Column>
+  </DataTable>
 </template>

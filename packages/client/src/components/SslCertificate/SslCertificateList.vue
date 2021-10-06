@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { ISslCertificate } from '@diode/common';
 import type { PropType } from 'vue';
+import { format, parseJSON } from 'date-fns';
 import { useRouteSearchWithData } from '~/logic';
 
 const props = defineProps({
@@ -11,7 +12,28 @@ const { results } = useRouteSearchWithData(props.sslCertificates, ['sans', 'expi
 </script>
 
 <template>
-  <TableView :headers="['Subject Alternate Names', 'Expiry']">
-    <SslCertificateListItem v-for="sslCert in results" :key="sslCert.id" :ssl-certificate="sslCert" />
-  </TableView>
+  <DataTable :value="results" responsive-layout="scroll">
+    <Column field="name" header="Name">
+      <template #body="slotProps">
+        <router-link class="group" :to="{ name: 'sslCertificate-view', params: { sslCertificateId: slotProps.data.id } }">
+          <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ slotProps.data.sans }}</n-text>
+          <n-text v-for="server in slotProps.data.servers" :key="server.id" tag="div" depth="3" class="group-hover:text-teal-500">{{
+            server.name
+          }}</n-text>
+        </router-link>
+      </template>
+    </Column>
+    <Column field="sslExpiry" header="Expiry">
+      <template #body="slotProps">
+        <div v-if="slotProps.data.sslExpiry" class="text-gray-300 group-hover:text-teal-300">
+          {{ format(parseJSON(slotProps.data.expiry), 'yyyy-MM-dd') }}
+        </div>
+      </template>
+    </Column>
+    <Column>
+      <template #body="slotProps">
+        <TableCellQuickActions @edit="$router.push({ name: 'sslCertificate-edit', params: { sslCertificateId: slotProps.data.id } })" />
+      </template>
+    </Column>
+  </DataTable>
 </template>

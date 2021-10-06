@@ -28,7 +28,49 @@ const { results } = useRouteSearchWithData(props.servers, [
 </script>
 
 <template>
-  <TableView :headers="['Name', 'Storage', 'RAM', 'FQDN', 'Applications', 'Dependencies', '']">
-    <ServerListItem v-for="server in results" :key="server.id" :server="server" />
-  </TableView>
+  <DataTable :value="results" responsive-layout="scroll">
+    <Column field="name" header="Name">
+      <template #body="slotProps">
+        <router-link class="group" :to="{ name: 'server-view', params: { serverId: slotProps.data.id } }">
+          <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ slotProps.data.name }}</n-text>
+          <n-text tag="div" depth="2" class="group-hover:text-teal-400">{{ slotProps.data.ip }}</n-text>
+          <n-text tag="div" depth="3" class="group-hover:text-teal-500">
+            <span v-if="slotProps.data.environment">[{{ slotProps.data.environment.shortName || slotProps.data.environment.name }}]</span>
+            {{ slotProps.data.location?.name }}
+          </n-text>
+          <n-text tag="div" depth="3" class="group-hover:text-teal-500">{{ slotProps.data.operatingSystem?.name }}</n-text>
+        </router-link>
+      </template>
+    </Column>
+    <Column field="storage" header="Storage">
+      <template #body="slotProps">
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ slotProps.data.storageSpace }}</n-text>
+      </template>
+    </Column>
+    <Column field="ram" header="RAM">
+      <template #body="slotProps">
+        <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ slotProps.data.systemMemory }}</n-text>
+      </template>
+    </Column>
+    <Column field="fqdn" header="FQDN">
+      <template #body="slotProps">
+        <TableCellFqdns :fqdns="slotProps.data.fqdns" />
+      </template>
+    </Column>
+    <Column field="applications" header="Applications">
+      <template #body="slotProps">
+        <TableCellApplications :applications="slotProps.data.applications" />
+      </template>
+    </Column>
+    <Column field="dependencies" header="Dependencies">
+      <template #body="slotProps">
+        <TableCellDependencies :dependencies="slotProps.data.dependencies" />
+      </template>
+    </Column>
+    <Column>
+      <template #body="slotProps">
+        <TableCellQuickActions @edit="$router.push({ name: 'server-edit', params: { server: slotProps.data.id } })" />
+      </template>
+    </Column>
+  </DataTable>
 </template>
