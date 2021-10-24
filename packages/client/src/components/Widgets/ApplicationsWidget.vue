@@ -3,7 +3,7 @@ import type { IApplication } from '@diode/common';
 import type { PropType } from 'vue';
 
 const props = defineProps({
-  applications: { type: [Object, Array] as PropType<IApplication[] | IApplication>, default: '' },
+  applications: { type: [Object, Array] as PropType<IApplication[] | IApplication>, default: () => [] },
   showTitle: { type: Boolean, default: true },
 });
 </script>

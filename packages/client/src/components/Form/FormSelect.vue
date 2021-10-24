@@ -2,7 +2,7 @@
 import type { PropType } from 'vue';
 
 const props = defineProps({
-  options: { type: Array as PropType<string[]>, default: [] },
+  options: { type: Array as PropType<string[]>, default: () => [] },
   value: { type: String, default: '' },
   loading: { type: Boolean, default: false },
 });

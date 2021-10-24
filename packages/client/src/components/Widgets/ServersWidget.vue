@@ -3,7 +3,7 @@ import type { IServer } from '@diode/common';
 import type { PropType } from 'vue';
 
 const props = defineProps({
-  servers: { type: [Object, Array] as PropType<IServer | IServer[]>, default: '' },
+  servers: { type: [Object, Array] as PropType<IServer | IServer[]>, default: () => [] },
   showTitle: { type: Boolean, default: true },
 });
 </script>
