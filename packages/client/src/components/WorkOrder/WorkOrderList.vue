@@ -28,7 +28,7 @@ const groupedResults = computed(() => groupBy(sortedResults.value, 'status'));
   <n-collapse :default-expanded-names="['New', 'In progress', 'Waiting on others']" class="mt-3">
     <n-collapse-item v-for="(groupKey, index) in Object.keys(groupedResults)" :key="index" :title="groupKey" :name="groupKey">
       <DataTable :value="groupedResults[groupKey]" responsive-layout="scroll">
-        <Column field="workOrder" header="Work Order">
+        <Column field="workOrder" sortable header="Work Order">
           <template #body="slotProps">
             <TableCellWorkOrder :work-order="slotProps.data" />
           </template>
@@ -44,7 +44,7 @@ const groupedResults = computed(() => groupBy(sortedResults.value, 'status'));
             <TableCellServers :servers="slotProps.data.servers" />
           </template>
         </Column>
-        <Column field="modifiedOn" header="Updated">
+        <Column field="modifiedOn" sortable header="Updated">
           <template #body="slotProps">
             <TableCellModified :date="slotProps.data.modifiedOn" />
           </template>
