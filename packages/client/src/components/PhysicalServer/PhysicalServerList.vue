@@ -8,21 +8,38 @@ const props = defineProps({
 });
 
 const { results } = useRouteSearchWithData(props.servers, [
-  // 'name',
-  // 'baseOperatingSystem',
-  // 'hypervisor',
-  // 'deviceManufacturer',
-  // 'deviceModel',
-  // 'processorManufacturer',
-  // 'processorModel',
-  // 'clusterName',
-  // 'location',
-  // 'servers.name',
+  'name',
+  'baseOperatingSystem',
+  'hypervisor',
+  'deviceManufacturer',
+  'deviceModel',
+  'processorManufacturer',
+  'processorModel',
+  'clusterName',
+  'location',
+  'servers.name',
 ]);
 </script>
 
 <template>
-  <TableView :headers="['Name', 'Servers (VM)', '']">
-    <PhysicalServerListItem v-for="server in results" :key="server.id" :server="server" />
-  </TableView>
+  <DataTable :value="results" responsive-layout="scroll">
+    <Column field="name" header="Name">
+      <template #body="slotProps">
+        <router-link class="group" :to="{ name: 'physicalServer-view', params: { serverId: slotProps.data.id } }">
+          <div class="text-gray-300 group-hover:text-teal-300">{{ slotProps.data.name }}</div>
+          <div class="text-gray-500 group-hover:text-teal-500">{{ slotProps.data.location?.shortName || slotProps.data.location?.name }}</div>
+        </router-link>
+      </template>
+    </Column>
+    <Column field="title" header="Servers (VM)">
+      <template #body="slotProps">
+        <TableCellServers :servers="slotProps.data.servers" />
+      </template>
+    </Column>
+    <Column>
+      <template #body="slotProps">
+        <TableCellQuickActions @edit="$router.push({ name: 'physicalServer-edit', params: { serverId: slotProps.data.id } })" />
+      </template>
+    </Column>
+  </DataTable>
 </template>

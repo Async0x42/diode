@@ -11,7 +11,19 @@ const { results } = useRouteSearchWithData(props.networks, ['name']);
 </script>
 
 <template>
-  <TableView :headers="['Name', '']">
-    <NetworkListItem v-for="network in results" :key="network.id" :network="network" />
-  </TableView>
+  <DataTable :value="results" responsive-layout="scroll">
+    <Column field="name" header="Name">
+      <template #body="slotProps">
+        <router-link class="group" :to="{ name: 'network-view', params: { networkId: slotProps.data.id } }">
+          <div class="text-gray-300 group-hover:text-teal-300">{{ slotProps.data.name }}</div>
+          <div class="text-gray-500 group-hover:text-teal-500">{{ slotProps.data.shortName }}</div>
+        </router-link>
+      </template>
+    </Column>
+    <Column>
+      <template #body="slotProps">
+        <TableCellQuickActions @edit="$router.push({ name: 'network-edit', params: { networkId: slotProps.data.id } })" />
+      </template>
+    </Column>
+  </DataTable>
 </template>

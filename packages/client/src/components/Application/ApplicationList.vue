@@ -21,7 +21,37 @@ const { results } = useRouteSearchWithData(props.applications, [
 </script>
 
 <template>
-  <TableView :headers="['Name', 'Servers', 'Dependencies', 'Description', '']">
-    <ApplicationListItem v-for="application in results" :key="application.id" :application="application" />
-  </TableView>
+  <DataTable :value="results" responsive-layout="scroll">
+    <Column field="title" header="Title">
+      <template #body="slotProps">
+        <router-link class="group" :to="{ name: 'application-view', params: { applicationId: slotProps.data.id } }">
+          <div class="text-gray-300 group-hover:text-teal-300">{{ slotProps.data.name }}</div>
+          <div class="text-gray-500 whitespace-nowrap group-hover:text-teal-500">{{ slotProps.data.shortName }}</div>
+          <div v-for="fqdn in slotProps.data.fqdns" :key="fqdn.id" class="text-gray-700 whitespace-nowrap group-hover:text-teal-700">
+            {{ fqdn.name }}
+          </div>
+        </router-link>
+      </template>
+    </Column>
+    <Column field="priority" header="Priority">
+      <template #body="slotProps">
+        <TableCellServers :servers="slotProps.data.servers" />
+      </template>
+    </Column>
+    <Column field="status" header="Status">
+      <template #body="slotProps">
+        <TableCellDependencies :dependencies="slotProps.data.dependencies" />
+      </template>
+    </Column>
+    <Column field="initialCost" header="Init Cost">
+      <template #body="slotProps">
+        {{ slotProps.data.description }}
+      </template>
+    </Column>
+    <Column>
+      <template #body="slotProps">
+        <TableCellQuickActions @edit="$router.push({ name: 'application-edit', params: { applicationId: slotProps.data.id } })" />
+      </template>
+    </Column>
+  </DataTable>
 </template>

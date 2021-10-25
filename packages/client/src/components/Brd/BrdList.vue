@@ -23,10 +23,45 @@ const totalInitialCost = computed(() => results.value.map((r) => r.initialCost |
 </script>
 
 <template>
-  <TableView
-    :headers="['Title', 'Priority', 'Status', 'Init Cost', 'Upkeep', '']"
-    :footers="['', '', '', `${n(totalInitialCost, 'currency')}`, `${n(totalUpkeep, 'currency')}`, '']"
-  >
-    <BrdListItem v-for="brd in results" :key="brd.id" :brd="brd" />
-  </TableView>
+  <DataTable :value="results" responsive-layout="scroll">
+    <Column field="title" header="Title">
+      <template #body="slotProps">
+        <router-link class="group" :to="{ name: 'brd-view', params: { brdId: slotProps.data.id } }">
+          <div class="text-gray-300 group-hover:text-teal-300">{{ slotProps.data.title }}</div>
+          <div class="text-gray-500 group-hover:text-teal-500">{{ slotProps.data.brdNumber }}</div>
+        </router-link>
+      </template>
+    </Column>
+    <Column field="priority" header="Priority">
+      <template #body="slotProps">
+        {{ slotProps.data.priority }}
+      </template>
+    </Column>
+    <Column field="status" header="Status">
+      <template #body="slotProps">
+        {{ slotProps.data.status }}
+      </template>
+    </Column>
+    <Column field="initialCost" header="Init Cost">
+      <template #body="slotProps">
+        {{ n(slotProps.data.initialCost || 0, 'currency') }}
+      </template>
+      <template #footer>
+        {{ n(totalInitialCost, 'currency') }}
+      </template>
+    </Column>
+    <Column field="upkeepCost" header="Upkeep">
+      <template #body="slotProps">
+        {{ n(slotProps.data.upkeepCost || 0, 'currency') }}
+      </template>
+      <template #footer>
+        {{ n(totalUpkeep, 'currency') }}
+      </template>
+    </Column>
+    <Column>
+      <template #body="slotProps">
+        <TableCellQuickActions @edit="$router.push({ name: 'brd-edit', params: { brdId: slotProps.data.id } })" />
+      </template>
+    </Column>
+  </DataTable>
 </template>

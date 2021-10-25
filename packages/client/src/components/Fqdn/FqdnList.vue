@@ -13,7 +13,28 @@ const { results } = useRouteSearchWithData(props.fqdn, ['name', 'servers.name', 
 </script>
 
 <template>
-  <TableView :headers="['Name', 'Server', 'Applications', '']">
-    <FqdnListItem v-for="entry in results" :key="entry.id" :fqdn="entry" />
-  </TableView>
+  <DataTable :value="results" responsive-layout="scroll">
+    <Column field="name" header="Name">
+      <template #body="slotProps">
+        <router-link class="group" :to="{ name: 'fqdn-view', params: { fqdnId: slotProps.data.id } }">
+          <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ slotProps.data.name }}</n-text>
+        </router-link>
+      </template>
+    </Column>
+    <Column field="server" header="Server">
+      <template #body="slotProps">
+        <TableCellServer :server="slotProps.data.server" />
+      </template>
+    </Column>
+    <Column field="applications" header="Applications">
+      <template #body="slotProps">
+        <TableCellApplications :applications="slotProps.data.applications" />
+      </template>
+    </Column>
+    <Column>
+      <template #body="slotProps">
+        <TableCellQuickActions @edit="$router.push({ name: 'fqdn-edit', params: { fqdnId: slotProps.data.id } })" />
+      </template>
+    </Column>
+  </DataTable>
 </template>
