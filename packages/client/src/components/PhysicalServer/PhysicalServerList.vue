@@ -22,8 +22,8 @@ const { results } = useRouteSearchWithData(props.servers, [
 </script>
 
 <template>
-  <DataTable :value="results" responsive-layout="scroll">
-    <Column field="name" header="Name">
+  <DataTable class="p-datatable-sm" :value="results" responsive-layout="scroll">
+    <Column field="name" sortable header="Name">
       <template #body="slotProps">
         <router-link class="group" :to="{ name: 'physicalServer-view', params: { serverId: slotProps.data.id } }">
           <div class="text-gray-300 group-hover:text-teal-300">{{ slotProps.data.name }}</div>
@@ -31,7 +31,7 @@ const { results } = useRouteSearchWithData(props.servers, [
         </router-link>
       </template>
     </Column>
-    <Column field="title" header="Servers (VM)">
+    <Column field="servers" header="Servers (VM)">
       <template #body="slotProps">
         <TableCellServers :servers="slotProps.data.servers" />
       </template>

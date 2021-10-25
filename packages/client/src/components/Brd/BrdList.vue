@@ -23,8 +23,8 @@ const totalInitialCost = computed(() => results.value.map((r) => r.initialCost |
 </script>
 
 <template>
-  <DataTable :value="results" responsive-layout="scroll">
-    <Column field="title" header="Title">
+  <DataTable class="p-datatable-sm" :value="results" responsive-layout="scroll">
+    <Column field="title" sortable header="Title">
       <template #body="slotProps">
         <router-link class="group" :to="{ name: 'brd-view', params: { brdId: slotProps.data.id } }">
           <div class="text-gray-300 group-hover:text-teal-300">{{ slotProps.data.title }}</div>
@@ -32,17 +32,17 @@ const totalInitialCost = computed(() => results.value.map((r) => r.initialCost |
         </router-link>
       </template>
     </Column>
-    <Column field="priority" header="Priority">
+    <Column field="priority" sortable header="Priority">
       <template #body="slotProps">
         {{ slotProps.data.priority }}
       </template>
     </Column>
-    <Column field="status" header="Status">
+    <Column field="status" sortable header="Status">
       <template #body="slotProps">
         {{ slotProps.data.status }}
       </template>
     </Column>
-    <Column field="initialCost" header="Init Cost">
+    <Column field="initialCost" sortable header="Init Cost">
       <template #body="slotProps">
         {{ n(slotProps.data.initialCost || 0, 'currency') }}
       </template>
@@ -50,7 +50,7 @@ const totalInitialCost = computed(() => results.value.map((r) => r.initialCost |
         {{ n(totalInitialCost, 'currency') }}
       </template>
     </Column>
-    <Column field="upkeepCost" header="Upkeep">
+    <Column field="upkeepCost" sortable header="Upkeep">
       <template #body="slotProps">
         {{ n(slotProps.data.upkeepCost || 0, 'currency') }}
       </template>

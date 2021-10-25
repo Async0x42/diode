@@ -24,10 +24,10 @@ const groupedResults = computed(() => groupBy(results.value, 'status'));
 <template>
   <n-collapse :default-expanded-names="['Open']" class="mt-3">
     <n-collapse-item v-for="(groupKey, index) in Object.keys(groupedResults)" :key="index" :title="groupKey" :name="groupKey">
-      <DataTable :value="groupedResults[groupKey]" responsive-layout="scroll">
-        <Column field="ticketId" header="Ticket"></Column>
-        <Column field="status" header="Status"></Column>
-        <Column field="name" header="Name">
+      <DataTable class="p-datatable-sm" :value="groupedResults[groupKey]" responsive-layout="scroll">
+        <Column field="ticketId" sortable header="Ticket"></Column>
+        <Column field="status" sortable header="Status"></Column>
+        <Column field="name" sortable header="Name">
           <template #body="slotProps">
             <router-link class="group" :to="{ name: 'ticket-view', params: { ticketId: slotProps.data.id } }">
               <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ slotProps.data.name }}</n-text>
@@ -44,17 +44,17 @@ const groupedResults = computed(() => groupBy(results.value, 'status'));
             <TableCellServers :servers="slotProps.data.servers" />
           </template>
         </Column>
-        <Column field="createdOn" header="Created">
+        <Column field="createdOn" sortable header="Created">
           <template #body="slotProps">
             <TableCellCreated :date="slotProps.data.createdOn" />
           </template>
         </Column>
-        <Column field="modifiedOn" header="Updated">
+        <Column field="modifiedOn" sortable header="Updated">
           <template #body="slotProps">
             <TableCellModified :date="slotProps.data.modifiedOn" />
           </template>
         </Column>
-        <Column field="estimatedDueDate" header="Est Due Date">
+        <Column field="estimatedDueDate" sortable header="Est Due Date">
           <template #body="slotProps">
             <TableCellEstimatedDueDate :date="slotProps.data.estimatedDueDate" />
           </template>

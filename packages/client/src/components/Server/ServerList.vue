@@ -28,8 +28,8 @@ const { results } = useRouteSearchWithData(props.servers, [
 </script>
 
 <template>
-  <DataTable :value="results" responsive-layout="scroll">
-    <Column field="name" header="Name">
+  <DataTable class="p-datatable-sm" :value="results" responsive-layout="scroll">
+    <Column field="name" sortable header="Name">
       <template #body="slotProps">
         <router-link class="group" :to="{ name: 'server-view', params: { serverId: slotProps.data.id } }">
           <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ slotProps.data.name }}</n-text>
@@ -42,12 +42,12 @@ const { results } = useRouteSearchWithData(props.servers, [
         </router-link>
       </template>
     </Column>
-    <Column field="storage" header="Storage">
+    <Column field="storage" sortable header="Storage">
       <template #body="slotProps">
         <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ slotProps.data.storageSpace }}</n-text>
       </template>
     </Column>
-    <Column field="ram" header="RAM">
+    <Column field="ram" sortable header="RAM">
       <template #body="slotProps">
         <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ slotProps.data.systemMemory }}</n-text>
       </template>
@@ -69,7 +69,7 @@ const { results } = useRouteSearchWithData(props.servers, [
     </Column>
     <Column>
       <template #body="slotProps">
-        <TableCellQuickActions @edit="$router.push({ name: 'server-edit', params: { server: slotProps.data.id } })" />
+        <TableCellQuickActions @edit="$router.push({ name: 'server-edit', params: { serverId: slotProps.data.id } })" />
       </template>
     </Column>
   </DataTable>

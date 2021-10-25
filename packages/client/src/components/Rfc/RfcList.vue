@@ -29,13 +29,13 @@ const { results } = useRouteSearchWithData(props.rfcs, [
 </script>
 
 <template>
-  <DataTable :value="results" responsive-layout="scroll">
-    <Column field="application" header="Application">
+  <DataTable class="p-datatable-sm" :value="results" responsive-layout="scroll">
+    <Column field="application" sortable header="Application">
       <template #body="slotProps">
         <TableCellApplication :application="slotProps.data.application" />
       </template>
     </Column>
-    <Column field="title" header="Title">
+    <Column field="title" sortable header="Title">
       <template #body="slotProps">
         <router-link class="group" :to="{ name: 'rfc-view', params: { rfcId: slotProps.data.id } }">
           <div class="text-gray-300 group-hover:text-teal-300">{{ slotProps.data.title }}</div>
@@ -44,12 +44,12 @@ const { results } = useRouteSearchWithData(props.rfcs, [
         </router-link>
       </template>
     </Column>
-    <Column field="status" header="Status">
+    <Column field="status" sortable header="Status">
       <template #body="slotProps">
         {{ slotProps.data.status }}
       </template>
     </Column>
-    <Column field="impactAssessmentDueDate" header="IA Due Date" class="whitespace-nowrap">
+    <Column field="impactAssessmentDueDate" sortable header="IA Due Date" class="whitespace-nowrap">
       <template #body="slotProps">
         <div v-if="slotProps.data.impactAssessmentDueDate">{{ format(parseJSON(slotProps.data.impactAssessmentDueDate), 'yyyy-MM-dd') }}</div>
       </template>

@@ -21,8 +21,8 @@ const { results } = useRouteSearchWithData(props.applications, [
 </script>
 
 <template>
-  <DataTable :value="results" responsive-layout="scroll">
-    <Column field="title" header="Title">
+  <DataTable class="p-datatable-sm" :value="results" responsive-layout="scroll">
+    <Column field="title" sortable header="Title">
       <template #body="slotProps">
         <router-link class="group" :to="{ name: 'application-view', params: { applicationId: slotProps.data.id } }">
           <div class="text-gray-300 group-hover:text-teal-300">{{ slotProps.data.name }}</div>
@@ -33,12 +33,12 @@ const { results } = useRouteSearchWithData(props.applications, [
         </router-link>
       </template>
     </Column>
-    <Column field="priority" header="Priority">
+    <Column field="servers" header="Servers">
       <template #body="slotProps">
         <TableCellServers :servers="slotProps.data.servers" />
       </template>
     </Column>
-    <Column field="status" header="Status">
+    <Column field="dependencies" header="Dependencies">
       <template #body="slotProps">
         <TableCellDependencies :dependencies="slotProps.data.dependencies" />
       </template>

@@ -29,8 +29,8 @@ const { results } = useRouteSearchWithData(props.contacts, [
 </script>
 
 <template>
-  <DataTable :value="results" responsive-layout="scroll">
-    <Column field="name" header="Name">
+  <DataTable class="p-datatable-sm" :value="results" responsive-layout="scroll">
+    <Column field="name" sortable header="Name">
       <template #body="slotProps">
         <router-link class="group" :to="{ name: 'contactGroup-view', params: { contactGroupId: slotProps.data.id } }">
           <div class="text-gray-300 group-hover:text-teal-300">{{ slotProps.data.name }}</div>
@@ -38,7 +38,7 @@ const { results } = useRouteSearchWithData(props.contacts, [
         </router-link>
       </template>
     </Column>
-    <Column field="title" header="Title">
+    <Column field="title" sortable header="Title">
       <template #body="slotProps">
         <div class="text-gray-300 group-hover:text-teal-300">{{ slotProps.data.title }}</div>
         <div class="text-gray-400 group-hover:text-teal-400">{{ slotProps.data.department }}</div>

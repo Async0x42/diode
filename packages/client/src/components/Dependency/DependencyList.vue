@@ -12,8 +12,8 @@ const { results } = useRouteSearchWithData(props.dependencies, ['name']);
 </script>
 
 <template>
-  <DataTable :value="results" responsive-layout="scroll">
-    <Column field="name" header="Name">
+  <DataTable class="p-datatable-sm" :value="results" responsive-layout="scroll">
+    <Column field="name" sortable header="Name">
       <template #body="slotProps">
         <router-link class="group" :to="{ name: 'dependency-view', params: { dependencyId: slotProps.data.id } }">
           <div class="text-gray-300 group-hover:text-teal-300">{{ slotProps.datay.name }}</div>
@@ -22,7 +22,7 @@ const { results } = useRouteSearchWithData(props.dependencies, ['name']);
         </router-link>
       </template>
     </Column>
-    <Column field="endOfSupportDate" header="End of Support">
+    <Column field="endOfSupportDate" sortable header="End of Support">
       <template #body="slotProps">
         <div class="text-gray-300 whitespace-nowrap group-hover:text-teal-300">
           {{ formatTableDate(slotProps.data.endOfSupportDate) }}

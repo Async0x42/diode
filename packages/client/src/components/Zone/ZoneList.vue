@@ -11,8 +11,8 @@ const { results } = useRouteSearchWithData(props.zones, ['name']);
 </script>
 
 <template>
-  <DataTable :value="results" responsive-layout="scroll">
-    <Column field="name" header="Name">
+  <DataTable class="p-datatable-sm" :value="results" responsive-layout="scroll">
+    <Column field="name" sortable header="Name">
       <template #body="slotProps">
         <td>
           <router-link class="group" :to="{ name: 'zone-view', params: { zoneId: slotProps.data.id } }">

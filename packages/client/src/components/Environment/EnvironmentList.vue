@@ -11,8 +11,8 @@ const { results } = useRouteSearchWithData(props.environments, ['name']);
 </script>
 
 <template>
-  <DataTable :value="results" responsive-layout="scroll">
-    <Column field="name" header="Name">
+  <DataTable class="p-datatable-sm" :value="results" responsive-layout="scroll">
+    <Column field="name" sortable header="Name">
       <template #body="slotProps">
         <router-link class="group" :to="{ name: 'environment-view', params: { environmentId: slotProps.data.id } }">
           <div class="text-gray-300 group-hover:text-teal-300">{{ slotProps.data.name }}</div>

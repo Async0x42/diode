@@ -13,15 +13,15 @@ const { results } = useRouteSearchWithData(props.fqdn, ['name', 'servers.name', 
 </script>
 
 <template>
-  <DataTable :value="results" responsive-layout="scroll">
-    <Column field="name" header="Name">
+  <DataTable class="p-datatable-sm" :value="results" responsive-layout="scroll">
+    <Column field="name" sortable header="Name">
       <template #body="slotProps">
         <router-link class="group" :to="{ name: 'fqdn-view', params: { fqdnId: slotProps.data.id } }">
           <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ slotProps.data.name }}</n-text>
         </router-link>
       </template>
     </Column>
-    <Column field="server" header="Server">
+    <Column field="server" sortable header="Server">
       <template #body="slotProps">
         <TableCellServer :server="slotProps.data.server" />
       </template>

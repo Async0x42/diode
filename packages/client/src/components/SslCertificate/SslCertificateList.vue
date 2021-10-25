@@ -12,8 +12,8 @@ const { results } = useRouteSearchWithData(props.sslCertificates, ['sans', 'expi
 </script>
 
 <template>
-  <DataTable :value="results" responsive-layout="scroll">
-    <Column field="name" header="Name">
+  <DataTable class="p-datatable-sm" :value="results" responsive-layout="scroll">
+    <Column field="name" sortable header="Name">
       <template #body="slotProps">
         <router-link class="group" :to="{ name: 'sslCertificate-view', params: { sslCertificateId: slotProps.data.id } }">
           <n-text tag="div" depth="1" class="group-hover:text-teal-300">{{ slotProps.data.sans }}</n-text>
@@ -23,7 +23,7 @@ const { results } = useRouteSearchWithData(props.sslCertificates, ['sans', 'expi
         </router-link>
       </template>
     </Column>
-    <Column field="sslExpiry" header="Expiry">
+    <Column field="sslExpiry" sortable header="Expiry">
       <template #body="slotProps">
         <div v-if="slotProps.data.sslExpiry" class="text-gray-300 group-hover:text-teal-300">
           {{ format(parseJSON(slotProps.data.expiry), 'yyyy-MM-dd') }}
