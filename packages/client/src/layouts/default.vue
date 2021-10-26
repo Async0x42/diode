@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { format } from 'date-fns/esm';
-import TerminalService from 'primevue/terminalservice';
 import { PrimeIcons } from 'primevue/api';
-import { useCurrentDateTime } from '~/logic';
-
-const displayTerminal = ref(false);
+import { useCurrentDateTime, isTerminalOpen } from '~/logic';
 
 const menubarItems = ref([
   {
@@ -129,31 +126,6 @@ const menubarItems = ref([
   },
 ]);
 
-const commandHandler = (text: string) => {
-  let response;
-  const argsIndex = text.indexOf(' ');
-  const command = argsIndex !== -1 ? text.substring(0, argsIndex) : text;
-
-  switch (command) {
-    case 'date':
-      response = `Today is ${new Date().toDateString()}`;
-      break;
-
-    case 'greet':
-      response = `Hola ${text.substring(argsIndex + 1)}`;
-      break;
-
-    case 'random':
-      response = Math.floor(Math.random() * 100);
-      break;
-
-    default:
-      response = `Unknown command: ${command}`;
-  }
-
-  TerminalService.$emit('response', response);
-};
-
 const openUrl = (url: string) => {
   window.open(url, '_blank');
 };
@@ -161,14 +133,6 @@ const openUrl = (url: string) => {
 const { currentDateTime } = useCurrentDateTime();
 const currentClock = computed(() => {
   return format(currentDateTime.value, 'ccc h:mm:ss aa');
-});
-
-onMounted(() => {
-  TerminalService.on('command', commandHandler);
-});
-
-onBeforeUnmount(() => {
-  TerminalService.off('command', commandHandler);
 });
 </script>
 
@@ -179,7 +143,7 @@ onBeforeUnmount(() => {
         <i class="pi pi-sun"></i>
       </template>
       <template #end>
-        <a v-ptooltip.bottom="'Terminal'" href="#" @click="displayTerminal = true">
+        <a v-ptooltip.bottom="'Terminal'" href="#" @click="isTerminalOpen = true">
           <i class="pi pi-desktop" />
         </a>
         <a v-ptooltip.bottom="'Google Meet'" href="#" @click="openUrl('https://meet.google.com/')">
@@ -193,10 +157,7 @@ onBeforeUnmount(() => {
     </Menubar>
     <div class="dock-window">
       <router-view />
-
-      <Dialog v-model:visible="displayTerminal" header="Terminal" :breakpoints="{ '960px': '50vw' }" :style="{ width: '40vw' }" :maximizable="true">
-        <Terminal welcome-message="Welcome to PrimeVue(cmd: 'date', 'greet {0}', 'random' and 'clear')" prompt="primevue $" />
-      </Dialog>
+      <TerminalDialog />
     </div>
   </div>
 </template>
