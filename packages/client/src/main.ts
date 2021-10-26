@@ -12,7 +12,6 @@ import 'virtual:windi-utilities.css';
 // windicss devtools support (dev only)
 import 'virtual:windi-devtools';
 
-import './styles/main.css';
 import { router } from './router';
 
 // https://github.com/antfu/vite-ssg

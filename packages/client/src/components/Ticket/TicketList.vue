@@ -22,7 +22,7 @@ const groupedResults = computed(() => groupBy(results.value, 'status'));
 </script>
 
 <template>
-  <n-collapse :default-expanded-names="['Open']" class="mt-3">
+  <n-collapse :default-expanded-names="['Open']">
     <n-collapse-item v-for="(groupKey, index) in Object.keys(groupedResults)" :key="index" :title="groupKey" :name="groupKey">
       <DataTable class="p-datatable-sm" :value="groupedResults[groupKey]" responsive-layout="scroll">
         <Column field="ticketId" sortable header="Ticket"></Column>

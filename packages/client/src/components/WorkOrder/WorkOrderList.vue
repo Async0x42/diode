@@ -25,7 +25,7 @@ const groupedResults = computed(() => groupBy(sortedResults.value, 'status'));
 </script>
 
 <template>
-  <n-collapse :default-expanded-names="['New', 'In progress', 'Waiting on others']" class="mt-3">
+  <n-collapse :default-expanded-names="['New', 'In progress', 'Waiting on others']">
     <n-collapse-item v-for="(groupKey, index) in Object.keys(groupedResults)" :key="index" :title="groupKey" :name="groupKey">
       <DataTable class="p-datatable-sm" :value="groupedResults[groupKey]" responsive-layout="scroll">
         <Column field="workOrder" sortable header="Work Order">
