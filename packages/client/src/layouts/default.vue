@@ -107,16 +107,19 @@ const currentClock = computed(() => {
         <i class="pi pi-sun"></i>
       </template>
       <template #end>
+        <InputText
+          class="rounded-lg p-1"
+          placeholder="Search"
+          type="text"
+          style="font-weight: normal; transition: none 0s ease 0s; background-position: 0% center"
+        />
         <a v-ptooltip.bottom="'Terminal'" href="#" @click="isTerminalOpen = true">
           <i class="pi pi-desktop" />
         </a>
         <a v-ptooltip.bottom="'Google Meet'" href="#" @click="openUrl('https://meet.google.com/')">
           <i class="pi pi-video" />
         </a>
-        <i class="pi pi-volume-up" />
         <span>{{ currentClock }}</span>
-        <i class="pi pi-search" />
-        <i class="pi pi-bars" />
       </template>
     </Menubar>
     <div class="dock-window">
