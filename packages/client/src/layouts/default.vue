@@ -9,120 +9,84 @@ const menubarItems = ref([
     class: 'menubar-root',
   },
   {
-    label: 'File',
+    label: 'Work',
     items: [
       {
         label: 'New',
         icon: PrimeIcons.PLUS,
-        items: [
-          {
-            label: 'Bookmark',
-            icon: PrimeIcons.BOOKMARK,
-          },
-          {
-            label: 'Video',
-            icon: PrimeIcons.VIDEO,
-          },
-        ],
-      },
-      {
-        label: 'Delete',
-        icon: PrimeIcons.TRASH,
       },
       {
         separator: true,
       },
       {
-        label: 'Export',
-        icon: PrimeIcons.EXTERNAL_LINK,
-      },
-    ],
-  },
-  {
-    label: 'Edit',
-    items: [
-      {
-        label: 'Left',
-        icon: PrimeIcons.ALIGN_LEFT,
-      },
-      {
-        label: 'Right',
-        icon: PrimeIcons.ALIGN_RIGHT,
-      },
-      {
-        label: 'Center',
-        icon: PrimeIcons.ALIGN_CENTER,
-      },
-      {
-        label: 'Justify',
-        icon: PrimeIcons.ALIGN_JUSTIFY,
-      },
-    ],
-  },
-  {
-    label: 'Users',
-    items: [
-      {
-        label: 'New',
-        icon: PrimeIcons.USER_PLUS,
-      },
-      {
-        label: 'Delete',
-        icon: PrimeIcons.USER_MINUS,
-      },
-      {
-        label: 'Search',
-        icon: PrimeIcons.USERS,
+        label: 'Tickets',
+        icon: PrimeIcons.TRASH,
         items: [
           {
-            label: 'Filter',
-            icon: PrimeIcons.FILTER,
-            items: [
-              {
-                label: 'Print',
-                icon: PrimeIcons.PRINT,
-              },
-            ],
-          },
-          {
-            icon: PrimeIcons.BARS,
-            label: 'List',
+            label: 'New',
+            icon: PrimeIcons.PLUS,
           },
         ],
       },
     ],
   },
   {
-    label: 'Events',
+    label: 'Applications',
     items: [
       {
-        label: 'Edit',
-        icon: PrimeIcons.PENCIL,
-        items: [
-          {
-            label: 'Save',
-            icon: PrimeIcons.CALENDAR_PLUS,
-          },
-          {
-            label: 'Delete',
-            icon: PrimeIcons.CALENDAR_MINUS,
-          },
-        ],
-      },
-      {
-        label: 'Archive',
+        label: 'Environments',
         icon: PrimeIcons.CALENDAR_TIMES,
-        items: [
-          {
-            label: 'Remove',
-            icon: PrimeIcons.CALENDAR_MINUS,
-          },
-        ],
       },
     ],
   },
   {
-    label: 'Quit',
+    label: 'VM Servers',
+    items: [
+      {
+        label: 'Physical Servers',
+        icon: PrimeIcons.PENCIL,
+      },
+      {
+        label: 'Locations',
+        icon: PrimeIcons.CALENDAR_TIMES,
+      },
+      {
+        label: 'Types',
+        icon: PrimeIcons.CALENDAR_TIMES,
+      },
+      {
+        label: 'Dependencies',
+        icon: PrimeIcons.PENCIL,
+      },
+      {
+        label: 'Zones',
+        icon: PrimeIcons.CALENDAR_TIMES,
+      },
+      {
+        label: 'Operating Systems',
+        icon: PrimeIcons.CALENDAR_TIMES,
+      },
+    ],
+  },
+  {
+    label: 'Contacts',
+    items: [
+      {
+        label: 'Contact Groups',
+      },
+    ],
+  },
+  {
+    label: 'BRDs',
+  },
+  {
+    label: 'RFCs',
+  },
+  {
+    label: 'FQDN',
+  },
+  {
+    label: 'SSL',
   },
 ]);
 
@@ -163,6 +127,7 @@ const currentClock = computed(() => {
 </template>
 
 <style lang="scss">
+// TODO: this needs to be scoped and use v deep like in the example, but it's not working
 .default-layout .dock-window {
   width: 100%;
   top: 42px;
