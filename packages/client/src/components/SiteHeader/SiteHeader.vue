@@ -66,8 +66,8 @@ const style = computed(() => {
       </div>
       <div class="col-span-3">
         <div class="grid">
-          <n-text tag="div" class="font-bold text-lg group-hover:text-teal-300" :depth="1">DIODE</n-text>
-          <n-text tag="div" class="group-hover:text-teal-500" :depth="3">keeping the lights on</n-text>
+          <n-text tag="div" class="font-bold group-hover:text-teal-300" :depth="1">DIODE</n-text>
+          <n-text tag="div" class="text-sm group-hover:text-teal-500" :depth="3">keeping the lights on</n-text>
         </div>
       </div>
     </div>
