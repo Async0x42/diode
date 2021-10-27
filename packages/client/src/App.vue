@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { darkTheme, enUS, dateEnUS, NConfigProvider } from 'naive-ui';
+import { darkTheme, enUS, dateEnUS, NConfigProvider, NThemeEditor } from 'naive-ui';
 import { isDark } from './logic';
 
 // https://github.com/vueuse/head
@@ -14,16 +14,18 @@ const theme = computed(() => (isDark ? darkTheme : null));
 </script>
 
 <template>
-  <component :is="NConfigProvider" namespace="diode" :theme="theme" :locale="enUS" :date-locale="dateEnUS">
-    <n-loading-bar-provider>
-      <n-message-provider>
-        <n-notification-provider>
-          <n-dialog-provider>
-            <router-view />
-          </n-dialog-provider>
-        </n-notification-provider>
-      </n-message-provider>
-    </n-loading-bar-provider>
-    <n-global-style />
-  </component>
+  <n-config-provider :theme="theme" :locale="enUS" :date-locale="dateEnUS">
+    <n-theme-editor>
+      <n-loading-bar-provider>
+        <n-message-provider>
+          <n-notification-provider>
+            <n-dialog-provider>
+              <router-view />
+            </n-dialog-provider>
+          </n-notification-provider>
+        </n-message-provider>
+      </n-loading-bar-provider>
+      <n-global-style />
+    </n-theme-editor>
+  </n-config-provider>
 </template>
