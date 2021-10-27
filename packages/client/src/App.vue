@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { darkTheme, enUS, dateEnUS, NConfigProvider, NThemeEditor } from 'naive-ui';
+import { darkTheme, enUS, dateEnUS } from 'naive-ui';
 import { isDark } from './logic';
 
 // https://github.com/vueuse/head
