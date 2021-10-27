@@ -4,7 +4,8 @@
     "dev": "pnpm recursive run dev",
     "build": "pnpm recursive run build",
     "lint": "pnpm recursive run lint",
-    "lint:all:eslint": "pnpm recursive run lint:eslint"
+    "lint:all:eslint": "pnpm recursive run lint:eslint",
+    "update-tsc": "pnpm recursive up --latest vue-tsc"
   },
   "devDependencies": {
     "@mikro-orm/cli": "^4.5.9",
@@ -12,7 +13,7 @@
     "@mikro-orm/mariadb": "^4.5.9",
     "@mikro-orm/reflection": "^4.5.9",
     "@mikro-orm/sql-highlighter": "^1.0.1",
-    "date-fns": "^2.24.0",
-    "windicss": "^3.1.7"
+    "date-fns": "^2.25.0",
+    "windicss": "^3.1.9"
   }
 }

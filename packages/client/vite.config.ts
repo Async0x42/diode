@@ -29,7 +29,7 @@ export default defineConfig({
       strict: true,
     },
     proxy: {
-      '/api': 'http://localhost:7000/',
+      '/api': 'http://localhost:7777/',
     },
   },
   build: {
@@ -52,16 +52,27 @@ export default defineConfig({
 
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
-      imports: ['vue', 'vue-router', 'vue-i18n', '@vueuse/head', '@vueuse/core'],
-      dts: true,
+      imports: [
+        'vue',
+        'vue-router',
+        'vue-i18n',
+        '@vueuse/head',
+        '@vueuse/core',
+        // {
+        //   primevue: [
+        //     // '[import-names]',
+        //     // alias
+        //     ['usetoast', 'useToast'],
+        //   ],
+        // },
+      ],
+      dts: 'src/auto-imports.d.ts',
     }),
 
     // https://github.com/antfu/unplugin-vue-components
     Components({
       // allow auto load markdown components under `./src/components/`
       extensions: ['vue', 'md'],
-
-      dts: true,
 
       // allow auto import and register components used in markdown
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
@@ -78,11 +89,13 @@ export default defineConfig({
           // enabledCollections: ['carbon']
         }),
       ],
+
+      dts: 'src/components.d.ts',
     }),
 
     // https://github.com/antfu/unplugin-icons
     Icons({
-      /* options */
+      autoInstall: true,
     }),
 
     // https://github.com/antfu/vite-plugin-windicss
@@ -122,7 +135,7 @@ export default defineConfig({
   ],
 
   optimizeDeps: {
-    include: ['vue', 'vue-router', '@vueuse/core', '@vueuse/integrations', 'fuse.js', 'date-fns'],
+    include: ['vue', 'vue-router', '@vueuse/core', '@vueuse/head', '@vueuse/integrations', 'fuse.js', 'date-fns'],
     exclude: ['vue-demi'],
   },
 });

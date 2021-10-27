@@ -27,7 +27,7 @@ export default defineConfig({
       gray: colors.gray,
       green: colors.green,
       indigo: colors.indigo,
-      'light-blue': colors.lightBlue,
+      sky: colors.sky,
       lime: colors.lime,
       orange: colors.orange,
       pink: colors.pink,
