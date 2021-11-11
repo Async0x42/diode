@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ICalendarItem } from '@diode/common';
 import type { PropType } from 'vue';
-import { useRouteSearchWithData } from '~/logic';
+import { useRouteSearchWithData } from '~/composables';
 
 const props = defineProps({
   items: { type: Array as PropType<ICalendarItem[]>, required: true },

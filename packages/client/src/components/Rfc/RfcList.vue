@@ -2,7 +2,7 @@
 import type { IRfc } from '@diode/common';
 import type { PropType } from 'vue';
 import { parseJSON, format } from 'date-fns';
-import { useRouteSearchWithData } from '~/logic';
+import { useRouteSearchWithData } from '~/composables';
 
 const props = defineProps({
   rfcs: { type: Array as PropType<IRfc[]>, required: true },

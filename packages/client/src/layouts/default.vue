@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { format } from 'date-fns/esm';
 import { PrimeIcons } from 'primevue/api';
-import { useCurrentDateTime, isTerminalOpen } from '~/logic';
+import { useCurrentDateTime, isTerminalOpen } from '~/composables';
 
 const menubarItems = ref([
   {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { INetwork } from '@diode/common';
 import type { PropType } from 'vue';
-import { useRouteSearchWithData } from '~/logic';
+import { useRouteSearchWithData } from '~/composables';
 
 const props = defineProps({
   networks: { type: Array as PropType<INetwork[]>, required: true },

@@ -2,7 +2,7 @@
 import type { IOperatingSystem } from '@diode/common';
 import type { PropType } from 'vue';
 import { useMessage } from 'naive-ui';
-import { useFormActions } from '~/logic';
+import { useFormActions } from '~/composables';
 import { assignDefaultsToForm, createFormModel } from '~/utils/forms';
 const message = useMessage();
 

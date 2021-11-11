@@ -2,7 +2,7 @@
 import type { ISslCertificate } from '@diode/common';
 import type { PropType } from 'vue';
 import { format, parseJSON } from 'date-fns';
-import { useRouteSearchWithData } from '~/logic';
+import { useRouteSearchWithData } from '~/composables';
 
 const props = defineProps({
   sslCertificates: { type: Array as PropType<ISslCertificate[]>, required: true },

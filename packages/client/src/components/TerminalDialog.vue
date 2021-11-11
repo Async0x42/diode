@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import TerminalService from 'primevue/terminalservice';
-import { isTerminalOpen } from '~/logic';
+import { isTerminalOpen } from '~/composables';
 
 const commandHandler = (text: string) => {
   let response;

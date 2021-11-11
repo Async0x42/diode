@@ -2,7 +2,7 @@
 import type { ITicket } from '@diode/common';
 import type { PropType } from 'vue';
 import { groupBy } from 'lodash-es';
-import { useRouteSearchWithData } from '~/logic';
+import { useRouteSearchWithData } from '~/composables';
 
 const props = defineProps({
   tickets: { type: Array as PropType<ITicket[]>, required: true },

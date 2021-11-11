@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { IBrd } from '@diode/common';
 import type { PropType } from 'vue';
-import { useRouteSearchWithData } from '~/logic';
+import { useRouteSearchWithData } from '~/composables';
 const { n } = useI18n();
 
 const props = defineProps({

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { IOperatingSystem } from '@diode/common';
 import type { PropType } from 'vue';
-import { useRouteSearchWithData } from '~/logic';
+import { useRouteSearchWithData } from '~/composables';
 import { formatTableDate } from '~/utils';
 
 const props = defineProps({

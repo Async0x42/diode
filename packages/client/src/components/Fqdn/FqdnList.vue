@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { IFqdn } from '@diode/common';
 import type { PropType } from 'vue';
-import { useRouteSearchWithData } from '~/logic';
+import { useRouteSearchWithData } from '~/composables';
 
 const props = defineProps({
   fqdn: { type: Array as PropType<IFqdn[]>, required: true },

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { IServerType } from '@diode/common';
 import type { PropType } from 'vue';
-import { useRouteSearchWithData } from '~/logic';
+import { useRouteSearchWithData } from '~/composables';
 
 const props = defineProps({
   serverTypes: { type: Array as PropType<IServerType[]>, required: true },

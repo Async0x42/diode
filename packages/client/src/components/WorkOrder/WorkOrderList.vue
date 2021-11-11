@@ -2,7 +2,7 @@
 import type { IWorkOrder } from '@diode/common';
 import type { PropType } from 'vue';
 import { groupBy, reverse } from 'lodash-es';
-import { useRouteSearchWithData } from '~/logic';
+import { useRouteSearchWithData } from '~/composables';
 import { sortByPriority } from '~/utils';
 
 const props = defineProps({

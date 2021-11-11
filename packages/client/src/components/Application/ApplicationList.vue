@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { IApplication } from '@diode/common';
 import type { PropType } from 'vue';
-import { useRouteSearchWithData } from '~/logic';
+import { useRouteSearchWithData } from '~/composables';
 
 const props = defineProps({
   applications: { type: Array as PropType<IApplication[]>, required: true },

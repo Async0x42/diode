@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRouteSearch } from '~/logic';
+import { useRouteSearch } from '~/composables';
 
 const searchBar = useRouteSearch();
 </script>
