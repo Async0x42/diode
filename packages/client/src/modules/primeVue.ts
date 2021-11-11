@@ -10,6 +10,7 @@ import 'primeicons/primeicons.css'; // icons
 import 'primeflex/primeflex.css'; // flex
 
 // Setup PrimeVue
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const install: UserModule = ({ isClient, initialState, app }) => {
   app.use(PrimeVue);
   app.use(ConfirmationService);

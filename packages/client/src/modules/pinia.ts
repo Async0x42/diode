@@ -3,6 +3,7 @@ import { UserModule } from '~/types';
 
 // Setup Pinia
 // https://pinia.esm.dev/
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const install: UserModule = ({ isClient, initialState, app }) => {
   const pinia = createPinia();
   app.use(pinia);
