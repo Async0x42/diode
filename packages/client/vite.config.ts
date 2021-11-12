@@ -137,7 +137,21 @@ export default defineConfig({
   ],
 
   optimizeDeps: {
-    include: ['vue', 'vue-router', '@vueuse/core', '@vueuse/head', '@vueuse/integrations', 'fuse.js', 'date-fns', 'primevue/useconfirm'],
+    include: [
+      'vue',
+      'vue-router',
+      '@vueuse/core',
+      '@vueuse/head',
+      '@vueuse/integrations',
+      'fuse.js',
+      'date-fns',
+      'primevue/useconfirm',
+      'date-fns/esm',
+      'primevue/api',
+      'vooks',
+      'lodash-es',
+      'primevue/terminalservice',
+    ],
     exclude: ['vue-demi'],
   },
 });
