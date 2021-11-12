@@ -113,10 +113,10 @@ const currentClock = computed(() => {
           type="text"
           style="font-weight: normal; transition: none 0s ease 0s; background-position: 0% center"
         />
-        <a v-ptooltip.bottom="'Terminal'" href="#" @click="isTerminalOpen = true">
+        <a v-tooltip.bottom="'Terminal'" href="#" @click="isTerminalOpen = true">
           <i class="pi pi-desktop" />
         </a>
-        <a v-ptooltip.bottom="'Google Meet'" href="#" @click="openUrl('https://meet.google.com/')">
+        <a v-tooltip.bottom="'Google Meet'" href="#" @click="openUrl('https://meet.google.com/')">
           <i class="pi pi-video" />
         </a>
         <span>{{ currentClock }}</span>

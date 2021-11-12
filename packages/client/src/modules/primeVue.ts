@@ -15,6 +15,5 @@ export const install: UserModule = ({ isClient, initialState, app }) => {
   app.use(PrimeVue);
   app.use(ConfirmationService);
   app.use(ToastService);
-  app.directive('ptooltip', Tooltip);
   app.directive('tooltip', Tooltip);
 };
