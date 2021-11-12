@@ -14,6 +14,6 @@
     "@mikro-orm/reflection": "^4.5.9",
     "@mikro-orm/sql-highlighter": "^1.0.1",
     "date-fns": "^2.25.0",
-    "windicss": "^3.1.9"
+    "windicss": "^3.2.1"
   }
 }
