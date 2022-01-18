@@ -8,12 +8,12 @@
     "update-tsc": "pnpm recursive up --latest vue-tsc"
   },
   "devDependencies": {
-    "@mikro-orm/cli": "^4.5.9",
-    "@mikro-orm/core": "^4.5.9",
-    "@mikro-orm/mariadb": "^4.5.9",
-    "@mikro-orm/reflection": "^4.5.9",
+    "@mikro-orm/cli": "^4.5.10",
+    "@mikro-orm/core": "^4.5.10",
+    "@mikro-orm/mariadb": "^4.5.10",
+    "@mikro-orm/reflection": "^4.5.10",
     "@mikro-orm/sql-highlighter": "^1.0.1",
-    "date-fns": "^2.27.0",
-    "windicss": "^3.2.1"
+    "date-fns": "^2.28.0",
+    "windicss": "^3.4.2"
   }
 }
