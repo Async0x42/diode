@@ -14,6 +14,7 @@ const menubarItems = ref([
       {
         label: 'New',
         icon: PrimeIcons.PLUS,
+        to: '/workorders/create'
       },
       {
         separator: true,
@@ -25,6 +26,7 @@ const menubarItems = ref([
           {
             label: 'New',
             icon: PrimeIcons.PLUS,
+            to: '/tickets/create'
           },
         ],
       },
@@ -36,6 +38,7 @@ const menubarItems = ref([
       {
         label: 'Environments',
         icon: PrimeIcons.CALENDAR_TIMES,
+        to: '/environments'
       },
     ],
   },
@@ -45,26 +48,32 @@ const menubarItems = ref([
       {
         label: 'Physical Servers',
         icon: PrimeIcons.PENCIL,
+        to: '/physicalservers'
       },
       {
         label: 'Locations',
         icon: PrimeIcons.CALENDAR_TIMES,
+        to: '/serverlocations'
       },
       {
         label: 'Types',
         icon: PrimeIcons.CALENDAR_TIMES,
+        to: '/servertypes'
       },
       {
         label: 'Dependencies',
         icon: PrimeIcons.PENCIL,
+        to: '/dependencies'
       },
       {
         label: 'Zones',
         icon: PrimeIcons.CALENDAR_TIMES,
+        to: '/zones'
       },
       {
         label: 'Operating Systems',
         icon: PrimeIcons.CALENDAR_TIMES,
+        to: '/operatingsystems'
       },
     ],
   },
@@ -73,20 +82,25 @@ const menubarItems = ref([
     items: [
       {
         label: 'Contact Groups',
+        to: '/contactgroups'
       },
     ],
   },
   {
     label: 'BRDs',
+    to: '/brds'
   },
   {
     label: 'RFCs',
+    to: '/rfcs'
   },
   {
     label: 'FQDN',
+    to: '/fqdn'
   },
   {
     label: 'SSL',
+    to: '/sslcertificates'
   },
 ]);
 
