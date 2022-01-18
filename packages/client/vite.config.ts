@@ -58,6 +58,7 @@ export default defineConfig({
         'vue-i18n',
         '@vueuse/head',
         '@vueuse/core',
+        'vitest',
         // {
         //   primevue: [
         //     // '[import-names]',
@@ -134,7 +135,16 @@ export default defineConfig({
   ],
 
   optimizeDeps: {
-    include: ['vue', 'vue-router', '@vueuse/core', '@vueuse/head', '@vueuse/integrations', 'fuse.js', 'date-fns'],
+    include: ['vue', 'vue-router', '@vueuse/core', '@vueuse/head', '@vueuse/integrations', 'fuse.js', 'date-fns', 'date-fns/esm', 'lodash-es'],
     exclude: ['vue-demi'],
+  },
+
+  // https://github.com/vitest-dev/vitest
+  test: {
+    include: ['test/**/*.test.ts'],
+    environment: 'jsdom',
+    deps: {
+      inline: ['@vue', '@vueuse', 'vue-demi'],
+    },
   },
 });

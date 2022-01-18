@@ -11,6 +11,8 @@ packages/server/temp
 packages/server/.env
 backups
 packages/server/tmp_downloads
+packages/client/components.d.ts
 packages/client/stats.html
+packages/client/auto-imports.d.ts
 packages/client/src/components.d.ts
 packages/client/src/auto-imports.d.ts
