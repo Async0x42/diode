@@ -1,6 +1,6 @@
 import { nextTick } from 'vue';
 import { useLoadingBar } from 'naive-ui';
-import { UserModule } from '~/types';
+import type { UserModule } from '~/types';
 
 export const loadingBar = useLoadingBar();
 

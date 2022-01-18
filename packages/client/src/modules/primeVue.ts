@@ -2,7 +2,7 @@ import PrimeVue from 'primevue/config';
 import ConfirmationService from 'primevue/confirmationservice';
 import ToastService from 'primevue/toastservice';
 import Tooltip from 'primevue/tooltip';
-import { UserModule } from '~/types';
+import type { UserModule } from '~/types';
 
 import 'primevue/resources/themes/arya-purple/theme.css'; // theme
 import 'primevue/resources/primevue.min.css'; // core css
