@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { isMobile } from '~/composables';
 const routesForCreate = [
   'calendar',
   'brds',
@@ -44,22 +43,10 @@ const routesForEdit = [
   'ticket-view',
   'dependency-view',
 ];
-
-const style = computed(() => {
-  return isMobile.value
-    ? {
-        '--side-padding': '16px',
-        'grid-template-columns': 'auto 1fr auto',
-      }
-    : {
-        '--side-padding': '32px',
-        'grid-template-columns': 'calc(272px - var(--side-padding)) 1fr auto',
-      };
-});
 </script>
 
 <template>
-  <n-layout-header bordered class="nav" :style="style">
+  <n-layout-header bordered class="nav">
     <div class="cursor-pointer grid grid-cols-4 group" @click="$router.push({ name: 'home' })">
       <div class="flex flex-wrap row-span-2 content-center">
         <n-icon class="mx-auto group-hover:text-yellow-300" size="35"><heroicons-solid-light-bulb /></n-icon>

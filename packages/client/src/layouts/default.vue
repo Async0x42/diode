@@ -7,14 +7,20 @@ const menubarItems = ref([
   {
     label: 'DIODE',
     class: 'menubar-root',
+    to: '/'
   },
   {
     label: 'Work',
     items: [
       {
+        label: 'Browse',
+        icon: PrimeIcons.BOOK,
+        to: '/workOrders',
+      },
+      {
         label: 'New',
         icon: PrimeIcons.PLUS,
-        to: '/workorders/create'
+        to: '/workOrders/create'
       },
       {
         separator: true,
@@ -36,6 +42,11 @@ const menubarItems = ref([
     label: 'Applications',
     items: [
       {
+        label: 'Browse',
+        icon: PrimeIcons.BOOK,
+        to: '/applications',
+      },
+      {
         label: 'Environments',
         icon: PrimeIcons.CALENDAR_TIMES,
         to: '/environments'
@@ -46,19 +57,24 @@ const menubarItems = ref([
     label: 'VM Servers',
     items: [
       {
+        label: 'Browse',
+        icon: PrimeIcons.BOOK,
+        to: '/servers',
+      },
+      {
         label: 'Physical Servers',
         icon: PrimeIcons.PENCIL,
-        to: '/physicalservers'
+        to: '/physicalServers'
       },
       {
         label: 'Locations',
         icon: PrimeIcons.CALENDAR_TIMES,
-        to: '/serverlocations'
+        to: '/serverLocations'
       },
       {
         label: 'Types',
         icon: PrimeIcons.CALENDAR_TIMES,
-        to: '/servertypes'
+        to: '/serverTypes'
       },
       {
         label: 'Dependencies',
@@ -73,7 +89,7 @@ const menubarItems = ref([
       {
         label: 'Operating Systems',
         icon: PrimeIcons.CALENDAR_TIMES,
-        to: '/operatingsystems'
+        to: '/operatingSystems'
       },
     ],
   },
@@ -81,8 +97,13 @@ const menubarItems = ref([
     label: 'Contacts',
     items: [
       {
+        label: 'Browse',
+        icon: PrimeIcons.BOOK,
+        to: '/contacts',
+      },
+      {
         label: 'Contact Groups',
-        to: '/contactgroups'
+        to: '/contactGroups'
       },
     ],
   },

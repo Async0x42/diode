@@ -157,6 +157,7 @@ export default defineConfig({
       'primevue/inputtext',
       'primevue/dialog',
       'primevue/terminal',
+      'primevue/button',
     ],
     exclude: ['vue-demi'],
   },
