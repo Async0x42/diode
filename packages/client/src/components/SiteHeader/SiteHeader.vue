@@ -1,4 +1,11 @@
 <script setup lang="ts">
+import { navigation } from '~/composables';
+
+const route = useRoute();
+const router = useRouter();
+const activeRouteNameOrPath = computed(() => (route.name?.valueOf() as string) || route.path);
+
+const handleMenuUpdateValue = (key: any) => router.push({ name: key });
 import { isMobile } from '~/composables';
 const routesForCreate = [
   'calendar',
@@ -65,16 +72,18 @@ const style = computed(() => {
         <n-icon class="mx-auto group-hover:text-yellow-300" size="35"><heroicons-solid-light-bulb /></n-icon>
       </div>
       <div class="col-span-3">
-        <div class="grid">
+        <div>
           <n-text tag="div" class="font-bold group-hover:text-teal-300" :depth="1">DIODE</n-text>
           <n-text tag="div" class="text-sm group-hover:text-teal-500" :depth="3">keeping the lights on</n-text>
         </div>
       </div>
     </div>
+    <div>
+      <n-menu :value="activeRouteNameOrPath" mode="horizontal" :options="navigation" @update:value="handleMenuUpdateValue" />
+    </div>
     <div style="display: flex; align-items: center">
       <SiteHeaderSearch v-if="$route.name != null && routesForSearch.includes($route.name.toString())" :key="$route.path" class="mx-6 w-full" />
-    </div>
-    <div class="nav-end">
+    
       <router-link
         v-if="$route.name != null && routesForCreate.includes($route.name.toString())"
         v-slot="{ navigate }"

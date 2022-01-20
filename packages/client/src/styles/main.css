@@ -10,7 +10,7 @@ body,
 
 body {
   overflow: hidden;
-  --header-height: 64px;
+  --header-height: 44px;
 }
 
 @media only screen and (max-width: 639px) {
