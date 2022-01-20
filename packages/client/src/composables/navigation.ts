@@ -24,19 +24,18 @@ interface INav {
 }
 
 export const navigation: INav[] = [
-  { label: 'Work Orders', key: 'workOrders', to: { name: 'workOrders' }, icon: DocumentText },
-  { label: 'Tickets', key: 'tickets', to: { name: 'tickets' }, icon: Ticket },
-  { label: 'Calendar', key: 'calendar', to: { name: 'calendar' }, icon: Calendar },
-  { label: 'Applications', key: 'applications', to: { name: 'applications' }, icon: GlobeAlt },
-  { label: 'Servers', key: 'servers', to: { name: 'servers' }, icon: Chip },
-  { label: 'Contacts', key: 'contacts', to: { name: 'contacts' }, icon: Phone },
-  { label: 'Contact Groups', key: 'contactGroups', to: { name: 'contactGroups' }, icon: Phone },
-  { label: 'BRDs', key: 'brds', to: { name: 'brds' }, icon: DocumentText },
-  { label: 'RFCs', key: 'rfcs', to: { name: 'rfcs' }, icon: Clock },
+  { label: 'Work Orders', key: 'workOrders', to: { name: 'workOrders' } },
+  { label: 'Tickets', key: 'tickets', to: { name: 'tickets' } },
+  { label: 'Calendar', key: 'calendar', to: { name: 'calendar' } },
+  { label: 'Applications', key: 'applications', to: { name: 'applications' } },
+  { label: 'Servers', key: 'servers', to: { name: 'servers' } },
+  { label: 'Contacts', key: 'contacts', to: { name: 'contacts' } },
+  { label: 'Contact Groups', key: 'contactGroups', to: { name: 'contactGroups' } },
+  { label: 'BRDs', key: 'brds', to: { name: 'brds' } },
+  { label: 'RFCs', key: 'rfcs', to: { name: 'rfcs' } },
   {
     label: 'Settings',
     key: 'settings',
-    icon: Cog,
     children: sortBy(
       [
         { label: 'FQDN', key: 'fqdn', to: { name: 'fqdn' } },
