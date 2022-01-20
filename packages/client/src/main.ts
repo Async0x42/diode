@@ -24,7 +24,7 @@ app.use(router);
 app.use(head);
 
 // install all modules under `modules/`
-Object.values(import.meta.globEager('./modules/*.ts')).map((i) => i.install?.({ app, router, isClient: true }));
-Object.values(import.meta.globEager('./directives/*.ts')).map((i) => i.install?.({ app, router, isClient: true }));
+Object.values(import.meta.globEager('./modules/*.ts')).forEach((i) => i.install?.({ app, router, isClient: true }));
+Object.values(import.meta.globEager('./directives/*.ts')).forEach((i) => i.install?.({ app, router, isClient: true }));
 
 app.mount('#app');
