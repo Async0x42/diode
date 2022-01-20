@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { IZone } from '@diode/common';
 import type { PropType } from 'vue';
-import { useRouteSearchWithData } from '~/logic';
+import { useRouteSearchWithData } from '~/composables';
 
 const props = defineProps({
   zones: { type: Array as PropType<IZone[]>, required: true },

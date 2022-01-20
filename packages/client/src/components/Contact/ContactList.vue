@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { IContact } from '@diode/common';
 import type { PropType } from 'vue';
-import { useRouteSearchWithData } from '~/logic';
+import { useRouteSearchWithData } from '~/composables';
 
 const props = defineProps({
   contacts: { type: Array as PropType<IContact[]>, required: true },

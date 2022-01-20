@@ -2,7 +2,7 @@
 import type { IContactGroup } from '@diode/common';
 import { useMessage } from 'naive-ui';
 import type { PropType } from 'vue';
-import { useFormActions } from '~/logic';
+import { useFormActions } from '~/composables';
 import { assignDefaultsToForm, createFormModel } from '~/utils/forms';
 const message = useMessage();
 

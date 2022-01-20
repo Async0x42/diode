@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { navigation } from '~/logic';
+import { navigation } from '~/composables';
 
 const route = useRoute();
 const router = useRouter();

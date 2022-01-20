@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { IDependency } from '@diode/common';
 import type { PropType } from 'vue';
-import { useRouteSearchWithData } from '~/logic';
+import { useRouteSearchWithData } from '~/composables';
 
 const props = defineProps({
   dependencies: { type: Array as PropType<IDependency[]>, required: true },

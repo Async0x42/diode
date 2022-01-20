@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isMobile } from '~/logic';
+import { isMobile } from '~/composables';
 const routesForCreate = [
   'calendar',
   'brds',

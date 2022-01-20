@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { IOperatingSystem } from '@diode/common';
 import type { PropType } from 'vue';
-import { useRouteSearchWithData } from '~/logic';
+import { useRouteSearchWithData } from '~/composables';
 
 const props = defineProps({
   operatingSystems: { type: Array as PropType<IOperatingSystem[]>, required: true },

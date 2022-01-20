@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { darkTheme, enUS, dateEnUS } from 'naive-ui';
-import { isDark } from './logic';
+import { isDark } from './composables';
 
 // https://github.com/vueuse/head
 // you can use this to manipulate the document head in any components,

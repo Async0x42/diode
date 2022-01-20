@@ -3,7 +3,7 @@ import type { IWorkOrder } from '@diode/common';
 import type { PropType } from 'vue';
 import { groupBy, reverse } from 'lodash-es';
 import type { DataTableColumn } from 'naive-ui';
-import { useRouteSearchWithData } from '~/logic';
+import { useRouteSearchWithData } from '~/composables';
 import { applicationsColumn, createQuickActionsColumn, detailsColumn, modifiedColumn, serversColumn, sortByPriority, workOrderColumn } from '~/utils';
 
 const router = useRouter();
