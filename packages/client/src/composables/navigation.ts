@@ -1,32 +1,12 @@
 import { h } from 'vue';
 import { NIcon } from 'naive-ui';
 import { sortBy } from 'lodash-es';
-import Clock from '~icons/heroicons-outline/clock';
-import Calendar from '~icons/heroicons-outline/calendar';
-import DocumentText from '~icons/heroicons-outline/document-text';
-import Phone from '~icons/heroicons-outline/phone';
-import GlobeAlt from '~icons/heroicons-outline/globe-alt';
-import Chip from '~icons/heroicons-outline/chip';
-import Cog from '~icons/heroicons-outline/cog';
-import Ticket from '~icons/heroicons-outline/ticket';
+import type { MenuMixedOption } from 'naive-ui/lib/menu/src/interface';
 
-const renderIcon = (icon: any) => {
-  return () => h(NIcon, null, { default: () => h(icon) });
-};
-
-interface INav {
-  label: string;
-  key: string;
-  to?: any;
-  category?: string;
-  icon?: any;
-  children?: INav[];
-}
-
-export const navigation: INav[] = [
+export const navigation: MenuMixedOption[] = [
   { label: 'Work Orders', key: 'workOrders', to: { name: 'workOrders' } },
   { label: 'Tickets', key: 'tickets', to: { name: 'tickets' } },
-  { label: 'Calendar', key: 'calendar', to: { name: 'calendar' } },
+  // { label: 'Calendar', key: 'calendar', to: { name: 'calendar' } },
   { label: 'Applications', key: 'applications', to: { name: 'applications' } },
   { label: 'Servers', key: 'servers', to: { name: 'servers' } },
   { label: 'Contacts', key: 'contacts', to: { name: 'contacts' } },
@@ -54,12 +34,16 @@ export const navigation: INav[] = [
   },
 ];
 
-const renderItemIcons = (navItems: INav[]) => {
+const renderIcon = (icon: any) => {
+  return () => h(NIcon, null, { default: () => h(icon) });
+};
+
+const renderItemIcons = (navItems: MenuMixedOption[]) => {
   navItems.forEach((n) => {
     n.icon && (n.icon = renderIcon(n.icon));
-    if (n.children && n.children.length > 0) {
-      renderItemIcons(n.children);
-    }
+      if (n.children && (n.children as Array<MenuMixedOption>).length > 0) {
+        renderItemIcons((n.children as Array<MenuMixedOption>));
+      }
   });
 };
 
