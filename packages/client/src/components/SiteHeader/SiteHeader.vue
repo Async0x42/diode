@@ -130,4 +130,8 @@ const style = computed(() => {
 .nav-menu .n-menu-item {
   height: calc(var(--header-height) - 1px) !important;
 }
+
+.n-menu.n-menu--horizontal .n-menu-item-content {
+  padding: 0 10px;
+}
 </style>
