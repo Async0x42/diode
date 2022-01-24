@@ -9,7 +9,7 @@
       position="static"
       content-style="min-height: calc(100vh - var(--header-height)); display: flex; flex-direction: column;"
     >
-      <router-view />
+      <router-view class="px-2" />
     </n-layout>
   </n-layout>
 </template>
