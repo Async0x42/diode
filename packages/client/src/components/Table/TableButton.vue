@@ -3,7 +3,7 @@
 <template>
   <n-button small>
     <template #icon>
-      <n-icon>
+      <n-icon class="pl-0.75">
         <slot name="icon"></slot>
       </n-icon>
     </template>
