@@ -17,6 +17,7 @@ import { IContactGroup } from './contactGroup';
 export interface IServer extends IDiodeEntity {
   name: string;
   ip?: string;
+  managementIp?: string;
   notes?: string;
   storageSpace?: number;
   systemMemory?: number;

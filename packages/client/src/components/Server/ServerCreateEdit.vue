@@ -15,6 +15,7 @@ const { onSubmit, onDelete } = useFormActions<IServer>('/api/servers', 'servers'
 const model = createFormModel<IServer>([
   'name',
   'ip',
+  'managementIp',
   'notes',
   'fqdns',
   'types',
@@ -66,6 +67,9 @@ const handleValidateClick = (e: Event) => {
       </n-form-item-gi>
       <n-form-item-gi :span="12" label="IP" path="ip">
         <n-input v-model:value="model.ip" placeholder="" />
+      </n-form-item-gi>
+      <n-form-item-gi :span="12" label="MGMT IP" path="managementIp">
+        <n-input v-model:value="model.managementIp" placeholder="" />
       </n-form-item-gi>
 
       <n-form-item-gi :span="6" label="Storage Space" path="storageSpace">

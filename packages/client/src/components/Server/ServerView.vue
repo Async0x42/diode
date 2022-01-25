@@ -13,6 +13,7 @@ const props = defineProps({
     <n-descriptions-item label="Name" :span="3">
       <n-text tag="div" depth="1">{{ props.server.name }}</n-text>
       <n-text tag="div" depth="2">{{ props.server.ip }}</n-text>
+      <n-text tag="div" depth="2" v-if="props.server.managementIp">MGMT: {{ props.server.managementIp }}</n-text>
       <n-text tag="div" depth="3">{{ props.server.operatingSystem?.name }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Types">
