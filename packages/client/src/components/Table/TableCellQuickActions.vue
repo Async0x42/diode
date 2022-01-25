@@ -13,7 +13,7 @@ const onBrowse = () => {
 </script>
 
 <template>
-  <n-td class="text-right">
+  <n-td class="text-right max-w-31.5">
     <TableButton v-if="props.browse" @click="onBrowse">
       <template #icon>
         <heroicons-solid-eye />
