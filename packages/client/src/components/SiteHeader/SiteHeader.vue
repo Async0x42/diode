@@ -55,11 +55,11 @@ const routesForEdit = [
 const style = computed(() => {
   return isMobile.value
     ? {
-        '--side-padding': '16px',
+        '--side-padding': '4px',
         'grid-template-columns': 'auto 1fr auto',
       }
     : {
-        '--side-padding': '32px',
+        '--side-padding': '8px',
         'grid-template-columns': 'calc(272px - var(--side-padding)) 1fr auto',
       };
 });
