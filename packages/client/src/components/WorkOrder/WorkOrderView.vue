@@ -13,7 +13,10 @@ const props = defineProps({
   <n-descriptions bordered>
     <n-descriptions-item label="Name" :span="3">
       <n-text tag="div" depth="1">{{ props.workOrder.name }}</n-text>
-      <n-text tag="div" depth="3">{{ formatTableDate(props.workOrder.startDate) }} - {{ formatTableDate(props.workOrder.endDate) }}</n-text>
+      <n-text
+        tag="div"
+        depth="3"
+      >{{ formatTableDate(props.workOrder.startDate) }} - {{ formatTableDate(props.workOrder.endDate) }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Created">
       <n-text tag="div" depth="1">{{ formatTableDate(props.workOrder.createdOn) }}</n-text>
@@ -22,7 +25,7 @@ const props = defineProps({
       <n-text tag="div" depth="1">{{ formatTableDate(props.workOrder.modifiedOn) }}</n-text>
     </n-descriptions-item>
     <n-descriptions-item label="Details">
-      <n-text tag="div" depth="1" v-html="props.workOrder.details"></n-text>
+      <DetailsWidget :details="props.workOrder.details" />
     </n-descriptions-item>
     <n-descriptions-item label="Applications">
       <ApplicationsWidget :applications="props.workOrder.applications" />

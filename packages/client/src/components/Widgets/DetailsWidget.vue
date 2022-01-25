@@ -9,7 +9,5 @@ const htmlDetails = computed(() => replaceLinebreakWithHtml(props.details))
 </script>
 
 <template>
-  <n-td class="min-w-11 max-w-50vw">
-    <n-text depth="1" class="max-h-16 overflow-ellipsis" v-html="htmlDetails"></n-text>
-  </n-td>
+  <n-text depth="1" v-html="htmlDetails"></n-text>
 </template>
