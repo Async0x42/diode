@@ -9,7 +9,9 @@ const props = defineProps({
 
 <template>
   <n-popover trigger="hover" raw :show-arrow="false">
-    <template #trigger><slot></slot></template>
+    <template #trigger>
+      <slot></slot>
+    </template>
     <n-descriptions bordered>
       <n-descriptions-item>
         <template #label>
