@@ -1,5 +1,6 @@
 import { IServer } from '@diode/common';
-import { Entity, Property, OneToMany, ManyToMany, Collection, ManyToOne } from '@mikro-orm/core';
+import { Property, MaxLength, Required } from "@tsed/schema";
+import { Entity, Property as Column, ManyToMany, Collection, OneToMany, ManyToOne } from '@mikro-orm/core';
 import { DiodeEntity } from './diode.entity';
 import { Application } from './application.entity';
 import { Environment } from './environment.entity';
@@ -19,8 +20,8 @@ import { ContactGroup } from './contactGroup.entity';
 // Quick fix to make @mikro-orm collection compat with the IServer []
 export interface IBackendServer
   extends Omit<
-    IServer,
-    'applications' | 'fqdns' | 'types' | 'physicalServer' | 'sslCertificates' | 'workOrders' | 'tickets' | 'dependencies' | 'supportGroups'
+  IServer,
+  'applications' | 'fqdns' | 'types' | 'physicalServer' | 'sslCertificates' | 'workOrders' | 'tickets' | 'dependencies' | 'supportGroups'
   > {
   applications: Collection<Application>;
   fqdns: Collection<Fqdn>;
@@ -35,19 +36,20 @@ export interface IBackendServer
 
 @Entity()
 export class Server extends DiodeEntity<Server> implements IBackendServer {
-  @Property()
+  @Column()
+  @Required()
   name!: string;
 
-  @Property()
+  @Column()
   ip?: string;
 
-  @Property()
+  @Column()
   managementIp?: string;
 
-  @Property()
+  @Column()
   storageSpace?: number;
 
-  @Property()
+  @Column()
   systemMemory?: number;
 
   @ManyToOne()
@@ -83,7 +85,7 @@ export class Server extends DiodeEntity<Server> implements IBackendServer {
   @ManyToOne()
   physicalServer?: PhysicalServer;
 
-  @Property({ columnType: 'text' })
+  @Column({ columnType: 'text' })
   notes?: string;
 
   @ManyToMany(() => Ticket, (ticket) => ticket.servers)

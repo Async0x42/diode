@@ -1,5 +1,6 @@
 import { ISslCertificate } from '@diode/common';
-import { Entity, Property, Collection, ManyToMany } from '@mikro-orm/core';
+import { Property, MaxLength, Required } from "@tsed/schema";
+import { Entity, Property as Column, ManyToMany, Collection, OneToMany, ManyToOne } from '@mikro-orm/core';
 import { DiodeEntity } from './diode.entity';
 import { Application } from './application.entity';
 import { Server } from './server.entity';
@@ -12,10 +13,11 @@ export interface IBackendSslCertificate extends Omit<ISslCertificate, 'servers' 
 
 @Entity()
 export class SslCertificate extends DiodeEntity<SslCertificate> implements IBackendSslCertificate {
-  @Property()
+  @Column()
+  @Required()
   sans!: string;
 
-  @Property()
+  @Column()
   expiry?: Date;
 
   @ManyToMany(() => Server, (server) => server.sslCertificates)

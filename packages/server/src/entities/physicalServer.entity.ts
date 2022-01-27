@@ -1,5 +1,6 @@
 import { IPhysicalServer } from '@diode/common';
-import { Entity, Property, OneToMany, Collection, ManyToOne } from '@mikro-orm/core';
+import { Property, MaxLength, Required } from "@tsed/schema";
+import { Entity, Property as Column, ManyToMany, Collection, OneToMany, ManyToOne } from '@mikro-orm/core';
 import { DiodeEntity } from './diode.entity';
 import { Server } from './server.entity';
 import { ServerLocation } from './serverLocation.entity';
@@ -11,40 +12,41 @@ export interface IBackendPhysicalServer extends Omit<IPhysicalServer, 'servers'>
 
 @Entity()
 export class PhysicalServer extends DiodeEntity<PhysicalServer> implements IBackendPhysicalServer {
-  @Property()
+  @Column()
+  @Required()
   name!: string;
 
-  @Property()
+  @Column()
   baseOperatingSystem?: string;
 
-  @Property()
+  @Column()
   hypervisor?: string;
 
-  @Property()
+  @Column()
   deviceManufacturer?: string;
 
-  @Property()
+  @Column()
   deviceModel?: string;
 
-  @Property()
+  @Column()
   processorManufacturer?: string;
 
-  @Property()
+  @Column()
   processorModel?: string;
 
-  @Property()
+  @Column()
   processorFrequency?: string;
 
-  @Property()
+  @Column()
   numberOfProcessors?: number;
 
-  @Property()
+  @Column()
   numberOfCores?: number;
 
-  @Property()
+  @Column()
   numberOfVirtualMachines?: string;
 
-  @Property()
+  @Column()
   clusterName?: string;
 
   @ManyToOne()
@@ -53,6 +55,6 @@ export class PhysicalServer extends DiodeEntity<PhysicalServer> implements IBack
   @OneToMany(() => Server, (server) => server.physicalServer)
   servers = new Collection<Server>(this);
 
-  @Property({ columnType: 'text' })
+  @Column({ columnType: 'text' })
   notes?: string;
 }

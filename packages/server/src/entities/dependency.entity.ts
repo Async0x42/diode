@@ -1,5 +1,6 @@
 import { IDependency } from '@diode/common';
-import { Entity, Property, ManyToMany, Collection } from '@mikro-orm/core';
+import { Property, MaxLength, Required } from "@tsed/schema";
+import { Entity, Property as Column, ManyToMany, Collection, OneToMany, ManyToOne } from '@mikro-orm/core';
 import { DiodeEntity } from './diode.entity';
 import { Server } from './server.entity';
 import { Application } from './application.entity';
@@ -12,16 +13,17 @@ export interface IBackendDependency extends Omit<IDependency, 'applications' | '
 
 @Entity()
 export class Dependency extends DiodeEntity<Dependency> implements IBackendDependency {
-  @Property()
+  @Column()
+  @Required()
   name!: string;
 
-  @Property()
+  @Column()
   packageName?: string;
 
-  @Property()
+  @Column()
   version?: string;
 
-  @Property()
+  @Column()
   endOfSupportDate?: Date;
 
   @ManyToMany(() => Application, (application) => application.dependencies)

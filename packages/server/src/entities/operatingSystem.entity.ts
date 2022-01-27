@@ -1,17 +1,19 @@
 import { IOperatingSystem } from '@diode/common';
-import { Entity, Property, OneToMany, Collection } from '@mikro-orm/core';
+import { Property, MaxLength, Required } from "@tsed/schema";
+import { Entity, Property as Column, ManyToMany, Collection, OneToMany, ManyToOne } from '@mikro-orm/core';
 import { DiodeEntity } from './diode.entity';
 import { Server } from './server.entity';
 
 @Entity()
 export class OperatingSystem extends DiodeEntity<OperatingSystem> implements IOperatingSystem {
-  @Property()
+  @Column()
+  @Required()
   name!: string;
 
-  @Property()
+  @Column()
   shortName?: string;
 
-  @Property()
+  @Column()
   endOfSupportDate?: Date;
 
   @OneToMany(() => Server, (server) => server.operatingSystem)

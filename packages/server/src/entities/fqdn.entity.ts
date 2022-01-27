@@ -1,5 +1,6 @@
 import { IFqdn } from '@diode/common';
-import { Entity, Property, ManyToOne, ManyToMany } from '@mikro-orm/core';
+import { Property, MaxLength, Required } from "@tsed/schema";
+import { Entity, Property as Column, ManyToMany, Collection, OneToMany, ManyToOne } from '@mikro-orm/core';
 import { DiodeEntity } from './diode.entity';
 import { Application } from './application.entity';
 import { Server } from './server.entity';
@@ -12,7 +13,8 @@ export interface IBackendFqdn extends Omit<IFqdn, 'server' | 'applications'> {
 
 @Entity()
 export class Fqdn extends DiodeEntity<Fqdn> implements IBackendFqdn {
-  @Property()
+  @Column()
+  @Required()
   name!: string;
 
   @ManyToOne()

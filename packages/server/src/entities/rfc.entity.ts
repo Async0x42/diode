@@ -1,5 +1,6 @@
 import { IRfc, RfcClass, RfcPurpose, RfcStatus } from '@diode/common';
-import { Entity, Property, ManyToOne } from '@mikro-orm/core';
+import { Property, MaxLength, Required } from "@tsed/schema";
+import { Entity, Property as Column, ManyToMany, Collection, OneToMany, ManyToOne } from '@mikro-orm/core';
 import { DiodeEntity } from './diode.entity';
 import { Application } from './application.entity';
 
@@ -10,57 +11,61 @@ export interface IBackendRfc extends Omit<IRfc, 'application'> {
 
 @Entity()
 export class Rfc extends DiodeEntity<Rfc> implements IBackendRfc {
-  @Property()
+  @Column()
   rfcNumber?: number;
 
-  @Property()
+  @Column()
+  @Required()
   title!: string;
 
   @ManyToOne()
   application?: Application;
 
-  @Property()
+  @Column()
+  @Required()
   rfcClass!: RfcClass;
 
-  @Property()
+  @Column()
+  @Required()
   purpose!: RfcPurpose;
 
-  @Property()
+  @Column()
+  @Required()
   status!: RfcStatus;
 
-  @Property({ columnType: 'text' })
+  @Column({ columnType: 'text' })
   description?: string;
 
-  @Property({ columnType: 'text' })
+  @Column({ columnType: 'text' })
   parentSystem?: string;
 
-  @Property({ columnType: 'text' })
+  @Column({ columnType: 'text' })
   businessCase?: string;
 
-  @Property()
+  @Column()
   securityImplications?: string;
 
-  @Property({ columnType: 'text' })
+  @Column({ columnType: 'text' })
   affectedInfrastructure?: string;
 
-  @Property({ columnType: 'text' })
+  @Column({ columnType: 'text' })
   affectedConfigurationItems?: string;
 
-  @Property({ columnType: 'text' })
+  @Column({ columnType: 'text' })
   affectedInformationSystem?: string;
 
-  @Property({ columnType: 'text' })
+  @Column({ columnType: 'text' })
   conceptOfOperation?: string;
 
-  @Property({ columnType: 'text' })
+  @Column({ columnType: 'text' })
   conceptOfTesting?: string;
 
-  @Property({ columnType: 'text' })
+  @Column({ columnType: 'text' })
   conceptOfImplementation?: string;
 
-  @Property({ columnType: 'text' })
+  @Column({ columnType: 'text' })
   backoutPlan?: string;
 
-  @Property()
+  @Column()
   impactAssessmentDueDate?: Date;
 }

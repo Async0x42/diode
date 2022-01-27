@@ -1,5 +1,6 @@
 import { IApplication } from '@diode/common';
-import { Entity, Property, ManyToMany, Collection, OneToMany } from '@mikro-orm/core';
+import { Property, MaxLength, Required } from "@tsed/schema";
+import { Entity, Property as Column, ManyToMany, Collection, OneToMany } from '@mikro-orm/core';
 import { DiodeEntity } from './diode.entity';
 import { Brd } from './brd.entity';
 import { Fqdn } from './fqdn.entity';
@@ -25,10 +26,11 @@ export interface IBackendApplication
 
 @Entity()
 export class Application extends DiodeEntity<Application> implements IBackendApplication {
-  @Property()
+  @Column()
+  @Required()
   name!: string;
 
-  @Property()
+  @Column()
   shortName?: string;
 
   @Property({ columnType: 'text' })

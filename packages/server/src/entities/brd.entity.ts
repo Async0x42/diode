@@ -1,5 +1,6 @@
 import { BrdStatus, IBrd } from '@diode/common';
-import { Entity, Property, ManyToOne } from '@mikro-orm/core';
+import { Property, MaxLength, Required } from "@tsed/schema";
+import { Entity, Property as Column, ManyToMany, Collection, OneToMany, ManyToOne } from '@mikro-orm/core';
 import { DiodeEntity } from './diode.entity';
 import { Application } from './application.entity';
 
@@ -12,34 +13,35 @@ export interface IBackendBrd extends Omit<IBrd, 'application' | 'submissionDate'
 
 @Entity()
 export class Brd extends DiodeEntity<Brd> implements IBackendBrd {
-  @Property()
+  @Column()
+  @Required()
   title!: string;
 
-  @Property({ columnType: 'text' })
+  @Column({ columnType: 'text' })
   description?: string;
 
-  @Property()
+  @Column()
   relatedRequests?: string;
 
-  @Property()
+  @Column()
   brdNumber?: number;
 
-  @Property()
+  @Column()
   priority?: number;
 
-  @Property()
+  @Column()
   status?: BrdStatus;
 
-  @Property()
+  @Column()
   submissionDate?: Date;
 
-  @Property()
+  @Column()
   dateEnteredIntoBits?: Date;
 
-  @Property()
+  @Column()
   initialCost?: number;
 
-  @Property()
+  @Column()
   upkeepCost?: number;
 
   @ManyToOne()

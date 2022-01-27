@@ -1,5 +1,6 @@
 import { IWorkOrder, WorkOrderStatus } from '@diode/common';
-import { Entity, Property, ManyToMany, Collection } from '@mikro-orm/core';
+import { Property, MaxLength, Required } from "@tsed/schema";
+import { Entity, Property as Column, ManyToMany, Collection, OneToMany, ManyToOne } from '@mikro-orm/core';
 import { DiodeEntity } from './diode.entity';
 import { Application } from './application.entity';
 import { Contact } from './contact.entity';
@@ -14,10 +15,11 @@ export interface IBackendWorkOrder extends Omit<IWorkOrder, 'applications' | 'se
 
 @Entity()
 export class WorkOrder extends DiodeEntity<WorkOrder> implements IBackendWorkOrder {
-  @Property()
+  @Column()
+  @Required()
   name!: string;
 
-  @Property({ columnType: 'text' })
+  @Column({ columnType: 'text' })
   details?: string;
 
   @ManyToMany(() => Application, (application) => application.workOrders, { owner: true })
@@ -29,12 +31,12 @@ export class WorkOrder extends DiodeEntity<WorkOrder> implements IBackendWorkOrd
   @ManyToMany(() => Contact, (contact) => contact.workOrders, { owner: true })
   owners = new Collection<Contact>(this);
 
-  @Property()
+  @Column()
   startDate?: Date;
 
-  @Property()
+  @Column()
   endDate?: Date;
 
-  @Property()
+  @Column()
   status?: WorkOrderStatus;
 }

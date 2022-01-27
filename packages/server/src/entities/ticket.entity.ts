@@ -1,5 +1,6 @@
 import { ITicket, TicketStatus } from '@diode/common';
-import { Entity, Property, ManyToMany, Collection } from '@mikro-orm/core';
+import { Property, MaxLength, Required } from "@tsed/schema";
+import { Entity, Property as Column, ManyToMany, Collection, OneToMany, ManyToOne } from '@mikro-orm/core';
 import { DiodeEntity } from './diode.entity';
 import { Application } from './application.entity';
 import { Server } from './server.entity';
@@ -12,16 +13,18 @@ export interface IBackendTicket extends Omit<ITicket, 'applications' | 'servers'
 
 @Entity()
 export class Ticket extends DiodeEntity<Ticket> implements IBackendTicket {
-  @Property()
+  @Column()
+  @Required()
   name!: string;
 
-  @Property()
+  @Column()
+  @Required()
   ticketId!: string;
 
-  @Property({ columnType: 'text' })
+  @Column({ columnType: 'text' })
   details?: string;
 
-  @Property()
+  @Column()
   status?: TicketStatus;
 
   @ManyToMany(() => Application, (application) => application.tickets, { owner: true })
@@ -30,6 +33,6 @@ export class Ticket extends DiodeEntity<Ticket> implements IBackendTicket {
   @ManyToMany(() => Server, (server) => server.tickets, { owner: true })
   servers = new Collection<Server>(this);
 
-  @Property()
+  @Column()
   estimatedDueDate?: Date;
 }

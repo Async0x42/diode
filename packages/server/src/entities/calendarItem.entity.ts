@@ -1,27 +1,31 @@
 import { ICalendarItem } from '@diode/common';
-import { Entity, Property } from '@mikro-orm/core';
+import { Property, MaxLength, Required } from "@tsed/schema";
+import { Entity, Property as Column, ManyToMany, Collection, OneToMany, ManyToOne } from '@mikro-orm/core';
 import { DiodeEntity } from './diode.entity';
 
 @Entity()
 export class CalendarItem extends DiodeEntity<CalendarItem> implements ICalendarItem {
-  @Property()
+  @Column()
+  @Required()
   title!: string;
 
-  @Property()
+  @Column()
   category?: string;
 
-  @Property({ columnType: 'text' })
+  @Column({ columnType: 'text' })
   description?: string;
 
-  @Property()
+  @Column()
   imageUrl?: string;
 
-  @Property()
+  @Column()
+  @Required()
   start!: Date;
 
-  @Property()
+  @Column()
+  @Required()
   end!: Date;
 
-  @Property()
+  @Column()
   allDay = false;
 }

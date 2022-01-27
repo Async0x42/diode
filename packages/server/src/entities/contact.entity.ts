@@ -1,5 +1,6 @@
 import { IContact } from '@diode/common';
-import { Entity, Property, Collection, ManyToMany } from '@mikro-orm/core';
+import { Property, MaxLength, Required } from "@tsed/schema";
+import { Entity, Property as Column, ManyToMany, Collection, OneToMany, ManyToOne } from '@mikro-orm/core';
 import { DiodeEntity } from './diode.entity';
 import { ContactGroup } from './contactGroup.entity';
 import { WorkOrder } from './workOrder.entity';
@@ -12,25 +13,26 @@ export interface IBackendContact extends Omit<IContact, 'contactGroups' | 'workO
 
 @Entity()
 export class Contact extends DiodeEntity<Contact> implements IBackendContact {
-  @Property()
+  @Column()
+  @Required()
   name!: string;
 
-  @Property()
+  @Column()
   phone?: string;
 
-  @Property()
+  @Column()
   email?: string;
 
-  @Property()
+  @Column()
   title?: string;
 
-  @Property()
+  @Column()
   organization?: string;
 
-  @Property()
+  @Column()
   department?: string;
 
-  @Property({ columnType: 'text' })
+  @Column({ columnType: 'text' })
   notes?: string;
 
   @ManyToMany(() => ContactGroup, (contactGroup) => contactGroup.contacts)
