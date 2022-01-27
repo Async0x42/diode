@@ -1,4 +1,4 @@
-import { DI } from '../index';
+import { DI } from '../legacy-server';
 import { Calendar } from '../entities';
 
 export const get = async (): Promise<Calendar | null> => await DI.calendarRepo.findOneOrFail({ id: 1 });
